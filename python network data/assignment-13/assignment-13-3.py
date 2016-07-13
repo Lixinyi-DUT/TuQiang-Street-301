@@ -5,9 +5,9 @@ import json
 serviceurl = 'http://python-data.dr-chuck.net/geojson?'
 
 while True:
-    '''address = raw_input('Enter location: ')
-    if len(address) < 1 : break'''
-    address='International Institute of Information Technology Hyderabad'
+    address = raw_input('Enter location: ')
+    if len(address) < 1 : break
+    #address='International Institute of Information Technology Hyderabad'
 
     url = serviceurl + urllib.urlencode({'sensor':'false', 'address': address})
     print 'Retrieving', url
@@ -24,4 +24,3 @@ while True:
 
     place_id = js['results'][0]['place_id']
     print 'Place id',place_id
-    break
