@@ -1,4 +1,4 @@
-
+import re
 ciphertexts=['315c4eeaa8b5f8aaf9174145bf43e1784b8fa00dc71d885a804e5ee9fa40b16349c146fb778cdf2d3aff021dfff5b403b510d0d0455468aeb98622b137dae857553ccd8883a7bc37520e06e515d22c954eba5025b8cc57ee59418ce7dc6bc41556bdb36bbca3e8774301fbcaa3b83b220809560987815f65286764703de0f3d524400a19b159610b11ef3e',
 '234c02ecbbfbafa3ed18510abd11fa724fcda2018a1a8342cf064bbde548b12b07df44ba7191d9606ef4081ffde5ad46a5069d9f7f543bedb9c861bf29c7e205132eda9382b0bc2c5c4b45f919cf3a9f1cb74151f6d551f4480c82b2cb24cc5b028aa76eb7b4ab24171ab3cdadb8356f',
 '32510ba9a7b2bba9b8005d43a304b5714cc0bb0c8a34884dd91304b8ad40b62b07df44ba6e9d8a2368e51d04e0e7b207b70b9b8261112bacb6c866a232dfe257527dc29398f5f3251a0d47e503c66e935de81230b59b7afb5f41afa8d661cb',
@@ -11,7 +11,29 @@ ciphertexts=['315c4eeaa8b5f8aaf9174145bf43e1784b8fa00dc71d885a804e5ee9fa40b16349
 '466d06ece998b7a2fb1d464fed2ced7641ddaa3cc31c9941cf110abbf409ed39598005b3399ccfafb61d0315fca0a314be138a9f32503bedac8067f03adbf3575c3b8edc9ba7f537530541ab0f9f3cd04ff50d66f1d559ba520e89a2cb2a83']
 target='32510ba9babebbbefd001547a810e67149caee11d945cd7fc81a05e9f85aac650e9052ba6a8cd8257bf14d13e6f0a803b54fde9e77472dbff89d71b57bddef121336cb85ccb8f3315f4b52e301d16e9f52f904'
 
+def strxor(a, b):
+    return "".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(a, b)])
+
 t=target.decode('hex')
-for cipher in ciphertexts:
-    c=cipher.decode('hex')
-    print "sum","".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(t,c[:len(t)])]) 
+l=len(t)
+cipherstring=[i.decode('hex')[:l] for i in ciphertexts]
+cipherstring.append(t)
+pattern=re.compile('[A-Za-z]')
+count=dict()
+discovered=[0 for i in range(l)]
+key=[" " for i in range(l)]
+for i in range(11):
+    for j in range(i,11):
+        p="".join([chr(ord(x) ^ ord(y)) for (x, y) in zip(cipherstring[i],cipherstring[j])])
+        for m in pattern.finditer(p):
+            count[(i,m.start())]=count.get((i,m.start()),0)+1
+            count[(j,m.start())]=count.get((j,m.start()),0)+1
+
+for (pos,c) in count.items():
+    i,j=pos
+    if c>5 and c > discovered[j]:
+        key[j]=chr(ord(cipherstring[i][j])^ord(' '))
+        discovered[j]=c
+k="".join([i for i in key])
+c=strxor(k,t)
+print c
