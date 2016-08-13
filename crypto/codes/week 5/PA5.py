@@ -1,7 +1,4 @@
 import gmpy2
-import hashlib
-import threading
-import sys
 from gmpy2 import mpz
 
 
@@ -29,10 +26,7 @@ def rightsearch(table):
             return x_0,table[gx0]
     print 'none'
 
-def myfun(i):
-    print i
-
 if __name__ =='__main__':
     t=buildleft()
     print len(t)
-    print rightsearch(t,0)
+    print rightsearch(t)
