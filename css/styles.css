@@ -790,7 +790,7 @@ code {
 
 body {
   font-family: "微软雅黑", "Gotham", "Helvetica Neue", "Helvetica Neue Light", "HelveticaNeue-Light", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  color: rgba(0,0,0,0.6);
+  font-size: 15px;
+  color: rgba(0,0,0,0.8);
   -webkit-overflow-scrolling: touch;
 }
