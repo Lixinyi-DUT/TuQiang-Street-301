@@ -12,7 +12,8 @@
 <meta property="og:site_name" content="图强街301号">
 <meta property="og:description" content="这是一个专门为在线课程存放本人的笔记的地方。建站初衷是为了更系统地整理和分享网课的收获，为遇到相同困惑的学习者提供微小的帮助，同时也帮助自己梳理知识脉络。">
 <meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/4.png">
-<meta property="og:updated_time" content="2016-09-02T17:01:35.570Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/notebook/qr_donate.jpg">
+<meta property="og:updated_time" content="2016-09-03T16:27:05.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello World">
 <meta name="twitter:description" content="这是一个专门为在线课程存放本人的笔记的地方。建站初衷是为了更系统地整理和分享网课的收获，为遇到相同困惑的学习者提供微小的帮助，同时也帮助自己梳理知识脉络。">
@@ -217,19 +218,46 @@ ga('send', 'pageview');
 <p>这里的<code>category</code>即分类，是课程的标示，如<a href="https://www.coursera.org/learn/crypto" target="_blank" rel="external">Stanford的Cryptography I</a>的所有笔记分类为该课对应的课程号<code>CS255</code></p>
 <h3 id="数学公式支持"><a href="#数学公式支持" class="headerlink" title="数学公式支持"></a>数学公式支持</h3><p>本站使用<a href="https://www.mathjax.org/" target="_blank" rel="external">MathJax</a>作为数学公式的支持，并保留了公式的菜单以便读者阅读和保存。</p>
 <blockquote>
-<p>行内公式：</p>
+<p>行内公式，在文中添加一对<code>$...$</code>即可：</p>
 </blockquote>
 <p>对于直角三角形直角边$a$,$b$和斜边$c$，存在关系$a^2+b^2=c^2$</p>
 <blockquote>
-<p>行间公式（以Cauchy积分公式为例）：</p>
+<p>行间公式（以Cauchy积分公式为例），添加一对<code>$$...$$</code>：</p>
 </blockquote>
 <p>$$f\left( a \right) = \frac{1}{2\pi i}\mathop \oint \limits_\gamma  \frac{f\left( z \right)}{z - a}dz$$</p>
 <blockquote>
-<p>多行公式（SVM的Lagrange对偶问题优化式为例）：</p>
+<p>多行公式（SVM的Lagrange对偶问题优化式为例），添加一对<code>$$...$$</code>：</p>
 </blockquote>
 <p>$$\begin{align}<br>\mathop {\max }\limits_{\bf{\alpha }} \quad &amp;  \sum\limits_{i = 1}^n {\alpha _i} - \frac{1}{2}\sum\limits_{i = 1}^n \sum\limits_{j = 1}^n \alpha _i \alpha _j y_i y_j {\bf{x}}_i^T {\bf{x}}_j  \\<br> s.t.\quad &amp; \sum\limits_{i = 1}^n{ \alpha _i y_i } = 0\\<br> &amp; \alpha _i \ge 0, \quad i = 1,2, \ldots ,n<br>\end{align}$$</p>
-<p><strong>注意</strong> 由于<code>Markdown</code>的下划线对<code>_</code>会被转义为斜体，可以通过人工添加<code>\</code>避免，</p>
-<h3 id="社会化评论"><a href="#社会化评论" class="headerlink" title="社会化评论"></a>社会化评论</h3>
+<p><strong>注意</strong> 由于<code>Markdown</code>的下划线对<code>_</code>会被转义为斜体，可以通过人工添加<code>\</code>取消转义，也可以修改<code>Markdown</code>中的<code>marked.js</code>防止被<code>pandoc</code>解析。尽量避免嵌套多层<code>{}</code>冗余，如<code>^2</code>将导致编译出错。</p>
+<h3 id="社会化评论"><a href="#社会化评论" class="headerlink" title="社会化评论"></a>社会化评论</h3><p>使用<a href="https://disqus.com/" target="_blank" rel="external">Disqus</a>插件作为社会化评论插件。但近期Disqus在国内被墙了，可能会导致无法显示，需要翻墙才能看见评论区。</p>
+<p>使用ss科学上网者请将<code>disqus.com</code>加入PAC文件以便互动。</p>
+<p>目前在寻找国内稳定可用的社会化评论插件，之前使用过<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>，效果并不是很理想。欢迎推荐。</p>
+<h3 id="Callout"><a href="#Callout" class="headerlink" title="Callout"></a>Callout</h3><p>Bootstrap使用callout强调一些信息，关于callout style的说明可以见该主题的<a href="https://github.com/cgmartin/hexo-theme-bootstrap-blog/tree/master#callouts" target="_blank" rel="external">Readme</a>或<a href="http://cpratt.co/twitter-bootstrap-callout-css-styles/" target="_blank" rel="external">Twitter Bootstrap 3.2.0 Callout CSS Styles</a> 该对象的调用方法如下，可配合<a href="http://fontawesome.io/" target="_blank" rel="external">Font Awesome</a>使用<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">callout</span> [type:default|primary|success|info|warning|danger] %&#125;</span><span class="xml"></span></div><div class="line">...content...</div><div class="line"><span class="template-tag">&#123;% <span class="name">endcallout</span> %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure></p>
+<p>示例<br><div class="bs-callout bs-callout-default"><h4 id="Default"><a href="#Default" class="headerlink" title=" Default"></a><i class="fa fa-bookmark"></i> Default</h4><p>这是一个default类型的callout</p>
+</div></p>
+<div class="bs-callout bs-callout-primary"><h4 id="Primary"><a href="#Primary" class="headerlink" title=" Primary"></a><i class="fa fa-cog"></i> Primary</h4><p>这是一个primary类型的callout</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="Success"><a href="#Success" class="headerlink" title=" Success"></a><i class="fa fa-check-circle"></i> Success</h4><p>这是一个success类型的callout</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="Info"><a href="#Info" class="headerlink" title=" Info"></a><i class="fa fa-info-circle"></i> Info</h4><p>这是一个info类型的callout</p>
+</div>
+<div class="bs-callout bs-callout-warning"><h4 id="Warning"><a href="#Warning" class="headerlink" title=" Warning"></a><i class="fa fa-exclamation-circle"></i> Warning</h4><p>这是一个warning类型的callout</p>
+</div>
+<div class="bs-callout bs-callout-danger"><h4 id="Danger"><a href="#Danger" class="headerlink" title=" Danger"></a><i class="fa fa-exclamation-triangle"></i> Danger</h4><p>这是一个danger类型的callout</p>
+</div>
+<h2 id="关于作者"><a href="#关于作者" class="headerlink" title="关于作者"></a>关于作者</h2><p>本站的笔记主要由本文作者Xinyi Li完成，但欢迎用<code>Markdown</code>文件投稿，方式不限于发送邮件至<a href="mail to: i@xyli.me">i@xyli.me</a>。</p>
+<p>更多关于我的更多信息请见<a href="#社交网络">社交网络</a></p>
+<h3 id="社交网络"><a href="#社交网络" class="headerlink" title="社交网络"></a>社交网络</h3><blockquote>
+<p><i class="fa fa-twitter"></i> <a href="https://twitter.com/yangzhou301" target="_blank" rel="external">@yangzhou301</a><br><i class="fa fa-facebook"></i> <a href="https://www.facebook.com/yangzhou301" target="_blank" rel="external">https://www.facebook.com/yangzhou301</a><br><i class="fa fa-github"></i> <a href="https://github.com/Lixinyi-DUT" target="_blank" rel="external">https://github.com/Lixinyi-DUT</a><br><i class="fa fa-linkedin"></i> <a href="http://www.linkedin.com/in/xinyi-li" target="_blank" rel="external">http://www.linkedin.com/in/xinyi-li</a><br><i class="fa fa-weibo"></i> <a href="http://weibo.com/LxySeptember" target="_blank" rel="external">@欣宜她什么也没在想_koishi</a></p>
+</blockquote>
+<h3 id="向我捐助"><a href="#向我捐助" class="headerlink" title="向我捐助"></a>向我捐助</h3><p>如果我的笔记给您带来了帮助，欢迎您向我捐助或者打赏。</p>
+<p>本站为非盈利的笔记计划，从课程的注册到笔记的发布，都在相关文章中提供了独立且完全免费的解决方案，我所希望的是有更多人能参与到这项事业，从丰富的网络资源中获取知识和技能，并向其他人分享自己从中得到的知识和见解。</p>
+<p>虽然建站是完全免费的，但我全程付出的时间和精力是无价的。虽然没有您的支持和认可，本站依然可以运营，图强街301号计划也会继续进行，但如果能得到您的捐助，我会非常高兴，有了您的支持，图强街301号将会更加快速地发展，我将十分感谢每一位为本站捐助的读者。</p>
+<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/notebook/qr_donate.jpg" alt="捐助入口"></p>
+<div class="bs-callout bs-callout-danger"><h4 id="Warning"><a href="#Warning" class="headerlink" title=" Warning"></a><i class="fa fa-exclamation-triangle"></i> Warning</h4><p>捐助前请先确认您的捐助不会直接影响到您的经济状况,没有余力做出经济支持的读者可以通过其他方式做出支持，仅是这份心意就已经让我非常感谢。<br>Feel free to read my notebooks!</p>
+</div>
+
       
     </div>
 
@@ -239,7 +267,7 @@ ga('send', 'pageview');
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="ciskkmhvk0000fkw399bdbqxv" class="article-share-link">
+      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="cism0u6ov0000cww3ieukfup7" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       
@@ -286,11 +314,6 @@ ga('send', 'pageview');
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
-  <div class="sidebar-module sidebar-toc">
-    <h4>TOC</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#背景"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">背景</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#参考链接"><span class="sidebar-module-list-number">1.1.</span> <span class="sidebar-module-list-text">参考链接</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#建站"><span class="sidebar-module-list-number">1.2.</span> <span class="sidebar-module-list-text">建站</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#书写特性"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">书写特性</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#基本特性"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">基本特性</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#目录生成"><span class="sidebar-module-list-number">2.2.</span> <span class="sidebar-module-list-text">目录生成</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#数学公式支持"><span class="sidebar-module-list-number">2.3.</span> <span class="sidebar-module-list-text">数学公式支持</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#社会化评论"><span class="sidebar-module-list-number">2.4.</span> <span class="sidebar-module-list-text">社会化评论</span></a></li></ol></li></ol>
-  </div>
-
 
 
   <div class="sidebar-module sidebar-module-inset">
