@@ -521,6 +521,10 @@ p{
   font-weight: normal;
   font-size: 16px;
 }
+
+li{
+  font-size: 16px;
+}
 pre {
   margin: 0 0 20px;
 }

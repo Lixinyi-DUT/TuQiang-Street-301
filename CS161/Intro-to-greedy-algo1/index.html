@@ -15,7 +15,9 @@
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-1.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-2.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/case-3.png">
-<meta property="og:updated_time" content="2016-11-09T16:20:29.493Z">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/j-prime-time.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/j-prime-time2.png">
+<meta property="og:updated_time" content="2016-11-12T13:30:05.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="贪心算法小试牛刀 （一）">
 <meta name="twitter:description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。">
@@ -126,7 +128,7 @@ var _hmt = _hmt || [];
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/CS161/Intro-to-greedy-algo1/" class="article-date"><time datetime="2016-09-13T12:03:00.000Z" itemprop="datePublished">2016-09-13</time></a>
+  <a href="/CS161/Intro-to-greedy-algo1/" class="article-date"><time datetime="2016-10-29T12:03:00.000Z" itemprop="datePublished">2016-10-29</time></a>
 </div>
 
     <div class="article-author">Xinyi Li</div>
@@ -202,20 +204,21 @@ var _hmt = _hmt || [];
 <p>容易看出$S’$和$S$目前为止换页次数相同，既然$S$是最优的，$S’$目前（至少前$j+1$步)也可以认为是最优的。</p>
 <p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/case-3.png" alt="$S$与$S&#39;$在第$j+1$步换掉了不同的项，除此以外其他部分完全相同&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;"></p>
 <p>用$j’$表示在$j+1$步后$S$和$S’$第一次发生不同操作的歩数，这个操作也必然与$e$或$f$中至少一个相关，令$g$代表$j’$时刻的请求项</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/j-prime-time.png" alt=""></p>
 <div class="bs-callout bs-callout-danger"><h4 id="Case-3a-g-e"><a href="#Case-3a-g-e" class="headerlink" title=" Case 3a: $g=e$"></a><i class="fa fa-times-circle"></i> Case 3a: $g=e$</h4><p>这是不可能发生的情况,$S_{FF}$要求替换最晚出现的项，既然在$S_{FF}$ 中已经换掉了$e$，说明$e$是当时Cache中最晚出现的，所以$e$的请求不可能先于$f$</p>
 </div>
 <div class="bs-callout bs-callout-danger"><h4 id="Case-3b-g-f"><a href="#Case-3b-g-f" class="headerlink" title=" Case 3b: $g=f$"></a><i class="fa fa-check-square-o"></i> Case 3b: $g=f$</h4><p>$f$不在$S$的Cache中，假设接下来$S$换掉的Cache内容为$e’$</p>
 <ul>
 <li>如果$e’=e$，$S’$直接可以从Cache中获得$f$而不发生缺页，现在$S$和$S’$的Cache内容相同，</li>
-<li>如果$e’ \ne e$，$S’$把$e’$换成$e$后Cache内容和$S$相同，此事$S’$不是简化最优调度，但可以转化为换页次数不多于其本身的简化最优调度，而且根据<a href="#### &lt;i class=&quot;fa fa-times-circle&quot;&gt;&lt;/i&gt; Case 3a">Case 3a</a>的讨论，转化后新的$S’$前$j+1$步也与$S_{FF}$一致</li>
+<li>如果$e’ \ne e$，$S’$把$e’$换成$e$后Cache内容和$S$相同，此事$S’$不是简化最优调度，但可以转化为换页次数不多于其本身的简化最优调度，而且根据Case 3a的讨论，转化后新的$S’$前$j+1$步也与$S_{FF}$一致</li>
 </ul>
 </div>
 <div class="bs-callout bs-callout-danger"><h4 id="Case-3b-g-ne-e-且-g-ne-f"><a href="#Case-3b-g-ne-e-且-g-ne-f" class="headerlink" title=" Case 3b: $g \ne e$且$g \ne f$"></a><i class="fa fa-check-square-o"></i> Case 3b: $g \ne e$且$g \ne f$</h4><p>此时$S$必然换掉$e$，只需要$S’$换掉$f$，两者的Cache内容就再次相同</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/j-prime-time2.png" alt=""></p>
 </div>
 <p>至此，我们找到了一个前$j+1$步换页与$S_{FF}$完全一致的简化最优调度$S’$，因此命题成立 ■</p>
 <p>综上所述，当取$n$为调度队列长度时，命题依然成立，因此可以认为farthest-in-future算法是最优的Caching算法</p>
-<p>##后记</p>
-<p>本文只是简单地介绍和证明了贪心算法的一个微小的应用,更多内容将在以后的笔记中给出。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>本文只是简单地介绍和证明了贪心算法的一个微小的应用,更多内容将在以后的笔记中给出。</p>
 <p>笔记中的证明脉络主要参考了<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，因为我认为这是我看见的材料中最清晰完整的证明，当然也有很多相关的资料可以阅读一下，比如<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>给出的是类似的思路而且更具体（实例化）一些，但符号标记问题可能看着有些麻烦；再如<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup>紧扣Argument Exchange大法用词颇为规范当读上去略晦涩。</p>
 <p>当然这个问题本身不是很实际，在实践中，几乎不可能一开始就知道完整的请求队列，更不可能知道将来最晚出现的是Cache中的哪一项，我们讨论的是离线Caching问题，可以在调度前就知道请求队列，而事实上比较受关注的问题是如何在不知道后面会请求什么内容的情况下的在线Caching问题，常用的是LRU算法<sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup>。</p>
 <p>至于为什么要费这么大力气去写farthest-in-future的证明，看似是毫无意义的茴香豆，实际上对于此类贪心算法证明的规范训练是件很有意义的事，至少有了这样的思路帮助我们看待其他问题的时候，依靠直接迅速找到一个正确的贪心算法，并知道怎样去证明这个贪心算法为什么是正确的，这是应用贪心算法过程中两个非常困难的问题，但很多时候解决的方法和farthest-in-future并无本质差异。</p>
@@ -229,7 +232,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="civb4ttgi0000b4w3sq6ym0ra" class="article-share-link">
+      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="cj1izzmdo0001bkw3gzoqrdnf" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -270,24 +273,20 @@ var _hmt = _hmt || [];
 </section>
  -->
 
-<!-- <div id="disqus_thread"></div> -->
-<!-- <script>
-/**
- *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
- *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
-
-(function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = '//notebook-xyli-me.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
-<!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2112122"></script>
-<!-- UY END -->
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
@@ -331,7 +330,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">2</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -360,7 +359,7 @@ var _hmt = _hmt || [];
   <footer class="blog-footer">
   <div class="container">
     <div id="footer-info" class="inner">
-      &copy; 2016 Xinyi Li<br>
+      &copy; 2017 Xinyi Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
