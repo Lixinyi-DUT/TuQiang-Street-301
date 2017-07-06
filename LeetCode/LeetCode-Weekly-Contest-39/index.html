@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 39 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="整体不难，注意避坑。
+https://leetcode.com/contest/leetcode-weekly-contest-39/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 39">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-39/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="整体不难，注意避坑。
+https://leetcode.com/contest/leetcode-weekly-contest-39/">
+<meta property="og:updated_time" content="2017-07-06T13:34:06.056Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 39">
+<meta name="twitter:description" content="整体不难，注意避坑。
+https://leetcode.com/contest/leetcode-weekly-contest-39/">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-39" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 39
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-39/" class="article-date"><time datetime="2017-07-06T07:28:00.000Z" itemprop="datePublished">2017-07-06</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>整体不难，注意避坑。</p>
+<p><a href="https://leetcode.com/contest/leetcode-weekly-contest-39/" target="_blank" rel="external">https://leetcode.com/contest/leetcode-weekly-contest-39/</a></p>
+<a id="more"></a>
+<h2 id="Sum-of-Square-Numbers"><a href="#Sum-of-Square-Numbers" class="headerlink" title="Sum of Square Numbers"></a>Sum of Square Numbers</h2><p><a href="https://leetcode.com/contest/leetcode-weekly-contest-39/problems/sum-of-square-numbers/" target="_blank" rel="external">https://leetcode.com/contest/leetcode-weekly-contest-39/problems/sum-of-square-numbers/</a></p>
+<div class="bs-callout bs-callout-info"><p>Given a non-negative integer <code>c</code>, your task is to decide whether there’re two integers a and b such that $a^2 + b^2 = c$.</p>
+<p><strong>Example 1</strong>:<br>Input: 5<br>Output: True<br>Explanation: <code>1 * 1 + 2 * 2 = 5</code></p>
+<p><strong>Example 2</strong>:<br>Input: 3<br>Output: False</p>
+</div>
+<p>我一开始感觉这问题是想问怎么判断完全平方数，就按照Babylonianf方法<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>写了个函数判断（想这么干的注意另外讨论0和1的情况）,结果TLE了噜。破oj又不让用<code>gmpy</code>库，我能怎么样我也很绝望啊。后来试了下最糙的判断方法<code>math.sqrt(x)==round(math.sqrt(x))</code>就过去了，，，最后警告，，，请你出题文明点<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> math</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">judgeSquareSum</span><span class="params">(self, c)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type c: int</div><div class="line">        :rtype: bool</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> c==<span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(int(math.sqrt(c))+<span class="number">1</span>):</div><div class="line">            j=c-i*i</div><div class="line">            <span class="keyword">if</span> math.sqrt(j)==round(math.sqrt(j)):</div><div class="line">                <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">False</span></div></pre></td></tr></table></figure></p>
+<p>之所以觉得这题野蛮是因为<code>math.sqrt(x)==round(math.sqrt(x))</code>并不是一个很好的判断方法，有时<code>math.sqrt</code>返回的结果的小数部分因为太小被当作<code>0</code>处理了，但参数并非一个完全平方数，可能测试使用的数据都太小所以没出现这个问题就直接AC了。</p>
+<h2 id="Design-Log-Storage-System"><a href="#Design-Log-Storage-System" class="headerlink" title="Design Log Storage System"></a>Design Log Storage System</h2><p><a href="https://leetcode.com/problems/design-log-storage-system/" target="_blank" rel="external">https://leetcode.com/problems/design-log-storage-system/</a></p>
+<div class="bs-callout bs-callout-info"><p>You are given several logs that each log contains a unique id and timestamp. Timestamp is a string that has the following format: <code>Year:Month:Day:Hour:Minute:Second</code>, for example, <code>2017:01:01:23:59:59</code>. All domains are zero-padded decimal numbers.</p>
+<p>Design a log storage system to implement the following functions:</p>
+<p><code>void Put(int id, string timestamp)</code>: Given a log’s unique id and timestamp, store the log in your storage system.</p>
+<p><code>int[] Retrieve(String start, String end, String granularity)</code>: Return the id of logs whose timestamps are within the range from start to end. Start and end all have the same format as timestamp. However, granularity means the time level for consideration. For example, start = “2017:01:01:23:59:59”, end = “2017:01:02:23:59:59”, granularity = “Day”, it means that we need to find the logs within the range from Jan. 1st 2017 to Jan. 2nd 2017.</p>
+<p><strong>Example 1</strong>:</p>
+<p>put(1, “2017:01:01:23:59:59”);<br>put(2, “2017:01:01:22:59:59”);<br>put(3, “2016:01:01:00:00:00”);<br>retrieve(“2016:01:01:01:01:01”,”2017:01:01:23:00:00”,”Year”); // return [1,2,3], because you need to return all logs within 2016 and 2017.<br>retrieve(“2016:01:01:01:01:01”,”2017:01:01:23:00:00”,”Hour”); // return [1,2], because you need to return all logs start from 2016:01:01:01 to 2017:01:01:23, where log 3 is left outside the range.</p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li>There will be at most 300 operations of Put or Retrieve.</li>
+<li>Year ranges from [2000,2017]. Hour ranges from [00,23].</li>
+<li>Output for Retrieve has no order required.</li>
+</ol>
+</div>
+<p>没什么好说的无脑码就行，把日期时间转换为一个可以<strong>直接比较</strong>的数值就行，比如C系语言有<code>ctime</code>库给你折腾，直接返回从1970年零点到那个时间的秒数。这里我的做法比较偷懒，按顺序构成各个位，生成一个数值。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LogSystem</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.record=dict()</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, id, timestamp)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type id: int</div><div class="line">        :type timestamp: str</div><div class="line">        :rtype: void</div><div class="line">        """</div><div class="line">        self.record[id]=timestamp</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">retrieve</span><span class="params">(self, s, e, gra)</span>:</span></div><div class="line">        re=[]</div><div class="line">        order=[<span class="string">'Year'</span>,<span class="string">'Month'</span>,<span class="string">'Day'</span>,<span class="string">'Hour'</span>,<span class="string">'Minute'</span>,<span class="string">'Second'</span>]</div><div class="line">        length=order.index(gra)</div><div class="line">        val_s=self.trans_val(s,length)</div><div class="line">        val_e=self.trans_val(e,length)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> self.record:</div><div class="line">            <span class="keyword">if</span> val_s &lt;= self.trans_val(self.record[i],length)&lt;=val_e:</div><div class="line">                re.append(i)</div><div class="line">        <span class="keyword">return</span> re</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">trans_val</span><span class="params">(self,s,length)</span>:</span></div><div class="line">        date=s.split(<span class="string">':'</span>)</div><div class="line">        val=<span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length+<span class="number">1</span>):</div><div class="line">            val=val*<span class="number">100</span>+int(date[i])</div><div class="line">            <span class="keyword">if</span> i !=<span class="number">0</span>:</div><div class="line">                val += <span class="number">10</span></div><div class="line">        <span class="keyword">return</span> val</div></pre></td></tr></table></figure></p>
+<p>其实比起<code>dict</code>，用<code>list</code>也没问题，其他语言中还能用有序向量之类的数据类型提高检索速度。</p>
+<h2 id="Find-the-Derangement-of-An-Array"><a href="#Find-the-Derangement-of-An-Array" class="headerlink" title="Find the Derangement of An Array"></a>Find the Derangement of An Array</h2><p><a href="https://leetcode.com/contest/leetcode-weekly-contest-39/problems/find-the-derangement-of-an-array/" target="_blank" rel="external">https://leetcode.com/contest/leetcode-weekly-contest-39/problems/find-the-derangement-of-an-array/</a></p>
+<div class="bs-callout bs-callout-info"><p>In combinatorial mathematics, a derangement is a permutation of the elements of a set, such that no element appears in its original position.</p>
+<p>There’s originally an array consisting of <code>n</code> integers from 1 to <code>n</code> in ascending order, you need to find the number of derangement it can generate.</p>
+<p>Also, since the answer may be very large, you should return the output mod <code>10^9 + 7</code>.</p>
+<p><strong>Example 1</strong>:<br>Input: 3<br>Output: 2<br>Explanation: The original array is [1,2,3]. The two derangements are [2,3,1] and [3,1,2].</p>
+<p><strong>Note</strong>:<br><code>n</code> is in the range of [1, 106].</p>
+</div>
+<p>我的想法是递归，去找参数为<code>n</code>时，和函数为<code>n-1</code>时有什么关系，但是发现只关注这个函数是没法直接找出和前一个值的关系的。所有需要规定两个函数，或者说是向量（数列？）。首先规定$a_n$为所有值都和下标不一致的数组的总个数（即题目里面问的那个函数），作为辅助规定$b_n$为有且仅有一个值与下标一致（这个位置下面记为不动点）的数组的总个数。这样容易得到<br>$$a_n=(n-1)a_{n-1}+b_{n-1}$$<br>在第$n$位的值$n$和任意属于$a_{n-1}$的数组的任意位置交换即可得到一个rerangement，和属于$b_{n-1}$的数组中唯一的不动点交换也可以得到一个rerangement，而且只能通过这两种方法得到。同样有$$b_n=na_{n-1}$$把不动点规定在$n-1$个数之间的任意空隙位置（包括首尾），假设这个不动点的位置在新数组的下标为$i$，其他比$i$大的值代换为$i+1$即可得到这样有且只有一个数与下标一致的数组，反过来对这样的数组进行反向操作，删除这个不动点，把$i$换成$i-1$也可以得到长度为$n-1$的rerangement，根据这种方法写个迭代的解法：<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findDerangement</span><span class="params">(self, n)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        a,b=<span class="number">0</span>,<span class="number">1</span></div><div class="line">        mod=<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>,n+<span class="number">1</span>):</div><div class="line">            a,b=(a*(i<span class="number">-1</span>)+b)%mod,i*a%mod</div><div class="line">        <span class="keyword">return</span> a</div></pre></td></tr></table></figure></p>
+<p>这是我一个没文化的野蛮人的方法，我看了下其他人交的解法，更多的是直接看出了这个函数在<code>n</code>为参数时与<code>n-1</code>,<code>n-2</code>为参数时的关系，即$$a_n=(n-1)(a_{n-1}+a_{n-2})$$这种关系也很好理解，在长度为$n-1$的rerangement里面用$n$交换任意位置，以及长度为$n-2$的rerangement的任意空隙插入这对数。无疑这是优雅的，，，文明的解法。</p>
+<h2 id="Smallest-Range"><a href="#Smallest-Range" class="headerlink" title="Smallest Range"></a>Smallest Range</h2><div class="bs-callout bs-callout-info"><p>You have <code>k</code> lists of sorted integers in ascending order. Find the smallest range that includes at least one number from each of the k lists.</p>
+<p>We define the range [a,b] is smaller than range [c,d] if <code>b-a &lt; d-c</code>or <code>a &lt; c</code> if <code>b-a == d-c</code>.</p>
+<p><strong>Example 1</strong>:<br>Input:[[4,10,15,24,26], [0,9,12,20], [5,18,22,30]]<br>Output: [20,24]<br>Explanation:<br>List 1: [4, 10, 15, 24,26], 24 is in range [20,24].<br>List 2: [0, 9, 12, 20], 20 is in range [20,24].<br>List 3: [5, 18, 22, 30], 22 is in range [20,24].</p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li>The given list may contain duplicates, so ascending order means &gt;= here.</li>
+<li>1 &lt;= <code>k</code> &lt;= 3500</li>
+<li>-10^5 &lt;= <code>value of elements</code> &lt;= 10^5.</li>
+<li>For Java users, please note that the input type has been changed to List<list<integer>&gt;. And after you reset the code template, you’ll see this point.</list<integer></li>
+</ol>
+</div>
+<p>思路撸顺了感觉题目问的还是挺清晰的，既然要找到最小范围，那就需要维护一个长度为<code>k</code>的数组，数组中的每个数都来自于不同的<code>list</code>，其中的最大值和最小值即为数组的两个端点。为了让这个数组的范围尽可能的小，我们可以规定从每个<code>list</code>的左端（或右端）开始全部放进数组，取出最小的值后再换如这个<code>list</code>后面一位的值，以此尝试缩小范围。当然也可以从右端开始不断取出最大值再用前一位替补，但是规定了区间长度相等时左端点较小的数是更小的区间，那么从左端开始更好。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">smallestRange</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[List[int]]</div><div class="line">        :rtype: List[int]</div><div class="line">        """</div><div class="line">        pq=[(row[<span class="number">0</span>],i,<span class="number">0</span>)<span class="keyword">for</span> i,row <span class="keyword">in</span> enumerate(nums)]</div><div class="line">        heapq.heapify(pq)</div><div class="line">        start=min([row[<span class="number">0</span>] <span class="keyword">for</span> row <span class="keyword">in</span> nums])<span class="number">-1</span></div><div class="line">        end=max([row[<span class="number">0</span>] <span class="keyword">for</span> row <span class="keyword">in</span> nums])</div><div class="line">        r=start,end</div><div class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">            start,i,j=heapq.heappop(pq)</div><div class="line">            <span class="keyword">if</span> end-start&lt;r[<span class="number">1</span>]-r[<span class="number">0</span>]:</div><div class="line">                r=start,end</div><div class="line">            <span class="keyword">if</span> j+<span class="number">1</span>==len(nums[i]):</div><div class="line">                <span class="keyword">return</span> [r[<span class="number">0</span>],r[<span class="number">1</span>]]</div><div class="line">            val=nums[i][j+<span class="number">1</span>]</div><div class="line">            end=max(val,end)</div><div class="line">            heapq.heappush(pq,(val,i,j+<span class="number">1</span>))</div></pre></td></tr></table></figure></p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Methods_of_computing_square_roots" target="_blank" rel="external">https://en.wikipedia.org/wiki/Methods_of_computing_square_roots</a></span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-39/" data-id="cj4sd9ywe0005d8w3vgmj4cug" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-38/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 38</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>站主已经戒膜戒厨恋不黑你工彻底正常人化，本站为课程学习笔记仓库，仅提供全面正常人化的课内笔记，如果其他需求请转至<a href="https://www.yangzhou301.com" style="text-decoration:none;">扬州计划</a>或联系作者<em><a href="mailto:i@xyli.me" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>i@xyli.me</a></em></p>
+
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/贪心算法/" style="font-size: 20px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-39/">LeetCode Weekly Contest 39</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-38/">LeetCode Weekly Contest 38</a>
+        </li>
+      
+        <li>
+          <a href="/Introduction/illustrations/">灵魂画手的插画集</a>
+        </li>
+      
+        <li>
+          <a href="/CS161/Intro-to-greedy-algo1/">贪心算法小试牛刀 （一）</a>
+        </li>
+      
+        <li>
+          <a href="/Introduction/hello-world/">Hello World</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  // 
+  // var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-39/';
+  // 
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>
