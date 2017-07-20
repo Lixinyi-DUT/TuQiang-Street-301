@@ -62,11 +62,9 @@ fun what_month (day:int)=
   end
 
 fun month_range (day1:int, day2:int)=
-  let val month1=what_month(day1)
-  in if day1>day2
-     then []
-     else month1::month_range(day1+1,day2)
-  end
+  if day1>day2
+  then []
+  else what_month(day1)::month_range(day1+1,day2)
 
 fun oldest(dates:(int*int*int) list)=
   if null dates
@@ -77,11 +75,48 @@ fun oldest(dates:(int*int*int) list)=
 	 then ans
 	 else SOME(hd dates)
       end
-	  
+
+fun set(nums:int list)=
+  let fun duplicate(x:int, l:int list)=
+	if null l
+	then false
+	else hd l=x orelse duplicate(x,tl l)
+  in
+      if null nums
+      then []
+      else
+	  let val s=set(tl nums)
+	  in if duplicate(hd nums,s)
+	     then s
+	     else hd nums::s
+	  end
+  end
+      
+      
+  
 fun number_in_months_challenge (dates:(int*int*int) list,months:int list) =
-  if null months
-  then 0
-  else 
+  number_in_months(dates,set(months))
+
+fun dates_in_months_challenge (dates:(int*int*int) list,months:int list)=
+  dates_in_months(dates,set(months))
+
+fun reasonable_date (date:(int*int*int))=
+  if #1 date <0
+  then false
+  else
+      if #2 date<0 orelse #2 date>12
+      then false
+      else
+	  let val month=[31,28,31,30,31,30,31,31,30,31,30,31]
+	      val  leap= #1 date mod 40=0 orelse (#1 date mod 4=0 andalso #1 date mod 100<>0)
+	      fun get_nth_num (nums:int list,n:int)=
+		if n=1 then hd nums
+		else get_nth_num(tl nums,n-1)			
+	  in if #2 date=2 andalso leap
+	     then #3 date >0 andalso #3 date<=29
+	     else #3 date>0 andalso #3 date<=get_nth_num(month,#2 date)
+	  end
+	      
+						    
 			      	  
-      
-      
+     
