@@ -101,10 +101,10 @@ fun dates_in_months_challenge (dates:(int*int*int) list,months:int list)=
   dates_in_months(dates,set(months))
 
 fun reasonable_date (date:(int*int*int))=
-  if #1 date <0
+  if #1 date <=0
   then false
   else
-      if #2 date<0 orelse #2 date>12
+      if #2 date<=0 orelse #2 date>12
       then false
       else
 	  let val month=[31,28,31,30,31,30,31,31,30,31,30,31]
