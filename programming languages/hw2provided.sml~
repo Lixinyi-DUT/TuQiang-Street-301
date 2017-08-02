@@ -33,7 +33,7 @@ fun get_substitutions2 (substitutions,s)=
   in get_strings (substitutions,s,[])
   end
 
-fun similar_names(substitutions,fullname)=
+fun similar_names (substitutions,fullname)=
   let fun name_generator(f,m,l)=
 	case f of
 	    [] =>[]
@@ -65,8 +65,10 @@ fun card_color (c)=
 
 fun card_value (c)=
   case c of
-      (_, Num i) => i
-    | _ => 11
+      (_,Ace) => 11
+    | (_,Num i) => i
+    | _ => 10
+	       
 	       
 fun remove_card (cs,c,e)=
   case cs of
@@ -96,6 +98,25 @@ fun score (held,goal) =
      then preliminary div 2
      else preliminary
   end
+
+fun officiate (cs,move,goal)=
+  let fun play (held,cards,m,g)=
+	case cards of
+	    []=> score(held,g)
+	  | first::t => if sum_cards(held) > goal then score(held,g)
+			else case m of
+				 [] => score(held,g)
+		  |   (Discard c)::rest => play(remove_card(held,c,IllegalMove),cards,rest,g)
+		  |  Draw::rest => play(first::held,t,rest,g)
+  in play([],cs,move,goal)
+  end
+
+fun score_challenge (held,goal)=
+  
       
+						       
+				      
+				      
+		   
 			      
       

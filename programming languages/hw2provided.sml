@@ -111,6 +111,44 @@ fun officiate (cs,move,goal)=
   in play([],cs,move,goal)
   end
       
+fun sum_cards_challenge (cs,goal)=
+  let fun get_sum(cs,goal,s)=
+	case cs of
+	    [] => s
+	  | h::t => case h of
+			(_,Ace) => if s < goal - 8 then get_sum(t,goal,11+s)
+				   else get_sum(t,goal,1+s)
+		      | _ => get_sum(t,goal,s+card_value(h))
+  in get_sum(cs,goal,0)
+  end
+      
+
+fun score_challenge (held,goal)=
+  let val preliminary =
+	  if sum_cards_challenge(held,goal) > goal then 3 * (sum_cards_challenge(held,goal)-goal)
+	  else goal-sum_cards_challenge(held,goal)
+  in if all_same_color(held)
+     then preliminary div 2
+     else preliminary
+  end
+
+fun officiate_challenge(cs,move,goal)=
+  let fun play (held,cards,m,g)=
+	case cards of
+	    []=> score_challenge(held,g)
+	  | first::t => if sum_cards_challenge(held,goal) > goal then score_challenge(held,g)
+			else case m of
+				 [] => score_challenge(held,g)
+		  |   (Discard c)::rest => play(remove_card(held,c,IllegalMove),cards,rest,g)
+		  |  Draw::rest => play(first::held,t,rest,g)
+  in play([],cs,move,goal)
+  end
+
+     
+
+      
+  
+      
 						       
 				      
 				      
