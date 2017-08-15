@@ -43,4 +43,38 @@ fun longest_string1 sl=
   foldl (fn (x,cur) => if String.size(x)>String.size(cur) then x else cur) "" sl 
 fun longest_string2 sl=
   foldl (fn (x,cur) => if String.size(x)>=String.size(cur) then x else cur) "" sl
-  
+	
+fun longest_string_helper greater lst =
+  foldl (fn (x,cur) => if greater(String.size(x),String.size(cur)) then x else cur) "" lst
+
+val  longest_string3 = longest_string_helper (fn (x,y)=>x>y)
+
+val  longest_string4 = longest_string_helper (fn (x,y) => x>=y)
+
+val longest_capitalized  = longest_string1 o only_capitals
+
+val rev_string = implode o rev o explode
+
+fun first_answer f lst=
+  case lst of
+      [] => raise NoAnswer
+    | h::tail => case f h  of
+		     SOME v => v
+		   | NONE => first_answer f tail
+
+ 
+
+
+				  
+				   
+						
+				       
+	       
+      
+				     
+		
+ 					  
+				     
+						    
+						
+					      
