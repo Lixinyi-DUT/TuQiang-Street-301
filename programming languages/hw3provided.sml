@@ -62,6 +62,17 @@ fun first_answer f lst=
 		     SOME v => v
 		   | NONE => first_answer f tail
 
+fun all_answers f lst= (*f:a'->b' list option, lst: a' list*,rtype: b' list option*)
+  let fun answers g l acc= (*g:a' -> b' list option, l: a' list, acc:b' list rtype: b' list option*)
+	case l of
+	    [] => SOME acc
+	  | h::tail => case g h of
+			   SOME v =>  answers g tail (acc@v)
+			 | NONE => NONE
+  in answers f lst []
+  end
+			   
+
  
 
 
