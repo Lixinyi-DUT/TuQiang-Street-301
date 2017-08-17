@@ -71,7 +71,8 @@ fun all_answers f lst= (*f:a'->b' list option, lst: a' list*,rtype: b' list opti
 			 | NONE => NONE
   in answers f lst []
   end
-			   
+
+val count_wildcards=g (fn ()=>1) (fn x=>0)
 
  
 
