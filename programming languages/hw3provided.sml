@@ -74,6 +74,29 @@ fun all_answers f lst= (*f:a'->b' list option, lst: a' list*,rtype: b' list opti
 
 val count_wildcards=g (fn ()=>1) (fn x=>0)
 
+val count_wild_and_variable_lengths=g (fn ()=>1) (fn x=>String.size(x))
+
+fun count_some_var (s,p)=g (fn ()=>0) (fn x=>if x=s then 1 else 0) p
+
+fun check_pat p=
+  let fun get_string_list p=
+	  case p of
+	      Variable x=>[x]
+	   |  TupleP l=> foldl (fn (x,y)=>(get_string_list x)@y) [] l
+	   |  ConstructorP (_,ps) => get_string_list ps
+	   | _ => []
+      fun is_distinct lst=
+	  case lst of
+		     [] => true
+		   | h::t => (not (List.exists (fn x=>x=h) t)) andalso (is_distinct t)
+  in is_distinct(get_string_list(p)) 
+  end
+      
+	      
+  
+  
+				      
+
  
 
 
