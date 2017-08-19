@@ -91,8 +91,29 @@ fun check_pat p=
 		   | h::t => (not (List.exists (fn x=>x=h) t)) andalso (is_distinct t)
   in is_distinct(get_string_list(p)) 
   end
-      
-	      
+
+fun match (v,p)=
+  case (v,p) of
+      (_,Wildcard) => SOME []
+    | (_,Variable s) => SOME [(s,v)]
+    | (Unit,UnitP) => SOME []
+    | (Const x,ConstP y) => if x=y
+			    then SOME []
+			    else NONE
+    | (Tuple vs,TupleP ps) => if List.length(ps)=List.length(vs)
+			      then all_answers match (ListPair.zip(vs,ps))
+			      else NONE
+    | (Constructor(s1,v1),ConstructorP(s2,p1)) => if s1=s2
+						  then match(v1,p1)
+						  else NONE
+    | _ =>NONE
+
+fun first_match v lst=
+  SOME (first_answer (fn p=>match(v,p)) lst)
+  handle NoAnswer => NONE
+			 
+			  
+  
   
   
 				      
