@@ -108,9 +108,43 @@ fun match (v,p)=
 						  else NONE
     | _ =>NONE
 
-fun first_match v lst=
-  SOME (first_answer (fn p=>match(v,p)) lst)
-  handle NoAnswer => NONE
+
+fun constructor_chec k(data,data_name,cons_type)=
+  case data of
+      []=>raise NoAnswer
+    | (x,y,z)::t => if x=data_name andalso z=cons_type
+		    then Datatype y
+		    else constructor_check(t,data_name,cons_type)
+
+fun get_ptn_typ (data,p)=
+  case p of
+      Wildcard => Anything
+    | Variable s => Anything			
+    | UnitP => UnitT
+    | ConstP i => IntT
+    | TupleP i => TupleT (map (fn x=>(get_ptn_typ(data,x))) i)
+    | ConstructorP(s,p1) => constructor_check(data,s,get_ptn_typ(data,p1))
+
+fun lanient (x,y)=
+  case (x,y) of
+      (Anything,_) => y
+    | (_,Anything) => x			  
+    | (Datatype s1,Datatype s2) => if s1=s2 then x
+				   else raise NoAnswer
+    | (IntT,IntT) => IntT
+    | (UnitT,UnitT) => UnitT
+    | (TupleT v1,TupleT v2) => TupleT(map lanient (ListPair.zip(v1,v2)))
+    | _ => raise NoAnswer
+
+fun typecheck_patterns (data,ps)=
+  SOME(foldl (fn(x,acc)=>lanient(get_ptn_typ(data,x),acc)) Anything ps)
+  handle NoAnswer=> NONE
+			
+					  
+		      
+					  
+				  
+  
 			 
 			  
   
