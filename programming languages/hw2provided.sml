@@ -14,7 +14,9 @@ fun all_except_option (s,lst)=
     | x::l => case all_except_option(s,l) of
 		    NONE => if same_string(x,s) then SOME l
 			    else NONE
-		  | SOME y => SOME (x::y)
+		  | SOME y => if same_string(x,s) then SOME y
+			      else x::y
+					  
 
 fun get_substitutions1 (substitutions,s)=
   case substitutions of
@@ -62,6 +64,7 @@ fun card_color (c)=
       (Spades,_) => Black
     | (Clubs,_) => Black
     | (Dimaonds,_) => Red
+    | (Hearts,_) => Red
 
 fun card_value (c)=
   case c of

@@ -107,9 +107,16 @@ fun match (v,p)=
 						  then match(v1,p1)
 						  else NONE
     | _ =>NONE
+	      
+fun first_match v lst=
+   SOME (first_answer (fn p=>match(v,p)) lst)
+   handle NoAnswer => NONE
+	      
 
+(*challenge problem*)
+			  
 
-fun constructor_chec k(data,data_name,cons_type)=
+fun constructor_check (data,data_name,cons_type)=
   case data of
       []=>raise NoAnswer
     | (x,y,z)::t => if x=data_name andalso z=cons_type
@@ -139,7 +146,8 @@ fun lanient (x,y)=
 fun typecheck_patterns (data,ps)=
   SOME(foldl (fn(x,acc)=>lanient(get_ptn_typ(data,x),acc)) Anything ps)
   handle NoAnswer=> NONE
-			
+
+ 		       
 					  
 		      
 					  
