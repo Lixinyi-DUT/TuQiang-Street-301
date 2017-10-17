@@ -21,7 +21,8 @@
 
 (define (stream-for-n-steps s n)
   (if (= n 0) null
-      (cons (car (s)) (stream-for-n-steps (cdr (s)) (- n 1)))))
+      (let ([p (s)])
+      (cons (car p) (stream-for-n-steps (cdr p) (- n 1)) ))))
 
 (define funny-number-stream
   (letrec ([f (lambda (x)
@@ -31,14 +32,13 @@
     (lambda () (f 1))))
 
 (define dan-then-dog
-  (letrec ([f (lambda (str)
-                (if (equal? str "dan.jpg") (cons str (lambda ()(f "dog.jpg")))
-(cons str (lambda () (f "dan.jpg")))
-                    ))])
-           (lambda () (f "dan.jpg"))))
+  (letrec ([dan (lambda ()(cons "dan.jpg" dog))]
+           [dog (lambda ()(cons "dog.jpg" dan))])
+           dan))
 
 (define (stream-add-zero s)
-  (lambda () (cons (cons 0 (car (s))) (stream-add-zero (cdr (s)))) ))
+  (let ([p (s)])
+  (lambda () (cons (cons 0 (car p)) (stream-add-zero (cdr p))) )))
 
 (define (cycle-lists xs ys)
   (letrec ([f (lambda (n) (cons
@@ -57,4 +57,21 @@
                                       (f (+ n 1)))
                                       (f (+ n 1)))))])
            (f 0)))
+
+(define (cached-assoc xs n)
+  (letrec ([cache (make-vector n #f)]
+           [pos 0])
+    (lambda (v) (let ([ans (vector-assoc v cache)])
+                               (if ans ans
+                                   (let ([new-ans (assoc v xs)])
+                                            (begin (vector-set! cache pos new-ans)
+                                                   (set! pos (remainder (+ pos 1) n))
+                                                   new-ans)))))))
+
+(define-syntax while-less
+  (syntax-rules (do)
+               ([while-less e1 do e2]
+                (letrec ([e e1]
+                         [f (lambda() (if (< e2 e) (f) #t)) ])
+                  (f)))))
 
