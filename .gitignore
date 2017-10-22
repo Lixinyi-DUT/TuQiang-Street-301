@@ -45,3 +45,8 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Some backup produced by temporary writting
+*.bak
+*.2
+*.[0-9]

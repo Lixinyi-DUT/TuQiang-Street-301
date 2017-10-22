@@ -89,7 +89,8 @@
                     (if (apair? subexp)
                         (apair-e2 subexp)
                         (error "not a pair")))]
-        [(isaunit? e) (if (aunit? (isaunit-e e)) (int 1) (int 0))]
+        [(isaunit? e) (let ([subexp (eval-under-env (isaunit-e e) env)])
+                        (if (aunit? subexp) (int 1) (int 0)))]
         [(aunit? e) e]
         [#t (error (format "bad (MUPL expression: ~v" e))]))
 
@@ -103,22 +104,14 @@
   (ifgreater (isaunit e1) (int 0) e2 e3))
 
 (define (mlet* lstlst e2)
-  (letrec ([f (lambda (lst env)
-            (if (null? lst)
-                env
-                (let ([v (car lst)])
-                  (f (cdr lst)
-                     (cons (cons (car v) (eval-under-env (cdr v) env)) env)))))])
-           (eval-under-env e2 (f lstlst null))))
+  (if (null? lstlst) e2
+           (mlet (car (car lstlst))
+                 (cdr (car lstlst))
+                 (mlet* (cdr lstlst) e2))))
 
 (define (ifeq e1 e2 e3 e4)
-  (let ([v1 (eval-under-env e1 null)]
-        [v2 (eval-under-env e2 null)])
-    (if (and (int? v1) (int? v2))
-        (if (= (int-num v1) (int-num v2))
-            (eval-under-env e3 null)
-            (eval-under-env e4 null))
-        (error "MUPL ifeq applied to non-number"))))
+  (ifgreater e1 e2 e4
+              (ifgreater e2 e1 e4 e3)))
 
 ;; Problem 4
 
@@ -128,11 +121,12 @@
             (ifaunit (var "mlst")
                      (aunit)
                      (apair (call (var "func") (fst (var "mlst")))
-                             (call (var "loop") (snd (var "mlst"))))))))
+                            (call (var "loop") (snd (var "mlst"))))))))
 
 (define mupl-mapAddN 
   (mlet "map" mupl-map
-        "CHANGE (notice map is now in MUPL scope)"))
+        (fun #t "i"
+             (call (var "map") (fun #t "j" (add (var "i") (var "j")))))))
 
 ;; Challenge Problem
 
