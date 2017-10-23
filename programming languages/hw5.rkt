@@ -110,8 +110,9 @@
                  (mlet* (cdr lstlst) e2))))
 
 (define (ifeq e1 e2 e3 e4)
-  (ifgreater e1 e2 e4
-              (ifgreater e2 e1 e4 e3)))
+  (mlet* (list (cons("_x" e1) cons("_y" e2)))
+         (ifgreater (var "_x") (var "_y") e4
+              (ifgreater (var "_y") (var "_x") e4 e3))))
 
 ;; Problem 4
 
