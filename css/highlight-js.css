@@ -126,3 +126,7 @@
 .highlight .link {
   text-decoration: underline;
 }
+
+.highlight .line{
+  height: 18px;
+}
