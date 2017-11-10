@@ -10,10 +10,11 @@
 <meta property="og:url" content="notebook.xyli.me/SICP/function-of-function/index.html">
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/blob/master/notebook/func_of_func/know_a_little_to_magic.jpg?raw=true">
-<meta property="og:updated_time" content="2017-11-09T12:22:43.402Z">
+<meta property="og:updated_time" content="2017-11-10T13:43:47.587Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数的函数">
 <meta name="twitter:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/blob/master/notebook/func_of_func/know_a_little_to_magic.jpg?raw=true">
+<meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
   
@@ -144,9 +145,11 @@ var _hmt = _hmt || [];
 <li>可以作为过程（函数）的结果返回</li>
 <li>可以被包含在数据结构中</li>
 </ul>
-<p>无疑是该语言下的成功元素了。函数式编程语言(<em>functional languages</em>)的重要特征之一是将函数视为头等成功人士，赋予这些特权。函数的名字在此仅仅是一个函数类型的变量，这些函数能和其他变量一样被计算、存储、传递，被称为头等函数。匿名函数也可以作为这样的一等公民，正如匿名用户也可以享受其他用户一样的权利，但当你怀疑这些用户在分享刚编的故事时，又想再次引用他们的经历作为参数时往往很难再找到他们。我们日常接触到的大部分函数都是头等函数比如</p>
+<p>无疑是该语言下的成功元素了。函数式编程语言(<em>functional languages</em>)的重要特征之一是将函数视为头等成功人士，赋予这些特权。函数的名字在此仅仅是一个函数类型的变量，这些函数能和其他变量一样被计算、存储、传递，被称为头等函数。匿名函数也可以作为这样的一等公民，正如匿名用户也可以享受其他用户一样的权利，但当你怀疑这些用户在分享刚编的故事时，又想再次引用他们的经历作为参数时往往很难再找到他们。在函数式编程语言中，我们日常接触到的函数都是头等函数比如</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">square</span> x)</div><div class="line">        (<span class="name"><span class="builtin-name">*</span></span> x x))</div></pre></td></tr></table></figure>
-<h2 id="高阶函数-（Higher-order-Function）"><a href="#高阶函数-（Higher-order-Function）" class="headerlink" title="高阶函数 （Higher-order Function）"></a>高阶函数 （Higher-order Function）</h2><p>与头等函数相对的一个概念为高阶函数，但这并不能说是对立的（与之对立的函数称为一阶函数）。或许应该说引入头等函数这个名词，是为了引出理解高阶函数的存在。</p>
+<p>借助这个函数进行定义的<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">square-sum</span> x y)</div><div class="line">        (<span class="name"><span class="builtin-name">+</span></span> (<span class="name">square</span> x) (<span class="name">square</span> y))</div></pre></td></tr></table></figure></p>
+<p>也是头等函数。</p>
+<h2 id="高阶函数-Higher-order-Function"><a href="#高阶函数-Higher-order-Function" class="headerlink" title="高阶函数 (Higher-order Function)"></a>高阶函数 (Higher-order Function)</h2><p>与头等函数相对的一个概念为高阶函数，但这并不能说是对立的（与之对立的函数称为一阶函数）。或许应该说引入头等函数这个名词，是为了引出理解高阶函数的存在。</p>
 <p>上面说到函数和其他数值变量在应用时可以做到某种意义上的一视同仁，函数名即函数变量的名字，那么也可以被当成实参变量传入另一个过程。高阶函数至少满足以下一个条件：</p>
 <ol>
 <li>至少参数中有一个是函数</li>
@@ -163,6 +166,22 @@ var _hmt = _hmt || [];
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">map</span></span> (<span class="name"><span class="builtin-name">lambda</span></span> (x) (<span class="name"><span class="builtin-name">*</span></span> c x)) xs)</div></pre></td></tr></table></figure>
 <p>再如在Python中经常问的一个基础问题：如何将<code>dict</code>中的元素按<code>value</code>的大小排序？</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sorted(mydict.iteritems(), key=<span class="keyword">lambda</span> (k,v): v)</div></pre></td></tr></table></figure>
+<h2 id="Currying"><a href="#Currying" class="headerlink" title="Currying"></a>Currying</h2><p>当我们说一个函数有几个参数的时候我们在说什么？很多语言（如ML）中形如<code>f(arg1,arg2,...,argn)</code>的函数定义，看似使用了好几个参数，实际上这些参数只是作为一个长度为<code>n</code>的<code>list</code>或<code>tuple</code>传入，本质上还是一个单参数的函数。</p>
+<p>有时我们并不需要或者来不及等所有参数都准备齐全才能使用函数，这种所有参数塞进一个数据结构的用法让人很恼火。curry正是这样一种方法：把这样的函数转化成只有真正意义上一个参数的函数的链。</p>
+<p>如果每个参数<code>arg</code>都有一个类型<code>t</code>，那么在currying操作之前，<code>f(arg1,arg2,...,argn)</code>整个函数的类型为<br><figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(t1 * t2 * ... * tn) -&gt; r<span class="keyword">type</span></div></pre></td></tr></table></figure></p>
+<p>即取<code>(t1 * t2 * ... * tn)</code>类型的值<code>(arg1 * arg2 * ... *argn)</code>作为参数，返回<code>rtype</code>的值作为结果的函数。Currying操作之后的函数我们记为<code>f arg1 arg2 ... argn</code>，这个函数的类型为<br><figure class="highlight elm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">t1</span> -&gt; (t2 -&gt; (... -&gt;(tn -&gt; r<span class="keyword">type</span>)...))</div></pre></td></tr></table></figure></p>
+<p>此时<code>f</code>仅使用一个<code>t1</code>类型的参数，返回一个<code>t2 -&gt; (... -&gt;(tn -&gt; rtype)...)</code>类型的函数作为结果。当我们仅以一个参数去调用<code>f arg1</code>时，返回一个取<code>t2</code>类型数据为参数返回<code>t3-&gt; (... -&gt;(tn -&gt; rtype)...)</code>类型函数的函数，就像洋葱一样一层层地调用函数才能剥出最后的返回结果，当然<code>f(arg1,arg2,...,argn)</code>和<code>f arg1 arg2 ... argn</code>运算最后得到的结果是一致的。</p>
+<p>按照这种思路可以重写<code>map</code>函数为<code>curried-map</code>：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">curried-map</span> f)</div><div class="line">  (<span class="name"><span class="builtin-name">lambda</span></span> (xs)</div><div class="line">    (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">null?</span></span> xs)</div><div class="line">        null</div><div class="line">        (<span class="name"><span class="builtin-name">cons</span></span> (<span class="name">f</span> (<span class="name"><span class="builtin-name">car</span></span> xs)) ((<span class="name">curried-map</span> f) (<span class="name"><span class="builtin-name">cdr</span></span> xs)) ))))</div></pre></td></tr></table></figure></p>
+<p>当我们要写一个对<code>list</code>中每个元素的值进行乘2操作的函数时，可以直接写作<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">define</span></span> double-list (<span class="name">curried-map</span> (<span class="name"><span class="builtin-name">lambda</span></span> (x) (<span class="name"><span class="builtin-name">*</span></span> x <span class="number">2</span>))))</div></pre></td></tr></table></figure></p>
+<p>这个<code>(curried-map (lambda (x) (* x 2)))</code>就是这样一个函数，是<code>curried-map</code>的一个部分应用（<em>partial application</em>）实例，currying使得这样的用法更为便捷。当然，我不是说部分应用必须依靠curry函数，完全没有那样的意思，实际上一定要用原来的<code>map</code>函数也可以达到目的<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">double-list2</span> xs)</div><div class="line">  (<span class="name"><span class="builtin-name">map</span></span> (<span class="name"><span class="builtin-name">lambda</span></span> (x) (<span class="name"><span class="builtin-name">*</span></span> x <span class="number">2</span>)) xs))</div></pre></td></tr></table></figure></p>
+<p>差不多就是绑定了参数<code>y</code>的值然后定义<code>g(x)=f(x,y)</code>的意思，<code>map</code>只有两个参数，所以固定其中一个，然后把其他形参照着“抄写”一遍在定义里走个过场也不费事，但参数一多的时候不用curry函数就显得麻烦了。</p>
+<h2 id="部分应用-partial-application"><a href="#部分应用-partial-application" class="headerlink" title="部分应用 (partial application)"></a>部分应用 (partial application)</h2><p>部分应用的作用在于，将抽象的模型的<strong>一部分</strong>具体化成为一个常见，实用的<strong>不那么</strong>抽象的模型。众所周知，Maclaurin公式（省略余项）<br>$$f\left( x \right) \approx f\left( 0 \right) + \frac{f’\left( 0 \right)}{1!}x + \frac{f^{\left(2 \right)}\left( 0 \right)}{2!}{x^2} +  \ldots  + \frac{f^{\left( n \right)}\left( 0 \right)}{n!}{x^n}$$<br>是Taylor公式（省略余项）$$f\left( x \right) \approx f\left( {x_0} \right) + \frac{f’\left( {x_0} \right)}{1!}\left( x - {x_0} \right) + \frac{f^{\left( 2 \right)}\left( x_0 \right)}{2!}{\left(x - x_0\right)^2} +  \ldots  + \frac{f^{\left( n \right)}\left( x_0 \right)}{n!}{\left( x - x_0\right)^n}$$在$x_0=0$处的特例，换言之也是绑定了参数<code>x0</code>的一个部分应用，两个公式给出的也都是包含参数<code>x</code>的函数作为返回结果，即一个<code>f</code>的近似函数。对于毫无编程基础或者像我这样编程基础薄弱的人来说，理解这个“部分应用”不需要借助任何代码，借助这个例子可以很好地感受“部分应用”概念本身的含义。</p>
+<!-- 但是为了完整性，我还是试图从最基础的部分开始一步步给出它们的实现。
+
+首先利用极限的概念
+
+
+## 词法作用域 (Lexical Scope) -->
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Abelson, Harold, Gerald Jay Sussman, and Julie Sussman. <a href="https://mitpress.mit.edu/sicp/" target="_blank" rel="external"><em>Structure and interpretation of computer programs.</em></a> Justin Kelly, 1996.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
@@ -173,7 +192,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/function-of-function/" data-id="cj9sc1bdd000094w3yv4266ld" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/function-of-function/" data-id="cj9ti89hk0006wcw304fkmsvv" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -238,7 +257,7 @@ var _hmt = _hmt || [];
 
   <div class="sidebar-module sidebar-module-inset">
   <h4>About</h4>
-  <p>站主已经戒膜戒厨恋不黑你工彻底正常人化，本站为课程学习笔记仓库，仅提供全面正常人化的课内笔记，如果其他需求请转至<a href="https://www.yangzhou301.com" style="text-decoration:none;">扬州计划</a>或联系作者<em><a href="mailto:i@xyli.me" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>i@xyli.me</a></em></p>
+  <p>本博主已快饿死，求救助。开玩笑的。请善用网络查阅资料，对于不知其真实身份的博客写作者（比如我），莫轻易付费，实在有心就请支持一下作者的另一个博客<a href="https://www.yangzhou301.com" style="text-decoration:none;">扬州计划</a> 本站欢迎读者无门槛投稿，投稿或其他事项的交流可联系作者<em><a href="mailto:i@xyli.me" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
 
 </div>
 
@@ -319,6 +338,25 @@ var _hmt = _hmt || [];
 </footer>
 
   
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
 
   
 <script>

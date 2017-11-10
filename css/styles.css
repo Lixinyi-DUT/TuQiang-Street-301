@@ -476,6 +476,10 @@
   text-decoration: underline;
 }
 
+.highlight .line{
+  height: 18px;
+}
+
 /**
  * Custom Bootstrap and Theme Overrides
  *
