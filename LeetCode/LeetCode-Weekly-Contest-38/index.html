@@ -159,7 +159,30 @@ var _hmt = _hmt || [];
 </div>
 <p>我思路比较简单，取整个数组里面最大的正数，最大的由三个数产生的乘积中一定有一个是来自这个数的，剩下的要比较的就是最小的两个负数的乘积，以及两个次大的正数的乘积，哪个更大？</p>
 <p>当然如果根本不存在最大的正数，也就是说整个数组的数都小于等于0，那么就把最大的三个数（也就是绝对值最小的三个负数）相乘。说到底，本质上就是把数组按升序排序后记为<code>a</code>，比较<code>a[-1]*a[-2]*a[-3]</code>和<code>a[-1]*a[0]*a[1]</code>哪个大。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maximumProduct</span><span class="params">(self, nums)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        m1=max(nums)</div><div class="line">        nums.pop(nums.index(m1))</div><div class="line">        m2=max(nums)</div><div class="line">        nums.pop(nums.index(m2))</div><div class="line">        m3=max(nums)</div><div class="line">        nums.pop(nums.index(m3))</div><div class="line">        nums.append(m2)</div><div class="line">        nums.append(m3)</div><div class="line">        <span class="keyword">if</span> m1&lt;=<span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> m1*m2*m3</div><div class="line">        l1=min(nums)</div><div class="line">        nums.pop(nums.index(l1))</div><div class="line">        l2=min(nums)</div><div class="line">        <span class="keyword">if</span> l1*l2&gt;m2*m3:</div><div class="line">            <span class="keyword">return</span> l1*l2*m1</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> m1*m2*m3</div></pre></td></tr></table></figure>
+<pre><code class="py">class Solution(object):
+    def maximumProduct(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+        m1=max(nums)
+        nums.pop(nums.index(m1))
+        m2=max(nums)
+        nums.pop(nums.index(m2))
+        m3=max(nums)
+        nums.pop(nums.index(m3))
+        nums.append(m2)
+        nums.append(m3)
+        if m1&lt;=0:
+            return m1*m2*m3
+        l1=min(nums)
+        nums.pop(nums.index(l1))
+        l2=min(nums)
+        if l1*l2&gt;m2*m3:
+            return l1*l2*m1
+        else:
+            return m1*m2*m3
+</code></pre>
 <p>我为了运行的快一点，没做排序但做了不少分支，结果提交的时候也是所有py代码里面最快的。如果不追求运行速度的话完全可以写的简单一些，直接排序后比较上面两个乘积的大小就行了。</p>
 <h2 id="Course-Schedule-III"><a href="#Course-Schedule-III" class="headerlink" title="Course Schedule III"></a>Course Schedule III</h2><p>原题地址：<a href="https://leetcode.com/contest/leetcode-weekly-contest-38/problems/course-schedule-iii/" target="_blank" rel="external">https://leetcode.com/contest/leetcode-weekly-contest-38/problems/course-schedule-iii/</a></p>
 <div class="bs-callout bs-callout-info"><h4 id="Course-Schedule-III"><a href="#Course-Schedule-III" class="headerlink" title=" Course Schedule III"></a><i class="fa fa-info-circle"></i> Course Schedule III</h4><p>There are <code>n</code> different online courses numbered from <code>1</code> to <code>n</code>. Each course has some duration(course length) <code>t</code> and closed on dth day. A course should be taken continuously for <code>t</code> days and must be finished before or on the dth day. You will start at the 1st day.</p>
@@ -178,7 +201,24 @@ var _hmt = _hmt || [];
 <li>You can’t take two courses simultaneously.</li>
 </ol>
 </div>
-<p>这类任务调度问题在CS161的习题中已经讨论了不少，不过一般讨论的优化目标是$\mathop {\max }\limits_i \left[ \max (f_i - d_i,0) \right]$或者$\sum\nolimits_i {\max (f_i - d_i,0)}$，其中$f_i$表示任务$i$的实际完成时间，这类问题通常遵循死线最近优先完成原则<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，这题的优化目标是$\sum\nolimits_i {[d_i - f_i \ge 0]}$，策略上也没有太大不同，先按照<code>d</code>的升序给课程们排序，依次开始完成课程，当当前完成时间晚于课程的<code>d</code>时，从之前完成的课程中去除用时最多(<code>t</code>最大)的课再放入当前的课，这样以一课换一课如果失败则确实不存在更优的课程安排。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> heapq</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">scheduleCourse</span><span class="params">(self, courses)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type courses: List[List[int]]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        c= sorted(courses, key = <span class="keyword">lambda</span> x :  x[<span class="number">1</span>] )</div><div class="line">        roll=[]</div><div class="line">        time = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> c:</div><div class="line">            time += i[<span class="number">0</span>]</div><div class="line">            heapq.heappush(roll,-i[<span class="number">0</span>])</div><div class="line">            <span class="keyword">while</span> time &gt; i[<span class="number">1</span>]:</div><div class="line">                time += heapq.heappop(roll)</div><div class="line">        <span class="keyword">return</span> len(roll)</div></pre></td></tr></table></figure></p>
+<p>这类任务调度问题在CS161的习题中已经讨论了不少，不过一般讨论的优化目标是$\mathop {\max }\limits_i \left[ \max (f_i - d_i,0) \right]$或者$\sum\nolimits_i {\max (f_i - d_i,0)}$，其中$f_i$表示任务$i$的实际完成时间，这类问题通常遵循死线最近优先完成原则<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，这题的优化目标是$\sum\nolimits_i {[d_i - f_i \ge 0]}$，策略上也没有太大不同，先按照<code>d</code>的升序给课程们排序，依次开始完成课程，当当前完成时间晚于课程的<code>d</code>时，从之前完成的课程中去除用时最多(<code>t</code>最大)的课再放入当前的课，这样以一课换一课如果失败则确实不存在更优的课程安排。</p>
+<pre><code class="py">import heapq
+class Solution(object):
+    def scheduleCourse(self, courses):
+        &quot;&quot;&quot;
+        :type courses: List[List[int]]
+        :rtype: int
+        &quot;&quot;&quot;
+        c= sorted(courses, key = lambda x :  x[1] )
+        roll=[]
+        time = 0
+        for i in c:
+            time += i[0]
+            heapq.heappush(roll,-i[0])
+            while time &gt; i[1]:
+                time += heapq.heappop(roll)
+        return len(roll)
+</code></pre>
 <p>需要注意的是我一开始从<code>roll</code>中选择<code>t</code>最大的课时直接用了<code>max</code>和<code>pop</code>函数出现了TLE，所以这里维护了一个最小堆来快速寻找最大的<code>t</code></p>
 <h2 id="K-Inverse-Pairs-Array"><a href="#K-Inverse-Pairs-Array" class="headerlink" title="K Inverse Pairs Array"></a>K Inverse Pairs Array</h2><p>原题地址 <a href="https://leetcode.com/contest/leetcode-weekly-contest-38/problems/k-inverse-pairs-array/" target="_blank" rel="external">https://leetcode.com/contest/leetcode-weekly-contest-38/problems/k-inverse-pairs-array/</a></p>
 <div class="bs-callout bs-callout-info"><h4 id="K-Inverse-Pairs-Array"><a href="#K-Inverse-Pairs-Array" class="headerlink" title=" K Inverse Pairs Array"></a><i class="fa fa-info-circle"></i> K Inverse Pairs Array</h4><p>Given two integers <code>n</code> and <code>k</code>, find how many different arrays consist of numbers from <code>1</code> to <code>n</code> such that there are exactly <code>k</code> inverse pairs.</p>
@@ -200,11 +240,95 @@ var _hmt = _hmt || [];
 <li>$k&gt;n(n-1)/2$时函数值为0 取等号时为1</li>
 <li>刚刚说到的函数参数为负的问题</li>
 </ul>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kInversePairs</span><span class="params">(self, n, k)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type n: int</div><div class="line">        :type k: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> k &gt; n*(n<span class="number">-1</span>)/<span class="number">2</span> <span class="keyword">or</span> k&lt;<span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span></div><div class="line">        <span class="keyword">if</span> k==n*(n<span class="number">-1</span>)/<span class="number">2</span> <span class="keyword">or</span> k==<span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span></div><div class="line">        d=[[<span class="number">0</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(k+<span class="number">1</span>)] <span class="keyword">for</span> j <span class="keyword">in</span> range(n+<span class="number">1</span>)]</div><div class="line">        mod=<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,n+<span class="number">1</span>):</div><div class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(min(n*(n<span class="number">-1</span>)/<span class="number">2</span>,k)+<span class="number">1</span>):</div><div class="line">                <span class="keyword">if</span> j==<span class="number">0</span> <span class="keyword">or</span> j==i*(i<span class="number">-1</span>)/<span class="number">2</span>:</div><div class="line">                    d[i][j]=<span class="number">1</span></div><div class="line">                <span class="keyword">elif</span> j&gt;i*(i<span class="number">-1</span>)/<span class="number">2</span>:</div><div class="line">                    d[i][j]=<span class="number">0</span></div><div class="line">                <span class="keyword">elif</span> j&gt;=i:</div><div class="line">                    d[i][j]=d[i][j<span class="number">-1</span>]+d[i<span class="number">-1</span>][j]-d[i<span class="number">-1</span>][j-i]</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    d[i][j]=d[i][j<span class="number">-1</span>]+d[i<span class="number">-1</span>][j]</div><div class="line">                d[i][j]=d[i][j]%mod</div><div class="line">        <span class="keyword">return</span> d[n][k]</div></pre></td></tr></table></figure>
+<pre><code class="py">class Solution(object):
+    def kInversePairs(self, n, k):
+        &quot;&quot;&quot;
+        :type n: int
+        :type k: int
+        :rtype: int
+        &quot;&quot;&quot;
+        if k &gt; n*(n-1)/2 or k&lt;0:
+            return 0
+        if k==n*(n-1)/2 or k==0:
+            return 1
+        d=[[0 for i in range(k+1)] for j in range(n+1)]
+        mod=10**9+7
+        for i in range(1,n+1):
+            for j in range(min(n*(n-1)/2,k)+1):
+                if j==0 or j==i*(i-1)/2:
+                    d[i][j]=1
+                elif j&gt;i*(i-1)/2:
+                    d[i][j]=0
+                elif j&gt;=i:
+                    d[i][j]=d[i][j-1]+d[i-1][j]-d[i-1][j-i]
+                else:
+                    d[i][j]=d[i][j-1]+d[i-1][j]
+                d[i][j]=d[i][j]%mod
+        return d[n][k]
+</code></pre>
 <p>我写这个的时候遇到了比较少见的MLE错误，起初我也在想这种规模的二维数组也能MLE吗，后来加了那句<code>d[i][j]=d[i][j]%mod</code>就过了，原因是数据值本身太大了，仔细看题目说过要返回取模以后的数，其实学过密码学就会觉得对于只涉及加减乘的运算来说取模是每步运算都取还是只有最后返回取对于结果没什么影响，所以没必要担心，大胆地在每次计算后都取一下模吧。</p>
 <h2 id="Design-Excel-Sum-Formula"><a href="#Design-Excel-Sum-Formula" class="headerlink" title="Design Excel Sum Formula"></a>Design Excel Sum Formula</h2><p>原题地址 <a href="https://leetcode.com/contest/leetcode-weekly-contest-38/problems/design-excel-sum-formula/" target="_blank" rel="external">https://leetcode.com/contest/leetcode-weekly-contest-38/problems/design-excel-sum-formula/</a><br>因为题实在太长了我就不重新贴了，我之前说过其实这题不怎么需要动脑，暴力码就行。比较容易出错的是<code>int Sum(int row, char column, List of Strings : numbers)</code>要求被设置成存放求和结果的那个单元<code>(r,c)</code>是动态的，调用过一次<code>Sum</code>后，如果求和函数的范围内的单元的值发生了变化，<code>(r,c)</code>也要随之变化。而<code>(r,c)</code>再被调用<code>Sum</code>或者<code>Set</code>函数改变值时，原来的公式定义才会被覆盖。</p>
 <p>我们没文化的人就是这个样子，不会用什么精巧的方法，在<code>Excel</code>类内定义了一个成员字典<code>formula</code>维护被赋予的函数定义，每次有任何单元的值发生变化时先检查字典里面这个函数有没有被作为其他那个求和函数的成员，如果有，就顺便重新在哪个被定义的单元上更改求和结果。至于怎样区别是直接命令更改的单元值，还是因为定义范围内的单元变化导致的这个单元的变化，我是通过修改了<code>Set</code>函数原型，增加了一个默认参数区分是直接调用还是其他函数的调用引起的调用，当然我不建议好孩子学这种做法，如果不修改函数原型，可以添加一个成员来标识这次的调用是不是由于其他函数的调用引发的。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Excel</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, H,W)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type H: int</div><div class="line">        :type W: str</div><div class="line">        """</div><div class="line">        self.H=H</div><div class="line">        self.W=ord(W)-ord(<span class="string">'A'</span>)+<span class="number">1</span></div><div class="line">        self.c=[[<span class="number">0</span> <span class="keyword">for</span> j <span class="keyword">in</span> range(self.W)] <span class="keyword">for</span> i <span class="keyword">in</span> range(self.H)]</div><div class="line">        self.formula=dict()</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">set</span><span class="params">(self, r, c, v,user=True)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type r: int</div><div class="line">        :type c: str</div><div class="line">        :type v: int</div><div class="line">        :rtype: void</div><div class="line">        """</div><div class="line">        temp=<span class="number">0</span></div><div class="line">        <span class="keyword">if</span> user <span class="keyword">and</span> (r,c) <span class="keyword">in</span> self.formula:</div><div class="line">            self.formula[r,c]=[]</div><div class="line">        <span class="keyword">if</span> <span class="number">0</span>&lt;r&lt;=self.H <span class="keyword">and</span> ord(<span class="string">'A'</span>)&lt;=ord(c)&lt;ord(<span class="string">'A'</span>)+self.W:</div><div class="line">            temp=self.c[r<span class="number">-1</span>][ord(c)-ord(<span class="string">'A'</span>)]</div><div class="line">            self.c[r<span class="number">-1</span>][ord(c)-ord(<span class="string">'A'</span>)]=v</div><div class="line">        <span class="keyword">for</span> (r0,c0) <span class="keyword">in</span> self.formula:</div><div class="line">            <span class="keyword">if</span> (r,c) <span class="keyword">in</span> self.formula[(r0,c0)]:</div><div class="line">                val=self.get(r0,c0)</div><div class="line">                self.set(r0,c0,val+(v-temp)*self.formula[(r0,c0)].count((r,c)),<span class="keyword">False</span>)</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, r, c)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type r: int</div><div class="line">        :type c: str</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        <span class="keyword">if</span> <span class="number">0</span>&lt;r&lt;=self.H <span class="keyword">and</span> ord(<span class="string">'A'</span>)&lt;=ord(c)&lt;ord(<span class="string">'A'</span>)+self.W:</div><div class="line">            <span class="keyword">return</span> self.c[r<span class="number">-1</span>][ord(c)-ord(<span class="string">'A'</span>)]</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(self, r, c, strs)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type r: int</div><div class="line">        :type c: str</div><div class="line">        :type strs: List[str]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        self.formula[r,c]=[]</div><div class="line">        s=<span class="number">0</span></div><div class="line">        <span class="keyword">for</span> cal <span class="keyword">in</span> strs:</div><div class="line">            points=cal.split(<span class="string">':'</span>)</div><div class="line">            <span class="keyword">if</span> len(points)&lt;<span class="number">2</span>:</div><div class="line">                s+=self.get(int(points[<span class="number">0</span>][<span class="number">1</span>:]),points[<span class="number">0</span>][<span class="number">0</span>])</div><div class="line">                self.formula[(r,c)].append((int(points[<span class="number">0</span>][<span class="number">1</span>:]),points[<span class="number">0</span>][<span class="number">0</span>]))</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                start=points[<span class="number">0</span>]</div><div class="line">                end=points[<span class="number">1</span>]</div><div class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> range(int(start[<span class="number">1</span>:]),int(end[<span class="number">1</span>:])+<span class="number">1</span>):</div><div class="line">                    <span class="keyword">for</span> j <span class="keyword">in</span> range(ord(start[<span class="number">0</span>]),ord(end[<span class="number">0</span>])+<span class="number">1</span>):</div><div class="line">                        s+=self.get(i,chr(j))</div><div class="line">                        self.formula[(r,c)].append((i,chr(j)))</div><div class="line">        self.set(r,c,s,<span class="keyword">False</span>)</div><div class="line">        <span class="keyword">return</span> self.get(r,c)</div></pre></td></tr></table></figure>
+<pre><code class="py">class Excel(object):
+
+    def __init__(self, H,W):
+        &quot;&quot;&quot;
+        :type H: int
+        :type W: str
+        &quot;&quot;&quot;
+        self.H=H
+        self.W=ord(W)-ord(&#39;A&#39;)+1
+        self.c=[[0 for j in range(self.W)] for i in range(self.H)]
+        self.formula=dict()
+    def set(self, r, c, v,user=True):
+        &quot;&quot;&quot;
+        :type r: int
+        :type c: str
+        :type v: int
+        :rtype: void
+        &quot;&quot;&quot;
+        temp=0
+        if user and (r,c) in self.formula:
+            self.formula[r,c]=[]
+        if 0&lt;r&lt;=self.H and ord(&#39;A&#39;)&lt;=ord(c)&lt;ord(&#39;A&#39;)+self.W:
+            temp=self.c[r-1][ord(c)-ord(&#39;A&#39;)]
+            self.c[r-1][ord(c)-ord(&#39;A&#39;)]=v
+        for (r0,c0) in self.formula:
+            if (r,c) in self.formula[(r0,c0)]:
+                val=self.get(r0,c0)
+                self.set(r0,c0,val+(v-temp)*self.formula[(r0,c0)].count((r,c)),False)
+    def get(self, r, c):
+        &quot;&quot;&quot;
+        :type r: int
+        :type c: str
+        :rtype: int
+        &quot;&quot;&quot;
+        if 0&lt;r&lt;=self.H and ord(&#39;A&#39;)&lt;=ord(c)&lt;ord(&#39;A&#39;)+self.W:
+            return self.c[r-1][ord(c)-ord(&#39;A&#39;)]
+    def sum(self, r, c, strs):
+        &quot;&quot;&quot;
+        :type r: int
+        :type c: str
+        :type strs: List[str]
+        :rtype: int
+        &quot;&quot;&quot;
+        self.formula[r,c]=[]
+        s=0
+        for cal in strs:
+            points=cal.split(&#39;:&#39;)
+            if len(points)&lt;2:
+                s+=self.get(int(points[0][1:]),points[0][0])
+                self.formula[(r,c)].append((int(points[0][1:]),points[0][0]))
+            else:
+                start=points[0]
+                end=points[1]
+                for i in range(int(start[1:]),int(end[1:])+1):
+                    for j in range(ord(start[0]),ord(end[0])+1):
+                        s+=self.get(i,chr(j))
+                        self.formula[(r,c)].append((i,chr(j)))
+        self.set(r,c,s,False)
+        return self.get(r,c)
+</code></pre>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="http://courses.cs.vt.edu/cs5114/spring2009/lectures/lecture04-greedy-scheduling.pdf" target="_blank" rel="external">http://courses.cs.vt.edu/cs5114/spring2009/lectures/lecture04-greedy-scheduling.pdf</a> 从第26页开始可以看到这个策略及其证明</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
@@ -215,7 +339,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-38/" data-id="cja5hdj50000p1cw3ligrgxs8" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-38/" data-id="cja5hf9i60002gkw3m32n9x5d" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 

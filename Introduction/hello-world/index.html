@@ -226,7 +226,9 @@ var _hmt = _hmt || [];
 <h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>本站使用<a href="https://github.com/Lixinyi-DUT/Project-Yangzhou" target="_blank" rel="external">Project-Yangzhou</a>作为图床，开启<code>fancybox</code></p>
 <p>图片示例如下：</p>
 <p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/4.png" alt="示例图片-ggplot2绘制上海行政区划"></p>
-<h3 id="目录生成"><a href="#目录生成" class="headerlink" title="目录生成"></a>目录生成</h3><p><code>Hexo</code>默认的文章生成链接为<code>site/year-month-day/title</code>，这对于笔记的归档很不友好，所以这里采用的是<code>site/category/title</code>作为文章的链接。需要在<code>_config.yml</code>设置：<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">permalink:</span> :category/:title/</div></pre></td></tr></table></figure></p>
+<h3 id="目录生成"><a href="#目录生成" class="headerlink" title="目录生成"></a>目录生成</h3><p><code>Hexo</code>默认的文章生成链接为<code>site/year-month-day/title</code>，这对于笔记的归档很不友好，所以这里采用的是<code>site/category/title</code>作为文章的链接。需要在<code>_config.yml</code>设置：</p>
+<pre><code class="yml">permalink: :category/:title/
+</code></pre>
 <p>这里的<code>category</code>即分类，是课程的标示，如<a href="https://www.coursera.org/learn/crypto" target="_blank" rel="external">Stanford的Cryptography I</a>的所有笔记分类为该课对应的课程号<code>CS255</code></p>
 <h3 id="数学公式支持"><a href="#数学公式支持" class="headerlink" title="数学公式支持"></a>数学公式支持</h3><p>本站使用<a href="https://www.mathjax.org/" target="_blank" rel="external">MathJax</a>作为数学公式的支持，并保留了公式的菜单以便读者阅读和保存。</p>
 <blockquote>
@@ -247,8 +249,11 @@ var _hmt = _hmt || [];
 <p>目前在寻找国内稳定可用的社会化评论插件，之前使用过<a href="http://duoshuo.com/" target="_blank" rel="external">多说</a>，效果并不是很理想。欢迎推荐。</p>
 <div class="bs-callout bs-callout-success"><h4 id="2017-4-15-重要更新"><a href="#2017-4-15-重要更新" class="headerlink" title="2017/4/15 重要更新"></a>2017/4/15 重要更新</h4><p>采用了基于github issue的<a href="https://github.com/imsun/gitment" target="_blank" rel="external">gitment</a>评论模块，直接使用github账户登录即可评论，支持Github特色的Markdown语法。</p>
 </div>
-<h3 id="Callout"><a href="#Callout" class="headerlink" title="Callout"></a>Callout</h3><p>Bootstrap使用callout强调一些信息，关于callout style的说明可以见该主题的<a href="https://github.com/cgmartin/hexo-theme-bootstrap-blog/tree/master#callouts" target="_blank" rel="external">Readme</a>或<a href="http://cpratt.co/twitter-bootstrap-callout-css-styles/" target="_blank" rel="external">Twitter Bootstrap 3.2.0 Callout CSS Styles</a> 该对象的调用方法如下，可配合<a href="http://fontawesome.io/" target="_blank" rel="external">Font Awesome</a>使用<br><figure class="highlight django"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="xml"></span><span class="template-tag">&#123;% <span class="name">callout</span> [type:default|primary|success|info|warning|danger] %&#125;</span><span class="xml"></span></div><div class="line">...content...</div><div class="line"><span class="template-tag">&#123;% <span class="name">endcallout</span> %&#125;</span><span class="xml"></span></div></pre></td></tr></table></figure></p>
-<p>示例<br><div class="bs-callout bs-callout-default"><h4 id="Default"><a href="#Default" class="headerlink" title=" Default"></a><i class="fa fa-bookmark"></i> Default</h4><p>这是一个default类型的callout</p>
+<h3 id="Callout"><a href="#Callout" class="headerlink" title="Callout"></a>Callout</h3><p>Bootstrap使用callout强调一些信息，关于callout style的说明可以见该主题的<a href="https://github.com/cgmartin/hexo-theme-bootstrap-blog/tree/master#callouts" target="_blank" rel="external">Readme</a>或<a href="http://cpratt.co/twitter-bootstrap-callout-css-styles/" target="_blank" rel="external">Twitter Bootstrap 3.2.0 Callout CSS Styles</a> 该对象的调用方法如下，可配合<a href="http://fontawesome.io/" target="_blank" rel="external">Font Awesome</a>使用</p>
+<pre><code>{% callout [type:default|primary|success|info|warning|danger] %}
+...content...
+{% endcallout %}
+</code></pre><p>示例<br><div class="bs-callout bs-callout-default"><h4 id="Default"><a href="#Default" class="headerlink" title=" Default"></a><i class="fa fa-bookmark"></i> Default</h4><p>这是一个default类型的callout</p>
 </div></p>
 <div class="bs-callout bs-callout-primary"><h4 id="Primary"><a href="#Primary" class="headerlink" title=" Primary"></a><i class="fa fa-cog"></i> Primary</h4><p>这是一个primary类型的callout</p>
 </div>
@@ -282,7 +287,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="cja5hdj3g00061cw344riip3g" class="article-share-link">
+      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="cja5hf9iu0008gkw3esh60v4y" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
