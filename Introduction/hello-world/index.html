@@ -282,10 +282,14 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="cjackc78j000a3gw37j7qzp3u" class="article-share-link">
+      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="cjackene3000ad4w3orqntqb2" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
-      <!--  -->
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
       
 
     </footer>
@@ -309,7 +313,28 @@ var _hmt = _hmt || [];
 </article>
 
 
-<!--  -->
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
@@ -421,6 +446,20 @@ var _hmt = _hmt || [];
 
 
   
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  // 
+  // var disqus_url = 'notebook.xyli.me/Introduction/hello-world/';
+  // 
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
 

@@ -10,7 +10,7 @@
 <meta property="og:url" content="notebook.xyli.me/SICP/function-of-function/index.html">
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/blob/master/notebook/func_of_func/know_a_little_to_magic.jpg?raw=true">
-<meta property="og:updated_time" content="2017-11-23T14:16:20.202Z">
+<meta property="og:updated_time" content="2017-11-23T14:31:42.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数的函数">
 <meta name="twitter:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/blob/master/notebook/func_of_func/know_a_little_to_magic.jpg?raw=true">
@@ -257,7 +257,7 @@ var _hmt = _hmt || [];
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[(<span class="name">mlet?</span> e) (<span class="name">let*</span> ([r1 (<span class="name">f</span> (<span class="name">mlet-e</span> e))]</div><div class="line">                  [r2 (<span class="name">f</span> (<span class="name">mlet-body</span> e))])</div><div class="line">             (<span class="name">res</span> (<span class="name">mlet</span> (<span class="name">mlet-var</span> e) (<span class="name">res-e</span> r1) (<span class="name">res-e</span> r2))</div><div class="line">                  (<span class="name">set-union</span> (<span class="name">res-fvs</span> r1) (<span class="name">set-remove</span> (<span class="name">res-fvs</span> r2) (<span class="name">mlet-var</span> e)))))]</div></pre></td></tr></table></figure>
 <p>完成<code>compute-free-vars</code>函数后，可以重写<code>eval-under-env</code>为<code>eval-under-env-c</code>，只需要添加<code>fun-challenge</code>的情况，其余部分与原函数一致</p>
 <figure class="highlight clojure"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">(<span class="name">define</span> (<span class="name">eval-under-env-c</span> e env)</div><div class="line">  (<span class="name"><span class="builtin-name">cond</span></span></div><div class="line">        [(<span class="name">fun-challenge?</span> e)</div><div class="line">         (<span class="name">closure</span> (<span class="name">set-map</span> (<span class="name">fun-challenge-freevars</span> e)</div><div class="line">                           (<span class="name">lambda</span> (<span class="name">s</span>) (<span class="name"><span class="builtin-name">cons</span></span> s (<span class="name">envlookup</span> env s))))</div><div class="line">                  e)]</div><div class="line">        <span class="comment">; call case uses fun-challenge as appropriate</span></div><div class="line">        <span class="comment">; all other cases the same</span></div><div class="line">        [...] ))</div></pre></td></tr></table></figure>
-<p>对于fun-challenge的闭包封装指令为找到<code>freevars</code>中所有变量名在<code>env</code>的对应，再把这些对应构成的列表作为<code>closure</code>中的环境。最后改写这个解释函数的函数：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">eval-exp-c</span> e)</div><div class="line">  (<span class="name">eval-under-env-c</span> (<span class="name">compute-free-vars</span> e) null))</div></pre></td></tr></table></figure></p>
+<p>对于fun-challenge的闭包封装指令为找到<code>freevars</code>中所有变量名在<code>env</code>的对应（绑定），再把这些绑定关系构成的列表作为<code>closure</code>中的环境。最后改写这个解释函数的函数：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">eval-exp-c</span> e)</div><div class="line">  (<span class="name">eval-under-env-c</span> (<span class="name">compute-free-vars</span> e) null))</div></pre></td></tr></table></figure></p>
 <p>在更轻的环境负担下发挥和原来的解释器一样的作用。</p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Abelson, Harold, Gerald Jay Sussman, and Julie Sussman. <a href="https://mitpress.mit.edu/sicp/" target="_blank" rel="external"><em>Structure and interpretation of computer programs.</em></a> Justin Kelly, 1996.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">样例代码来源于University of Washington在Coursera的公开课<a href="https://www.coursera.org/learn/programming-languages/home/welcome" target="_blank" rel="external">Programming Languages</a>讲义<a href="https://d3c33hcgiwev3.cloudfront.net/_34a95c9c790777fb7c103349682d7691_section3sum.pdf?Expires=1511049600&amp;Signature=FrFVyG0glBPM-Mh8uuAgdgOmHnaV7Aq7Hk5SEj3pejrdeFVZck71OtEzx3YzOSz~CUTOoze5Ffpp0Z6djKbLXQ-00Vi4Lxu5U3hrVxZ8Z4oBNxwpKQSn37FostE8px9bIrWS8QAFKOYSWIHYPosQBTm3TXJFurZTwZSriU08sNQ_&amp;Key-Pair-Id=APKAJLTNE6QMUY6HBC5A" target="_blank" rel="external">section3sum.pdf</a>和<a href="https://d3c33hcgiwev3.cloudfront.net/_36330b45ef211f77a0547a38665a954f_114_closures_efficient.pdf?Expires=1511481600&amp;Signature=bY5~armSTpcFkwLAk3CfjMctTIEo0y7jvc1HCeZAw53FdCYk8xHbnG6IxDyt3~JOjYnEU~cExRDtN7cBO05SAmUWLI1puj2XcS5pJqh4aJE00f0fUAs2~fi8cP5~Gt3q9Pbjoe~70OtLD4WScNJBHe3h8LKImvUCbW9FHZwr6gs_&amp;Key-Pair-Id=APKAJLTNE6QMUY6HBC5A" target="_blank" rel="external">slides</a>等</span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">这里对应的源代码第六行是<code>(res-fvs (f e)))</code>，我认为这是一个typo，根据逻辑应该是<code>(res-e (f e)))</code>，我已经向该材料的制作者反映过这个问题，且也有其他人认为这里有问题，正在等候回复。</span><a href="#fnref:3" rev="footnote"> ↩</a></li></ol></div></div>
       
@@ -269,10 +269,14 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/function-of-function/" data-id="cjackc78800083gw3bw8vs1tz" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/function-of-function/" data-id="cjackendu0008d4w3euehjk10" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
-      <!--  -->
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
 
@@ -298,7 +302,28 @@ var _hmt = _hmt || [];
 </article>
 
 
-<!--  -->
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
@@ -410,6 +435,20 @@ var _hmt = _hmt || [];
 
 
   
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  // 
+  // var disqus_url = 'notebook.xyli.me/SICP/function-of-function/';
+  // 
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
 
