@@ -110,7 +110,7 @@
                  (mlet* (cdr lstlst) e2))))
 
 (define (ifeq e1 e2 e3 e4)
-  (mlet* (list (cons("_x" e1) cons("_y" e2)))
+  (mlet* (list (cons "_x" e1) (cons "_y" e2))
          (ifgreater (var "_x") (var "_y") e4
               (ifgreater (var "_y") (var "_x") e4 e3))))
 
@@ -129,18 +129,123 @@
         (fun #t "i"
              (call (var "map") (fun #t "j" (add (var "i") (var "j")))))))
 
+(define mupl-mapAddOne 
+  (mlet "map" mupl-map
+      (call (var "map") (fun #t "j" (add (int 1) (var "j"))))))
+
 ;; Challenge Problem
 
 (struct fun-challenge (nameopt formal body freevars) #:transparent) ;; a recursive(?) 1-argument function
 
 ;; We will test this function directly, so it must do
 ;; as described in the assignment
-(define (compute-free-vars e) "CHANGE")
+(define (compute-free-vars e)
+  (struct res (e fvs)) ; result type of f (could also use a pair)
+    (define (f e) 
+      (cond [(var? e) (res e (set (var-string e)))]
+            [(int? e) (res e (set))]
+            [(add? e) (let ([r1 (f (add-e1 e))]
+                            [r2 (f (add-e2 e))])
+                        (res (add (res-e r1) (res-e r2))
+                             (set-union (res-fvs r1) (res-fvs r2))))]
+            [(ifgreater? e) (let ([r1 (f (ifgreater-e1 e))]
+                                  [r2 (f (ifgreater-e2 e))]
+                                  [r3 (f (ifgreater-e3 e))]
+                                  [r4 (f (ifgreater-e4 e))])
+                              (res (ifgreater (res-e r1) (res-e r2) (res-e r3)    (res-e r4))
+                                  (set-union (res-fvs r1) (res-fvs r2) (res-fvs   r3) (res-fvs r4))))]
+            [(fun? e) (let* ([r (f (fun-body e))]
+                             [fvs (set-remove (res-fvs r) (fun-formal e))]
+                             [fvs (if (fun-nameopt e) 
+                                      (set-remove fvs (fun-nameopt e)) 
+                                      fvs)])
+                        (res (fun-challenge (fun-nameopt e) (fun-formal e) 
+                                            (res-e r) fvs)
+                            fvs))]
+            [(call? e) (let ([r1 (f (call-funexp e))]
+                             [r2 (f (call-actual e))])
+                        (res (call (res-e r1) (res-e r2))
+                             (set-union (res-fvs r1) (res-fvs r2))))]
+            [(mlet? e) (let* ([r1 (f (mlet-e e))]
+                              [r2 (f (mlet-body e))])
+                         (res (mlet (mlet-var e) (res-e r1) (res-e r2))
+                              (set-union (res-fvs r1) (set-remove (res-fvs r2)   (mlet-var e)))))]
+            [(apair? e) (let ([r1 (f (apair-e1 e))]
+                              [r2 (f (apair-e2 e))])
+                          (res (apair (res-e r1) (res-e r2))
+                             (set-union (res-fvs r1) (res-fvs r2))))]
+            [(fst? e) (let ([r (f (fst-e e))])
+                        (res (fst (res-e r))
+                             (res-fvs r)))]
+            [(snd? e) (let ([r (f (snd-e e))])
+                        (res (snd (res-e r))
+                             (res-fvs r)))]
+            [(aunit? e) (res e (set))]
+            [(isaunit? e) (let ([r (f (isaunit-e e))])
+                            (res (isaunit (res-e r))
+                                 (res-fvs r)))]))
+    (res-fvs (f e)))
 
 ;; Do NOT share code with eval-under-env because that will make
 ;; auto-grading and peer assessment more difficult, so
 ;; copy most of your interpreter here and make minor changes
-(define (eval-under-env-c e env) "CHANGE")
+(define (eval-under-env-c e env) 
+  (cond 
+        [(fun-challenge? e)
+         (closure (set-map (fun-challenge-freevars e)
+                           (lambda (s) (cons s (envlookup env s))))
+                  e)]
+        [(var? e) 
+         (envlookup env (var-string e))]
+        [(add? e) 
+         (let ([v1 (eval-under-env (add-e1 e) env)]
+               [v2 (eval-under-env (add-e2 e) env)])
+           (if (and (int? v1)
+                    (int? v2))
+               (int (+ (int-num v1) 
+                       (int-num v2)))
+               (error "MUPL addition applied to non-number")))]
+        ;; CHANGE add more cases here
+        [(int? e) e]
+        [(closure? e) e]
+        [(fun? e) (closure env e)]
+        [(ifgreater? e)
+         (let ([v1 (eval-under-env (ifgreater-e1 e) env)]
+               [v2 (eval-under-env (ifgreater-e2 e) env)])
+           (if (and (int? v1) (int? v2))
+               (if (> (int-num v1) (int-num v2)) (eval-under-env (ifgreater-e3 e) env)
+                   (eval-under-env (ifgreater-e4 e) env))
+               (error "MUPL ifgreater applied to non-number")))]
+        [(mlet? e) (let ([v (eval-under-env (mlet-e e) env)])
+                     (eval-under-env (mlet-body e) (cons (cons (mlet-var e) v) env)))]
+        [(call? e) (let ([c (eval-under-env (call-funexp e) env)])
+                     (if (closure? c)
+                       (letrec ([parameter (eval-under-env (call-actual e) env)]
+                         [f (closure-fun c)]
+                         [fbody (fun-body f)]
+                         [fname (fun-nameopt f)]
+                         [old-env (cons (cons (fun-formal f) parameter) (closure-env c))]
+                         [new-env (if fname (cons (cons fname c) old-env) old-env)])
+                         (eval-under-env fbody new-env))
+                       (error (call-funexp e))))]
+        [(apair? e) (apair (eval-under-env (apair-e1 e) env)
+                           (eval-under-env (apair-e2 e) env))]
+        [(fst? e) (let ([subexp (eval-under-env (fst-e e) env)])
+                    (if (apair? subexp)
+                        (apair-e1 subexp)
+                        (error subexp)))]
+        [(snd? e) (let ([subexp (eval-under-env (snd-e e) env)])
+                    (if (apair? subexp)
+                        (apair-e2 subexp)
+                        (error "not a pair")))]
+        [(isaunit? e) (let ([subexp (eval-under-env (isaunit-e e) env)])
+                        (if (aunit? subexp) (int 1) (int 0)))]
+        [(aunit? e) e]
+        [#t (error (format "bad (MUPL expression: ~v" e))])
+         ; call case uses fun-challenge as appropriate
+         ; all other cases the same
+        )
+
 
 ;; Do NOT change this
 (define (eval-exp-c e)
