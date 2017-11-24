@@ -6,11 +6,13 @@
   <title>贪心算法小试牛刀 （一） | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。">
+<meta name="keywords" content="贪心算法,规划问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="贪心算法小试牛刀 （一）">
 <meta property="og:url" content="notebook.xyli.me/CS161/Intro-to-greedy-algo1/index.html">
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/reduced_schedule.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-1.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-2.png">
@@ -54,7 +56,7 @@ ga('send', 'pageview');
 
 
 
-<script>
+  <script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
@@ -63,7 +65,6 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
 </head>
 
 <body>
@@ -144,7 +145,7 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（<a href="https://www.coursera.org/learn/algorithm-design-analysis-2" target="_blank" rel="external">Algorithms: Design and Analysis, Part 2</a>）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。<a id="more"></a>而涉及图论部分的贪心算法应用预计在几天后在另一篇笔记中具体给出。</p>
+        <p>本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（<a href="https://www.coursera.org/learn/algorithm-design-analysis-2" target="_blank" rel="noopener">Algorithms: Design and Analysis, Part 2</a>）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。<a id="more"></a>而涉及图论部分的贪心算法应用预计在几天后在另一篇笔记中具体给出。</p>
 <hr>
 <div class="bs-callout bs-callout-success"><p>贪心算法（<em>Greedy Algorithm</em>）是指通过每一步决策的<strong>局部最优</strong>达到整体的<strong>全局最优</strong>的一类算法。我们对这个算法并不陌生，无论知道不知道这个名字，对于此类算法的应用都十分熟悉。比如我们寻找单源最短路径的Dijkstra最短路径算法就是贪心策略的典型应用，接下来也会讲到找到最小生成树两种贪心算法，即Prim算法和Kruskal算法。</p>
 </div>
@@ -223,7 +224,7 @@ var _hmt = _hmt || [];
 <p>笔记中的证明脉络主要参考了<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，因为我认为这是我看见的材料中最清晰完整的证明，当然也有很多相关的资料可以阅读一下，比如<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>给出的是类似的思路而且更具体（实例化）一些，但符号标记问题可能看着有些麻烦；再如<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup>紧扣Argument Exchange大法用词颇为规范当读上去略晦涩。</p>
 <p>当然这个问题本身不是很实际，在实践中，几乎不可能一开始就知道完整的请求队列，更不可能知道将来最晚出现的是Cache中的哪一项，我们讨论的是离线Caching问题，可以在调度前就知道请求队列，而事实上比较受关注的问题是如何在不知道后面会请求什么内容的情况下的在线Caching问题，常用的是LRU算法<sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup>。</p>
 <p>至于为什么要费这么大力气去写farthest-in-future的证明，看似是毫无意义的茴香豆，实际上对于此类贪心算法证明的规范训练是件很有意义的事，至少有了这样的思路帮助我们看待其他问题的时候，依靠直接迅速找到一个正确的贪心算法，并知道怎样去证明这个贪心算法为什么是正确的，这是应用贪心算法过程中两个非常困难的问题，但很多时候解决的方法和farthest-in-future并无本质差异。</p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Belady, Laszlo A. &quot;<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.641.9013&amp;rep=rep1&amp;type=pdf" target="_blank" rel="external">A study of replacement algorithms for a virtual-storage computer.</a>&quot; <em>IBM Systems journal</em> 5.2 (1966): 78-101.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">例子来源于 <a href="http://www.cs.princeton.edu/courses/archive/spr05/cos423/lectures/04greed.pdf" target="_blank" rel="external">http://www.cs.princeton.edu/courses/archive/spr05/cos423/lectures/04greed.pdf</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">HENRY POON’S BLOG：<a href="https://blog.henrypoon.com/blog/2014/02/02/proof-of-the-farthest-in-future-optimal-caching-algorithm/" target="_blank" rel="external">Proof of the Farthest-in-Future Optimal Caching Algorithm</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;"><a href="https://www.cs.umd.edu/class/fall2009/cmsc451/lectures/Lec05b-optcache.pdf" target="_blank" rel="external">https://www.cs.umd.edu/class/fall2009/cmsc451/lectures/Lec05b-optcache.pdf</a></span><a href="#fnref:4" rev="footnote"> ↩</a></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">5.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="external">https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU</a></span><a href="#fnref:5" rev="footnote"> ↩</a></li></ol></div></div>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Belady, Laszlo A. &quot;<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.641.9013&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener">A study of replacement algorithms for a virtual-storage computer.</a>&quot; <em>IBM Systems journal</em> 5.2 (1966): 78-101.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">例子来源于 <a href="http://www.cs.princeton.edu/courses/archive/spr05/cos423/lectures/04greed.pdf" target="_blank" rel="noopener">http://www.cs.princeton.edu/courses/archive/spr05/cos423/lectures/04greed.pdf</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">HENRY POON’S BLOG：<a href="https://blog.henrypoon.com/blog/2014/02/02/proof-of-the-farthest-in-future-optimal-caching-algorithm/" target="_blank" rel="noopener">Proof of the Farthest-in-Future Optimal Caching Algorithm</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;"><a href="https://www.cs.umd.edu/class/fall2009/cmsc451/lectures/Lec05b-optcache.pdf" target="_blank" rel="noopener">https://www.cs.umd.edu/class/fall2009/cmsc451/lectures/Lec05b-optcache.pdf</a></span><a href="#fnref:4" rev="footnote"> ↩</a></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">5.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU</a></span><a href="#fnref:5" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -233,7 +234,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="cjackw3bu0005qow39u8i1jb9" class="article-share-link">
+      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="cjadwc1ia00010kw3dsltpx9e" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -301,6 +302,11 @@ var _hmt = _hmt || [];
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#最优Caching"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">最优Caching</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#问题定义"><span class="sidebar-module-list-number">1.1.</span> <span class="sidebar-module-list-text">问题定义</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Furthest-Farthest-in-future算法"><span class="sidebar-module-list-number">1.2.</span> <span class="sidebar-module-list-text">Furthest(Farthest) in future算法</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#证明"><span class="sidebar-module-list-number">1.3.</span> <span class="sidebar-module-list-text">证明</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#后记"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">后记</span></a></li></ol>
+  </div>
+
 
 
   <div class="sidebar-module sidebar-module-inset">
@@ -318,7 +324,7 @@ var _hmt = _hmt || [];
 
 
   
-  <div class="sidebar-module">
+  <div class="sidebar-module sidebar-tags">
     <h4>Tags</h4>
     <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
   </div>
@@ -343,7 +349,7 @@ var _hmt = _hmt || [];
 
 
   
-  <div class="sidebar-module">
+  <div class="sidebar-module sidebar-recents">
     <h4>Recents</h4>
     <ul class="sidebar-module-list">
       
@@ -385,32 +391,11 @@ var _hmt = _hmt || [];
 </footer>
 
   
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    });
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-
-  
 <script>
   var disqus_shortname = 'notebook-xyli-me';
-  // 
-  // var disqus_url = 'notebook.xyli.me/CS161/Intro-to-greedy-algo1/';
-  // 
+  
+  var disqus_url = 'notebook.xyli.me/CS161/Intro-to-greedy-algo1/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
@@ -426,11 +411,50 @@ var _hmt = _hmt || [];
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

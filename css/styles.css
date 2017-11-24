@@ -476,10 +476,6 @@
   text-decoration: underline;
 }
 
-.highlight .line{
-  height: 18px;
-}
-
 /**
  * Custom Bootstrap and Theme Overrides
  *
@@ -691,8 +687,8 @@ code {
 .sidebar-toc ol {
    list-style: none;
  }
- .sidebar-toc li,
- .sidebar-recents li {
+.sidebar-toc li,
+.sidebar-recents li {
      margin-bottom: 5px;
    }
 /*
@@ -728,7 +724,7 @@ code {
   color: inherit;
 }
 
-.article-entry .article-more-link {
+/*.article-entry .article-more-link {
   margin: 15px 0;
 }
 .article-entry .thumbnail .caption {
@@ -736,7 +732,7 @@ code {
 }
 .article-entry>*:last-child {
   margin-bottom: 15px;
-}
+}*/
 
 /* article footer content */
 .article-footer {

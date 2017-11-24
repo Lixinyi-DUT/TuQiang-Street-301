@@ -11,6 +11,7 @@
 <meta property="og:url" content="notebook.xyli.me/archives/2016/index.html">
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="正常人的正常笔记站">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔记仓库">
 <meta name="twitter:description" content="正常人的正常笔记站">
@@ -46,7 +47,7 @@ ga('send', 'pageview');
 
 
 
-<script>
+  <script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
@@ -55,7 +56,6 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-
 </head>
 
 <body>
@@ -120,6 +120,10 @@ var _hmt = _hmt || [];
     
     <article class="archive-article archive-type-post">
   <header class="archive-article-header">
+    <div class="article-datetime">
+  <a href="/CS161/Intro-to-greedy-algo1/" class="archive-article-date"><time datetime="2016-10-29T12:03:00.000Z" itemprop="datePublished">十月 29日</time></a>
+</div>
+
     
   
     <h1 itemprop="name">
@@ -128,9 +132,9 @@ var _hmt = _hmt || [];
   
 
 
-    <div class="article-datetime">
-  <a href="/CS161/Intro-to-greedy-algo1/" class="archive-article-date"><time datetime="2016-10-29T12:03:00.000Z" itemprop="datePublished">十月 29日</time></a>
-</div>
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/规划问题/">规划问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心算法/">贪心算法</a></li></ul>
+
 
   </header>
 </article>
@@ -140,6 +144,10 @@ var _hmt = _hmt || [];
     
     <article class="archive-article archive-type-post">
   <header class="archive-article-header">
+    <div class="article-datetime">
+  <a href="/Introduction/hello-world/" class="archive-article-date"><time datetime="2016-09-01T07:28:00.000Z" itemprop="datePublished">九月 1日</time></a>
+</div>
+
     
   
     <h1 itemprop="name">
@@ -148,9 +156,7 @@ var _hmt = _hmt || [];
   
 
 
-    <div class="article-datetime">
-  <a href="/Introduction/hello-world/" class="archive-article-date"><time datetime="2016-09-01T07:28:00.000Z" itemprop="datePublished">九月 1日</time></a>
-</div>
+    
 
   </header>
 </article>
@@ -183,7 +189,7 @@ var _hmt = _hmt || [];
 
 
   
-  <div class="sidebar-module">
+  <div class="sidebar-module sidebar-tags">
     <h4>Tags</h4>
     <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
   </div>
@@ -208,7 +214,7 @@ var _hmt = _hmt || [];
 
 
   
-  <div class="sidebar-module">
+  <div class="sidebar-module sidebar-recents">
     <h4>Recents</h4>
     <ul class="sidebar-module-list">
       
@@ -250,11 +256,9 @@ var _hmt = _hmt || [];
 </footer>
 
   
-
-  
 <script>
   var disqus_shortname = 'notebook-xyli-me';
-  // 
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
@@ -270,11 +274,50 @@ var _hmt = _hmt || [];
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
   <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
