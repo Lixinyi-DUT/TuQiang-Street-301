@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="提前祝新年快乐！本失败人士即将迎来另一个失败年，如我在扬州计划破产声明中所说，本站也即将在新的一年关闭，可以说是写一天少一天了，我也是怀着向死而生的心情在为自己的编程生涯写遗书呢。祝看到这篇文章的朋友们在新的一年里走向成功，除了我，大家都有光明的未来。今天因为回老家探亲，所以周赛例行划水，题做了下讲下我自己的想法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-31T15:22:03.244Z">
+<meta property="og:updated_time" content="2017-12-31T17:00:22.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 65">
 <meta name="twitter:description" content="提前祝新年快乐！本失败人士即将迎来另一个失败年，如我在扬州计划破产声明中所说，本站也即将在新的一年关闭，可以说是写一天少一天了，我也是怀着向死而生的心情在为自己的编程生涯写遗书呢。祝看到这篇文章的朋友们在新的一年里走向成功，除了我，大家都有光明的未来。今天因为回老家探亲，所以周赛例行划水，题做了下讲下我自己的想法。">
@@ -182,7 +182,7 @@ var _hmt = _hmt || [];
 <p>We start with a bottom row of <code>bottom</code>, represented as a single string. We also start with a list of <code>allowed</code> triples allowed. Each allowed triple is represented as a string of length 3.</p>
 <p>Return true if we can build the pyramid all the way to the top, otherwise false.</p>
 <p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input: bottom = &quot;XYZ&quot;, allowed = [&quot;XYD&quot;, &quot;YZE&quot;, &quot;DEA&quot;, &quot;FFF&quot;]</span><br><span class="line">Output: true</span><br><span class="line">Explanation:</span><br><span class="line">We can stack the pyramid like this:</span><br><span class="line">    A</span><br><span class="line">   / \</span><br><span class="line">  D   E</span><br><span class="line"> / \ / \</span><br><span class="line">X   Y   Z</span><br><span class="line"></span><br><span class="line">This works because (&apos;X&apos;, &apos;Y&apos;, &apos;D&apos;), (&apos;Y&apos;, &apos;Z&apos;, &apos;E&apos;), and (&apos;D&apos;, &apos;E&apos;, &apos;A&apos;) are allowed triples.</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: bottom = &quot;XXYX&quot;, allowed = [&quot;XXX&quot;, &quot;XXY&quot;, &quot;XYX&quot;, &quot;XYY&quot;, &quot;YXZ&quot;]</span><br><span class="line">Output: false</span><br><span class="line">Explanation:</span><br><span class="line">We can&apos;t stack the pyramid to the top.</span><br><span class="line">Note that there could be allowed triples (A, B, C) and (A, B, D) with C != D.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: bottom = &quot;XXYX&quot;, allowed = [&quot;XXX&quot;, &quot;XXY&quot;, &quot;XYX&quot;, &quot;XYY&quot;, &quot;YXZ&quot;]</span><br><span class="line">Output: false</span><br><span class="line">Explanation:</span><br><span class="line">We can&apos;t stack the pyramid to the top.</span><br><span class="line">Note that there could be allowed triples (A, B, C) and (A, B, D) with C != D.</span><br></pre></td></tr></table></figure></p>
 <p><strong>Note</strong>:</p>
 <ol>
 <li>bottom will be a string with length in range <code>[2, 100]</code>.</li>
@@ -190,6 +190,9 @@ var _hmt = _hmt || [];
 <li>Letters in all strings will be chosen from the set <code>{&#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39;, &#39;F&#39;, &#39;G&#39;}</code>.</li>
 </ol>
 </blockquote>
+<p>我自己的第一反应是DFS，但是马上能明白在时间和空间上是不可行的。建议直接看<a href="https://leetcode.com/problems/pyramid-transition-matrix/solution/" target="_blank" rel="noopener">官方题解</a>的思路比较清晰，按照位操作的方法去标记每一个的可能性，7位二进制数每位分别代表一位数字在此能否取到，使用位或运算（<code>|</code>）把所有可能性放在同一个结点的位置。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pyramidTransition</span><span class="params">(self, bottom, allowed)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type bottom: str</span></span><br><span class="line"><span class="string">        :type allowed: List[str]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        T=[[<span class="number">0</span>]*<span class="number">7</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>)]</span><br><span class="line">        <span class="keyword">for</span> a,b,c <span class="keyword">in</span> allowed:</span><br><span class="line">            T[ord(a)-ord(<span class="string">'A'</span>)][ord(b)-ord(<span class="string">'A'</span>)] |= <span class="number">1</span>&lt;&lt;(ord(c)-ord(<span class="string">'A'</span>))</span><br><span class="line"></span><br><span class="line">        candidate=[<span class="number">1</span>&lt;&lt;(ord(c)-ord(<span class="string">'A'</span>)) <span class="keyword">for</span> c <span class="keyword">in</span> bottom] <span class="comment"># possible next node list in each loop (level)</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(bottom)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(bottom)<span class="number">-1</span>-i):</span><br><span class="line">                temp=<span class="number">0</span></span><br><span class="line">                <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">                    <span class="keyword">if</span> (candidate[j] &gt;&gt; x) &amp; <span class="number">1</span>:</span><br><span class="line">                        <span class="keyword">for</span> y <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">                            <span class="keyword">if</span> (candidate[j+<span class="number">1</span>] &gt;&gt; y) &amp; <span class="number">1</span>:</span><br><span class="line">                                temp |= T[x][y]</span><br><span class="line">                candidate[j]=temp</span><br><span class="line">        <span class="keyword">return</span> bool(candidate[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<p>字母表即颜色数量为$A$，底部行即塔高度为$N$，那么所需的时间复杂度为$o(2^{2A}N^2)$，辅助空间则为$o(A^2)$</p>
 
       
     </div>
@@ -200,7 +203,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-65/" data-id="cjbus0aq0000bpkw3g1oqr63y" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-65/" data-id="cjbv0vgrk000bk0w3hs6zl1nk" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -341,7 +344,7 @@ var _hmt = _hmt || [];
   <footer class="blog-footer">
   <div class="container">
     <div id="footer-info" class="inner">
-      &copy; 2017 Xinyi Li<br>
+      &copy; 2018 Xinyi Li<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
