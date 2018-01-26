@@ -13,7 +13,7 @@
 <meta property="og:description" content="这周的题解写的有些晚，直接原因已经在微博解释过了，我周末偷懒不想刷题溜去看电影了，回来也把时间花在写影评上了。至于为什么不想刷题而逃去看电影，因为这周发生了太多事，我不可挽回的失去了很多，经历了朋友的背叛和自我的情绪失控，总之可以说是挣扎着撑过来了。我现在真的成为了一无所有的失败人士，连在浅色床单上哭泣的资格也没有。 不过那都是过去的事了，我会一直向前走下去的，成为一边哭泣一边追求着的人。我就算为">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/code_for_koishi.png">
-<meta property="og:updated_time" content="2018-01-23T12:58:06.491Z">
+<meta property="og:updated_time" content="2018-01-26T15:38:42.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 68">
 <meta name="twitter:description" content="这周的题解写的有些晚，直接原因已经在微博解释过了，我周末偷懒不想刷题溜去看电影了，回来也把时间花在写影评上了。至于为什么不想刷题而逃去看电影，因为这周发生了太多事，我不可挽回的失去了很多，经历了朋友的背叛和自我的情绪失控，总之可以说是挣扎着撑过来了。我现在真的成为了一无所有的失败人士，连在浅色床单上哭泣的资格也没有。 不过那都是过去的事了，我会一直向前走下去的，成为一边哭泣一边追求着的人。我就算为">
@@ -170,6 +170,10 @@ var _hmt = _hmt || [];
 <li><code>S</code> will consist of lowercase letters and have length in range <code>[1, 500]</code>.</li>
 </ol>
 </blockquote>
+<p>既然说了只要输出一种可行的重排列，那么不妨直接把字符用<code>Counter</code>统计一下，然后直接把出现频率比较高的字符互相”穿插”即可，只有一种情况即频率最高的字符出现的字符之间即使全部穿插剩下的全部字符也够时，返回空串。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reorganizeString</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        counter=Counter(S)</span><br><span class="line">        c=counter.most_common()</span><br><span class="line">        max_fre=c[<span class="number">0</span>][<span class="number">1</span>]</span><br><span class="line">        res=<span class="string">""</span></span><br><span class="line">        <span class="keyword">if</span> max_fre&gt;len(S)-max_fre+<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        <span class="keyword">while</span> counter:</span><br><span class="line">            out=counter.most_common(<span class="number">2</span>)</span><br><span class="line">            <span class="keyword">if</span> out:</span><br><span class="line">                res+=out[<span class="number">0</span>][<span class="number">0</span>]</span><br><span class="line">                counter[out[<span class="number">0</span>][<span class="number">0</span>]]-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> len(out)&gt;<span class="number">1</span>:</span><br><span class="line">                res+=out[<span class="number">1</span>][<span class="number">0</span>]</span><br><span class="line">                counter[out[<span class="number">1</span>][<span class="number">0</span>]]-=<span class="number">1</span></span><br><span class="line">            counter+=Counter()</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>这个写法是有问题的：对于频次相同的字符，自减更新之后可能会改变顺序，导致相同的字符在两个循环中连续出现，比如<code>&quot;woow&quot;</code>作为输入时无法得到正确的结果。这题的测试用例比较弱所以没出现这样的问题就AC了。</p>
+<p>也有比较有意思的方法比如<a href="https://discuss.leetcode.com/topic/117933/4-lines-python" target="_blank" rel="noopener">4 lines Python</a>分奇偶重新放入高低频率字符。</p>
 
       
     </div>
@@ -180,7 +184,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-68/" data-id="cjcuboajc0018f0w3pdb7z0lq" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-68/" data-id="cjcw3fa1z000ksgw3s1ej0bok" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
