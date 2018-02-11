@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 71 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="预祝各位新春快乐！今天本来在图书馆准备打的周赛，结果做完三道题后赶上午休，被管理员轰出去了。作为码渣正好借口休息，我心也是够大的直接出去吃饭了（我是反面教材，请大家不要有样学样），剩下那道等回来继续做。整体不难，不涉及什么特别复杂的算法。 https://leetcode.com/contest/weekly-cont">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 71">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-71/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="预祝各位新春快乐！今天本来在图书馆准备打的周赛，结果做完三道题后赶上午休，被管理员轰出去了。作为码渣正好借口休息，我心也是够大的直接出去吃饭了（我是反面教材，请大家不要有样学样），剩下那道等回来继续做。整体不难，不涉及什么特别复杂的算法。 https://leetcode.com/contest/weekly-contest-71/ 提醒一下大家想跟着水周赛的，千万不要忘记提前Register，我">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-02-11T14:38:54.691Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 71">
+<meta name="twitter:description" content="预祝各位新春快乐！今天本来在图书馆准备打的周赛，结果做完三道题后赶上午休，被管理员轰出去了。作为码渣正好借口休息，我心也是够大的直接出去吃饭了（我是反面教材，请大家不要有样学样），剩下那道等回来继续做。整体不难，不涉及什么特别复杂的算法。 https://leetcode.com/contest/weekly-contest-71/ 提醒一下大家想跟着水周赛的，千万不要忘记提前Register，我">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-71" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 71
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-71/" class="article-date"><time datetime="2018-02-11T10:34:39.539Z" itemprop="datePublished">2018-02-11</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>预祝各位新春快乐！今天本来在图书馆准备打的周赛，结果做完三道题后赶上午休，被管理员轰出去了。作为码渣正好借口休息，我心也是够大的直接出去吃饭了（我是反面教材，请大家不要有样学样），剩下那道等回来继续做。整体不难，不涉及什么特别复杂的算法。</p>
+<p><a href="https://leetcode.com/contest/weekly-contest-71/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-71/</a></p>
+<p>提醒一下大家想跟着水周赛的，千万不要忘记提前Register，我不知道是我穷疯了还是LeetCode穷疯了，周赛题都开始突然收费了，不想花钱的话只能保证每周都要Register一下，哪怕Register了以后当天没完成，一周内还是可以免费做的。<del>我们穷人就是这个样子的，不服请打钱</del></p>
+<a id="more"></a>
+<h2 id="Minimum-Distance-Between-BST-Nodes"><a href="#Minimum-Distance-Between-BST-Nodes" class="headerlink" title="Minimum Distance Between BST Nodes"></a>Minimum Distance Between BST Nodes</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-71/problems/minimum-distance-between-bst-nodes/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-71/problems/minimum-distance-between-bst-nodes/</a></p>
+<blockquote>
+<p>Given a Binary Search Tree (BST) with the root node <code>root</code>, return the minimum difference between the values of any two different nodes in the tree.</p>
+<p><strong>Example</strong> :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [4,2,6,1,3,null,null]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation:</span><br><span class="line">Note that root is a TreeNode object, not an array.</span><br><span class="line"></span><br><span class="line">The given tree [4,2,6,1,3,null,null] is represented by the following diagram:</span><br><span class="line"></span><br><span class="line">          4</span><br><span class="line">        /   \</span><br><span class="line">      2      6</span><br><span class="line">     / \    </span><br><span class="line">    1   3  </span><br><span class="line"></span><br><span class="line">while the minimum difference in this tree is 1, it occurs between node 1 and node 2, also between node 3 and node 2.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li>The size of the BST will be between <code>2</code> and <code>100</code>.</li>
+<li>The BST is always valid, each node’s value is an integer, and each node’s value is different.</li>
+</ol>
+</blockquote>
+<p>我思维比较Naive，直接中序遍历，然后找相邻数之间的最小差值</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minDiffInBST</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        vals=[]</span><br><span class="line">        res=sys.maxint</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">in_order</span><span class="params">(root)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root:</span><br><span class="line">                in_order(root.left)</span><br><span class="line">                vals.append(root.val)</span><br><span class="line">                in_order(root.right)</span><br><span class="line"></span><br><span class="line">        in_order(root)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(vals)<span class="number">-1</span>):</span><br><span class="line">            res=min(res,vals[i+<span class="number">1</span>]-vals[i])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>显然时间和空间复杂度都是$o(n)$，当然一开始我想的是先找每个结点的左子树的最大值和右子树的最小值，与结点值比较，递归找出最小差值，但想想写起来麻烦，赶时间就用了上面简单粗暴的笨办法。</p>
+<h2 id="Rabbits-in-Forest"><a href="#Rabbits-in-Forest" class="headerlink" title="Rabbits in Forest"></a>Rabbits in Forest</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-71/problems/rabbits-in-forest/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-71/problems/rabbits-in-forest/</a></p>
+<blockquote>
+<p>In a forest, each rabbit has some color. Some subset of rabbits (possibly all of them) tell you how many other rabbits have the same color as them. Those <code>answers</code> are placed in an array.</p>
+<p>Return the minimum number of rabbits that could be in the forest.</p>
+<p><strong>Examples</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Input: answers = [1, 1, 2]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation:</span><br><span class="line">The two rabbits that answered &quot;1&quot; could both be the same color, say red.</span><br><span class="line">The rabbit than answered &quot;2&quot; can&apos;t be red or the answers would be inconsistent.</span><br><span class="line">Say the rabbit that answered &quot;2&quot; was blue.</span><br><span class="line">Then there should be 2 other blue rabbits in the forest that didn&apos;t answer into the array.</span><br><span class="line">The smallest possible number of rabbits in the forest is therefore 5: 3 that answered plus 2 that didn&apos;t.</span><br><span class="line"></span><br><span class="line">Input: answers = [10, 10, 10]</span><br><span class="line">Output: 11</span><br><span class="line"></span><br><span class="line">Input: answers = []</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>answers</code> will have length at most <code>1000</code>.</li>
+<li>Each <code>answers[i]</code> will be an integer in the range <code>[0, 999]</code>.</li>
+</ol>
+</blockquote>
+<p>先考虑一个情况即有13只兔子声称有其他13只兔子和它自己同色，很显然我们知道这里面至少有1只和其他12只是不同色的，这里面至少有2种毛色和14只兔子。假设有<code>r</code>只兔子都说除了自己以外还有<code>nums</code>只兔子和自己同色，那么这里至少有<code>(r-1)/(nums+1)+1</code>种毛色，每种至少有<code>nums+1</code>只兔子，说出不同<code>nums</code>的兔子们又必然不同色，所以很容易有<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numRabbits</span><span class="params">(self, answers)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type answers: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span>        </span><br><span class="line">        <span class="keyword">return</span> sum([(int((r<span class="number">-1</span>)/(nums+<span class="number">1</span>))+<span class="number">1</span>)*(nums+<span class="number">1</span>) <span class="keyword">for</span> (nums,r) <span class="keyword">in</span> collections.Counter(answers).items()])</span><br></pre></td></tr></table></figure></p>
+<p>时间和空间代价也是线性的。</p>
+<h2 id="Reaching-Points"><a href="#Reaching-Points" class="headerlink" title="Reaching Points"></a>Reaching Points</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-71/problems/reaching-points/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-71/problems/reaching-points/</a></p>
+<blockquote>
+<p>A move consists of taking a point <code>(x, y)</code> and transforming it to either <code>(x, x+y)</code> or <code>(x+y, y)</code>.</p>
+<p>Given a starting point <code>(sx, sy)</code> and a target point <code>(tx, ty)</code>, return True if and only if a sequence of moves exists to transform the point <code>(sx, sy)</code> to <code>(tx, ty)</code>. Otherwise, return <code>False</code>.</p>
+<p><strong>Examples</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Input: sx = 1, sy = 1, tx = 3, ty = 5</span><br><span class="line">Output: True</span><br><span class="line">Explanation:</span><br><span class="line">One series of moves that transforms the starting point to the target is:</span><br><span class="line">(1, 1) -&gt; (1, 2)</span><br><span class="line">(1, 2) -&gt; (3, 2)</span><br><span class="line">(3, 2) -&gt; (3, 5)</span><br><span class="line"></span><br><span class="line">Input: sx = 1, sy = 1, tx = 2, ty = 2</span><br><span class="line">Output: False</span><br><span class="line"></span><br><span class="line">Input: sx = 1, sy = 1, tx = 1, ty = 1</span><br><span class="line">Output: True</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>sx, sy, tx, ty</code> will all be integers in the range <code>[1, 10^9]</code>.</li>
+</ol>
+</blockquote>
+<p>想清楚以后解法本身不难，我是一开始直接用递归辗转相减，但这会超过递归的最大深度，于是我改成迭代，增加了<code>tx==sx</code>和<code>ty==sy</code>时直接判断<code>(ty-sy)</code>和<code>(tx-sx)</code>语句以后可以通过：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reachingPoints</span><span class="params">(self, sx, sy, tx, ty)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type sx: int</span></span><br><span class="line"><span class="string">        :type sy: int</span></span><br><span class="line"><span class="string">        :type tx: int</span></span><br><span class="line"><span class="string">        :type ty: int</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span>        </span><br><span class="line">        <span class="keyword">while</span> tx&gt;<span class="number">0</span> <span class="keyword">and</span> ty&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> tx==sx <span class="keyword">and</span> ty==sy:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">if</span> tx==sx: <span class="comment">#cut down runtime for special cases</span></span><br><span class="line">                <span class="keyword">return</span> ty&gt;sy <span class="keyword">and</span> (ty-sy)%sx==<span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> ty==sy:</span><br><span class="line">                <span class="keyword">return</span> tx&gt;sx <span class="keyword">and</span> (tx-sx)%sy==<span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> tx&gt;ty:</span><br><span class="line">                tx-=ty</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ty-=tx</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<p>时间复杂度为$o(\max \left( {tx,ty} \right))$，空间复杂度为$o(1)$</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-71/" data-id="cjdio2rvl000rpgw36eplp0ss" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-70/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 70</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Minimum-Distance-Between-BST-Nodes"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Minimum Distance Between BST Nodes</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Rabbits-in-Forest"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Rabbits in Forest</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Reaching-Points"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Reaching Points</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>本站作者是失败人士，另一个博客已关闭详情见<a href="http://notebook.xyli.me/Introduction/broken-project-yangzhou/" style="text-decoration:none;">失败的扬州计划</a> 投稿或其他事项的交流可联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 20px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-71/">LeetCode Weekly Contest 71</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-70/">LeetCode Weekly Contest 70</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-69/">LeetCode Weekly Contest 69</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-68/">LeetCode Weekly Contest 68</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-67/">LeetCode Weekly Contest 67</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-71/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
