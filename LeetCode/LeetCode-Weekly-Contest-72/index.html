@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="新年快乐！这几天都会在图书馆专心学习，直到天气回暖吧。因为之前的不学无术不但坑了自己，也给别人带来了困扰。我不会再犯相同的错误了，我将专注学习和输出一些真正有价值的东西。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-18T13:41:46.428Z">
+<meta property="og:updated_time" content="2018-02-19T13:06:59.524Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 72">
 <meta name="twitter:description" content="新年快乐！这几天都会在图书馆专心学习，直到天气回暖吧。因为之前的不学无术不但坑了自己，也给别人带来了困扰。我不会再犯相同的错误了，我将专注学习和输出一些真正有价值的东西。">
@@ -153,6 +153,20 @@ var _hmt = _hmt || [];
 <p>思路很简单，遍历字符串找到字母然后将所有已有结果进行该字母大小写的转换再放入结果，所以最后返回的列表长度必然为<code>2^n</code></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">letterCasePermutation</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res=[S]</span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            <span class="keyword">if</span> c.isalpha():</span><br><span class="line">                temp=[]</span><br><span class="line">                <span class="keyword">for</span> s <span class="keyword">in</span> res:</span><br><span class="line">                    base=s[:i]+c.swapcase()+s[i+<span class="number">1</span>:] <span class="keyword">if</span> i&lt;len(S) <span class="keyword">else</span> s[:i]+c.swapcase()</span><br><span class="line">                    temp.append(base)</span><br><span class="line">                res+=temp</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 <p>在最坏情况下，时间复杂度为$o(n)$，空间复杂度为$o(2^n)$</p>
+<h2 id="Is-Graph-Bipartite"><a href="#Is-Graph-Bipartite" class="headerlink" title="Is Graph Bipartite?"></a>Is Graph Bipartite?</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-72/problems/is-graph-bipartite/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-72/problems/is-graph-bipartite/</a></p>
+<blockquote>
+<p>Given a <code>graph</code>, return <code>true</code> if and only if it is bipartite.</p>
+<p>Recall that a graph is bipartite if we can split it’s set of nodes into two independent subsets A and B such that every edge in the graph has one node in A and another node in B.</p>
+<p>The graph is given in the following form: <code>graph[i]</code> is a list of indexes <code>j</code> for which the edge between nodes <code>i</code> and <code>j</code> exists.  Each node is an integer between <code>0</code> and <code>graph.length - 1</code>.  There are no self edges or parallel edges: <code>graph[i]</code> does not contain <code>i</code>, and it doesn’t contain any element twice.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,3], [0,2], [1,3], [0,2]]</span><br><span class="line">Output: true</span><br><span class="line">Explanation:</span><br><span class="line">The graph looks like this:</span><br><span class="line">0----1</span><br><span class="line">|    |</span><br><span class="line">|    |</span><br><span class="line">3----2</span><br><span class="line">We can divide the vertices into two groups: &#123;0, 2&#125; and &#123;1, 3&#125;.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2,3], [0,2], [0,1,3], [0,2]]</span><br><span class="line">Output: false</span><br><span class="line">Explanation:</span><br><span class="line">The graph looks like this:</span><br><span class="line">0----1</span><br><span class="line">| \  |</span><br><span class="line">|  \ |</span><br><span class="line">3----2</span><br><span class="line">We cannot find a way to divide the set of nodes into two independent ubsets.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>graph</code> will have length in range <code>[1, 100]</code>.</li>
+<li><code>graph[i]</code> will contain integers in range <code>[0, graph.length - 1]</code>.</li>
+<li><code>graph[i]</code> will not contain <code>i</code> or duplicate values.</li>
+</ol>
+</blockquote>
 
       
     </div>
@@ -163,7 +177,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjdstebyx000z1cw3njtuy1ec" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjdu8s4sm000fcww300ubstcs" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -224,7 +238,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Letter-Case-Permutation"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Letter Case Permutation</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Letter-Case-Permutation"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Letter Case Permutation</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Is-Graph-Bipartite"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Is Graph Bipartite?</span></a></li></ol>
   </div>
 
 
