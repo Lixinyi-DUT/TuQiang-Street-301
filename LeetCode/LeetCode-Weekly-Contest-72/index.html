@@ -13,7 +13,7 @@
 <meta property="og:description" content="新年快乐！这几天都会在图书馆专心学习，直到天气回暖吧。因为之前的不学无术不但坑了自己，也给别人带来了困扰。我不会再犯相同的错误了，我将专注学习和输出一些真正有价值的东西。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/16/995.png">
-<meta property="og:updated_time" content="2018-02-20T13:56:12.858Z">
+<meta property="og:updated_time" content="2018-02-21T15:27:14.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 72">
 <meta name="twitter:description" content="新年快乐！这几天都会在图书馆专心学习，直到天气回暖吧。因为之前的不学无术不但坑了自己，也给别人带来了困扰。我不会再犯相同的错误了，我将专注学习和输出一些真正有价值的东西。">
@@ -191,6 +191,18 @@ var _hmt = _hmt || [];
 <p>非常典型的单源最短路径，我们没文化的人就直接用Dijkstra算法解决了，增加一个字段去记录源结点到当前结点经过的结点数，第一次取出最近的结点为目标结点且经过的结点数小于<code>K</code>即可。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findCheapestPrice</span><span class="params">(self, n, flights, src, dst, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type n: int</span></span><br><span class="line"><span class="string">        :type flights: List[List[int]]</span></span><br><span class="line"><span class="string">        :type src: int</span></span><br><span class="line"><span class="string">        :type dst: int</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        h=[(<span class="number">0</span>,src,<span class="number">0</span>)]</span><br><span class="line">        d=dict(&#123;src:<span class="number">0</span>&#125;)</span><br><span class="line">        <span class="keyword">while</span> h:</span><br><span class="line">            dist,node,p=heapq.heappop(h)</span><br><span class="line">            <span class="keyword">if</span> node==dst <span class="keyword">and</span> p&lt;=K+<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> dist</span><br><span class="line">            <span class="keyword">for</span> [i,j,price] <span class="keyword">in</span> flights:</span><br><span class="line">                <span class="keyword">if</span> i==node:</span><br><span class="line">                    <span class="keyword">if</span> j <span class="keyword">not</span> <span class="keyword">in</span> d <span class="keyword">or</span> d[j]&gt;d[i]+price:</span><br><span class="line">                        d[j]=d[i]+price</span><br><span class="line">                        heapq.heappush(h,(d[j],j,p+<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 <p>时间复杂度为$o(n \log n)$，空间复杂度为$o(n)$</p>
+<h2 id="K-th-Smallest-Prime-Fraction"><a href="#K-th-Smallest-Prime-Fraction" class="headerlink" title="K-th Smallest Prime Fraction"></a>K-th Smallest Prime Fraction</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-72/problems/k-th-smallest-prime-fraction/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-72/problems/k-th-smallest-prime-fraction/</a></p>
+<blockquote>
+<p>A sorted list <code>A</code> contains 1, plus some number of primes.  Then, for every p &lt; q in the list, we consider the fraction p/q.</p>
+<p>What is the <code>K</code>-th smallest fraction considered?  Return your answer as an array of ints, where <code>answer[0] = p</code> and <code>answer[1] = q</code>.</p>
+<p><strong>Examples</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1, 2, 3, 5], K = 3</span><br><span class="line">Output: [2, 5]</span><br><span class="line">Explanation:</span><br><span class="line">The fractions to be considered in sorted order are:</span><br><span class="line">1/5, 1/3, 2/5, 1/2, 3/5, 2/3.</span><br><span class="line">The third fraction is 2/5.</span><br><span class="line"></span><br><span class="line">Input: A = [1, 7], K = 1</span><br><span class="line">Output: [1, 7]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>A</code> will have length between <code>2</code> and <code>2000</code>.</li>
+<li>Each <code>A[i]</code> will be between <code>1</code> and <code>30000</code>.</li>
+<li><code>K</code> will be between <code>1</code> and<code>A.length * (A.length + 1) / 2</code>.</li>
+</ol>
+</blockquote>
 
       
     </div>
@@ -201,7 +213,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjdvp74q9000z1gw3cq5w0k8l" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjdx8gsel000zb4w3icfz9mgt" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -262,7 +274,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Letter-Case-Permutation"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Letter Case Permutation</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Is-Graph-Bipartite"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Is Graph Bipartite?</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Cheapest-Flights-Within-K-Stops"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Cheapest Flights Within K Stops</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Letter-Case-Permutation"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Letter Case Permutation</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Is-Graph-Bipartite"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Is Graph Bipartite?</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Cheapest-Flights-Within-K-Stops"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Cheapest Flights Within K Stops</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#K-th-Smallest-Prime-Fraction"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">K-th Smallest Prime Fraction</span></a></li></ol>
   </div>
 
 
