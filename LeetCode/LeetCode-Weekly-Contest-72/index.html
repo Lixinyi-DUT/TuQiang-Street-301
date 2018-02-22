@@ -13,7 +13,7 @@
 <meta property="og:description" content="新年快乐！这几天都会在图书馆专心学习，直到天气回暖吧。因为之前的不学无术不但坑了自己，也给别人带来了困扰。我不会再犯相同的错误了，我将专注学习和输出一些真正有价值的东西。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/16/995.png">
-<meta property="og:updated_time" content="2018-02-21T15:27:14.086Z">
+<meta property="og:updated_time" content="2018-02-22T11:21:42.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 72">
 <meta name="twitter:description" content="新年快乐！这几天都会在图书馆专心学习，直到天气回暖吧。因为之前的不学无术不但坑了自己，也给别人带来了困扰。我不会再犯相同的错误了，我将专注学习和输出一些真正有价值的东西。">
@@ -203,6 +203,9 @@ var _hmt = _hmt || [];
 <li><code>K</code> will be between <code>1</code> and<code>A.length * (A.length + 1) / 2</code>.</li>
 </ol>
 </blockquote>
+<p>参考<a href="https://leetcode.com/problems/k-th-smallest-prime-fraction/discuss/115538/Python-solution-using-Binary-Search" target="_blank" rel="noopener">Python solution using Binary Search</a>提到的二分查找策略。<code>A</code>是有序列表，找到<code>A[i]/m</code>在<code>A</code>中的插入位置，在<code>A[i]/m</code>右边的<code>A</code>的元素<code>A[j]</code>，因为有<code>A[i]/m &lt; A[j]</code>，所以<code>A[i]/A[j] &lt; m</code>,那么<code>border</code>求和得到的<code>cur</code>就是小于<code>m</code>的分数的个数，使用二分法不断调整<code>m</code>的大小使之接近最后想要的那个分数。最后，当<code>cur==K</code>时，恰好有<code>K</code>个<code>A[i]/A[j] &lt; m</code>，<code>border</code>中的元素<code>j</code>即为对于每个<code>i</code>来说满足<code>A[i]/A[j] &lt; m</code>时<code>A[i]/A[j]</code>最大的值，那么找到最大的那个<code>A[i]/A[j]</code>就是找到了第<code>K</code>个分数。至于实现的问题，因为题中已经保证了<code>A</code>中元素不重复，所以不需要另外考虑<code>bisect</code>的方向，以及最后注意一下精度问题，<code>l,r,m</code>都是<code>[0,1]</code>之间的数。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallestPrimeFraction</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l, r, N = <span class="number">0</span>, <span class="number">1</span>, len(A)</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            m = (l + r) / <span class="number">2.0</span></span><br><span class="line">            border = [bisect.bisect(A, A[i] / m) <span class="keyword">for</span> i <span class="keyword">in</span> range(N)]</span><br><span class="line">            cur = sum(N - i <span class="keyword">for</span> i <span class="keyword">in</span> border)</span><br><span class="line">            <span class="keyword">if</span> cur &gt; K:</span><br><span class="line">                r = m</span><br><span class="line">            <span class="keyword">elif</span> cur &lt; K:</span><br><span class="line">                l = m</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> max([(A[i], A[j]) <span class="keyword">for</span> i, j <span class="keyword">in</span> enumerate(border) <span class="keyword">if</span> j &lt; N], key=<span class="keyword">lambda</span> x: float(x[<span class="number">0</span>]) / x[<span class="number">1</span>])</span><br></pre></td></tr></table></figure>
+<p>除了二分查找以外，比较典型的解法如优先队列可以参阅<a href="https://leetcode.com/problems/k-th-smallest-prime-fraction/discuss/115531/C++-9lines-priority-queue" target="_blank" rel="noopener">其他讨论</a></p>
 
       
     </div>
@@ -213,7 +216,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjdx8gsel000zb4w3icfz9mgt" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjdyf4j9l000zlow3gon88qyo" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
