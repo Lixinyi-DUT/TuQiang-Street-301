@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="感谢每一个看到这里的读者的关注，总之这周我过的非常高兴hhhhh，是的，虽然我本质的失败人士身份没改变，但这周真的特别幸福，与周赛本身无关。这周的题整体并不难，主要也是偏重算法（或许叫算术更好）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-26T13:00:57.732Z">
+<meta property="og:updated_time" content="2018-02-26T13:06:58.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 73">
 <meta name="twitter:description" content="感谢每一个看到这里的读者的关注，总之这周我过的非常高兴hhhhh，是的，虽然我本质的失败人士身份没改变，但这周真的特别幸福，与周赛本身无关。这周的题整体并不难，主要也是偏重算法（或许叫算术更好）">
@@ -200,7 +200,7 @@ var _hmt = _hmt || [];
 <li>N  will be in range <code>[1, 1000]</code>.</li>
 </ol>
 </blockquote>
-<p>很典型的动态规划，递推式<code>dp[n]=2*dp[n-1]+dp[n-3]</code>的推导可以见<a href="https://leetcode.com/problems/domino-and-tromino-tiling/discuss/116664/Schematic-explanation-of-two-equivalent-DP-recurrence-formula" target="_blank" rel="noopener">这个讨论</a>，周周赛为了赶时间先xjb写提交上了再说</p>
+<p>很典型的动态规划，递推式<code>dp[n]=2*dp[n-1]+dp[n-3]</code>的推导可以见<a href="https://leetcode.com/problems/domino-and-tromino-tiling/discuss/116664/Schematic-explanation-of-two-equivalent-DP-recurrence-formula" target="_blank" rel="noopener">这个讨论</a>，周赛为了赶时间先xjb写提交上了再说</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numTilings</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> N==<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> N==<span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span> N==<span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">5</span></span><br><span class="line">        m=<span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span></span><br><span class="line">        dp=[<span class="number">0</span>]*N</span><br><span class="line">        dp[<span class="number">0</span>],dp[<span class="number">1</span>],dp[<span class="number">2</span>]=<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>,N):</span><br><span class="line">            dp[i]=(<span class="number">2</span>*dp[i<span class="number">-1</span>]+dp[i<span class="number">-3</span>])%m</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 <p>时间和空间复杂度都为$o(N)$，但是正如我之前所说，这种一维的索引差值不大的动态规划，不需要额外浪费空间，3个变量迭代着也行。</p>
 
@@ -213,7 +213,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-73/" data-id="cje43qdxl000ku0w3cv7a8f7o" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-73/" data-id="cje48moyu0011eww3d4cnako9" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
