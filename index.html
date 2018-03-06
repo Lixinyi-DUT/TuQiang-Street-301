@@ -139,75 +139,19 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>没什么好说的，直接看题。</p>
-<p>https://leetcode.com/contest/weekly-contest-74/</p>
-<p>&lt;!-- more --&gt;</p>
-<h2>Valid Tic-Tac-Toe State</h2>
-<p>原题地址 https://leetcode.com/contest/weekly-contest-74/problems/valid-tic-tac-toe-state/</p>
-<blockquote>
-<p>A Tic-Tac-Toe board is given as a string array board. Return True if and only if it is possible to reach this board position during the course of a valid tic-tac-toe game.</p>
-</blockquote>
-<blockquote>
-<p>The board is a 3 x 3 array, and consists of characters <code>&quot; &quot;</code>, <code>&quot;X&quot;</code>, and <code>&quot;O&quot;</code>.  The <code>&quot; &quot;</code> character represents an empty square.</p>
-</blockquote>
-<blockquote>
-<p>Here are the rules of Tic-Tac-Toe:</p>
-</blockquote>
-<blockquote>
-<ul>
-<li>Players take turns placing characters into empty squares (&quot; &quot;).</li>
-</ul>
-</blockquote>
-<ul>
-<li>The first player always places &quot;X&quot; characters, while the second player always places &quot;O&quot; characters.</li>
-<li>&quot;X&quot; and &quot;O&quot; characters are always placed into empty squares, never filled ones.</li>
-<li>The game ends when there are 3 of the same (non-empty) character filling any row, column, or diagonal.</li>
-<li>The game also ends if all squares are non-empty.</li>
-<li>No more moves can be played if the game is over.
-<strong>Example 1</strong>:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Input: board = [&quot;O  &quot;, &quot;   &quot;, &quot;   &quot;]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: The first player always plays &quot;X&quot;.</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: board = [&quot;XOX&quot;, &quot; X &quot;, &quot;   &quot;]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: Players take turns making moves.</span><br><span class="line"></span><br><span class="line">Example 3:</span><br><span class="line">Input: board = [&quot;XXX&quot;, &quot;   &quot;, &quot;OOO&quot;]</span><br><span class="line">Output: false</span><br><span class="line"></span><br><span class="line">Example 4:</span><br><span class="line">Input: board = [&quot;XOX&quot;, &quot;O O&quot;, &quot;XOX&quot;]</span><br><span class="line">Output: true</span><br><span class="line">`</span><br></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p><strong>Note</strong>:</p>
-</blockquote>
-<ol>
-<li><code>board</code> is a length-3 array of strings, where each string <code>board[i]</code> has length 3.</li>
-<li>Each <code>board[i][j]</code> is a character in the set <code>{&quot; &quot;, &quot;X&quot;, &quot;O&quot;}</code>.</li>
-</ol>
-<p>题目问的是游戏过程中是否会出现给出的<code>board</code>情景，不涉及算法问题，理清游戏的规则就好。首先，轮流保证了<code>X</code>和<code>O</code>的数量差值永远不会大于1，而且由于<code>X</code>先执，所以如果有多出的1个也必须是<code>X</code>。如果游戏出现了一方获胜的结局，那么需要满足：</p>
-<p>因为轮流的顺序，如果是执<code>X</code>方获胜，则需要满足<code>X</code>三连以及<code>X-O==1</code>，同理，如果执<code>O</code>方获胜则需要<code>O</code>三连以及<code>X==O</code>。所以不存在同时获胜的可能性，因为九宫格和<code>X-O&lt;=1</code>的限制，也不会出现一方有多个三连的可能性。</p>
-<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTicTacToe</span><span class="params">(self, board)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type board: List[str]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        x_r=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">        o_r=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">        x_c=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">        o_c=[<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">        x_d=[<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">        o_d=[<span class="number">0</span>,<span class="number">0</span>]</span><br><span class="line">        x,o=<span class="number">0</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">                <span class="keyword">if</span> board[i][j]==<span class="string">'X'</span>:</span><br><span class="line">                    x+=<span class="number">1</span></span><br><span class="line">                    x_r[i]+=<span class="number">1</span></span><br><span class="line">                    x_c[j]+=<span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> i==j:</span><br><span class="line">                        x_d[<span class="number">0</span>]+=<span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> i+j==<span class="number">2</span>:</span><br><span class="line">                        x_d[<span class="number">1</span>]+=<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> board[i][j]==<span class="string">'O'</span>:</span><br><span class="line">                    o+=<span class="number">1</span></span><br><span class="line">                    o_r[i]+=<span class="number">1</span></span><br><span class="line">                    o_c[j]+=<span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> i==j:</span><br><span class="line">                        o_d[<span class="number">0</span>]+=<span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> i+j==<span class="number">2</span>:</span><br><span class="line">                        o_d[<span class="number">1</span>]+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> o&gt;x <span class="keyword">or</span> x-o&gt;<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="number">3</span> <span class="keyword">in</span> x_r+x_c+x_d <span class="keyword">and</span> x-o!=<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="number">3</span> <span class="keyword">in</span> o_r+o_c+o_d <span class="keyword">and</span> x!=o:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure></p>
-<h2>Number of Matching Subsequences</h2>
-<p>原题地址 https://leetcode.com/contest/weekly-contest-74/problems/number-of-matching-subsequences/</p>
-<blockquote>
-<p>Given string <code>S</code> and a dictionary of words words, find the number of <code>words[i]</code> that is a subsequence of <code>S</code>.</p>
-</blockquote>
-<blockquote>
-<p><strong>Example</strong> :
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">S = &quot;abcde&quot;</span><br><span class="line">words = [&quot;a&quot;, &quot;bb&quot;, &quot;acd&quot;, &quot;ace&quot;]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: There are three words in words that are a subsequence of S: &quot;a&quot;, &quot;acd&quot;, &quot;ace&quot;.</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>Note</strong>:</p>
-</blockquote>
-<ol>
-<li>All words in words and <code>S</code> will only consists of lowercase letters.</li>
-<li>The length of <code>S</code> will be in the range of <code>[1, 50000]</code>.</li>
-<li>The length of <code>words</code> will be in the range of <code>[1, 5000]</code>.</li>
-<li>The length of <code>words[i]</code> will be in the range of <code>[1, 50]</code>.</li>
-</ol>
-<p>题目的逻辑不难，但因为<code>S</code>和<code>words</code>的大小客观，直接上去按照题意写容易TLE。先用字典记录<code>S</code>中的字符出现的索引，再对<code>words[i]</code>中每个字符在字典中二分查找是否存在比上一个索引更大的索引值。</p>
-<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numMatchingSubseq</span><span class="params">(self, S, words)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :type words: List[str]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        d=[[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">26</span>)]</span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> (i,c) <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            d[ord(c)-ord(<span class="string">'a'</span>)].append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            last=<span class="number">-1</span></span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> word:</span><br><span class="line">                x=bisect.bisect(d[ord(c)-ord(<span class="string">'a'</span>)],last)</span><br><span class="line">                <span class="keyword">if</span> x==len(d[ord(c)-ord(<span class="string">'a'</span>)]):</span><br><span class="line">                    res+=<span class="number">1</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">                last=d[ord(c)-ord(<span class="string">'a'</span>)][x]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> len(words)-res</span><br></pre></td></tr></table></figure></p>
-<p>时间复杂度为<code>o(len(S)+sum(len(word[i])))</code>，空间复杂度为<code>o(len(S))</code></p>
-
+<p><a href="https://leetcode.com/contest/weekly-contest-74/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-74/</a></p>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/LeetCode/LeetCode-Weekly-Contest-74/#more">Read More</a>
+          </p>
+        
       
     </div>
 
     
-      
-
-    
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-74/" data-id="cjecz8xca0000ssw39tn9442i" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-74/" data-id="cjefseg0t000lqsw30aka1xi5" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -266,7 +210,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-73/" data-id="cje48moyu0011eww3d4cnako9" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-73/" data-id="cjefseg21000tqsw3cp6eaok8" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -325,7 +269,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cje48moyo000zeww38l4mhkhm" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjefseg2e000xqsw3iq3f3zgg" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -386,7 +330,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-71/" data-id="cje48moyd000ueww3710uyy0r" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-71/" data-id="cjefseg13000pqsw35hs4he4w" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -446,7 +390,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-70/" data-id="cje48moxq000reww3gmc41zcp" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-70/" data-id="cjefseg0a000eqsw3yiid1hn6" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -506,7 +450,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-69/" data-id="cje48moxh000neww3h3cy076c" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-69/" data-id="cjefseg0h000hqsw30d42etfo" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -567,7 +511,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-68/" data-id="cje48moxb000meww38telt1r3" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-68/" data-id="cjefseg380017qsw3m1dudma8" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -626,7 +570,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-67/" data-id="cje48mox0000heww3jfwya4u3" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-67/" data-id="cjefsefz60007qsw37ckliac6" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -685,7 +629,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-66/" data-id="cje48mowp000feww3v01vongl" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-66/" data-id="cjefseg3v001hqsw3xsig63v1" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -744,7 +688,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-65/" data-id="cje48mowf000beww3juw6hwan" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-65/" data-id="cjefsefzo000bqsw3eyo4wzh3" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
