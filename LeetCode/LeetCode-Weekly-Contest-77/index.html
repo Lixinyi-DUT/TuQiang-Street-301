@@ -3,18 +3,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Category: CS161 | 笔记仓库</title>
+  <title>LeetCode Weekly Contest 76 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正常人的正常笔记站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记仓库">
-<meta property="og:url" content="notebook.xyli.me/categories/CS161/index.html">
+  <meta name="description" content="少说废话，多刷题。直接看题 https://leetcode.com/contest/weekly-contest-77">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 76">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-77/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="正常人的正常笔记站">
+<meta property="og:description" content="少说废话，多刷题。直接看题 https://leetcode.com/contest/weekly-contest-77">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-26T15:48:03.144Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记仓库">
-<meta name="twitter:description" content="正常人的正常笔记站">
+<meta name="twitter:title" content="LeetCode Weekly Contest 76">
+<meta name="twitter:description" content="少说废话，多刷题。直接看题 https://leetcode.com/contest/weekly-contest-77">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -105,51 +106,130 @@ var _hmt = _hmt || [];
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/CS161/Intro-to-greedy-algo1/" class="archive-article-date"><time datetime="2016-10-29T12:03:00.000Z" itemprop="datePublished">十月 29日</time></a>
-</div>
+          <article id="post-LeetCode-Weekly-Contest-77" class="article article-type-post" itemscope itemprop="blogPost">
 
+  <header class="article-header">
     
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/CS161/Intro-to-greedy-algo1/">贪心算法小试牛刀 （一）</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 76
     </h1>
   
 
 
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/规划问题/">规划问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心算法/">贪心算法</a></li></ul>
-
-
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
   </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-77/" class="article-date"><time datetime="2018-03-26T15:17:24.492Z" itemprop="datePublished">2018-03-26</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>少说废话，多刷题。直接看题</p>
+<p><a href="https://leetcode.com/contest/weekly-contest-77" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-77</a></p>
+<a id="more"></a>
+<h2 id="Number-of-Lines-To-Write-String"><a href="#Number-of-Lines-To-Write-String" class="headerlink" title="Number of Lines To Write String"></a>Number of Lines To Write String</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-77/problems/number-of-lines-to-write-string/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-77/problems/number-of-lines-to-write-string/</a></p>
+<blockquote>
+<p>We are to write the letters of a given string <code>S</code>, from left to right into lines. Each line has maximum width 100 units, and if writing a letter would cause the width of the line to exceed 100 units, it is written on the next line. We are given an array <code>widths</code>, an array where widths[0] is the width of ‘a’, widths[1] is the width of ‘b’, …, and widths[25] is the width of ‘z’.</p>
+<p>Now answer two questions: how many lines have at least one character from S, and what is the width used by the last such line? Return your answer as an integer list of length 2.</p>
+<p><strong>Example</strong> :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">widths = [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]</span><br><span class="line">S = &quot;abcdefghijklmnopqrstuvwxyz&quot;</span><br><span class="line">Output: [3, 60]</span><br><span class="line">Explanation:</span><br><span class="line">All letters have the same length of 10. To write all 26 letters,</span><br><span class="line">we need two full lines and one line with 60 units.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example</strong> :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">widths = [4,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10]</span><br><span class="line">S = &quot;bbbcccdddaaa&quot;</span><br><span class="line">Output: [2, 4]</span><br><span class="line">Explanation:</span><br><span class="line">All letters except &apos;a&apos; have the same length of 10, and</span><br><span class="line">&quot;bbbcccdddaa&quot; will cover 9 * 10 + 2 * 4 = 98 units.</span><br><span class="line">For the last &apos;a&apos;, it is written on the second line because</span><br><span class="line">there is only 2 units left in the first line.</span><br><span class="line">So the answer is 2 lines, plus 4 units in the second line.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li>The length of <code>S</code> will be in the range <code>[1, 1000]</code>.</li>
+<li><code>S</code> will only contain lowercase letters.</li>
+<li><code>widths</code> is an array of length <code>26</code>.</li>
+<li><code>widths[i]</code> will be in the range of <code>[2, 10]</code>.</li>
+</ol>
+</blockquote>
+<p>直接按题意写，注意单个字母写不下的时候判定换行：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numberOfLines</span><span class="params">(self, widths, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type widths: List[int]</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        l,r=<span class="number">1</span>,<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> S:</span><br><span class="line">            <span class="keyword">if</span> widths[ord(c)-ord(<span class="string">'a'</span>)]&gt;<span class="number">100</span>-r:</span><br><span class="line">                l+=<span class="number">1</span></span><br><span class="line">                r=<span class="number">0</span></span><br><span class="line">            r+=widths[ord(c)-ord(<span class="string">'a'</span>)]</span><br><span class="line">        <span class="keyword">return</span> [l,r]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-77/" data-id="cjf8epucr0000aww3o2cy1gc5" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-76/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 76</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
 </article>
 
-  
-  
-    </div></section>
-  
 
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Number-of-Lines-To-Write-String"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Number of Lines To Write String</span></a></li></ol>
+  </div>
+
 
 
   <div class="sidebar-module sidebar-module-inset">
@@ -237,11 +317,13 @@ var _hmt = _hmt || [];
 <script>
   var disqus_shortname = 'notebook-xyli-me';
   
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-77/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
