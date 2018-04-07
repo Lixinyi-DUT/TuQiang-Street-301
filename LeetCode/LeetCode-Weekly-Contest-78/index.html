@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="新的一周，祝大家快乐。 直接看题 https://leetcode.com/contest/weekly-contest-78">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-03T13:59:06.010Z">
+<meta property="og:updated_time" content="2018-04-07T14:19:55.534Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 78">
 <meta name="twitter:description" content="新的一周，祝大家快乐。 直接看题 https://leetcode.com/contest/weekly-contest-78">
@@ -192,6 +192,13 @@ var _hmt = _hmt || [];
 <li>Answers within <code>10^-6</code> of the true value will be accepted as correct.</li>
 </ol>
 </blockquote>
+<ol>
+<li>最后不满25ml的还是可以算一份，以25ml为一个单位先转换一下<code>N</code>的进制</li>
+<li><code>f(a,b)=0.25*(f(a-4,b)+f(a-3,b-1)+f(a-2,b-2)+f(a-1,b-3))</code>是递归的递推式，同时用完算0.5的概率</li>
+<li>使用一个字典来缓存之前计算的<code>f</code>值，避免TLE</li>
+<li>当<code>N</code>过大时，概率接近1</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">soupServings</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cache=&#123;&#125;</span><br><span class="line">        <span class="keyword">if</span> N&gt;<span class="number">4800</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(a,b)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> a&lt;=<span class="number">0</span> <span class="keyword">and</span> b&lt;=<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0.5</span></span><br><span class="line">            <span class="keyword">if</span> a&lt;=<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> b&lt;=<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">if</span> (a,b) <span class="keyword">in</span> cache:</span><br><span class="line">                <span class="keyword">return</span> cache[(a,b)]</span><br><span class="line">            cache[(a,b)]=<span class="number">0.25</span>*(f(a<span class="number">-4</span>,b)+f(a<span class="number">-3</span>,b<span class="number">-1</span>)+f(a<span class="number">-2</span>,b<span class="number">-2</span>)+f(a<span class="number">-1</span>,b<span class="number">-3</span>))</span><br><span class="line">            <span class="keyword">return</span> cache[(a,b)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> f(math.ceil(N/<span class="number">25.0</span>),math.ceil(N/<span class="number">25.0</span>))</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -381,39 +388,7 @@ var _hmt = _hmt || [];
 
 
 
-<script src="/js/script.js"></script>
+<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
 </body>
 </html>
