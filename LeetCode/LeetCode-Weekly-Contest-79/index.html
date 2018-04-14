@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_2.png">
 <meta property="og:image" content="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/06/1028_1.png">
 <meta property="og:image" content="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/04/05/1028.png">
-<meta property="og:updated_time" content="2018-04-13T10:36:04.427Z">
+<meta property="og:updated_time" content="2018-04-14T14:32:16.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 79">
 <meta name="twitter:description" content="因为最近时间线总是刷出如何看待2017 cs grad就业惨淡，如何看待秋季项目申请水涨船高这种信息，实在让我有点焦虑，所以可能以后社交网络会用的没有以前那么频繁了，不用报警我活的很好，谢谢大家的关心。对我来说刷题也算消遣，请千万不要被误导觉得专注刷题真的有什么用，保持手不生而已，主要还是要回去啃书和备考。 https://leetcode.com/contest/weekly-contest-7">
@@ -159,7 +159,7 @@ var _hmt = _hmt || [];
 </ol>
 </blockquote>
 <p>上来第一题，不要去考虑技巧，直接穷举找最大值就可以。顶点为<code>A(x1,y1)</code>，<code>B(x2,y2)</code>和<code>C(x3,y3)</code>的三角形面积为<br><span>$S_{\Delta ABC} = \frac{1}{2} |{x_1}{y_2} + {x_2}{y_3} + {x_3}{y_1} - {x_1}{y_3} - {x_3}{y_2} - {x_2}{y_1}|$</span><!-- Has MathJax --><br>用这个公式计算各个点组合的面积找到最大值<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largestTriangleArea</span><span class="params">(self, points)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type points: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: float</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> max(<span class="number">0.5</span>*abs(x1*y2+x2*y3+x3*y1-x1*y3-x2*y1-x3*y2) <span class="keyword">for</span> ([x1,y1],[x2,y2],[x3,y3]) <span class="keyword">in</span> itertools.combinations(points,<span class="number">3</span>))</span><br></pre></td></tr></table></figure></p>
-<p>当然如果像我这么无聊还能把公式写成<br><span>$$S_{\Delta ABC} =  |\det \left( {\left[ {\begin{array}{*{20}{c}}
+<p>当然如果像我这么无聊还能把公式写成<br><span>$$S_{\Delta ABC} =  \frac{1}{2} |\det \left( {\left[ {\begin{array}{*{20}{c}}
 {x_1}&amp;{y_1}&amp;1\\
 {x_2}&amp;{y_2}&amp;1\\
 {x_3}&amp;{y_3}&amp;1
@@ -225,7 +225,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-79/" data-id="cjfxtid6b0011i4w37jobkdvx" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-79/" data-id="cjfzhg742000zk8w3cq3k3oxm" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
