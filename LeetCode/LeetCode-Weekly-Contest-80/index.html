@@ -3,18 +3,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>笔记仓库</title>
+  <title>LeetCode Weekly Contest 80 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正常人的正常笔记站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记仓库">
-<meta property="og:url" content="notebook.xyli.me/page/3/index.html">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-80">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 80">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="正常人的正常笔记站">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-80">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-15T15:48:49.701Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记仓库">
-<meta name="twitter:description" content="正常人的正常笔记站">
+<meta name="twitter:title" content="LeetCode Weekly Contest 80">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-80">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -105,15 +106,13 @@ var _hmt = _hmt || [];
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-    <article id="post-LeetCode-Weekly-Contest-39" class="article article-type-post" itemscope itemprop="blogPost">
+          <article id="post-LeetCode-Weekly-Contest-80" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
     
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/LeetCode/LeetCode-Weekly-Contest-39/">LeetCode Weekly Contest 39</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 80
     </h1>
   
 
@@ -123,7 +122,7 @@ var _hmt = _hmt || [];
 
   <div class="article-meta">
     <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-39/" class="article-date"><time datetime="2017-07-06T07:28:00.000Z" itemprop="datePublished">2017-07-06</time></a>
+  <a href="/LeetCode/LeetCode-Weekly-Contest-80/" class="article-date"><time datetime="2018-04-15T15:20:34.341Z" itemprop="datePublished">2018-04-15</time></a>
 </div>
 
     <div class="article-author">Xinyi Li</div>
@@ -138,350 +137,102 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>整体不难，注意避坑。</p>
-<p><a href="https://leetcode.com/contest/leetcode-weekly-contest-39/" target="_blank" rel="noopener">https://leetcode.com/contest/leetcode-weekly-contest-39/</a></p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/LeetCode/LeetCode-Weekly-Contest-39/#more">Read More</a>
-          </p>
-        
+        <p><a href="https://leetcode.com/contest/weekly-contest-80" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-80</a></p>
+<a id="more"></a>
+<h2 id="Most-Common-Word"><a href="#Most-Common-Word" class="headerlink" title="Most Common Word"></a>Most Common Word</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-80/problems/most-common-word/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-80/problems/most-common-word/</a></p>
+<blockquote>
+<p>Given a paragraph and a list of banned words, return the most frequent word that is not in the list of banned words.  It is guaranteed there is at least one word that isn’t banned, and that the answer is unique.</p>
+<p>Words in the list of banned words are given in lowercase, and free of punctuation.  Words in the paragraph are not case sensitive.  The answer is in lowercase.</p>
+<p><strong>Example</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">paragraph = &quot;Bob hit a ball, the hit BALL flew far after it was hit.&quot;</span><br><span class="line">banned = [&quot;hit&quot;]</span><br><span class="line">Output: &quot;ball&quot;</span><br><span class="line">Explanation:</span><br><span class="line">&quot;hit&quot; occurs 3 times, but it is a banned word.</span><br><span class="line">&quot;ball&quot; occurs twice (and no other word does), so it is the most frequent non-banned word in the paragraph.</span><br><span class="line">Note that words in the paragraph are not case sensitive,</span><br><span class="line">that punctuation is ignored (even if adjacent to words, such as &quot;ball,&quot;),</span><br><span class="line">and that &quot;hit&quot; isn&apos;t the answer even though it occurs more because it is banned.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= paragraph.length &lt;= 1000</code>.</li>
+<li><code>1 &lt;= banned.length &lt;= 100</code>.</li>
+<li><code>1 &lt;= banned[i].length &lt;= 10</code>.</li>
+<li>The answer is unique, and written in lowercase (even if its occurrences in <code>paragraph</code> may have uppercase symbols, and even if it is a proper noun.)</li>
+<li><code>paragraph</code> only consists of letters, spaces, or the punctuation symbols <code>!?&#39;,;</code>.</li>
+<li>Different words in <code>paragraph</code> are always separated by a space.</li>
+<li>There are no hyphens or hyphenated words.</li>
+<li>Words only consist of letters, never apostrophes or other punctuation symbols.</li>
+</ol>
+</blockquote>
+<p>把<code>paragraph</code>去掉标点，转换成小写，然后统计词频</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mostCommonWord</span><span class="params">(self, paragraph, banned)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type paragraph: str</span></span><br><span class="line"><span class="string">        :type banned: List[str]</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        punc=<span class="string">"!?',;."</span></span><br><span class="line">        paragraph = str(paragraph).translate(string.maketrans(<span class="string">""</span>,<span class="string">""</span>), punc)</span><br><span class="line">        <span class="keyword">for</span> word,fre <span class="keyword">in</span> collections.Counter(paragraph.lower().split(<span class="string">" "</span>)).most_common():</span><br><span class="line">            <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> banned:</span><br><span class="line">                <span class="keyword">return</span> word</span><br></pre></td></tr></table></figure>
+<p>时间复杂度和空间复杂度都为$o(n)$</p>
+
       
     </div>
 
     
+      
+
+    
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-39/" data-id="cjg0zaapa000itow3b6d3l4x1" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/" data-id="cjg0zaars0015tow3gx274xyt" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
-      <!--  -->
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
       
 
     </footer>
   </div>
   
-</article>
-
-
-<!--  -->
-
-
-  
-    <article id="post-LeetCode-Weekly-Contest-38" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
     
+<ul id="article-nav" class="nav nav-pills nav-justified">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/LeetCode/LeetCode-Weekly-Contest-38/">LeetCode Weekly Contest 38</a>
-    </h1>
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-79/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 79</span>
+    </a>
+  </li>
   
+  
+</ul>
 
 
-    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-38/" class="article-date"><time datetime="2017-06-28T07:28:00.000Z" itemprop="datePublished">2017-06-28</time></a>
-</div>
-
-    <div class="article-author">Xinyi Li</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://leetcode.com/contest/leetcode-weekly-contest-38/" target="_blank" rel="noopener">https://leetcode.com/contest/leetcode-weekly-contest-38/</a></p>
-<p>本周刷题，周日睡晚了所以没参加。这周的题我看了下，根据前几名的时间来推算，比上周麻烦多了。但实际上主要问题出在第二题的贪心策略和第三题的动态规划上，虽然很明显能想到是通过贪心和动规解决的，但具体策略上容易想不到。标注为<code>hard</code>难度的第四题反而是硬码就能过去的。</p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/LeetCode/LeetCode-Weekly-Contest-38/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-38/" data-id="cjg0zaar8000ytow3uvj1o6bs" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      <!--  -->
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心算法/">贪心算法</a></li></ul>
-
-
-    </footer>
-  </div>
   
 </article>
 
 
-<!--  -->
-
-
-  
-    <article id="post-illustrations" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Introduction/illustrations/">灵魂画手的插画集</a>
-    </h1>
-  
-
-
-    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/Introduction/illustrations/" class="article-date"><time datetime="2017-06-11T09:21:00.000Z" itemprop="datePublished">2017-06-11</time></a>
-</div>
-
-    <div class="article-author">Xinyi Li</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Introduction/">Introduction</a>
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
+</section>
+ -->
 
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我一直梦想着成为一名穷画师，现在梦想已经实现了三分之一了。</p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/Introduction/illustrations/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/illustrations/" data-id="cjg0zaauh001xtow37vzctng9" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      <!--  -->
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LaTeX/">LaTeX</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-<!--  -->
-
-
-  
-    <article id="post-Intro-to-greedy-algo1" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/CS161/Intro-to-greedy-algo1/">贪心算法小试牛刀 （一）</a>
-    </h1>
-  
-
-
-    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/CS161/Intro-to-greedy-algo1/" class="article-date"><time datetime="2016-10-29T12:03:00.000Z" itemprop="datePublished">2016-10-29</time></a>
-</div>
-
-    <div class="article-author">Xinyi Li</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/CS161/">CS161</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（<a href="https://www.coursera.org/learn/algorithm-design-analysis-2" target="_blank" rel="noopener">Algorithms: Design and Analysis, Part 2</a>）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/CS161/Intro-to-greedy-algo1/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="cjg0zaamw0002tow3h2gtkzmu" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      <!--  -->
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/规划问题/">规划问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心算法/">贪心算法</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-<!--  -->
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Introduction/hello-world/">Hello World</a>
-    </h1>
-  
-
-
-    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/Introduction/hello-world/" class="article-date"><time datetime="2016-09-01T07:28:00.000Z" itemprop="datePublished">2016-09-01</time></a>
-</div>
-
-    <div class="article-author">Xinyi Li</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Introduction/">Introduction</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>这是一个专门为在线课程存放本人的笔记的地方。建站初衷是为了更系统地整理和分享网课的收获，为遇到相同困惑的学习者提供微小的帮助，同时也帮助自己梳理知识脉络。</p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/Introduction/hello-world/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="cjg0zaat2001htow3k00iyy8l" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      <!--  -->
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-
-<!--  -->
-
-
-  
-    <article id="post-broken-project-yangzhou" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/Introduction/broken-project-yangzhou/">扬州计划破产声明</a>
-    </h1>
-  
-
-
-    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/Introduction/broken-project-yangzhou/" class="article-date"><time datetime="1990-05-13T16:00:00.000Z" itemprop="datePublished">1990-05-14</time></a>
-</div>
-
-    <div class="article-author">Xinyi Li</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Introduction/">Introduction</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>域名<code>yangzhou301.com</code>即将在2017年11月30日过期，因为我没钱续费，该域名将连同扬州计划博客一同废弃。</p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/Introduction/broken-project-yangzhou/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/broken-project-yangzhou/" data-id="cjg0zaav00021tow32cdzyfq4" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      <!--  -->
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/失败/">失败</a></li></ul>
-
-
-    </footer>
-  </div>
-  
-</article>
-
-
-<!--  -->
-
-
-  
-
-
-  <div id="page-nav">
-    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/page/2/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/">1</a></li><li><a class="page-number" href="/page/2/">2</a></li><li class="active"><span class="page-number">3</span></li><li class="disabled"><span class="page-next">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
-  </div>
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Most-Common-Word"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Most Common Word</span></a></li></ol>
+  </div>
+
 
 
   <div class="sidebar-module sidebar-module-inset">
@@ -569,11 +320,13 @@ var _hmt = _hmt || [];
 <script>
   var disqus_shortname = 'notebook-xyli-me';
   
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
