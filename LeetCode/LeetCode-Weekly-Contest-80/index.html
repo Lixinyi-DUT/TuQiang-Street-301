@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-80">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-18T15:08:12.640Z">
+<meta property="og:updated_time" content="2018-04-19T17:16:06.376Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 80">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-80">
@@ -210,6 +210,14 @@ var _hmt = _hmt || [];
 <li><code>1 &lt;= target &lt;= 10000</code>.</li>
 </ol>
 </blockquote>
+<p>解法还是参考<a href="https://leetcode.com/problems/race-car/discuss/123834/C++JavaPython-DP-solution-average-O(logN" target="_blank" rel="noopener">DP solution, average O(logN)</a>)介绍的动态规划方法，可能很容易想到对于<code>2 ^ (n - 1) -1&lt; target &lt; 2 ^ n-1</code>来说有两种策略</p>
+<ol>
+<li>先用<code>n</code>个<code>A</code>达到<code>2 ^ n-1</code>位置，然后用一个<code>R</code>，再加上<code>dp[2^n-1-target]</code>的指令</li>
+<li>先用<code>n-1</code>个<code>A</code>达到<code>2^(n-1)-1</code>位置，然后用两个<code>R</code>完成速度重置，再加上<code>dp[target-2^(n-1)+1]</code></li>
+</ol>
+<p>注意情况2是可能存在问题的，在这种情况下，<code>RR</code>操作后从<code>2^(n-1)-1</code>到<code>target</code>的路径可能会存在<code>R</code>，而这个<code>R</code>事实上又可以和前面的<code>R</code>合并，因此是多余的。所以需要在第二个<code>R</code>前先用<code>m</code>个<code>A</code>使其回退，再用<code>R</code>恢复速度方向，从<code>2^(n-1)-2^m</code>位置开始，再加上<code>dp[target-2^(n-1)+2^m)]</code></p>
+<p>这里代码还是直接放上原讨论中使用的bottom-up的递归，避免计算了一些不需要了解的情况，非常高效：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span> self.dp = &#123;<span class="number">0</span>: <span class="number">0</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">racecar</span><span class="params">(self, t)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type target: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> t <span class="keyword">in</span> self.dp: <span class="keyword">return</span> self.dp[t]</span><br><span class="line">        n = t.bit_length()</span><br><span class="line">        <span class="keyword">if</span> <span class="number">2</span>**n - <span class="number">1</span> == t: self.dp[t] = n</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.dp[t] = self.racecar(<span class="number">2</span>**n - <span class="number">1</span> - t) + n + <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> m <span class="keyword">in</span> range(n - <span class="number">1</span>):</span><br><span class="line">                self.dp[t] = min(self.dp[t], self.racecar(t - <span class="number">2</span>**(n - <span class="number">1</span>) + <span class="number">2</span>**m) + n + m + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> self.dp[t]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -220,7 +228,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/" data-id="cjg58icyg001q9kw3qejz7xpf" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/" data-id="cjg6sgqnv0016tww34acb6lok" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
