@@ -107,6 +107,84 @@ var _hmt = _hmt || [];
         <div class="col-sm-8 blog-main">
           
   
+    <article id="post-LeetCode-Weekly-Contest-81" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/LeetCode/LeetCode-Weekly-Contest-81/">LeetCode Weekly Contest 81</a>
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-81/" class="article-date"><time datetime="2018-04-22T14:11:52.857Z" itemprop="datePublished">2018-04-22</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>https://leetcode.com/contest/weekly-contest-81</p>
+<p>&lt;!-- more --&gt;</p>
+<h2>Shortest Distance to a Character</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-81/problems/shortest-distance-to-a-character/</p>
+<blockquote>
+<p>Given a string <code>S</code> and a character <code>C</code>, return an array of integers representing the shortest distance from the character <code>C</code> in the string.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;loveleetcode&quot;, C = &apos;e&apos;</span><br><span class="line">Output: [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>:</p>
+</blockquote>
+<ol>
+<li><code>S</code> string length is in <code>[1, 10000]</code>.</li>
+<li><code>C</code> is a single character, and guaranteed to be in string <code>S</code>.
+All letters in <code>S</code> and <code>C</code> are lowercase.</li>
+</ol>
+<p>找到所有<code>C</code>的索引，<code>S</code>的每个字符与所有<code>C</code>的索引值的绝对差取最小值</p>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestToChar</span><span class="params">(self, S, C)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :type C: str</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        targets=[i <span class="keyword">for</span> (i,c) <span class="keyword">in</span> enumerate(S) <span class="keyword">if</span> c==C]</span><br><span class="line">        <span class="keyword">return</span> [min([abs(t-i) <span class="keyword">for</span> t <span class="keyword">in</span> targets]) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(S))]</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-81/" data-id="cjgawped00017r4w36dlu3vt3" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!--  -->
+      
+
+    </footer>
+  </div>
+  
+</article>
+
+
+<!--  -->
+
+
+  
     <article id="post-LeetCode-Weekly-Contest-80" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
@@ -150,7 +228,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/" data-id="cjg7mulpa0010nww32z2vjjjv" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/" data-id="cjgawpekd001xr4w32sv8776v" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -210,7 +288,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-79/" data-id="cjg7muls2001enww30dli9svz" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-79/" data-id="cjgawpegr001kr4w36ms8x9or" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -271,7 +349,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-78/" data-id="cjg7muluk0020nww3gcvwjnw7" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-78/" data-id="cjgawpeev001cr4w3rf41u9te" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -331,7 +409,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-77/" data-id="cjg7mulpi0012nww34oqwnmac" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-77/" data-id="cjgawpehp001mr4w358ht57ho" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -393,7 +471,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-76/" data-id="cjg7mult5001lnww3onbmob0g" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-76/" data-id="cjgawpecg0014r4w3y5jqjzmx" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -453,7 +531,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-75/" data-id="cjg7mulof000ynww3nm8aclg1" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-75/" data-id="cjgawpe9r000zr4w3yib2tqkr" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -513,7 +591,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-74/" data-id="cjg7muln4000qnww3gyu3t25x" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-74/" data-id="cjgawpeah0011r4w3pnlx7ulj" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -572,7 +650,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-73/" data-id="cjg7mulo1000vnww38m4zu8bn" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-73/" data-id="cjgawpeeb001ar4w3g9g5opg1" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -631,68 +709,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjg7mulmn000onww3bm1espc5" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      <!--  -->
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-
-<!--  -->
-
-
-  
-    <article id="post-LeetCode-Weekly-Contest-71" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/LeetCode/LeetCode-Weekly-Contest-71/">LeetCode Weekly Contest 71</a>
-    </h1>
-  
-
-
-    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-71/" class="article-date"><time datetime="2018-02-11T10:34:39.539Z" itemprop="datePublished">2018-02-11</time></a>
-</div>
-
-    <div class="article-author">Xinyi Li</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>预祝各位新春快乐！今天本来在图书馆准备打的周赛，结果做完三道题后赶上午休，被管理员轰出去了。作为码渣正好借口休息，我心也是够大的直接出去吃饭了（我是反面教材，请大家不要有样学样），剩下那道等回来继续做。整体不难，不涉及什么特别复杂的算法。</p>
-<p><a href="https://leetcode.com/contest/weekly-contest-71/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-71/</a></p>
-<p>提醒一下大家想跟着水周赛的，千万不要忘记提前Register，我不知道是我穷疯了还是LeetCode穷疯了，周赛题都开始突然收费了，不想花钱的话只能保证每周都要Register一下，哪怕Register了以后当天没完成，一周内还是可以免费做的。<del>我们穷人就是这个样子的，不服请打钱</del></p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/LeetCode/LeetCode-Weekly-Contest-71/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-71/" data-id="cjg7mulnm000snww3pm5azfke" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjgawpe9a000ur4w3jvmkuuxn" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -730,7 +747,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">20</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">21</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -755,7 +772,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -764,6 +781,10 @@ var _hmt = _hmt || [];
   <div class="sidebar-module sidebar-recents">
     <h4>Recents</h4>
     <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-81/">LeetCode Weekly Contest 81</a>
+        </li>
       
         <li>
           <a href="/LeetCode/LeetCode-Weekly-Contest-80/">LeetCode Weekly Contest 80</a>
@@ -779,10 +800,6 @@ var _hmt = _hmt || [];
       
         <li>
           <a href="/LeetCode/LeetCode-Weekly-Contest-77/">LeetCode Weekly Contest 77</a>
-        </li>
-      
-        <li>
-          <a href="/LeetCode/LeetCode-Weekly-Contest-76/">LeetCode Weekly Contest 76</a>
         </li>
       
     </ul>
