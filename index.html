@@ -138,38 +138,19 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>https://leetcode.com/contest/weekly-contest-81</p>
-<p>&lt;!-- more --&gt;</p>
-<h2>Shortest Distance to a Character</h2>
-<p>原题地址 https://leetcode.com/contest/weekly-contest-81/problems/shortest-distance-to-a-character/</p>
-<blockquote>
-<p>Given a string <code>S</code> and a character <code>C</code>, return an array of integers representing the shortest distance from the character <code>C</code> in the string.</p>
-</blockquote>
-<blockquote>
-<p><strong>Example 1</strong>:
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;loveleetcode&quot;, C = &apos;e&apos;</span><br><span class="line">Output: [3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0]</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p><strong>Note</strong>:</p>
-</blockquote>
-<ol>
-<li><code>S</code> string length is in <code>[1, 10000]</code>.</li>
-<li><code>C</code> is a single character, and guaranteed to be in string <code>S</code>.
-All letters in <code>S</code> and <code>C</code> are lowercase.</li>
-</ol>
-<p>找到所有<code>C</code>的索引，<code>S</code>的每个字符与所有<code>C</code>的索引值的绝对差取最小值</p>
-<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestToChar</span><span class="params">(self, S, C)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :type C: str</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        targets=[i <span class="keyword">for</span> (i,c) <span class="keyword">in</span> enumerate(S) <span class="keyword">if</span> c==C]</span><br><span class="line">        <span class="keyword">return</span> [min([abs(t-i) <span class="keyword">for</span> t <span class="keyword">in</span> targets]) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(S))]</span><br></pre></td></tr></table></figure></p>
-
+        <p><a href="https://leetcode.com/contest/weekly-contest-81" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-81</a></p>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/LeetCode/LeetCode-Weekly-Contest-81/#more">Read More</a>
+          </p>
+        
       
     </div>
 
     
-      
-
-    
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-81/" data-id="cjgawped00017r4w36dlu3vt3" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-81/" data-id="cjgc9in07001ercw3m90ntk4h" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -228,7 +209,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/" data-id="cjgawpekd001xr4w32sv8776v" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-80/" data-id="cjgc9in2c001xrcw3wzlwtxav" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -288,7 +269,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-79/" data-id="cjgawpegr001kr4w36ms8x9or" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-79/" data-id="cjgc9imzt001arcw3t8nqmduk" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -349,7 +330,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-78/" data-id="cjgawpeev001cr4w3rf41u9te" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-78/" data-id="cjgc9in1x001trcw3lnifs5bs" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -409,7 +390,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-77/" data-id="cjgawpehp001mr4w358ht57ho" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-77/" data-id="cjgc9imyy0013rcw3maro2a3d" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -471,7 +452,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-76/" data-id="cjgawpecg0014r4w3y5jqjzmx" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-76/" data-id="cjgc9in0w001krcw3nap24a9q" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -531,7 +512,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-75/" data-id="cjgawpe9r000zr4w3yib2tqkr" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-75/" data-id="cjgc9imyk0010rcw3cnv55nhh" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -591,7 +572,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-74/" data-id="cjgawpeah0011r4w3pnlx7ulj" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-74/" data-id="cjgc9imxy000vrcw3j0qwcaoe" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -650,7 +631,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-73/" data-id="cjgawpeeb001ar4w3g9g5opg1" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-73/" data-id="cjgc9imy7000yrcw3tqy2yozz" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -709,7 +690,7 @@ All letters in <code>S</code> and <code>C</code> are lowercase.</li>
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjgawpe9a000ur4w3jvmkuuxn" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-72/" data-id="cjgc9imwk000mrcw38aqf1fcc" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
