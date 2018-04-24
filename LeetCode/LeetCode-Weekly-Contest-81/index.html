@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-81">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-23T13:20:04.209Z">
+<meta property="og:updated_time" content="2018-04-24T13:30:56.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 81">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-81">
@@ -169,6 +169,22 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>除了正反两面一样的卡牌无法避免，其他数字都可以通过翻转操作使其只存在于<code>fronts</code>或<code>backs</code>中的一面，只要在这些数字中找到最小的数返回</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flipgame</span><span class="params">(self, fronts, backs)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type fronts: List[int]</span></span><br><span class="line"><span class="string">        :type backs: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        taboo=set(fronts[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(len(fronts)) <span class="keyword">if</span> fronts[i]==backs[i])</span><br><span class="line">        gn=set(fronts+backs)-taboo</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> gn:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> min(gn)</span><br></pre></td></tr></table></figure>
+<h2 id="Short-Encoding-of-Words"><a href="#Short-Encoding-of-Words" class="headerlink" title="Short Encoding of Words"></a>Short Encoding of Words</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-81/problems/short-encoding-of-words/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-81/problems/short-encoding-of-words/</a></p>
+<blockquote>
+<p>Given a list of words, we may encode it by writing a reference string <code>S</code> and a list of indexes <code>A</code>.</p>
+<p>For example, if the list of words is <code>[&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;]</code>, we can write it as <code>S = &quot;time#bell#&quot;</code> and <code>indexes = [0, 2, 5]</code>.</p>
+<p>Then for each index, we will recover the word by reading from the reference string from that index until we reach a “#” character.</p>
+<p>What is the length of the shortest reference string S possible that encodes the given words?</p>
+<p><strong>Example</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: words = [&quot;time&quot;, &quot;me&quot;, &quot;bell&quot;]</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: S = &quot;time#bell#&quot; and indexes = [0, 2, 5].</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= words.length &lt;= 2000</code>.</li>
+<li><code>1 &lt;= words[i].length &lt;= 7</code>.</li>
+<li>Each word has only lowercase letters.</li>
+</ol>
+</blockquote>
+<p>当一个词<code>a</code>的全部内容正好能与<code>b</code>的最后几个字母重合，那么在<code>S</code>中只要保留<code>b</code>串即可。那么在<code>words</code>去掉重复词后，对每个词<code>w</code>只要检查它的所有长度的后缀是否还在<code>words</code>中，如果在则移除，<code>words</code>剩下的词即<code>S</code>中所有的词，每个词后加上<code>#</code>标识即可组成<code>S</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minimumLengthEncoding</span><span class="params">(self, words)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type words: List[str]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        s=set(words)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> words:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(w)):</span><br><span class="line">                <span class="keyword">if</span> w[i:] <span class="keyword">in</span> s:</span><br><span class="line">                    s.remove(w[i:])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum(len(w)+<span class="number">1</span> <span class="keyword">for</span> w <span class="keyword">in</span> s)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -179,7 +195,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-81/" data-id="cjgc9in07001ercw3m90ntk4h" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-81/" data-id="cjgdpm51d0018qcw3e8ltcxmg" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -240,7 +256,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Shortest-Distance-to-a-Character"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Shortest Distance to a Character</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Card-Flipping-Game"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Card Flipping Game</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Shortest-Distance-to-a-Character"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Shortest Distance to a Character</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Card-Flipping-Game"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Card Flipping Game</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Short-Encoding-of-Words"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Short Encoding of Words</span></a></li></ol>
   </div>
 
 
