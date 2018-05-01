@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-82">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-29T09:44:08.922Z">
+<meta property="og:updated_time" content="2018-05-01T13:45:59.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 82">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-82">
@@ -159,6 +159,39 @@ var _hmt = _hmt || [];
 </ol>
 <p>反正转换规则都给你写的很详细了，一个个分支照着做就行，注意元音大小写。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toGoatLatin</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res=[]</span><br><span class="line">        vowel=[<span class="string">'a'</span>,<span class="string">'e'</span>,<span class="string">'i'</span>,<span class="string">'o'</span>,<span class="string">'u'</span>,<span class="string">'A'</span>,<span class="string">'E'</span>,<span class="string">'I'</span>,<span class="string">'O'</span>,<span class="string">'U'</span>]</span><br><span class="line">        <span class="keyword">for</span> i,w <span class="keyword">in</span> enumerate(S.split()):</span><br><span class="line">            <span class="keyword">if</span> w[<span class="number">0</span>] <span class="keyword">in</span> vowel <span class="keyword">or</span> len(w)&lt;<span class="number">2</span>:</span><br><span class="line">                res.append(w+<span class="string">'ma'</span>+<span class="string">'a'</span>*(i+<span class="number">1</span>))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res.append(w[<span class="number">1</span>:]+w[<span class="number">0</span>]+<span class="string">'ma'</span>+<span class="string">'a'</span>*(i+<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> <span class="string">' '</span>.join(res)</span><br></pre></td></tr></table></figure>
+<h2 id="Friends-Of-Appropriate-Ages"><a href="#Friends-Of-Appropriate-Ages" class="headerlink" title="Friends Of Appropriate Ages"></a>Friends Of Appropriate Ages</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-82/problems/friends-of-appropriate-ages/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-82/problems/friends-of-appropriate-ages/</a></p>
+<blockquote>
+<p>Some people will make friend requests. The list of their ages is given and <code>ages[i]</code> is the age of the ith person.</p>
+<p>Person A will NOT friend request person B (B != A) if any of the following conditions are true:</p>
+<ul>
+<li><code>age[B] &lt;= 0.5 * age[A] + 7</code></li>
+<li><code>age[B] &gt; age[A]</code></li>
+<li><code>age[B] &gt; 100 &amp;&amp; age[A] &lt; 100</code><br>Otherwise, A will friend request B.</li>
+</ul>
+<p>Note that if A requests B, B does not necessarily request A.  Also, people will not friend request themselves.</p>
+<p>How many total friend requests are made?</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [16,16]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 2 people friend request each other.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [16,17,18]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Friend requests are made 17 -&gt; 16, 18 -&gt; 17.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [20,30,100,110,120]</span><br><span class="line">Output:</span><br><span class="line">Explanation: Friend requests are made 110 -&gt; 100, 120 -&gt; 110, 120 -&gt; 100.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Notes</strong>:</p>
+<ol>
+<li><code>1 &lt;= ages.length &lt;= 20000</code>.</li>
+<li><code>1 &lt;= ages[i] &lt;= 120</code>.</li>
+</ol>
+</blockquote>
+<p>如果按照这些条件对遍历<code>ages</code>中的排列，因为<code>o(n^2)</code>的时间复杂度可能会TLE，所以可以先试着对<code>ages</code>进行排序，然后对上面那些条件取反，也就是说对于给定的A来说，能接受交友请求的B必须同时满足</p>
+<ul>
+<li><code>ages[B]&gt;0.5*ages[A]+7</code></li>
+<li><code>ages[B]&lt;=ages[A]</code></li>
+<li><code>ages[B]&gt;100</code>或<code>ages[A]&lt;100</code></li>
+</ul>
+<p>前两个条件可以通过二分查找轻松划定一个比较宽泛的坐标范围，最后一个条件不取反直接按照正向去分<code>ages[A]&gt;=100</code>是否成立再取B的上界。需要注意的主要有两个：</p>
+<ol>
+<li><code>ages</code>的元素值可能存在重复，当<code>ages[A]==ages[B]</code>时也是符合前两个条件的</li>
+<li>所以找上界<code>&lt;=ages[A]</code>时，最后的值要减去<code>A</code>本身所占的一个值（自己不能向自己发起好友请求）</li>
+</ol>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numFriendRequests</span><span class="params">(self, ages)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type ages: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        ages.sort()</span><br><span class="line">        hundred=bisect.bisect(ages,<span class="number">100</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(ages)<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">            a=bisect.bisect(ages,ages[i],lo=i)</span><br><span class="line">            b=bisect.bisect(ages,<span class="number">0.5</span>*ages[i]+<span class="number">7</span>,hi=a)</span><br><span class="line">            <span class="keyword">if</span> ages[i]&gt;=<span class="number">100</span>:</span><br><span class="line">                res+=a-b<span class="number">-1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res+=max(min(a<span class="number">-1</span>,hundred)-b,<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>时间复杂度为$o(n \log n)$，空间复杂度为$o(1)$</p>
 
       
     </div>
@@ -169,7 +202,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest=82/" data-id="cjgkmju7b001ag0w39qlzliix" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest=82/" data-id="cjgnpfdr7001158w3j0dyfupu" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -231,7 +264,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Goat-Latin"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Goat Latin</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Goat-Latin"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Goat Latin</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Friends-Of-Appropriate-Ages"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Friends Of Appropriate Ages</span></a></li></ol>
   </div>
 
 
