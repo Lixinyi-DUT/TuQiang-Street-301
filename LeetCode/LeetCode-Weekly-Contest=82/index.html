@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-82">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-03T14:40:06.256Z">
+<meta property="og:updated_time" content="2018-05-03T15:26:16.495Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 82">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-82">
@@ -207,6 +207,9 @@ var _hmt = _hmt || [];
 <li><code>difficulty[i]</code>, <code>profit[i]</code>, <code>worker[i]</code>  are in range <code>[1, 10^5]</code></li>
 </ol>
 </blockquote>
+<p>既然没有任务必须完成的次数限制，那就尽量把员工都安排到他们能力范围内利润最大的任务。先把任务按照利润大小排序，再把员工按照能力高低排序，双指针找到当前员工能胜任的利润最大的任务。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfitAssignment</span><span class="params">(self, difficulty, profit, worker)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type difficulty: List[int]</span></span><br><span class="line"><span class="string">        :type profit: List[int]</span></span><br><span class="line"><span class="string">        :type worker: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        jobs=sorted(zip(profit,difficulty),reverse=<span class="keyword">True</span>)</span><br><span class="line">        worker.sort(reverse=<span class="keyword">True</span>)</span><br><span class="line">        i=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> worker:</span><br><span class="line">            <span class="keyword">while</span> i&lt;len(profit) <span class="keyword">and</span> w&lt;jobs[i][<span class="number">1</span>]:</span><br><span class="line">                i+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i==len(profit):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            res+=jobs[i][<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>时间复杂度主要来自排序的<code>o(max(length) log(max(length)))</code>，空间复杂度为<code>o(len(difficulty))</code></p>
 <h2 id="Making-A-Large-Island"><a href="#Making-A-Large-Island" class="headerlink" title="Making A Large Island"></a>Making A Large Island</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-82/problems/making-a-large-island/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-82/problems/making-a-large-island/</a></p>
 <blockquote>
 <p>In a 2D grid of 0s and 1s, we change at most one <code>0</code> to a <code>1</code>.</p>
@@ -230,7 +233,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest=82/" data-id="cjgqn1mr3001aksw33115w7ud" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest=82/" data-id="cjgqoo9kz0019ugw3s3g22z5m" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
