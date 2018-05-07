@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-83">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-06T09:07:09.647Z">
+<meta property="og:updated_time" content="2018-05-07T10:47:53.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 83">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-83">
@@ -156,6 +156,35 @@ var _hmt = _hmt || [];
 <p>老题了，这种线性扫描一遍找指定子串的问题不知道写过多少次了。可能唯一值得注意的就是最后一个子串的最后一个字符是不是<code>len(S)-1</code>。然后就随便写写吧。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largeGroupPositions</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        interval=[]</span><br><span class="line">        lo=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            <span class="keyword">if</span> c!=S[lo]:</span><br><span class="line">                <span class="keyword">if</span> i-lo<span class="number">-1</span>&gt;<span class="number">1</span>:</span><br><span class="line">                    interval.append([lo,i<span class="number">-1</span>])</span><br><span class="line">                lo=i</span><br><span class="line">        <span class="keyword">if</span> len(S)<span class="number">-1</span>-lo&gt;<span class="number">1</span>:</span><br><span class="line">            interval.append([lo,len(S)<span class="number">-1</span>])</span><br><span class="line">        <span class="keyword">return</span> interval</span><br></pre></td></tr></table></figure>
 <p>线性扫描的时间和空间复杂度都为$o(n)$</p>
+<h2 id="Masking-Personal-Information"><a href="#Masking-Personal-Information" class="headerlink" title="Masking Personal Information"></a>Masking Personal Information</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-83/problems/masking-personal-information/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-83/problems/masking-personal-information/</a></p>
+<blockquote>
+<p>We are given a personal information string <code>S</code>, which may represent either <strong>an email address</strong> or <strong>a phone number</strong>.</p>
+<p>We would like to mask this personal information according to the following rules:</p>
+<p><strong>1. Email address</strong>:</p>
+<p>We define a <strong>name</strong> to be a string of <code>length ≥ 2</code> consisting of only lowercase letters <code>a-z</code> or uppercase letters <code>A-Z</code>.</p>
+<p>An email address starts with a name, followed by the symbol <code>&#39;@&#39;</code>, followed by a name, followed by the dot <code>&#39;.&#39;</code> and followed by a name.</p>
+<p>All email addresses are guaranteed to be valid and in the format of <code>&quot;name1@name2.name3&quot;</code>.</p>
+<p>To mask an email, <strong>all names must be converted to lowercase</strong> and <strong>all letters between the first and last letter of the first name</strong> must be replaced by 5 asterisks <code>&#39;*&#39;</code>.</p>
+<p><strong>2. Phone number</strong>:</p>
+<p>A phone number is a string consisting of only the digits <code>0-9</code> or the characters from the set <code>{&#39;+&#39;, &#39;-&#39;, &#39;(&#39;, &#39;)&#39;, &#39; &#39;}</code>. You may assume a phone number contains 10 to 13 digits.</p>
+<p>The last 10 digits make up the local number, while the digits before those make up the country code. Note that the country code is optional. We want to expose only the last 4 digits and mask all other digits.</p>
+<p>The local number should be formatted and masked as <code>&quot;***-***-1111&quot;</code>, where 1 represents the exposed digits.</p>
+<p>To mask a phone number with country code like <code>&quot;+111 111 111 1111&quot;</code>, we write it in the form <code>&quot;+***-***-***-1111&quot;</code>.  The <code>&#39;+&#39;</code> sign and the first <code>&#39;-&#39;</code> sign before the local number should only exist if there is a country code.  For example, a 12 digit phone number mask should start with <code>&quot;+**-&quot;</code>.</p>
+<p>Note that extraneous characters like <code>&quot;(&quot;, &quot;)&quot;, &quot; &quot;</code>, as well as extra dashes or plus signs not part of the above formatting scheme should be removed.</p>
+<p>Return the correct “mask” of the information provided.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;LeetCode@LeetCode.com&quot;</span><br><span class="line">Output: &quot;l*****e@leetcode.com&quot;</span><br><span class="line">Explanation: All names are converted to lowercase, and the letters between the</span><br><span class="line">             first and last letter of the first name is replaced by 5 asterisks.</span><br><span class="line">             Therefore, &quot;leetcode&quot; -&gt; &quot;l*****e&quot;.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;AB@qq.com&quot;</span><br><span class="line">Output: &quot;a*****b@qq.com&quot;</span><br><span class="line">Explanation: There must be 5 asterisks between the first and last letter</span><br><span class="line">             of the first name &quot;ab&quot;. Therefore, &quot;ab&quot; -&gt; &quot;a*****b&quot;.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;1(234)567-890&quot;</span><br><span class="line">Output: &quot;***-***-7890&quot;</span><br><span class="line">Explanation: 10 digits in the phone number, which means all digits make up the local number.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;86-(10)12345678&quot;</span><br><span class="line">Output: &quot;+**-***-***-5678&quot;</span><br><span class="line">Explanation: 12 digits, 2 digits for country code and 10 digits for local number.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Notes</strong>:</p>
+<ol>
+<li><code>S.length &lt;= 40</code>.</li>
+<li>Emails have length at least 8.</li>
+<li>Phone numbers have length at least 10.</li>
+</ol>
+</blockquote>
+<p>不涉及任何算法，只是处理不规范（其实还算非常规范）数据形式的“脏”活。邮箱地址容易就不说了，电话号码注意主体只有10位，多下来的就是区号，至于原数据是怎么划分电话号码怎么用括号怎么用分隔符的关我什么事，把<code>S</code>的所有数字提取出来然后按照位数处理，保留最后四位就完成了。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maskPII</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'@'</span> <span class="keyword">in</span> S:</span><br><span class="line">            parts=S.lower().split(<span class="string">'@'</span>)</span><br><span class="line">            <span class="keyword">return</span> parts[<span class="number">0</span>][<span class="number">0</span>]+<span class="string">'*****'</span>+parts[<span class="number">0</span>][<span class="number">-1</span>]+<span class="string">'@'</span>+parts[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            nums=filter(<span class="keyword">lambda</span> c:c.isdigit(),S)</span><br><span class="line">            <span class="keyword">if</span> len(nums)&gt;<span class="number">10</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">'+'</span>+<span class="string">'*'</span>*(len(nums)<span class="number">-10</span>)+<span class="string">'-***-***-'</span>+nums[<span class="number">-4</span>:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">'***-***-'</span>+nums[<span class="number">-4</span>:]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -166,7 +195,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-83/" data-id="cjgulg4dh001ep0w3rr846mwb" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-83/" data-id="cjgw48cly001fpcw39yi5h4ub" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -228,7 +257,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Positions-of-Large-Groups"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Positions of Large Groups</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Positions-of-Large-Groups"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Positions of Large Groups</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Masking-Personal-Information"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Masking Personal Information</span></a></li></ol>
   </div>
 
 
