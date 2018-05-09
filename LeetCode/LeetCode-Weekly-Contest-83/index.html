@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-83">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-08T09:50:55.703Z">
+<meta property="og:updated_time" content="2018-05-09T14:34:19.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 83">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-83">
@@ -204,6 +204,32 @@ var _hmt = _hmt || [];
 </ol>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">consecutiveNumbersSum</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        k,res=<span class="number">1</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> k*(k<span class="number">-1</span>)/<span class="number">2</span>&lt;N:</span><br><span class="line">            <span class="keyword">if</span> (k%<span class="number">2</span>==<span class="number">0</span> <span class="keyword">and</span> N%k==k/<span class="number">2</span>) <span class="keyword">or</span> (k%<span class="number">2</span>==<span class="number">1</span> <span class="keyword">and</span> N%k==<span class="number">0</span>):</span><br><span class="line">                res+=<span class="number">1</span></span><br><span class="line">            k+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 <p>时间复杂度为$o(\sqrt{N})$</p>
+<h2 id="Unique-Letter-String"><a href="#Unique-Letter-String" class="headerlink" title="Unique Letter String"></a>Unique Letter String</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-83/problems/unique-letter-string/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-83/problems/unique-letter-string/</a></p>
+<blockquote>
+<p>A character is unique in string <code>S</code> if it occurs exactly once in it.</p>
+<p>For example, in string <code>S = &quot;LETTER&quot;</code>, the only unique characters are “L” and “R”.</p>
+<p>Let’s define <code>UNIQ(S)</code> as the number of unique characters in string S.</p>
+<p>For example, <code>UNIQ(&quot;LETTER&quot;) =  2</code>.</p>
+<p>Given a string <code>S</code> with only uppercases, calculate the sum of <code>UNIQ(substring)</code> over all non-empty substrings of <code>S</code>.</p>
+<p>If there are two or more equal substrings at different positions in <code>S</code>, we consider them different.</p>
+<p>Since the answer can be very large, retrun the answer modulo <code>10 ^ 9 + 7</code>.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ABC&quot;</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: All possible substrings are: &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;AB&quot;,&quot;BC&quot; and &quot;ABC&quot;.</span><br><span class="line">Evey substring is composed with only unique letters.</span><br><span class="line">Sum of lengths of all substring is 1 + 1 + 1 + 2 + 2 + 3 = 10</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ABA&quot;</span><br><span class="line">Output: 8</span><br><span class="line">Explanation: The same as example 1, except uni(&quot;ABA&quot;) = 1.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>0 &lt;= S.length &lt;= 10000</code>.</li>
+</ol>
+</blockquote>
+<p>正向去考虑可以分割出多少个子串，每个子串有多少只出现过一次的字符，因为生成子串本身已经是$o(n^2)$级的，再去计算每个子串的<code>UNIQ</code>值则会上升到$o(n^3)$的复杂度。这时不妨反过来考虑，<code>S</code>的每个字符<code>S[i]</code>会在哪些子串中成为unique字符。</p>
+<p>假设某个字符最近出现的三个位置为<code>k&lt;j&lt;i</code>，<code>S[k]==S[j]==S[i]</code>，那么<code>S[j]</code>在符合这些条件的子串中可以成为unique字符：</p>
+<ol>
+<li>子串第一个字符位置在<code>[k+1,j]</code>，一共<code>j-k</code>种可能</li>
+<li>子串最后一个字符位置在<code>[j,i-1]</code>，一共<code>i-j</code>种可能</li>
+</ol>
+<p>所以<code>S[j]</code>在<code>(j-k)*(i-j)</code>个子串中贡献了1个计数。</p>
+<p>为了方便设定初始条件，可以假设每个字符都在<code>-1</code>和<code>len(S)</code>位置出现过，这样对于每个字符的第一次出现和最后一次出现也可以用上面的方法计算在多少个子串中成为了unique字符。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniqueLetterString</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        pos=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            k,j=pos.get(c,(<span class="number">-1</span>,<span class="number">-1</span>))</span><br><span class="line">            res+=(j-k)*(i-j)</span><br><span class="line">            pos[c]=(j,i)</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> pos:</span><br><span class="line">            k,j=pos[c]</span><br><span class="line">            res+=(j-k)*(len(S)-j)</span><br><span class="line">        <span class="keyword">return</span> res%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<p>时间复杂度为$o(n)$，空间复杂度为$o(1)$</p>
 
       
     </div>
@@ -214,7 +240,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-83/" data-id="cjgw48cly001fpcw39yi5h4ub" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-83/" data-id="cjgz7idwg001cf8w3i3jrgng8" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -276,7 +302,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Positions-of-Large-Groups"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Positions of Large Groups</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Masking-Personal-Information"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Masking Personal Information</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Consecutive-Numbers-Sum"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Consecutive Numbers Sum</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Positions-of-Large-Groups"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Positions of Large Groups</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Masking-Personal-Information"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Masking Personal Information</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Consecutive-Numbers-Sum"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Consecutive Numbers Sum</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Unique-Letter-String"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Unique Letter String</span></a></li></ol>
   </div>
 
 
