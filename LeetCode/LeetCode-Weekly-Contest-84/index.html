@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-84">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-14T12:40:18.212Z">
+<meta property="og:updated_time" content="2018-05-15T15:27:27.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 84">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-84">
@@ -170,6 +170,8 @@ var _hmt = _hmt || [];
 <li>All characters in given inputs are lowercase letters.</li>
 </ol>
 </blockquote>
+<p>比上面那题甚至更简单，Py的<code>str</code>还是不可更改的变量，不用动原地代替的想法，所以索引上都没什么特别要留心的。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findReplaceString</span><span class="params">(self, S, indexes, sources, targets)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :type indexes: List[int]</span></span><br><span class="line"><span class="string">        :type sources: List[str]</span></span><br><span class="line"><span class="string">        :type targets: List[str]</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ptr=<span class="number">0</span></span><br><span class="line">        res=<span class="string">""</span></span><br><span class="line">        <span class="keyword">while</span> ptr&lt;len(S):</span><br><span class="line">            res+=S[ptr]</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(indexes)):</span><br><span class="line">                <span class="keyword">if</span> ptr==indexes[i] <span class="keyword">and</span> ptr+len(sources[i])&lt;=len(S) <span class="keyword">and</span> S[ptr:ptr+len(sources[i])]==sources[i]:</span><br><span class="line">                    res=res[:<span class="number">-1</span>]+targets[i]</span><br><span class="line">                    ptr+=len(sources[i])<span class="number">-1</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            ptr+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -180,7 +182,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-84/" data-id="cjh68l3hu001898w3phypqnb9" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-84/" data-id="cjh7u2ied001lv4w3mmq1bumb" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
