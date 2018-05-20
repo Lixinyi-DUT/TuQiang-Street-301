@@ -3,18 +3,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Archives: 2017/6 | 笔记仓库</title>
+  <title>LeetCode Weekly Contest 84 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正常人的正常笔记站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记仓库">
-<meta property="og:url" content="notebook.xyli.me/archives/2017/06/index.html">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-85">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 84">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-85/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="正常人的正常笔记站">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-85">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-20T13:33:25.331Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记仓库">
-<meta name="twitter:description" content="正常人的正常笔记站">
+<meta name="twitter:title" content="LeetCode Weekly Contest 84">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-85">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -79,7 +80,7 @@ var _hmt = _hmt || [];
           <li><a class=""
                  href="/index.html">Home</a></li>
         
-          <li><a class="active"
+          <li><a class=""
                  href="/archives/">Archives</a></li>
         
       </ul>
@@ -105,75 +106,129 @@ var _hmt = _hmt || [];
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-38/" class="archive-article-date"><time datetime="2017-06-28T07:28:00.000Z" itemprop="datePublished">六月 28日</time></a>
-</div>
+          <article id="post-LeetCode-Weekly-Contest-85" class="article article-type-post" itemscope itemprop="blogPost">
 
+  <header class="article-header">
     
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-38/">LeetCode Weekly Contest 38</a>
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 84
     </h1>
   
 
 
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态规划/">动态规划</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/贪心算法/">贪心算法</a></li></ul>
-
-
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
   </header>
-</article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
+  <div class="article-meta">
     <div class="article-datetime">
-  <a href="/Introduction/illustrations/" class="archive-article-date"><time datetime="2017-06-11T09:21:00.000Z" itemprop="datePublished">六月 11日</time></a>
+  <a href="/LeetCode/LeetCode-Weekly-Contest-85/" class="article-date"><time datetime="2018-05-20T13:21:27.819Z" itemprop="datePublished">2018-05-20</time></a>
 </div>
 
+    <div class="article-author">Xinyi Li</div>
     
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Introduction/illustrations/">灵魂画手的插画集</a>
-    </h1>
-  
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
 
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/contest/weekly-contest-85" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-85</a></p>
+<a id="more"></a>
+<h2 id="Rectangle-Overlap"><a href="#Rectangle-Overlap" class="headerlink" title="Rectangle Overlap"></a>Rectangle Overlap</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-85/problems/rectangle-overlap/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-85/problems/rectangle-overlap/</a></p>
+<blockquote>
+<p>A rectangle is represented as a list <code>[x1, y1, x2, y2]</code>, where <code>(x1, y1)</code> are the coordinates of its bottom-left corner, and <code>(x2, y2)</code> are the coordinates of its top-right corner.</p>
+<p>Two rectangles overlap if the area of their intersection is positive.  To be clear, two rectangles that only touch at the corner or edges do not overlap.</p>
+<p>Given two rectangles, return whether they overlap.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: rec1 = [0,0,2,2], rec2 = [1,1,3,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: rec1 = [0,0,1,1], rec2 = [1,0,2,1]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure></p>
+<p><strong>Notes</strong>:</p>
+<ol>
+<li>Both rectangles <code>rec1</code> and <code>rec2</code> are lists of 4 integers.</li>
+<li>All coordinates in rectangles will be between <code>-10^9</code>and <code>10^9</code>.</li>
+</ol>
+</blockquote>
+<p>左下顶点和右上顶点给出的是整个矩形的x范围和y范围，比较两个矩阵的x范围和y范围是否都有重叠就可以判断两个矩形有无重叠。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isRectangleOverlap</span><span class="params">(self, rec1, rec2)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type rec1: List[int]</span></span><br><span class="line"><span class="string">        :type rec2: List[int]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        r1x1,r1y1,r1x2,r1y2=rec1</span><br><span class="line">        r2x1,r2y1,r2x2,r2y2=rec2</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (r2x1-r1x2)*(r2x2-r1x1)&lt;<span class="number">0</span> <span class="keyword">and</span> (r2y1-r1y2)*(r2y2-r1y1)&lt;<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
 
     
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LaTeX/">LaTeX</a></li></ul>
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-85/" data-id="cjhev1c2g00001ww3yzrhw1ok" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-84/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 84</span>
+    </a>
+  </li>
+  
+  
+</ul>
 
 
-  </header>
+  
 </article>
 
-  
-  
-    </div></section>
-  
 
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sun May 20 2018 21:21:27 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Rectangle-Overlap"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Rectangle Overlap</span></a></li></ol>
+  </div>
+
 
 
   <div class="sidebar-module sidebar-module-inset">
@@ -261,11 +316,13 @@ var _hmt = _hmt || [];
 <script>
   var disqus_shortname = 'notebook-xyli-me';
   
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-85/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
