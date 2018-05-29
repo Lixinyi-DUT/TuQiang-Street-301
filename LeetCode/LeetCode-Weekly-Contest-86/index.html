@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-86">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-28T14:52:53.828Z">
+<meta property="og:updated_time" content="2018-05-29T09:25:47.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 86">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-86">
@@ -168,6 +168,9 @@ var _hmt = _hmt || [];
 <li>The number of keys in all rooms combined is at most <code>3000</code>.</li>
 </ol>
 </blockquote>
+<p>很简单的图遍历问题，根据初始只能访问0结点的BFS，最后验证能否访问全图。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canVisitAllRooms</span><span class="params">(self, rooms)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type rooms: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        access=set(rooms[<span class="number">0</span>]+[<span class="number">0</span>])</span><br><span class="line">        current=rooms[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">while</span> len(access)&lt;len(rooms) <span class="keyword">and</span> current:</span><br><span class="line">            node=current.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> rooms[node]:</span><br><span class="line">                <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> access:</span><br><span class="line">                    access.add(i)</span><br><span class="line">                    current.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> len(access)==len(rooms)</span><br></pre></td></tr></table></figure>
+<p>时间复杂度和空间复杂度都为$o(N)$</p>
 
       
     </div>
@@ -178,7 +181,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-86/" data-id="cjhqdiclk0025k4w3525s7is5" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-86/" data-id="cjhrhaef1001gasw30r9umu4z" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
