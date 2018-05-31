@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-86">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-31T14:12:13.475Z">
+<meta property="og:updated_time" content="2018-05-31T16:53:10.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 86">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-86">
@@ -213,6 +213,14 @@ var _hmt = _hmt || [];
 <p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Input: secret = &quot;acckzz&quot;, wordlist = [&quot;acckzz&quot;,&quot;ccbazz&quot;,&quot;eiowzz&quot;,&quot;abcczz&quot;]</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line"></span><br><span class="line">master.guess(&quot;aaaaaa&quot;) returns -1, because &quot;aaaaaa&quot; is not in wordlist.</span><br><span class="line">master.guess(&quot;acckzz&quot;) returns 6, because &quot;acckzz&quot; is secret and has all 6 matches.</span><br><span class="line">master.guess(&quot;ccbazz&quot;) returns 3, because &quot;ccbazz&quot; has 3 matches.</span><br><span class="line">master.guess(&quot;eiowzz&quot;) returns 2, because &quot;eiowzz&quot; has 2 matches.</span><br><span class="line">master.guess(&quot;abcczz&quot;) returns 4, because &quot;abcczz&quot; has 4 matches.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We made 5 calls to master.guess and one of them was the secret, so we pass the test case.</span><br></pre></td></tr></table></figure></p>
 <p><strong>Note</strong>:  Any solutions that attempt to circumvent the judge will result in disqualification.</p>
 </blockquote>
+<p>新题型，不过没什么好慌的，无非是从长度为100的<code>wordlist</code>猜<code>secret</code>并且调用<code>master.guess(word)</code>次数<code>&lt;=10</code>的限制。注意：</p>
+<ol>
+<li><code>wordlist</code>的元素是随机生成的，且每个词都不同</li>
+<li><code>secret</code>一定在<code>wordlist</code>中</li>
+</ol>
+<p>那么当得到上一次猜测<code>g</code>的返回值<code>n=master.guess(g)</code>，再次猜测的范围就可以缩小到<code>wordlist</code>中只有<code>n</code>个字符和<code>g</code>匹配的子集。这样一步步提高<code>n</code>的值，最后一定能找到<code>secret</code>。问题在于如何找第一个<code>g</code>，为了让最坏的情况，即<code>n=0</code>时下一轮猜测的范围也能减少到最小，每个<code>g</code>应该选择当前<code>wordlist</code>中匹配数为<code>0</code>的元素最少的元素。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># """</span></span><br><span class="line"><span class="comment"># This is Master's API interface.</span></span><br><span class="line"><span class="comment"># You should not implement it, or speculate about its implementation</span></span><br><span class="line"><span class="comment"># """</span></span><br><span class="line"><span class="comment">#class Master(object):</span></span><br><span class="line"><span class="comment">#    def guess(self, word):</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"><span class="comment">#        :type word: str</span></span><br><span class="line"><span class="comment">#        :rtype int</span></span><br><span class="line"><span class="comment">#        """</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findSecretWord</span><span class="params">(self, wordlist, master)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type wordlist: List[Str]</span></span><br><span class="line"><span class="string">        :type master: Master</span></span><br><span class="line"><span class="string">        :rtype: None</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">match_count</span><span class="params">(a,b)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> sum(a[i]==b[i] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">6</span>))</span><br><span class="line"></span><br><span class="line">        n=<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> n&lt;<span class="number">6</span>:</span><br><span class="line">            match=collections.Counter(a <span class="keyword">for</span> (a,b) <span class="keyword">in</span> itertools.permutations(wordlist,<span class="number">2</span>) <span class="keyword">if</span> match_count(a,b)==<span class="number">0</span>)</span><br><span class="line">            g=min(wordlist,key=<span class="keyword">lambda</span> w:match[w])</span><br><span class="line">            n=master.guess(g)</span><br><span class="line">            wordlist=[w <span class="keyword">for</span> w <span class="keyword">in</span> wordlist <span class="keyword">if</span> match_count(g,w)==n]</span><br></pre></td></tr></table></figure>
+<p>令$n$为<code>wordlist</code>长度，时间复杂度为$o(n^2)$，空间复杂度为$o(n)$</p>
 
       
     </div>
@@ -223,7 +231,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-86/" data-id="cjhumfqmg002awkw36xt9adxo" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-86/" data-id="cjhus3yo2001h34w3xdn5a3vi" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -403,23 +411,7 @@ var _hmt = _hmt || [];
 
 
 
-<script src="/js/script.js"></script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -437,5 +429,6 @@ var _hmt = _hmt || [];
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
 </body>
 </html>
