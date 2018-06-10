@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-88/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-10T13:00:36.050Z">
+<meta property="og:updated_time" content="2018-06-10T13:00:51.586Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 88">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-88/">
@@ -153,7 +153,7 @@ var _hmt = _hmt || [];
 <li><code>0 &lt;= shifts[i] &lt;= 10 ^ 9</code></li>
 </ol>
 </blockquote>
-<p>难度被标记为<code>Medium</code>有些夸张，大概主要是要对<code>shifts</code>处理一下，每个元素还要加上后面所有元素的和。不过这题也是够直接和无聊的。</p>
+<p>难度被标记为<code>Medium</code>有些夸张，大概主要是要对<code>shifts</code>处理一下，每个元素还要加上后面所有元素的和。不过这题也是够直接和无聊的</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shiftingLetters</span><span class="params">(self, S, shifts)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :type shifts: List[int]</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        S=list(S)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(shifts)<span class="number">-2</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">            shifts[i]+=shifts[i+<span class="number">1</span>]%<span class="number">26</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(S)):</span><br><span class="line">            S[i]=chr((ord(S[i])+shifts[i]-ord(<span class="string">'a'</span>))%<span class="number">26</span>+ord(<span class="string">'a'</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(S)</span><br></pre></td></tr></table></figure>
 <p>时间复杂度为$o(N)$</p>
 
@@ -166,7 +166,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-88/" data-id="cji8u7356001oq0w3pbb78gjw" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-88/" data-id="cji8v78rq001re0w3wgagfdiy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
