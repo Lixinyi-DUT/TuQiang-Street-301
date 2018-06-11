@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="https://leetcode.com/contest/weekly-contest-88/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-10T13:00:51.586Z">
+<meta property="og:updated_time" content="2018-06-11T09:26:06.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 88">
 <meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-88/">
@@ -156,6 +156,23 @@ var _hmt = _hmt || [];
 <p>难度被标记为<code>Medium</code>有些夸张，大概主要是要对<code>shifts</code>处理一下，每个元素还要加上后面所有元素的和。不过这题也是够直接和无聊的</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shiftingLetters</span><span class="params">(self, S, shifts)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :type shifts: List[int]</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        S=list(S)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(shifts)<span class="number">-2</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">            shifts[i]+=shifts[i+<span class="number">1</span>]%<span class="number">26</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(S)):</span><br><span class="line">            S[i]=chr((ord(S[i])+shifts[i]-ord(<span class="string">'a'</span>))%<span class="number">26</span>+ord(<span class="string">'a'</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(S)</span><br></pre></td></tr></table></figure>
 <p>时间复杂度为$o(N)$</p>
+<h2 id="Maximize-Distance-to-Closest-Person"><a href="#Maximize-Distance-to-Closest-Person" class="headerlink" title="Maximize Distance to Closest Person"></a>Maximize Distance to Closest Person</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-88/problems/maximize-distance-to-closest-person/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-88/problems/maximize-distance-to-closest-person/</a></p>
+<blockquote>
+<p>In a row of <code>seats</code>, <code>1</code> represents a person sitting in that seat, and <code>0</code> represents that the seat is empty.</p>
+<p>There is at least one empty seat, and at least one person sitting.</p>
+<p>Alex wants to sit in the seat such that the distance between him and the closest person to him is maximized.</p>
+<p>Return that maximum distance to closest person.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,0,0,0,1,0,1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">If Alex sits in the second open seat (seats[2]), then the closest person has distance 2.</span><br><span class="line">If Alex sits in any other open seat, the closest person has distance 1.</span><br><span class="line">Thus, the maximum distance to the closest person is 2.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,0,0,0]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">If Alex sits in the last seat, the closest person is 3 seats away.</span><br><span class="line">This is the maximum distance possible, so the answer is 3.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= seats.length &lt;= 20000</code></li>
+<li><code>seats</code> contains only 0s or 1s, at least one <code>0</code>, and at least one <code>1</code>.</li>
+</ol>
+</blockquote>
+<p>比上一题还要简单一些，两个<code>1</code>中间的位置，<code>seats[0]</code>，<code>seats[-1]</code>都可能成为使最近人最远的选座，找到最大值即可。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDistToClosest</span><span class="params">(self, seats)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type seats: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        token=[i <span class="keyword">for</span> i <span class="keyword">in</span> range(len(seats)) <span class="keyword">if</span> seats[i]]</span><br><span class="line">        gap=[int((token[i]-token[i<span class="number">-1</span>])/<span class="number">2</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,len(token))]</span><br><span class="line">        <span class="keyword">return</span> max(gap+[token[<span class="number">0</span>],len(seats)<span class="number">-1</span>-token[<span class="number">-1</span>]])</span><br></pre></td></tr></table></figure>
+<p>时间复杂度和空间复杂度为$o(n)$</p>
 
       
     </div>
@@ -166,7 +183,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-88/" data-id="cji9yahcs001rasw35qnl58cw" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-88/" data-id="cjia21hc8001qzow3rjj727tt" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -228,7 +245,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Shifting-Letters"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Shifting Letters</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Shifting-Letters"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Shifting Letters</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Maximize-Distance-to-Closest-Person"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Maximize Distance to Closest Person</span></a></li></ol>
   </div>
 
 
