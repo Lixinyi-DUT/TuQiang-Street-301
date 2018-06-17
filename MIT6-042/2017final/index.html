@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>试着做一下MIT 6.042的期末题 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="试着做一下MIT 6.042的期末题">
+<meta property="og:url" content="notebook.xyli.me/MIT6-042/2017final/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-17T09:33:32.675Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="试着做一下MIT 6.042的期末题">
+<meta name="twitter:description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-2017final" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      试着做一下MIT 6.042的期末题
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/MIT6-042/2017final/" class="article-date"><time datetime="2018-06-15T06:29:01.762Z" itemprop="datePublished">2018-06-15</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/MIT6-042/">MIT6.042</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>2017年的math for cs期末题，180分钟，原题挂在了 <a href="https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf" target="_blank" rel="noopener">https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf</a> 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。</p>
+<a id="more"></a>
+<hr>
+<h2 id="Problem-1-Simple-Graphs-amp-Trees"><a href="#Problem-1-Simple-Graphs-amp-Trees" class="headerlink" title="Problem 1 Simple Graphs &amp; Trees"></a>Problem 1 Simple Graphs &amp; Trees</h2><div class="bs-callout bs-callout-default"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>$${41 \choose 2}$$</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>完全图中每个顶点都必然与其他所有顶点邻接，$K_{41}$只有1种结构</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>$C_{41}$已经是规定了边集顺序的特定的环，而不是一般意义上的顶点数为41的环</p>
+<blockquote>
+<p>isomorphisms from $C_{41}$ to $C_{41}$</p>
+</blockquote>
+<p>这个说法有点奇怪，我暂且理解为问题中的$C_{41}$有多少isomorphisms</p>
+<p>选择从环的一个顶点开始依次放置41个顶点，这里有$41!$种排列的方法，而起始顶点之间又是等效的，因此共有$41!/41=40!$种同构。</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>众所周知，有$\chi \left( {K_n} \right) = n$，所以$\chi \left( K_{41} \right) = 41$</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="e"><a href="#e" class="headerlink" title=" e"></a><i class="fa fa-bookmark-o"></i> e</h4><p>同样，我们知道$\chi \left( C_{odd} \right) = 3$，所以$\chi \left( C_{41} \right) = 3$</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="f"><a href="#f" class="headerlink" title=" f"></a><i class="fa fa-bookmark-o"></i> f</h4><p>41个结点的树的边数$\left| E \right| = \left| V \right| - 1 = 40$</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="g"><a href="#g" class="headerlink" title=" g"></a><i class="fa fa-bookmark-o"></i> g</h4><p>移除$C_{41}$的任意一条边都可以得到$C_{41}$的一个独特的生成树（实际上是路径），因此生成树的数量就是边数41</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="h"><a href="#h" class="headerlink" title=" h"></a><i class="fa fa-bookmark-o"></i> h</h4><p>$K_{41}$的任意两个顶点之间直接由边连通，找长度为10的路径数可以通过找11个顶点组成的不同序列数即${}^{41}{P_{11}}$，路径的起点与终点不作区分，因此为${}^{41}{P_{11}}/2=41!/(2 \cdot 30!)$</p>
+</div>
+<h2 id="Problem-2-Quantifiers"><a href="#Problem-2-Quantifiers" class="headerlink" title="Problem 2 Quantifiers"></a>Problem 2 Quantifiers</h2><p><del>就是problem 3.43 原题</del></p>
+<div class="bs-callout bs-callout-primary"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>i.o.的限制只要求使得$R(n)$为真的$n$有无限多个，可以是<br>${\bf{Q}}_1$: $\forall {n_0}$<br>${\bf{Q}}_2$: $\exists n \ge {n_0}$<br>如果这样的集合是有限的，那么该集合存在一个最大的$n_0$，对于$n_0+1$也存在一个$n \ge n_0+1&gt;n_0$使$R(n)$为真，这与$n_0$是该集合最大值矛盾，故该集合有限的假设不成立。使得$R(n)$成立的$n$构成无限集。</p>
+</div>
+<div class="bs-callout bs-callout-primary"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>a.e.严格规定了使$R(n)$为假的$n$只能为有限个，可以是<br>${\bf{Q}}_3$: $\exists {n_0}$<br>${\bf{Q}}_4$: $\forall n \ge {n_0}$<br>仅当$n&lt;n_0$时$S(n)$可能为假，则这样$n$数量不可能超过$n_0$的最小值，使$S(n)$为假的$n$是有限的。</p>
+</div>
+<h2 id="Problem-3-Logical-Injections"><a href="#Problem-3-Logical-Injections" class="headerlink" title="Problem 3 Logical Injections"></a>Problem 3 Logical Injections</h2><p><del>problem 4.43 原题简化</del></p>
+<div class="bs-callout bs-callout-danger"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>找到使得$R$为单射关系的充分条件</p>
+<ul>
+<li><i class="fa fa-square-o"></i> (i) $R(x)$和$R(y)$都是集合，只要里面的元素不完全相同就可以取到$\ne$，二者仍然可能交集不为空，在交集中的点存在$\ge 2$条入边，不符合单射关系。</li>
+<li><i class="fa fa-check-square-o"></i> (ii) 不同的$x$和$y$无法通过$R$与同一个点连接，即陪域上不存在超过1的点，符合单射的定义。</li>
+<li><i class="fa fa-check-square-o"></i> (iii) 任意$x$指向的点只被$\le 1$个点指向，如果$x$出度不为0，则这个点就是$x$，如果$x$出度为0，则为空集。</li>
+<li><i class="fa fa-square-o"></i> (iv) 任意$x$指向的点至少被$\ge 1$个点指向，这是不符合单射定义的。</li>
+</ul>
+</div>
+<div class="bs-callout bs-callout-danger"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>$not(S \; inj \; [0,1]) \iff not([0,1] \; surj \; S) \iff A \; strict \;  B$<br>找一个严格小于$[0,1]$的无穷集就可以了，最简单的构造$pow([0,1])$</p>
+</div>
+<h2 id="Problem-4-Number-Theory"><a href="#Problem-4-Number-Theory" class="headerlink" title="Problem 4 Number Theory"></a>Problem 4 Number Theory</h2><p><del>类似原题在problem 9.10</del></p>
+<div class="bs-callout bs-callout-success"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>True</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>(ii)</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>False</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>$\gcd \left(a^2,b^2 \right) = \left( \gcd \left( a,b \right)\right)^2$<br>(iii)</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="e"><a href="#e" class="headerlink" title=" e"></a><i class="fa fa-bookmark-o"></i> e</h4><p>(iv)</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="f"><a href="#f" class="headerlink" title=" f"></a><i class="fa fa-bookmark-o"></i> f</h4><p>True</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="g"><a href="#g" class="headerlink" title=" g"></a><i class="fa fa-bookmark-o"></i> g</h4><p>Fermat小定理要求(i)+(vii)就够了，但只能选一项就选(viii)</p>
+</div>
+<h2 id="Problem-5-Counting"><a href="#Problem-5-Counting" class="headerlink" title="Problem 5 Counting"></a>Problem 5 Counting</h2><p><del>原题 Problem 15.43</del><br><div class="bs-callout bs-callout-info"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p><del>原结论见Problem 15.7</del><br>(2)</p>
+</div></p>
+<div class="bs-callout bs-callout-info"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>(1)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>(8)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>(7)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="e"><a href="#e" class="headerlink" title=" e"></a><i class="fa fa-bookmark-o"></i> e</h4><p>(8)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="f"><a href="#f" class="headerlink" title=" f"></a><i class="fa fa-bookmark-o"></i> f</h4><p>(1)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="g"><a href="#g" class="headerlink" title=" g"></a><i class="fa fa-bookmark-o"></i> g</h4><p>(5)</p>
+</div>
+<h2 id="Problem-6-Structural-Induction"><a href="#Problem-6-Structural-Induction" class="headerlink" title="Problem 6 Structural Induction"></a>Problem 6 Structural Induction</h2><p>不太想写证明，特别是这种自娱自乐的recursive definitions的structural induction真没什么意思，随便写写吧，不用当真。</p>
+<p>命题：对于任意Atrig $f(x)$，其导函数也是Atrig<br><div class="bs-callout bs-callout-default"><h4 id="Base-Case"><a href="#Base-Case" class="headerlink" title=" Base Case"></a><i class="fa fa-bookmark-o"></i> Base Case</h4><ul>
+<li>当$f(x)=id(x)$时，导函数$f’(x)=1$是常函数，所以是Atrig</li>
+<li>当$f(x)=c$为常函数时，导函数$f’(x)=0$是常函数，所以是Atrig</li>
+<li>当$f(x)=\sin(x)$时，导函数$f’(x)=\cos(x)=\sin(x-\pi/2)$，$y=x$是Atrig，$y=\pi/2$也是Atrig，这两个函数的和$y=x-\pi/2$根据递归定义Atrig函数的和也是Atrig，那它与另一个Atrig函数$y=\sin(x)$的复合结构根据递归定义也是Atrig，即$f’$是Atrig</li>
+</ul>
+</div></p>
+<div class="bs-callout bs-callout-default"><h4 id="Constructor-case"><a href="#Constructor-case" class="headerlink" title=" Constructor case"></a><i class="fa fa-bookmark-o"></i> Constructor case</h4><p>假设对于$f$和$g$，都有$f’$和$g’$也为Atrig成立</p>
+<ul>
+<li>$(f+g)’=f’+g’$，因为$f’$和$g’$都是Atrig，$(f+g)’$也是Atrig</li>
+<li>$(f \cdot g)’=f \cdot g’+f’ \cdot g$，$f$和$g’$都是Atrig，所以二者的乘积$f \cdot g’$也是Atrig，同理$f’ \cdot g$也是，它们的和也是，所以$(f \cdot g)’$是Atrig</li>
+<li>$\left( f \circ g \right)’= g’ \cdot \left( {f’ \circ g} \right)$，$f’$和$g$都是Atrig，所以$f’ \circ g$也是Atrig，又因为$g’$是Atrig，所以它们的乘积即$\left( f \circ g \right)’$也是Atrig</li>
+</ul>
+</div>
+<p>综上所述，该命题成立。</p>
+<h2 id="Problem-7-Probable-Satisfiability"><a href="#Problem-7-Probable-Satisfiability" class="headerlink" title="Problem 7 Probable Satisfiability"></a>Problem 7 Probable Satisfiability</h2><p><del>原题Promblem 19.22</del></p>
+<p>不严格按照概率和期望的格式来写了</p>
+<div class="bs-callout bs-callout-warning"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>$1-1/2^3=7/8$</p>
+</div>
+<div class="bs-callout bs-callout-warning"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>每个3-clause为真的期望为$7/8$，真3-clause数量的期望为$7/8 \times 7=49/8$</p>
+</div>
+<div class="bs-callout bs-callout-warning"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>假设$G$是不可能为真的，即真3-clause数量$X$有$Pr(X=7)=0$<br><span>$$\begin{align}<br>Ex\left( X \right) &amp; = \sum\limits_{i = 0}^6 {i \cdot \Pr \left( {X = i} \right)} \\<br> &amp; \le \sum\limits_{i = 0}^6 {6 \cdot \Pr \left( {X = i} \right)} \\<br> &amp; = 6<br>\end{align}$$</span><!-- Has MathJax --><br>与b的答案$Ex(X)&gt;6$矛盾，所以假设不成立，$G$是可以满足的。</p>
+</div>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/MIT6-042/2017final/" data-id="cjifn0lg1000134w3qojnyxiw" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-88/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 88</span>
+    </a>
+  </li>
+  
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">LeetCode Weekly Contest 89</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Fri Jun 15 2018 14:29:01 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-1-Simple-Graphs-amp-Trees"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Problem 1 Simple Graphs & Trees</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-2-Quantifiers"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Problem 2 Quantifiers</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-3-Logical-Injections"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Problem 3 Logical Injections</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-4-Number-Theory"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Problem 4 Number Theory</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-5-Counting"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">Problem 5 Counting</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-6-Structural-Induction"><span class="sidebar-module-list-number">6.</span> <span class="sidebar-module-list-text">Problem 6 Structural Induction</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-7-Probable-Satisfiability"><span class="sidebar-module-list-number">7.</span> <span class="sidebar-module-list-text">Problem 7 Probable Satisfiability</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>本站作者是失败人士，另一个博客已关闭详情见<a href="http://notebook.xyli.me/Introduction/broken-project-yangzhou/" style="text-decoration:none;">失败的扬州计划</a> 投稿或其他事项的交流可联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">29</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 20px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-89/">LeetCode Weekly Contest 89</a>
+        </li>
+      
+        <li>
+          <a href="/MIT6-042/2017final/">试着做一下MIT 6.042的期末题</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-88/">LeetCode Weekly Contest 88</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-87/">LeetCode Weekly Contest 87</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-86/">LeetCode Weekly Contest 86</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/MIT6-042/2017final/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
