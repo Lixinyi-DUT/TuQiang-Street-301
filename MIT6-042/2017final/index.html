@@ -5,17 +5,17 @@
   
   <title>试着做一下MIT 6.042的期末题 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。 ">
+  <meta name="description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="试着做一下MIT 6.042的期末题">
 <meta property="og:url" content="notebook.xyli.me/MIT6-042/2017final/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。 &amp;lt;!-- more --&amp;gt;  Problem 1 Simple Gr">
+<meta property="og:description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-17T16:00:14.387Z">
+<meta property="og:updated_time" content="2018-06-18T13:51:13.832Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="试着做一下MIT 6.042的期末题">
-<meta name="twitter:description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。 &amp;lt;!-- more --&amp;gt;  Problem 1 Simple Gr">
+<meta name="twitter:description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -137,205 +137,142 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。</p>
-<p>&lt;!-- more --&gt;</p>
+        <p>2017年的math for cs期末题，180分钟，原题挂在了 <a href="https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf" target="_blank" rel="noopener">https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf</a> 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。</p>
+<a id="more"></a>
 <hr>
-<h2>Problem 1 Simple Graphs &amp; Trees</h2>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; a</h4>
-<p>$${41 \choose 2}$$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; b</h4>
-<p>完全图中每个顶点都必然与其他所有顶点邻接，$K_{41}$只有1种结构</p>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; c</h4>
-<p>$C_{41}$已经是规定了边集顺序的特定的环，而不是一般意义上的顶点数为41的环</p>
+<h2 id="Problem-1-Simple-Graphs-amp-Trees"><a href="#Problem-1-Simple-Graphs-amp-Trees" class="headerlink" title="Problem 1 Simple Graphs &amp; Trees"></a>Problem 1 Simple Graphs &amp; Trees</h2><div class="bs-callout bs-callout-default"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>$${41 \choose 2}$$</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>完全图中每个顶点都必然与其他所有顶点邻接，$K_{41}$只有1种结构</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>$C_{41}$已经是规定了边集顺序的特定的环，而不是一般意义上的顶点数为41的环</p>
 <blockquote>
 <p>isomorphisms from $C_{41}$ to $C_{41}$</p>
 </blockquote>
 <p>这个说法有点奇怪，我暂且理解为问题中的$C_{41}$有多少isomorphisms</p>
 <p>选择从环的一个顶点开始依次放置41个顶点，这里有$41!$种排列的方法，而起始顶点之间又是等效的，因此共有$41!/41=40!$种同构。</p>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; d</h4>
-<p>众所周知，有$\chi \left( {K_n} \right) = n$，所以$\chi \left( K_{41} \right) = 41$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; e</h4>
-<p>同样，我们知道$\chi \left( C_{odd} \right) = 3$，所以$\chi \left( C_{41} \right) = 3$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; f</h4>
-<p>41个结点的树的边数$\left| E \right| = \left| V \right| - 1 = 40$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; g</h4>
-<p>移除$C_{41}$的任意一条边都可以得到$C_{41}$的一个独特的生成树（实际上是路径），因此生成树的数量就是边数41</p>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; h</h4>
-<p>$K_{41}$的任意两个顶点之间直接由边连通，找长度为10的路径数可以通过找11个顶点组成的不同序列数即${}^{41}{P_{11}}$，路径的起点与终点不作区分，因此为${}^{41}{P_{11}}/2=41!/(2 \cdot 30!)$</p>
-</div></p>
-<h2>Problem 2 Quantifiers</h2>
-<p><s>就是problem 3.43 原题</s></p>
-<p><div class="bs-callout bs-callout-primary"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; a</h4>
-<p>i.o.的限制只要求使得$R(n)$为真的$n$有无限多个，可以是
-${\bf{Q}}_1$: $\forall {n_0}$
-${\bf{Q}}_2$: $\exists n \ge {n_0}$
-如果这样的集合是有限的，那么该集合存在一个最大的$n_0$，对于$n_0+1$也存在一个$n \ge n_0+1&gt;n_0$使$R(n)$为真，这与$n_0$是该集合最大值矛盾，故该集合有限的假设不成立。使得$R(n)$成立的$n$构成无限集。</p>
-</div></p>
-<p><div class="bs-callout bs-callout-primary"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; b</h4>
-<p>a.e.严格规定了使$R(n)$为假的$n$只能为有限个，可以是
-${\bf{Q}}_3$: $\exists {n_0}$
-${\bf{Q}}_4$: $\forall n \ge {n_0}$
-仅当$n&lt;n_0$时$S(n)$可能为假，则这样$n$数量不可能超过$n_0$的最小值，使$S(n)$为假的$n$是有限的。</p>
-</div></p>
-<h2>Problem 3 Logical Injections</h2>
-<p><s>problem 4.43 原题简化</s></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; a</h4>
-<p>找到使得$R$为单射关系的充分条件</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>众所周知，有$\chi \left( {K_n} \right) = n$，所以$\chi \left( K_{41} \right) = 41$</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="e"><a href="#e" class="headerlink" title=" e"></a><i class="fa fa-bookmark-o"></i> e</h4><p>同样，我们知道$\chi \left( C_{odd} \right) = 3$，所以$\chi \left( C_{41} \right) = 3$</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="f"><a href="#f" class="headerlink" title=" f"></a><i class="fa fa-bookmark-o"></i> f</h4><p>41个结点的树的边数$\left| E \right| = \left| V \right| - 1 = 40$</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="g"><a href="#g" class="headerlink" title=" g"></a><i class="fa fa-bookmark-o"></i> g</h4><p>移除$C_{41}$的任意一条边都可以得到$C_{41}$的一个独特的生成树（实际上是路径），因此生成树的数量就是边数41</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="h"><a href="#h" class="headerlink" title=" h"></a><i class="fa fa-bookmark-o"></i> h</h4><p>$K_{41}$的任意两个顶点之间直接由边连通，找长度为10的路径数可以通过找11个顶点组成的不同序列数即${}^{41}{P_{11}}$，路径的起点与终点不作区分，因此为${}^{41}{P_{11}}/2=41!/(2 \cdot 30!)$</p>
+</div>
+<h2 id="Problem-2-Quantifiers"><a href="#Problem-2-Quantifiers" class="headerlink" title="Problem 2 Quantifiers"></a>Problem 2 Quantifiers</h2><p><del>就是problem 3.43 原题</del></p>
+<div class="bs-callout bs-callout-primary"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>i.o.的限制只要求使得$R(n)$为真的$n$有无限多个，可以是<br>${\bf{Q}}_1$: $\forall {n_0}$<br>${\bf{Q}}_2$: $\exists n \ge {n_0}$<br>如果这样的集合是有限的，那么该集合存在一个最大的$n_0$，对于$n_0+1$也存在一个$n \ge n_0+1&gt;n_0$使$R(n)$为真，这与$n_0$是该集合最大值矛盾，故该集合有限的假设不成立。使得$R(n)$成立的$n$构成无限集。</p>
+</div>
+<div class="bs-callout bs-callout-primary"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>a.e.严格规定了使$R(n)$为假的$n$只能为有限个，可以是<br>${\bf{Q}}_3$: $\exists {n_0}$<br>${\bf{Q}}_4$: $\forall n \ge {n_0}$<br>仅当$n&lt;n_0$时$S(n)$可能为假，则这样$n$数量不可能超过$n_0$的最小值，使$S(n)$为假的$n$是有限的。</p>
+</div>
+<h2 id="Problem-3-Logical-Injections"><a href="#Problem-3-Logical-Injections" class="headerlink" title="Problem 3 Logical Injections"></a>Problem 3 Logical Injections</h2><p><del>problem 4.43 原题简化</del></p>
+<div class="bs-callout bs-callout-danger"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>找到使得$R$为单射关系的充分条件</p>
 <ul>
-<li>&lt;i class=&quot;fa fa-square-o&quot;&gt;&lt;/i&gt; (i) $R(x)$和$R(y)$都是集合，只要里面的元素不完全相同就可以取到$\ne$，二者仍然可能交集不为空，在交集中的点存在$\ge 2$条入边，不符合单射关系。</li>
-<li>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; (ii) 不同的$x$和$y$无法通过$R$与同一个点连接，即陪域上不存在超过1的点，符合单射的定义。</li>
-<li>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; (iii) 任意$x$指向的点只被$\le 1$个点指向，如果$x$出度不为0，则这个点就是$x$，如果$x$出度为0，则为空集。</li>
-<li>&lt;i class=&quot;fa fa-square-o&quot;&gt;&lt;/i&gt; (iv) 任意$x$指向的点至少被$\ge 1$个点指向，这是不符合单射定义的。</li>
+<li><i class="fa fa-square-o"></i> (i) $R(x)$和$R(y)$都是集合，只要里面的元素不完全相同就可以取到$\ne$，二者仍然可能交集不为空，在交集中的点存在$\ge 2$条入边，不符合单射关系。</li>
+<li><i class="fa fa-check-square-o"></i> (ii) 不同的$x$和$y$无法通过$R$与同一个点连接，即陪域上不存在超过1的点，符合单射的定义。</li>
+<li><i class="fa fa-check-square-o"></i> (iii) 任意$x$指向的点只被$\le 1$个点指向，如果$x$出度不为0，则这个点就是$x$，如果$x$出度为0，则为空集。</li>
+<li><i class="fa fa-square-o"></i> (iv) 任意$x$指向的点至少被$\ge 1$个点指向，这是不符合单射定义的。</li>
+</ul>
+</div>
+<div class="bs-callout bs-callout-danger"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>$not(S \; inj \; [0,1]) \iff not([0,1] \; surj \; S) \iff A \; strict \;  B$<br>找一个严格小于$[0,1]$的无穷集就可以了，最简单的构造$pow([0,1])$</p>
+</div>
+<h2 id="Problem-4-Number-Theory"><a href="#Problem-4-Number-Theory" class="headerlink" title="Problem 4 Number Theory"></a>Problem 4 Number Theory</h2><p><del>类似原题在problem 9.10</del></p>
+<div class="bs-callout bs-callout-success"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>True</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>(ii)</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>False</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>$\gcd \left(a^2,b^2 \right) = \left( \gcd \left( a,b \right)\right)^2$<br>(iii)</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="e"><a href="#e" class="headerlink" title=" e"></a><i class="fa fa-bookmark-o"></i> e</h4><p>(iv)</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="f"><a href="#f" class="headerlink" title=" f"></a><i class="fa fa-bookmark-o"></i> f</h4><p>True</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="g"><a href="#g" class="headerlink" title=" g"></a><i class="fa fa-bookmark-o"></i> g</h4><p>Fermat小定理要求(i)+(vii)就够了，但只能选一项就选(viii)</p>
+</div>
+<h2 id="Problem-5-Counting"><a href="#Problem-5-Counting" class="headerlink" title="Problem 5 Counting"></a>Problem 5 Counting</h2><p><del>原题 Problem 15.43</del><br><div class="bs-callout bs-callout-info"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p><del>原结论见Problem 15.7</del><br>(2)</p>
+</div></p>
+<div class="bs-callout bs-callout-info"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>(1)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>(8)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>(7)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="e"><a href="#e" class="headerlink" title=" e"></a><i class="fa fa-bookmark-o"></i> e</h4><p>(8)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="f"><a href="#f" class="headerlink" title=" f"></a><i class="fa fa-bookmark-o"></i> f</h4><p>(1)</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="g"><a href="#g" class="headerlink" title=" g"></a><i class="fa fa-bookmark-o"></i> g</h4><p>(5)</p>
+</div>
+<h2 id="Problem-6-Structural-Induction"><a href="#Problem-6-Structural-Induction" class="headerlink" title="Problem 6 Structural Induction"></a>Problem 6 Structural Induction</h2><p>不太想写证明，特别是这种自娱自乐的recursive definitions的structural induction真没什么意思，随便写写吧，不用当真。</p>
+<p>命题：对于任意Atrig $f(x)$，其导函数也是Atrig<br><div class="bs-callout bs-callout-default"><h4 id="Base-Case"><a href="#Base-Case" class="headerlink" title=" Base Case"></a><i class="fa fa-bookmark-o"></i> Base Case</h4><ul>
+<li>当$f(x)=id(x)$时，导函数$f’(x)=1$是常函数，所以是Atrig</li>
+<li>当$f(x)=c$为常函数时，导函数$f’(x)=0$是常函数，所以是Atrig</li>
+<li>当$f(x)=\sin(x)$时，导函数$f’(x)=\cos(x)=\sin(x-\pi/2)$，$y=x$是Atrig，$y=\pi/2$也是Atrig，这两个函数的和$y=x-\pi/2$根据递归定义Atrig函数的和也是Atrig，那它与另一个Atrig函数$y=\sin(x)$的复合结构根据递归定义也是Atrig，即$f’$是Atrig</li>
 </ul>
 </div></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; b</h4>
-<p>$not(S ; inj ; [0,1]) \iff not([0,1] ; surj ; S) \iff A ; strict ;  B$
-找一个严格小于$[0,1]$的无穷集就可以了，最简单的构造$pow([0,1])$</p>
-</div></p>
-<h2>Problem 4 Number Theory</h2>
-<p><s>类似原题在problem 9.10</s></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; a</h4>
-<p>True</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; b</h4>
-<p>(ii)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; c</h4>
-<p>False</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; d</h4>
-<p>$\gcd \left(a^2,b^2 \right) = \left( \gcd \left( a,b \right)\right)^2$
-(iii)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; e</h4>
-<p>(iv)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; f</h4>
-<p>True</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; g</h4>
-<p>Fermat小定理要求(i)+(vii)就够了，但只能选一项就选(viii)</p>
-</div></p>
-<h2>Problem 5 Counting</h2>
-<p><s>原题 Problem 15.43</s>
-<div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; a</h4>
-<p><s>原结论见Problem 15.7</s>
-(2)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; b</h4>
-<p>(1)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; c</h4>
-<p>(8)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; d</h4>
-<p>(7)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; e</h4>
-<p>(8)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; f</h4>
-<p>(1)</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; g</h4>
-<p>(5)</p>
-</div></p>
-<h2>Problem 6 Structural Induction</h2>
-<p>不太想写证明，特别是这种自娱自乐的recursive definitions的structural induction真没什么意思，随便写写吧，不用当真。</p>
-<p>命题：对于任意Atrig $f(x)$，其导函数也是Atrig
-<div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; Base Case</h4>
+<div class="bs-callout bs-callout-default"><h4 id="Constructor-case"><a href="#Constructor-case" class="headerlink" title=" Constructor case"></a><i class="fa fa-bookmark-o"></i> Constructor case</h4><p>假设对于$f$和$g$，都有$f’$和$g’$也为Atrig成立</p>
 <ul>
-<li>当$f(x)=id(x)$时，导函数$f'(x)=1$是常函数，所以是Atrig</li>
-<li>当$f(x)=c$为常函数时，导函数$f'(x)=0$是常函数，所以是Atrig</li>
-<li>当$f(x)=\sin(x)$时，导函数$f'(x)=\cos(x)=\sin(x-\pi/2)$，$y=x$是Atrig，$y=\pi/2$也是Atrig，这两个函数的和$y=x-\pi/2$根据递归定义Atrig函数的和也是Atrig，那它与另一个Atrig函数$y=\sin(x)$的复合结构根据递归定义也是Atrig，即$f'$是Atrig</li>
+<li>$(f+g)’=f’+g’$，因为$f’$和$g’$都是Atrig，$(f+g)’$也是Atrig</li>
+<li>$(f \cdot g)’=f \cdot g’+f’ \cdot g$，$f$和$g’$都是Atrig，所以二者的乘积$f \cdot g’$也是Atrig，同理$f’ \cdot g$也是，它们的和也是，所以$(f \cdot g)’$是Atrig</li>
+<li>$\left( f \circ g \right)’= g’ \cdot \left( {f’ \circ g} \right)$，$f’$和$g$都是Atrig，所以$f’ \circ g$也是Atrig，又因为$g’$是Atrig，所以它们的乘积即$\left( f \circ g \right)’$也是Atrig</li>
 </ul>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; Constructor case</h4>
-<p>假设对于$f$和$g$，都有$f'$和$g'$也为Atrig成立</p>
-<ul>
-<li>$(f+g)'=f'+g'$，因为$f'$和$g'$都是Atrig，$(f+g)'$也是Atrig</li>
-<li>$(f \cdot g)'=f \cdot g'+f' \cdot g$，$f$和$g'$都是Atrig，所以二者的乘积$f \cdot g'$也是Atrig，同理$f' \cdot g$也是，它们的和也是，所以$(f \cdot g)'$是Atrig</li>
-<li>$\left( f \circ g \right)'= g' \cdot \left( {f' \circ g} \right)$，$f'$和$g$都是Atrig，所以$f' \circ g$也是Atrig，又因为$g'$是Atrig，所以它们的乘积即$\left( f \circ g \right)'$也是Atrig</li>
-</ul>
-</div></p>
+</div>
 <p>综上所述，该命题成立。</p>
-<h2>Problem 7 Probable Satisfiability</h2>
-<p><s>原题Promblem 19.22</s></p>
+<h2 id="Problem-7-Probable-Satisfiability"><a href="#Problem-7-Probable-Satisfiability" class="headerlink" title="Problem 7 Probable Satisfiability"></a>Problem 7 Probable Satisfiability</h2><p><del>原题Promblem 19.22</del></p>
 <p>不严格按照概率和期望的格式来写了</p>
-<p><div class="bs-callout bs-callout-warning"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; a</h4>
-<p>$1-1/2^3=7/8$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-warning"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; b</h4>
-<p>每个3-clause为真的期望为$7/8$，真3-clause数量的期望为$7/8 \times 7=49/8$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-warning"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; c</h4>
-<p>假设$G$是不可能为真的，即真3-clause数量$X$有$Pr(X=7)=0$
-&lt;span&gt;$$\begin{align}
-Ex\left( X \right) &amp; = \sum\limits_{i = 0}^6 {i \cdot \Pr \left( {X = i} \right)} \\
-&amp; \le \sum\limits_{i = 0}^6 {6 \cdot \Pr \left( {X = i} \right)} \\
-&amp; = 6
-\end{align}$$&lt;/span&gt;&lt;!-- Has MathJax --&gt;
-与b的答案$Ex(X)&gt;6$矛盾，所以假设不成立，$G$是可以满足的。</p>
-</div></p>
-<h2>Problem 8 Connectivity, Induction</h2>
-<p><s>Problem 12.64</s></p>
-<p>我不太会写证明，也懒得再开TeX画图了，就简单说下思路，等有空了再补上严谨的证明和示意图。<s>（这句话的意思就是以后也不会写的啦）</s></p>
+<div class="bs-callout bs-callout-warning"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>$1-1/2^3=7/8$</p>
+</div>
+<div class="bs-callout bs-callout-warning"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>每个3-clause为真的期望为$7/8$，真3-clause数量的期望为$7/8 \times 7=49/8$</p>
+</div>
+<div class="bs-callout bs-callout-warning"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>假设$G$是不可能为真的，即真3-clause数量$X$有$Pr(X=7)=0$<br><span>$$\begin{align}<br>Ex\left( X \right) &amp; = \sum\limits_{i = 0}^6 {i \cdot \Pr \left( {X = i} \right)} \\<br> &amp; \le \sum\limits_{i = 0}^6 {6 \cdot \Pr \left( {X = i} \right)} \\<br> &amp; = 6<br>\end{align}$$</span><!-- Has MathJax --><br>与b的答案$Ex(X)&gt;6$矛盾，所以假设不成立，$G$是可以满足的。</p>
+</div>
+<h2 id="Problem-8-Connectivity-Induction"><a href="#Problem-8-Connectivity-Induction" class="headerlink" title="Problem 8 Connectivity, Induction"></a>Problem 8 Connectivity, Induction</h2><p><del>Problem 12.64</del></p>
+<p>我不太会写证明，也懒得再开TeX画图了，就简单说下思路，等有空了再补上严谨的证明和示意图。<del>（这句话的意思就是以后也不会写的啦）</del></p>
 <p>题给的结论是完全符合直觉的：想象一个长度为$m$的路径上面所有结点都是hub，除了两个结点各可以连接4个computer，其他中间的hub都可以连接3个computer，这是图上所有hub能容纳的最大computer数量($n=8+3(m-2)$)，此时如果增加$[1,3]$个computer，只需要在路径中间添加一个hub</p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; Base Case</h4>
-<p>当$n \le 8$时：</p>
+<div class="bs-callout bs-callout-default"><h4 id="Base-Case"><a href="#Base-Case" class="headerlink" title=" Base Case"></a><i class="fa fa-bookmark-o"></i> Base Case</h4><p>当$n \le 8$时：</p>
 <ul>
 <li>当$2 \le n \le 5$时： 以一个hub为中心连接所有computer的星状网络可以使结论成立</li>
 <li>当$6 \le n \le 8$时: 两个直接相连的hub各自剩下的4个可以连接的位置最多容纳数为8，可以满足只用2个hub的要求</li>
 </ul>
-</div></p>
-<p><div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; Inductive Step</h4>
-<p>假设对于$x&gt;1$和$0 \le y &lt;3$，$n=3x+2-y$，可以找到只用$x$个hub的组装方法，即长度为$x$的hub路径</p>
+</div>
+<div class="bs-callout bs-callout-default"><h4 id="Inductive-Step"><a href="#Inductive-Step" class="headerlink" title=" Inductive Step"></a><i class="fa fa-bookmark-o"></i> Inductive Step</h4><p>假设对于$x&gt;1$和$0 \le y &lt;3$，$n=3x+2-y$，可以找到只用$x$个hub的组装方法，即长度为$x$的hub路径</p>
 <ul>
 <li>当$y=0$时，当增加一个computer时可以在路径中间增加一个hub并与其连接，此时共有$x+1$个hub，$\left\lceil {\left( {n+1 - 2} \right)/3} \right\rceil=\left\lceil {\left( {3x + 3} \right)/3} \right\rceil =x+1$</li>
 <li>当$y&gt;0$时，路径上必然有一个hub的度&lt;5，再增加一个computer时，连接在这个$hub$上即可，还是只需要$x$个hub，$\left\lceil {\left( {n+1 - 2} \right)/3} \right\rceil=\left\lceil {\left( {3x + 3-y} \right)/3} \right\rceil =x$</li>
 </ul>
 </div>
-综上所述，对于$n$个computer，只需要$\left\lceil {\left( {n - 2} \right)/3} \right\rceil$个hub即可组装cluster</p>
-<h2>Problem 9 Conditional Probability</h2>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; a</h4>
-<p>$\Pr(E|R)&gt;\Pr(E|B)$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; b</h4>
-<p>$\Pr(R|E)&gt;\Pr(B|E)$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; c</h4>
-<p>已知$Pr(A)=Pr(B)$
-&lt;span&gt;$$\begin{align}
-\Pr(E|R) &amp; &gt;\Pr(E|B) \\
-\Pr(E|R) \cdot \Pr(R) / \Pr(E) &amp; &gt; \Pr(E|B) \cdot \Pr(B) / \Pr(E) \\
-\Pr(R|E) &amp;&gt; \Pr(B|E)
-\end{align}$$&lt;/span&gt;&lt;!-- Has MathJax --&gt;</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; d</h4>
-<p>不能，当$\Pr(R)/\Pr(B) \le \Pr(E|B)/\Pr(E|R)$时不成立</p>
-</div></p>
-<h2>Problem 10 Expectation, Sums</h2>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; a</h4>
-<p>$Ex(X_i) = 5/4$
-$Ex\left( {X_1} \ldots {X_k} \right) \cdot $ 1,000,000 = {\left( 5/4 \right)}^k \cdot $ 1,000,000$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; b</h4>
-<p>&lt;span&gt;$$\begin{align}
-&amp; \left( {1/10} \right) \cdot \left( Ex({X_1}) + Ex({X_1}{X_2}) +  \ldots  + Ex({X_1}{X_2} \ldots X_{10}) \right) \cdot {10^6}\\
-= &amp; (1/10) \cdot \left( 5/4 \right) \cdot \left(\frac{1 - {\left( 5/4 \right)}^{10}}{1 - 5/4} \right) \cdot 10^6\\
-\approx &amp; 4,156,613
-\end{align}$$&lt;/span&gt;&lt;!-- Has MathJax --&gt;</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt; c</h4>
-<p>$Ex\left( 2^Y \right) \ne 2^{Ex\left( Y \right)}$</p>
-</div></p>
+<p>综上所述，对于$n$个computer，只需要$\left\lceil {\left( {n - 2} \right)/3} \right\rceil$个hub即可组装cluster</p>
+<h2 id="Problem-9-Conditional-Probability"><a href="#Problem-9-Conditional-Probability" class="headerlink" title="Problem 9 Conditional Probability"></a>Problem 9 Conditional Probability</h2><div class="bs-callout bs-callout-success"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>$\Pr(E|R)&gt;\Pr(E|B)$</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>$\Pr(R|E)&gt;\Pr(B|E)$</p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>已知$Pr(A)=Pr(B)$<br><span>$$\begin{align}<br>\Pr(E|R) &amp; &gt;\Pr(E|B) \\<br>\Pr(E|R) \cdot \Pr(R) / \Pr(E) &amp; &gt; \Pr(E|B) \cdot \Pr(B) / \Pr(E) \\<br>\Pr(R|E) &amp;&gt; \Pr(B|E)<br>\end{align}$$</span><!-- Has MathJax --></p>
+</div>
+<div class="bs-callout bs-callout-success"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>不能，当$\Pr(R)/\Pr(B) \le \Pr(E|B)/\Pr(E|R)$时不成立</p>
+</div>
+<h2 id="Problem-10-Expectation-Sums"><a href="#Problem-10-Expectation-Sums" class="headerlink" title="Problem 10 Expectation, Sums"></a>Problem 10 Expectation, Sums</h2><div class="bs-callout bs-callout-info"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>$Ex(X_i) = 5/4$<br>$Ex\left( {X_1} \ldots {X_k} \right) \cdot \$ 1,000,000 = {\left( 5/4 \right)}^k \cdot \$ 1,000,000$</p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p><span>$$\begin{align}<br>&amp; \left( {1/10} \right) \cdot \left( Ex({X_1}) + Ex({X_1}{X_2}) +  \ldots  + Ex({X_1}{X_2} \ldots X_{10}) \right) \cdot {10^6}\\<br> = &amp; (1/10) \cdot \left( 5/4 \right) \cdot \left(\frac{1 - {\left( 5/4 \right)}^{10}}{1 - 5/4} \right) \cdot 10^6\\<br>\approx &amp; 4,156,613<br>\end{align}$$</span><!-- Has MathJax --></p>
+</div>
+<div class="bs-callout bs-callout-info"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>$Ex\left( 2^Y \right) \ne 2^{Ex\left( Y \right)}$</p>
+</div>
+<h2 id="Problem-11-Chebyshev-Bound"><a href="#Problem-11-Chebyshev-Bound" class="headerlink" title="Problem 11 Chebyshev Bound"></a>Problem 11 Chebyshev Bound</h2><p><del>原题Problem 20.5</del></p>
+<div class="bs-callout bs-callout-primary"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>collection-variance与Chebyshev边界的方差定义是一致的，用概率和统计转换一下可以推导。<br>$\Pr \left(\left|T - Ex(T) \right| \ge 10 \right) \le \frac{CVar(A)}{10^2} = 0.2$</p>
+</div>
+<div class="bs-callout bs-callout-primary"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>outcomes: all the body temperatures<br>每个outcome的概率相等，假设牛的数量为$n$，那么概率为$1/n$</p>
+</div>
+<div class="bs-callout bs-callout-primary"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><blockquote>
+<p>Explain why for this probability space, the fraction of cows with any given cow property $P$ is the same as $\Pr[P]$.</p>
+</blockquote>
+<p>我没看懂这个问题的意思，是问为什么每头牛的体温的概率分布都一样吗？</p>
+</div>
+<div class="bs-callout bs-callout-primary"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>令$A$为这群牛所有体温数的集合<br><span>$$\begin{align}<br>CVar(A) &amp; =  \frac{\sum\nolimits_{t \in A} {\left( t - Ex\left( T \right)\right)}^2 }{n}  \\<br>&amp; = \sum\nolimits_{t \in A} {\Pr[T=t] \cdot ( t - Ex( T))^2} \\<br>&amp; = \sum\nolimits_{t \in A} {\Pr[(T-Ex(T))^2 = (t - Ex(T)))^2] \cdot ( t - Ex( T))^2} \\<br>&amp; = Ex[(T - Ex(T))^2] \\<br>&amp; = Var[T]<br>\end{align}$$</span><!-- Has MathJax --></p>
+</div>
+<h2 id="Random-Walk-Expectation"><a href="#Random-Walk-Expectation" class="headerlink" title="Random Walk, Expectation"></a>Random Walk, Expectation</h2><p>似乎并不要求解出方程</p>
+<p>$$a=p_{AC} + p_{AB} (1+b) + p_{AA} (1+a)$$<br>$$b=p_{BC} + p_{BB} (1+b) + p_{BA} (1+a)$$</p>
 
       
     </div>
@@ -346,7 +283,7 @@ $Ex\left( {X_1} \ldots {X_k} \right) \cdot $ 1,000,000 = {\left( 5/4 \right)}^k 
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/MIT6-042/2017final/" data-id="cjifn0lg1000134w3qojnyxiw" class="article-share-link">
+      <a data-url="notebook.xyli.me/MIT6-042/2017final/" data-id="cjik0gpk20001pgw3tgp7lswy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -415,7 +352,7 @@ $Ex\left( {X_1} \ldots {X_k} \right) \cdot $ 1,000,000 = {\left( 5/4 \right)}^k 
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Problem 1 Simple Graphs & Trees</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Problem 2 Quantifiers</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Problem 3 Logical Injections</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Problem 4 Number Theory</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">Problem 5 Counting</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">6.</span> <span class="sidebar-module-list-text">Problem 6 Structural Induction</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">7.</span> <span class="sidebar-module-list-text">Problem 7 Probable Satisfiability</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">8.</span> <span class="sidebar-module-list-text">Problem 8 Connectivity, Induction</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">9.</span> <span class="sidebar-module-list-text">Problem 9 Conditional Probability</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">10.</span> <span class="sidebar-module-list-text">Problem 10 Expectation, Sums</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-1-Simple-Graphs-amp-Trees"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Problem 1 Simple Graphs & Trees</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-2-Quantifiers"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Problem 2 Quantifiers</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-3-Logical-Injections"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Problem 3 Logical Injections</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-4-Number-Theory"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Problem 4 Number Theory</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-5-Counting"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">Problem 5 Counting</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-6-Structural-Induction"><span class="sidebar-module-list-number">6.</span> <span class="sidebar-module-list-text">Problem 6 Structural Induction</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-7-Probable-Satisfiability"><span class="sidebar-module-list-number">7.</span> <span class="sidebar-module-list-text">Problem 7 Probable Satisfiability</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-8-Connectivity-Induction"><span class="sidebar-module-list-number">8.</span> <span class="sidebar-module-list-text">Problem 8 Connectivity, Induction</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-9-Conditional-Probability"><span class="sidebar-module-list-number">9.</span> <span class="sidebar-module-list-text">Problem 9 Conditional Probability</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-10-Expectation-Sums"><span class="sidebar-module-list-number">10.</span> <span class="sidebar-module-list-text">Problem 10 Expectation, Sums</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Problem-11-Chebyshev-Bound"><span class="sidebar-module-list-number">11.</span> <span class="sidebar-module-list-text">Problem 11 Chebyshev Bound</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Random-Walk-Expectation"><span class="sidebar-module-list-number">12.</span> <span class="sidebar-module-list-text">Random Walk, Expectation</span></a></li></ol>
   </div>
 
 
