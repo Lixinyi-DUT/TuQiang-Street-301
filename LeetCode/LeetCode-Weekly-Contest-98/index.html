@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 98 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="睡眠太差6点惊醒过来，回笼觉有点睡过头外加有人临时约饭所以现场只做了3题，回来补完全部。整体算比较简单的一期题了。 所以说醒了就别睡了，早点起来看书搬砖，不然真耽误事">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 98">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-98/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="睡眠太差6点惊醒过来，回笼觉有点睡过头外加有人临时约饭所以现场只做了3题，回来补完全部。整体算比较简单的一期题了。 所以说醒了就别睡了，早点起来看书搬砖，不然真耽误事">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-08-19T10:17:06.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 98">
+<meta name="twitter:description" content="睡眠太差6点惊醒过来，回笼觉有点睡过头外加有人临时约饭所以现场只做了3题，回来补完全部。整体算比较简单的一期题了。 所以说醒了就别睡了，早点起来看书搬砖，不然真耽误事">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-98" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 98
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-98/" class="article-date"><time datetime="2018-08-19T08:31:59.547Z" itemprop="datePublished">2018-08-19</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>睡眠太差6点惊醒过来，回笼觉有点睡过头外加有人临时约饭所以现场只做了3题，回来补完全部。整体算比较简单的一期题了。</p>
+<p><del>所以说醒了就别睡了，早点起来看书搬砖，不然真耽误事</del></p>
+<a id="more"></a>
+<h2 id="Fair-Candy-Swap"><a href="#Fair-Candy-Swap" class="headerlink" title="Fair Candy Swap"></a>Fair Candy Swap</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-98/problems/fair-candy-swap/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-98/problems/fair-candy-swap/</a></p>
+<blockquote>
+<p>Alice and Bob have candy bars of different sizes: <code>A[i]</code> is the size of the <code>i</code>-th bar of candy that Alice has, and <code>B[j]</code> is the size of the <code>j</code>-th bar of candy that Bob has.</p>
+<p>Since they are friends, they would like to exchange one candy bar each so that after the exchange, they both have the same total amount of candy.  (The total amount of candy a person has is the sum of the sizes of candy bars they have.)</p>
+<p>Return an integer array <code>ans</code> where <code>ans[0]</code> is the size of the candy bar that Alice must exchange, and ans[1] is the size of the candy bar that Bob must exchange.</p>
+<p>If there are multiple answers, you may return any one of them.  It is guaranteed an answer exists.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1,1], B = [2,2]</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1,2], B = [2,3]</span><br><span class="line">Output: [1,2]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [2], B = [1,3]</span><br><span class="line">Output: [2,3]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1,2,5], B = [2,4]</span><br><span class="line">Output: [5,4]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 10000</code></li>
+<li><code>1 &lt;= B.length &lt;= 10000</code></li>
+<li><code>1 &lt;= A[i] &lt;= 100000</code></li>
+<li><code>1 &lt;= B[i] &lt;= 100000</code></li>
+<li>It is guaranteed that Alice and Bob have different total amounts of candy.</li>
+<li>It is guaranteed there exists an answer.</li>
+</ol>
+</blockquote>
+<p>如果存在一个<code>A[i]</code>与<code>B[j]</code>交换后可以使得<code>A</code>和<code>B</code>的总数相等，那么有<code>sum(A)-A[i]+B[j]=sum(B)-B[j]+A[i]</code>，即<code>B[j]=(sum(B)-sum(A))/2+A[i]</code>，只需遍历<code>A[i]</code>寻找<code>B</code>是否包含<code>B[j]=(sum(B)-sum(A))/2+A[i]</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fairCandySwap</span><span class="params">(self, A, B)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type B: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        S_A,S_B=sum(A),sum(B)</span><br><span class="line">        A,B=set(A),set(B)</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> A:</span><br><span class="line">            y=(S_B-S_A)/<span class="number">2</span>+x</span><br><span class="line">            <span class="keyword">if</span> y <span class="keyword">in</span> B:</span><br><span class="line">                <span class="keyword">return</span> [x,y]</span><br></pre></td></tr></table></figure>
+<h2 id="Find-and-Replace-Pattern"><a href="#Find-and-Replace-Pattern" class="headerlink" title="Find and Replace Pattern"></a>Find and Replace Pattern</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-98/problems/find-and-replace-pattern/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-98/problems/find-and-replace-pattern/</a></p>
+<blockquote>
+<p>You have a list of <code>words</code> and a <code>pattern</code>, and you want to know which <code>words</code> in words matches the pattern.</p>
+<p>A word matches the pattern if there exists a permutation of letters <code>p</code> so that after replacing every letter <code>x</code> in the pattern with <code>p(x)</code>, we get the desired word.</p>
+<p><em>(Recall that a permutation of letters is a bijection from letters to letters: every letter maps to another letter, and no two letters map to the same letter.)</em></p>
+<p>Return a list of the <code>words</code> in words that match the given pattern.</p>
+<p>You may return the answer in any order.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: words = [&quot;abc&quot;,&quot;deq&quot;,&quot;mee&quot;,&quot;aqq&quot;,&quot;dkd&quot;,&quot;ccc&quot;], pattern = &quot;abb&quot;</span><br><span class="line">Output: [&quot;mee&quot;,&quot;aqq&quot;]</span><br><span class="line">Explanation: &quot;mee&quot; matches the pattern because there is a permutation &#123;a -&gt; m, b -&gt; e, ...&#125;.</span><br><span class="line">&quot;ccc&quot; does not match the pattern because &#123;a -&gt; c, b -&gt; c, ...&#125; is not a permutation,</span><br><span class="line">since a and b map to the same letter.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= words.length &lt;= 50</code></li>
+<li><code>1 &lt;= pattern.length = words[i].length &lt;= 20</code></li>
+</ol>
+</blockquote>
+<p>对于<code>words</code>中的每个<code>w</code>字符集，直接检查<code>w</code>和<code>p</code>之间是否为双射可能有些麻烦，但可以先检查<code>w-&gt;p</code>是否为映射/函数，再反过来检查<code>p-&gt;w</code>是否也为映射/函数。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findAndReplacePattern</span><span class="params">(self, words, pattern)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type words: List[str]</span></span><br><span class="line"><span class="string">        :type pattern: str</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">is_map</span><span class="params">(w,p)</span>:</span></span><br><span class="line">            d=&#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> (i,s) <span class="keyword">in</span> enumerate(w):</span><br><span class="line">                <span class="keyword">if</span> s <span class="keyword">in</span> d:</span><br><span class="line">                    <span class="keyword">if</span> d[s]!=p[i]: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    d[s]=p[i]</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [w <span class="keyword">for</span> w <span class="keyword">in</span> words <span class="keyword">if</span> is_map(w,pattern) <span class="keyword">and</span> is_map(pattern,w)]</span><br></pre></td></tr></table></figure>
+<h2 id="Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal"><a href="#Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal" class="headerlink" title="Construct Binary Tree from Preorder and Postorder Traversal"></a>Construct Binary Tree from Preorder and Postorder Traversal</h2><p>原题地址  <a href="https://leetcode.com/contest/weekly-contest-98/problems/construct-binary-tree-from-preorder-and-postorder-traversal/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-98/problems/construct-binary-tree-from-preorder-and-postorder-traversal/</a></p>
+<blockquote>
+<p>Return any binary tree that matches the given preorder and postorder traversals.</p>
+<p>Values in the traversals <code>pre</code> and <code>post</code> are distinct positive integers.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pre = [1,2,4,5,3,6,7], post = [4,5,2,6,7,3,1]</span><br><span class="line">Output: [1,2,3,4,5,6,7]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= pre.length == post.length &lt;= 30</code></li>
+<li><code>pre[]</code> and <code>post[]</code> are both permutations of <code>1, 2, ..., pre.length</code>.</li>
+<li>It is guaranteed an answer exists. If there exists multiple answers, you can return any of them.</li>
+</ol>
+</blockquote>
+<p><del>给出任意两种遍历的顺序构造二叉树，应该是比父母的关切之语见得还要多的数据结构习题了</del></p>
+<p>子树的根结点在<code>pre</code>中是第一个元素，在<code>post</code>中是最后一个元素，所以可以很轻松的分离出根结点，接下来只要分离出<code>pre[1:]</code>和<code>post[:-1]</code>中哪些内容是左子树，哪些内容是右子树，就可以递归构造整个二叉树了。</p>
+<p>由于先遍历的特征，<code>pre[1:]</code>的第一个元素必然为第一个子树（默认为左子树）的根结点，这个元素在<code>post[:-1]</code>之前的所有元素则是整个子树的全部内容，这样就可以轻松分割出左右子树。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode(object):</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">constructFromPrePost</span><span class="params">(self, pre, post)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type pre: List[int]</span></span><br><span class="line"><span class="string">        :type post: List[int]</span></span><br><span class="line"><span class="string">        :rtype: TreeNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> pre:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        root=TreeNode(pre[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">if</span> len(pre)&gt;<span class="number">1</span>:</span><br><span class="line">            i=post.index(pre[<span class="number">1</span>])</span><br><span class="line">            root.left=self.constructFromPrePost(pre[<span class="number">1</span>:(i+<span class="number">2</span>)],post[:(i+<span class="number">1</span>)])</span><br><span class="line">            root.right=self.constructFromPrePost(pre[(i+<span class="number">2</span>):],post[(i+<span class="number">1</span>):<span class="number">-1</span>])</span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<h2 id="Sum-of-Subsequence-Widths"><a href="#Sum-of-Subsequence-Widths" class="headerlink" title="Sum of Subsequence Widths"></a>Sum of Subsequence Widths</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-98/problems/sum-of-subsequence-widths/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-98/problems/sum-of-subsequence-widths/</a></p>
+<blockquote>
+<p>Given an array of integers <code>A</code>, consider all non-empty subsequences of <code>A</code>.</p>
+<p>For any sequence S, let the width of S be the difference between the maximum and minimum element of S.</p>
+<p>Return the sum of the widths of all subsequences of A.</p>
+<p>As the answer may be very large, <strong>return the answer modulo 10^9 + 7</strong>.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,1,3]</span><br><span class="line">Output: 6</span><br><span class="line">Explanation:</span><br><span class="line">Subsequences are [1], [2], [3], [2,1], [2,3], [1,3], [2,1,3].</span><br><span class="line">The corresponding widths are 0, 0, 0, 1, 1, 2, 2.</span><br><span class="line">The sum of these widths is 6.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 20000</code></li>
+<li><code>1 &lt;= A[i] &lt;= 20000</code></li>
+</ol>
+</blockquote>
+<p>我一开始误解了题意把subsequences当成了连续子集去做，做完以后WA了才发现只要把subsequences当成普通的子集去考虑就可以了，反正极差不会因为元素顺序改变，没有连续取值的要求，那么相对来说问题就简单多了。</p>
+<p>对于每一对<code>A[i]&lt;A[j]</code>，找到所有<code>A[i]</code>为最小值，<code>A[j]</code>为最大值的子集：这个子集必须包含<code>A[i]</code>和<code>A[j]</code>，但不能包含任何小于<code>A[i]</code>或者大于<code>A[j]</code>的元素，不妨先将<code>A</code>进行降序排序，那么就容易得知有<code>j-i-1</code>个元素的大小在<code>A[i]</code>和<code>A[j]</code>之间，取这些元素全集的所有子集数即<code>2^(j-i-1)</code>，那么一共有这么多subsequences的宽度是<code>A[i]&lt;A[j]</code></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumSubseqWidths</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        A.sort()</span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        n=len(A)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n<span class="number">-1</span>,i,<span class="number">-1</span>):</span><br><span class="line">                res=(res+(<span class="number">2</span>**(j-i<span class="number">-1</span>))*(A[j]-A[i]))%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>这个$o(n^2)$的写法不出意外的TLE，因为存在比较运算，排序总是不可避免的，只能从那个循环下手看看能不能减小遍历开销。把上述的二层的循环展开写出来，观察每个<code>A[i]</code>出现的次数，换一个视角去从每个<code>A[i]</code>考虑：</p>
+<p>对于<code>j&gt;i</code>的任意<code>A[j]</code>来说，<code>A[i]</code>是最值为<code>A[i],A[j]</code>的子集的最小值，在全局的返回值中扮演一个被减去的角色，更具体来说需要被减去<code>2^(n-1-i)</code>次，因为有<code>n-1-i</code>个元素大于<code>i</code>，并且它们都能和<code>i</code>构造出<code>2^(j-i-1)</code>个子集。当然更直观的解释是，只有在<code>A[i+1:]</code>的<code>2^(n-1-i)</code>个子集加入<code>A[i]</code>时，<code>A[i]</code>作为整个子集的最小值被减去。同理，<code>A[j]</code>也会被加<code>2^i</code>次，这样看来，很容易写出一个只遍历一次的解法，另外，为了提高计算效率，可以用1的位移代替底数为2的幂运算，否则仍然有TLE的风险。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumSubseqWidths</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        A.sort()</span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        n=len(A)</span><br><span class="line">        i=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            pos=(<span class="number">1</span>&lt;&lt;i)</span><br><span class="line">            neg=(i&lt;&lt;(n<span class="number">-1</span>-i))</span><br><span class="line">            res=(res+(pos-neg)*A[i])%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-98/" data-id="cjl0mk3qe002aysw3r7ns4w1c" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-97/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 97</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sun Aug 19 2018 16:31:59 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Fair-Candy-Swap"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Fair Candy Swap</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Find-and-Replace-Pattern"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Find and Replace Pattern</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Construct-Binary-Tree-from-Preorder-and-Postorder-Traversal"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Construct Binary Tree from Preorder and Postorder Traversal</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Sum-of-Subsequence-Widths"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Sum of Subsequence Widths</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>本站作者是失败人士，另一个博客已关闭详情见<a href="http://notebook.xyli.me/Introduction/broken-project-yangzhou/" style="text-decoration:none;">失败的扬州计划</a> 投稿或其他事项的交流可联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">38</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 20px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-98/">LeetCode Weekly Contest 98</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-97/">LeetCode Weekly Contest 97</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-96/">LeetCode Weekly Contest 96</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-95/">LeetCode Weekly Contest 95</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-94/">LeetCode Weekly Contest 94</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-98/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
