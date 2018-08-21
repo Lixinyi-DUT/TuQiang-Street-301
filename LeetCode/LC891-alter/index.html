@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LC891的变体：求所有连续子集的极差之和 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在上周日的Weekly Contest 98 中的压轴题Sum of Subsequence Widths(以下简称母题)题解中我特意强调了这里的subsequence只是子集，并不要求所有元素之间的连续，所以做起来会更容易。今天志成 @_FollowYourHeart_问了个很好的问题：如果题目改成连续子集应该怎么做">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LC891的变体：求所有连续子集的极差之和">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LC891-alter/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="在上周日的Weekly Contest 98 中的压轴题Sum of Subsequence Widths(以下简称母题)题解中我特意强调了这里的subsequence只是子集，并不要求所有元素之间的连续，所以做起来会更容易。今天志成 @_FollowYourHeart_问了个很好的问题：如果题目改成连续子集应该怎么做比较好？">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/5.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/6.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/7.png">
+<meta property="og:updated_time" content="2018-08-21T17:20:53.666Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LC891的变体：求所有连续子集的极差之和">
+<meta name="twitter:description" content="在上周日的Weekly Contest 98 中的压轴题Sum of Subsequence Widths(以下简称母题)题解中我特意强调了这里的subsequence只是子集，并不要求所有元素之间的连续，所以做起来会更容易。今天志成 @_FollowYourHeart_问了个很好的问题：如果题目改成连续子集应该怎么做比较好？">
+<meta name="twitter:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/5.png">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LC891-alter" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LC891的变体：求所有连续子集的极差之和
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LC891-alter/" class="article-date"><time datetime="2018-08-21T10:42:08.213Z" itemprop="datePublished">2018-08-21</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在上周日的<a href="http://notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-98/">Weekly Contest 98 </a>中的压轴题<a href="http://notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-98/#Sum-of-Subsequence-Widths">Sum of Subsequence Widths</a>(以下简称母题)题解中我特意强调了这里的subsequence只是子集，并不要求所有元素之间的连续，所以做起来会更容易。今天志成<a href="https://weibo.com/5346379929" target="_blank" rel="noopener"><i class="fa fa-weibo"></i> @_FollowYourHeart_</a>问了个很好的问题：如果题目改成连续子集应该怎么做比较好？</p>
+<a id="more"></a>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>有一个整数数组<code>A</code>，其中的元素不保证不相同。对一个非空数组来说，宽度定义为该集合的最大值减去最小值的结果，求<code>A</code>的所有连续子数组的宽度之和。</p>
+<p>这里的连续子数组指对于任意$1 \le i \le j \le n$，从<code>A</code>取下标从$i$到$j$的任意子数组，这里标记为$A[i:j]$（注意这个符号区别于部分编程语言的从0开始计数索引以及不包含上界的切片标记<code>A[i:j]</code>）</p>
+<p>母题中给的Example 1输入<code>[2,1,3]</code>包含的连续子数组只有<code>[2],[1],[3],[2,1],[1,3],[2,1,3]</code>而没有原来的<code>[2,3]</code></p>
+<p>整个问题要求的就是$$\sum\limits_{i = 1}^n {\sum\limits_{j = i}^n {\max (A[i:j]) - \min (A[i:j])} }$$众所周知，当$i=j$即子数组长度为1时，宽度（极差）为0，所以可以只考虑$i&lt;j$的情况，把上式进一步改写为$$\sum\limits_{i = 1}^{n-1} {\sum\limits_{j = i+1}^n {\max (A[i:j]) - \min (A[i:j])} }$$对于Example 1来说只需要考虑子数组<code>[2,1],[1,3],[2,1,3]</code>宽度，分别为<code>1,2,2</code>，最终结果为<code>5</code></p>
+<h2 id="暴力搜索"><a href="#暴力搜索" class="headerlink" title="暴力搜索"></a>暴力搜索</h2><p>最直接的方法，根据上式的两个求和标记直接写一个二层循环进行求和：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_of_widths_naive</span><span class="params">(A)</span>:</span></span><br><span class="line">    n = len(A)</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i + <span class="number">1</span>, n):</span><br><span class="line">            res += max(A[i:j + <span class="number">1</span>]) - min(A[i:j + <span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>内层循环也分别求两次最值，所以时间复杂度很显然是$o(n^2 \log n)$</p>
+<h2 id="直觉的改进"><a href="#直觉的改进" class="headerlink" title="直觉的改进"></a>直觉的改进</h2><p>因为内层循环的存在，子数组都是逐个扩大的，所以利用<code>min</code>和<code>max</code>函数对子数组进行求最值的操作是多余的，完全可以维护两个临时变量作为当前的最大值和最小值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_of_widths_improved</span><span class="params">(A)</span>:</span></span><br><span class="line">    n=len(A)</span><br><span class="line">    res=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n<span class="number">-1</span>):</span><br><span class="line">        min_num,max_num=A[i],A[i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i,n):</span><br><span class="line">            min_num,max_num=min(min_num,A[j]),max(max_num,A[j])</span><br><span class="line">            res+=max_num-min_num</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>这样就可以把时间复杂度降低到$o(n^2)$了</p>
+<h2 id="排序-缩小搜索范围"><a href="#排序-缩小搜索范围" class="headerlink" title="排序+缩小搜索范围"></a>排序+缩小搜索范围</h2><p>和母题一样，接下来可以试着考虑一下每一对$A[i],A[j]$作为最小值和最大值的子数组有多少个，即$A[j]-A[i]$被加了多少次，正如我在母题的题解里面所说的它们扮演了什么角色？</p>
+<p>首先我们来看整个<code>A</code>数组的最大值和最小值，记它们的下标分别为$x$和$y$，它们规定了多少个连续子数组的极差呢？为了方便讨论，我们假设$x&lt;y$，即同时包含这两个数的最小子数组为$A[x:y]$，而$A[y]-A[x]$已经是<code>A</code>的最大宽度了，所有包含$A[x:y]$的子数组的宽度也都是$A[y]-A[x]$，这些数组的起点最小为1最大为$x$，终点最小为$y$最大为$n$</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/5.png" alt="绿色部分为上面提到的最小子数组，宽度为A[y]-A[x]的所有子数组必须包含全部的绿色部分，除此之外可以包含从x开始向左任意长度的灰色部分，也可以同时包含y开始向右任意长度的灰色部分"></p>
+<p>那么一共有$x(n-y+1)$个连续子数组的宽度为$A[y]-A[x]$，接下来我们可以试着逐渐缩小目标宽度，不妨从减小最大值开始入手：</p>
+<p>假设$A[y’]$是<code>A</code>的第二大值，仅次于$A[y]$，有多少子数组是以$A[y]-A[x]$作为宽度的？</p>
+<div class="bs-callout bs-callout-warning"><h4 id="Case-1"><a href="#Case-1" class="headerlink" title=" Case 1"></a><i class="fa fa-check-square-o"></i> Case 1</h4><p>首先考虑一种比较简单的情况，$y’&gt;y$</p>
+<p>这时所有同时包含$A[x]$和$A[y’]$的连续子数组（即使是最小的$A[x:y’]$）必然包括$A[y]$，那么这些数组的宽度则以$A[y]-A[x]$进行计算，所以宽度为$A[y’]-A[x]$的连续子数组不存在。</p>
+</div>
+<div class="bs-callout bs-callout-warning"><h4 id="Case-2"><a href="#Case-2" class="headerlink" title=" Case 2"></a><i class="fa fa-check-square-o"></i> Case 2</h4><p>当$y’&lt;y$时，我们继续沿用上面为了方便讨论的规定最大值的坐标大于最小值的坐标，即$y’&gt;x$</p>
+<p>我们知道以二者的差为宽度的子数组一定同时包含这两个元素，但同时多了一个限制：数组的最大值不能超过$A[y’]$，即数组的重点下标必须小于$y$，结合前文整理一下，这些数组的起点最小为1最大为$x$，重点最小为$y$最大为$y’-1$</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/6.png" alt="子数组必须包含绿色部分的全部，从绿色部分开始延伸的任意长度的灰色部分，但不能延伸到任何红色的部分"></p>
+<p>共有$x(y-y’)$个连续子数组。</p>
+</div>
+<p>当$x$不变时，随着连续取更小的$A[y’]$，为了保证$A[y’]$是子数组中的最大值，子数组不能“横跨”的坐标值也越来越多。即使去掉$y_i&gt;x$的假设，也可以理解这个缩小范围的原理，无论是上界也好，下界也好，每次落到这个区间内的$y$都会带来一次边界的更新，使得下一个需要用来计算宽度的$y$所能落到的下标区间越来越狭窄。</p>
+<p>不妨跳出上面的全局最值的局限，考虑对于任意满足$A[x]&lt;A[y]$的$x$和$y$，如何找出所有以$A[y]-A[x]$为宽度的连续子数组？那么上文对于全局最值的讨论其实也解决了这个问题的一部分，即当我们知道以$A[x]$为最小值，$A[y]$为最大值的最大长度连续数组时我们就可以用上面的方法计算了。假设这个最大数组的起点为$s+1$，终点为$e-1$（$s$和$e$分别在代码中变量名为<code>start</code>和<code>end</code>），也就是$A[s]$和$A[e]$一定是小于$A[x]$或大于$A[y]$的值，而$A[s+1:e-1]$一定落在$A[x]$与$A[y]$之间。那么以$A[y]-A[x]$为宽度的子数组下标的起点为$[s+1,x]$，终点为$[y,e-1]$</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/7.png" alt="左右都不可以延伸到红色部分"></p>
+<p>固定$x$不变时，根据上文的讨论，可以按照$A[y]$的降序取$y$，落在区间$[s+1,e-1]$时完成计算后，如果$y &lt; x$则更新$s$的值为$y$，如果$y&gt;x$则更新$e$的值为$y$。</p>
+<p>对每轮$x$取值开始之前，需要先找准边界保证$A[x]$就是这个最大长度区间的最小值，那么可以先按照$A[x]$升序排序，在之前取过的$x’$中小于当前$x$的最大$x’$即为$s$，大于当前$x$的最小$y’$即为$e$，直观上来说这是两个距离$x$ <strong>最近</strong> 的且满足$A[x’]&lt;A[x]$的下标。</p>
+<p>当然，$s$和$e$需要分别被初始化为比第一个下标更小1的值，以及比最后一个下标更大1的值，这样可以保证在还没有更新边界时，所有元素都被包含在了需要搜索的范围内。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_of_widths</span><span class="params">(A)</span>:</span></span><br><span class="line">    n = len(A)</span><br><span class="line">    pos = sorted(range(n), key=<span class="keyword">lambda</span> i: A[i])</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>):</span><br><span class="line">        x = pos[i]</span><br><span class="line">        start = max([p <span class="keyword">for</span> p <span class="keyword">in</span> pos[:i] <span class="keyword">if</span> p &lt; x] + [<span class="number">-1</span>])</span><br><span class="line">        end = min([p <span class="keyword">for</span> p <span class="keyword">in</span> pos[:i] <span class="keyword">if</span> p &gt; x] + [n])</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n - <span class="number">1</span>, i, <span class="number">-1</span>):</span><br><span class="line">            y = pos[j]</span><br><span class="line">            <span class="keyword">if</span> y &gt; end <span class="keyword">or</span> y &lt; start:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> x &lt; y:</span><br><span class="line">                res += (end - y) * (x - start) * (A[y] - A[x])</span><br><span class="line">                end = y</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += (end - x) * (y - start) * (A[y] - A[x])</span><br><span class="line">                start = y</span><br><span class="line">            <span class="keyword">if</span> end - start == <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>时间复杂度为$o(n^2)$，空间复杂度为$o(n)$</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>三种方法都可以保证输出正确的结果，比如使用随机测试用例<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup><br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test = [<span class="number">868</span>, <span class="number">1380</span>, <span class="number">63</span>, <span class="number">948</span>, <span class="number">1065</span>, <span class="number">796</span>, <span class="number">1130</span>, <span class="number">895</span>, <span class="number">1371</span>, <span class="number">1170</span>]</span><br></pre></td></tr></table></figure></p>
+<p>可以看到三个函数的输出结果都为<code>37672</code>，虽然花费了巨大的笔墨讲解第三种方法，但实际上从复杂度来看相较前两者似乎没有什么优势。不过这样的解法看上去比较舒服的地方，至少相对前两种方法里线性等宽的遍历，它可以仅在几次循环中就大幅度缩小下一轮需要遍历的范围，直觉上让人感觉轻松的多<del>（有吗？笑）</del>。</p>
+<p>相比被更改前的母题，这个问题的处理其实麻烦的多，我试着和其他人讨论，搜索现有资料，都没有找到特别巧妙的方法，也很可能是我的能力太有限，总之有<strong>任何</strong>可能的想法欢迎在评论或者邮件提出。母题没有<strong>连续</strong>的限定，同样使用暴力搜索时需要的开销为$o(2^n)$看上去更复杂，但实际在没有连续这个限制时，数组元素之间的顺序是没有意义的，所以母题可以在排序后只考虑每个元素和哪些元素的组合是被加，哪些是被减，但在这里却必须考虑每个元素在原数组中的位置，它与任何一个元素的组合里面能不能含有其他元素，所以无法放开手脚去做，我只能这么畏畏缩缩地用了这样一个既不效率又不优雅的算法。</p>
+<p>总之，谢谢志成提出的好问题。也希望这篇文章能够抛砖引玉，读者能提供出更漂亮的方法。</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">使用 <a href="http://spojtoolkit.com/TestCaseGenerator/" target="_blank" rel="noopener">http://spojtoolkit.com/TestCaseGenerator/</a> 生成的随机数组</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LC891-alter/" data-id="cjl3lcc3t0001lww3r77y4ley" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-98/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 98</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Tue Aug 21 2018 18:42:08 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#问题背景"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">问题背景</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#暴力搜索"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">暴力搜索</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#直觉的改进"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">直觉的改进</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#排序-缩小搜索范围"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">排序+缩小搜索范围</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#总结"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">总结</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>本站作者是失败人士，另一个博客已关闭详情见<a href="http://notebook.xyli.me/Introduction/broken-project-yangzhou/" style="text-decoration:none;">失败的扬州计划</a> 投稿或其他事项的交流可联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">39</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 10px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 20px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LC891-alter/">LC891的变体：求所有连续子集的极差之和</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-98/">LeetCode Weekly Contest 98</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-97/">LeetCode Weekly Contest 97</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-96/">LeetCode Weekly Contest 96</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-95/">LeetCode Weekly Contest 95</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LC891-alter/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+</html>
