@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="睡眠太差6点惊醒过来，回笼觉有点睡过头外加有人临时约饭所以现场只做了3题，回来补完全部。整体算比较简单的一期题了。 所以说醒了就别睡了，早点起来看书搬砖，不然真耽误事 https://leetcode.com/contest/weekly-contest-98/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-20T11:13:13.740Z">
+<meta property="og:updated_time" content="2018-08-22T08:07:02.174Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 98">
 <meta name="twitter:description" content="睡眠太差6点惊醒过来，回笼觉有点睡过头外加有人临时约饭所以现场只做了3题，回来补完全部。整体算比较简单的一期题了。 所以说醒了就别睡了，早点起来看书搬砖，不然真耽误事 https://leetcode.com/contest/weekly-contest-98/">
@@ -209,7 +209,7 @@ var _hmt = _hmt || [];
 </ol>
 </blockquote>
 <p>我一开始误解了题意把subsequences当成了连续子集去做，做完以后WA了才发现只要把subsequences当成普通的子集去考虑就可以了，反正极差不会因为元素顺序改变，没有连续取值的要求，那么相对来说问题就简单多了。</p>
-<p>对于每一对<code>A[i]&lt;A[j]</code>，找到所有<code>A[i]</code>为最小值，<code>A[j]</code>为最大值的子集：这个子集必须包含<code>A[i]</code>和<code>A[j]</code>，但不能包含任何小于<code>A[i]</code>或者大于<code>A[j]</code>的元素，不妨先将<code>A</code>进行降序排序，那么就容易得知有<code>j-i-1</code>个元素的大小在<code>A[i]</code>和<code>A[j]</code>之间，取这些元素全集的所有子集数即<code>2^(j-i-1)</code>，那么一共有这么多subsequences的宽度是<code>A[i]&lt;A[j]</code></p>
+<p>对于每一对<code>A[i]&lt;A[j]</code>，找到所有<code>A[i]</code>为最小值，<code>A[j]</code>为最大值的子集：这个子集必须包含<code>A[i]</code>和<code>A[j]</code>，但不能包含任何小于<code>A[i]</code>或者大于<code>A[j]</code>的元素，不妨先将<code>A</code>进行降序排序，那么就容易得知有<code>j-i-1</code>个元素的大小在<code>A[i]</code>和<code>A[j]</code>之间，取这些元素全集的所有子集数即<code>2^(j-i-1)</code>，那么一共有这么多subsequences的宽度是<code>A[j]-A[i]</code></p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumSubseqWidths</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        A.sort()</span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        n=len(A)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n<span class="number">-1</span>,i,<span class="number">-1</span>):</span><br><span class="line">                res=(res+(<span class="number">2</span>**(j-i<span class="number">-1</span>))*(A[j]-A[i]))%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 <p>这个$o(n^2)$的写法不出意外的TLE，因为存在比较运算，排序总是不可避免的，只能从那个循环下手看看能不能减小遍历开销。把上述的二层的循环展开写出来，观察每个<code>A[i]</code>出现的次数，换一个视角去从每个<code>A[i]</code>考虑：</p>
 <p>对于<code>j&gt;i</code>的任意<code>A[j]</code>来说，<code>A[i]</code>是最值为<code>A[i],A[j]</code>的子集的最小值，在全局的返回值中扮演一个被减去的角色，更具体来说需要被减去<code>2^(n-1-i)</code>次，因为有<code>n-1-i</code>个元素大于<code>i</code>，并且它们都能和<code>i</code>构造出<code>2^(j-i-1)</code>个子集。当然更直观的解释是，只有在<code>A[i+1:]</code>的<code>2^(n-1-i)</code>个子集加入<code>A[i]</code>时，<code>A[i]</code>作为整个子集的最小值被减去。同理，<code>A[j]</code>也会被加<code>2^i</code>次，这样看来，很容易写出一个只遍历一次的解法，另外，为了提高计算效率，可以用1的位移代替底数为2的幂运算，否则仍然有TLE的风险。</p>
@@ -411,7 +411,23 @@ var _hmt = _hmt || [];
 
 
 
-<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -429,6 +445,5 @@ var _hmt = _hmt || [];
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
 </body>
 </html>

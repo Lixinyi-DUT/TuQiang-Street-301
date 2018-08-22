@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/5.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/6.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/7.png">
-<meta property="og:updated_time" content="2018-08-21T17:20:53.666Z">
+<meta property="og:updated_time" content="2018-08-22T08:27:35.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LC891的变体：求所有连续子集的极差之和">
 <meta name="twitter:description" content="在上周日的Weekly Contest 98 中的压轴题Sum of Subsequence Widths(以下简称母题)题解中我特意强调了这里的subsequence只是子集，并不要求所有元素之间的连续，所以做起来会更容易。今天志成 @_FollowYourHeart_问了个很好的问题：如果题目改成连续子集应该怎么做比较好？">
@@ -170,15 +170,21 @@ var _hmt = _hmt || [];
 <p>不妨跳出上面的全局最值的局限，考虑对于任意满足$A[x]&lt;A[y]$的$x$和$y$，如何找出所有以$A[y]-A[x]$为宽度的连续子数组？那么上文对于全局最值的讨论其实也解决了这个问题的一部分，即当我们知道以$A[x]$为最小值，$A[y]$为最大值的最大长度连续数组时我们就可以用上面的方法计算了。假设这个最大数组的起点为$s+1$，终点为$e-1$（$s$和$e$分别在代码中变量名为<code>start</code>和<code>end</code>），也就是$A[s]$和$A[e]$一定是小于$A[x]$或大于$A[y]$的值，而$A[s+1:e-1]$一定落在$A[x]$与$A[y]$之间。那么以$A[y]-A[x]$为宽度的子数组下标的起点为$[s+1,x]$，终点为$[y,e-1]$</p>
 <p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/7.png" alt="左右都不可以延伸到红色部分"></p>
 <p>固定$x$不变时，根据上文的讨论，可以按照$A[y]$的降序取$y$，落在区间$[s+1,e-1]$时完成计算后，如果$y &lt; x$则更新$s$的值为$y$，如果$y&gt;x$则更新$e$的值为$y$。</p>
-<p>对每轮$x$取值开始之前，需要先找准边界保证$A[x]$就是这个最大长度区间的最小值，那么可以先按照$A[x]$升序排序，在之前取过的$x’$中小于当前$x$的最大$x’$即为$s$，大于当前$x$的最小$y’$即为$e$，直观上来说这是两个距离$x$ <strong>最近</strong> 的且满足$A[x’]&lt;A[x]$的下标。</p>
+<p><a name="boundupdate"></a><br>对每轮$x$取值开始之前，需要先找准边界保证$A[x]$就是这个最大长度区间的最小值，那么可以先按照$A[x]$升序排序，在之前取过的$x’$中小于当前$x$的最大$x’$即为$s$，大于当前$x$的最小$y’$即为$e$，直观上来说这是两个距离$x$ <strong>最近</strong> 的且满足$A[x’]&lt;A[x]$的下标。</p>
 <p>当然，$s$和$e$需要分别被初始化为比第一个下标更小1的值，以及比最后一个下标更大1的值，这样可以保证在还没有更新边界时，所有元素都被包含在了需要搜索的范围内。</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_of_widths</span><span class="params">(A)</span>:</span></span><br><span class="line">    n = len(A)</span><br><span class="line">    pos = sorted(range(n), key=<span class="keyword">lambda</span> i: A[i])</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>):</span><br><span class="line">        x = pos[i]</span><br><span class="line">        start = max([p <span class="keyword">for</span> p <span class="keyword">in</span> pos[:i] <span class="keyword">if</span> p &lt; x] + [<span class="number">-1</span>])</span><br><span class="line">        end = min([p <span class="keyword">for</span> p <span class="keyword">in</span> pos[:i] <span class="keyword">if</span> p &gt; x] + [n])</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(n - <span class="number">1</span>, i, <span class="number">-1</span>):</span><br><span class="line">            y = pos[j]</span><br><span class="line">            <span class="keyword">if</span> y &gt; end <span class="keyword">or</span> y &lt; start:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> x &lt; y:</span><br><span class="line">                res += (end - y) * (x - start) * (A[y] - A[x])</span><br><span class="line">                end = y</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res += (end - x) * (y - start) * (A[y] - A[x])</span><br><span class="line">                start = y</span><br><span class="line">            <span class="keyword">if</span> end - start == <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 <p>时间复杂度为$o(n^2)$，空间复杂度为$o(n)$</p>
+<h2 id="伪单遍遍历"><a href="#伪单遍遍历" class="headerlink" title="伪单遍遍历*"></a>伪单遍遍历*</h2><div class="bs-callout bs-callout-success"><h4 id="8-22更新内容"><a href="#8-22更新内容" class="headerlink" title=" 8/22更新内容"></a><i class="fa fa-cog"></i> 8/22更新内容</h4><p>本小节为8/22看到志成回复给我他的想法：找到每个元素在哪些区间内是最大值/最小值，方法是对每个<code>A[i]</code>维护两个个单调栈，分别向左和向右找到第一个大于/小于<code>A[i]</code>的坐标<code>s</code>和<code>e</code>，那么<code>A[i]</code>就只在<code>(i-s)*(e-i)</code>个区间作为最大值/最小值。</p>
+</div>
+<p>其实这个找<code>A[i]</code>被加多少次和被减多少次的思路是最接近母题最终解法(sort + one pass)的，那就索性不用单调栈了，<del>其实是我实在太懒了不想费脑子写，</del>直接按照母题写单次遍历了。</p>
+<p>在上文我们提到每轮外层循环开始对每个$x$更新$s$和$e$的<a href="#boundupdate">规则</a>，这是为了保证$x$在内层循环开始前是$[s+1,e-1]$内所有包含$x$的区间的最小值。其实这里如果要保证某个$x$是某个范围内所有包含$x$的子集的最大值也是同理，按$A[i]$照降序排序，对每个$A[i]$找到在$i$左边的小于$i$的最大值作为$s$，当然这里是为了保证$A[i]$为最大值$A[y]$所以为了区分前文把这个$s$记作$s_y$，前文的那个使得$A[i]$最小的$s$记作$s_x$；同理找到在$i$左边且大于$i$的最小值作为$e_y$，那么就容易计算$A[i]$一共被加了多少次和减了多少次。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sum_of_widths_one_pass</span><span class="params">(A)</span>:</span></span><br><span class="line">    n = len(A)</span><br><span class="line">    pos = sorted(range(n), key=<span class="keyword">lambda</span> i: A[i])</span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i, v <span class="keyword">in</span> enumerate(pos):</span><br><span class="line">        s_x = max([p <span class="keyword">for</span> p <span class="keyword">in</span> pos[:i] <span class="keyword">if</span> p &lt; v] + [<span class="number">-1</span>])</span><br><span class="line">        e_x = min([p <span class="keyword">for</span> p <span class="keyword">in</span> pos[:i] <span class="keyword">if</span> p &gt; v] + [n])</span><br><span class="line">        s_y = max([p <span class="keyword">for</span> p <span class="keyword">in</span> pos[i:] <span class="keyword">if</span> p &lt; v] + [<span class="number">-1</span>])</span><br><span class="line">        e_y = min([p <span class="keyword">for</span> p <span class="keyword">in</span> pos[i:] <span class="keyword">if</span> p &gt; v] + [n])</span><br><span class="line">        res += ((e_y - v) * (v - s_y) - (e_x - v) * (v - s_x)) * A[v]</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p>虽然看上去有点像母题优雅的one pass，但实际上循环体里面的求最值依然$o(n)$遍历不可避，所以最终还是$o(n^2)$的时间复杂度和$o(n)$的空间复杂度。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>三种方法都可以保证输出正确的结果，比如使用随机测试用例<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup><br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test = [<span class="number">868</span>, <span class="number">1380</span>, <span class="number">63</span>, <span class="number">948</span>, <span class="number">1065</span>, <span class="number">796</span>, <span class="number">1130</span>, <span class="number">895</span>, <span class="number">1371</span>, <span class="number">1170</span>]</span><br></pre></td></tr></table></figure></p>
 <p>可以看到三个函数的输出结果都为<code>37672</code>，虽然花费了巨大的笔墨讲解第三种方法，但实际上从复杂度来看相较前两者似乎没有什么优势。不过这样的解法看上去比较舒服的地方，至少相对前两种方法里线性等宽的遍历，它可以仅在几次循环中就大幅度缩小下一轮需要遍历的范围，直觉上让人感觉轻松的多<del>（有吗？笑）</del>。</p>
 <p>相比被更改前的母题，这个问题的处理其实麻烦的多，我试着和其他人讨论，搜索现有资料，都没有找到特别巧妙的方法，也很可能是我的能力太有限，总之有<strong>任何</strong>可能的想法欢迎在评论或者邮件提出。母题没有<strong>连续</strong>的限定，同样使用暴力搜索时需要的开销为$o(2^n)$看上去更复杂，但实际在没有连续这个限制时，数组元素之间的顺序是没有意义的，所以母题可以在排序后只考虑每个元素和哪些元素的组合是被加，哪些是被减，但在这里却必须考虑每个元素在原数组中的位置，它与任何一个元素的组合里面能不能含有其他元素，所以无法放开手脚去做，我只能这么畏畏缩缩地用了这样一个既不效率又不优雅的算法。</p>
-<p>总之，谢谢志成提出的好问题。也希望这篇文章能够抛砖引玉，读者能提供出更漂亮的方法。</p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">使用 <a href="http://spojtoolkit.com/TestCaseGenerator/" target="_blank" rel="noopener">http://spojtoolkit.com/TestCaseGenerator/</a> 生成的随机数组</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<p>总之，谢谢志成提出的好问题。也希望这篇文章能够抛砖引玉，读者能提供出更漂亮的方法<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>。</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">使用 <a href="http://spojtoolkit.com/TestCaseGenerator/" target="_blank" rel="noopener">http://spojtoolkit.com/TestCaseGenerator/</a> 生成的随机数组</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">联动相关公众号推文<a href="https://mp.weixin.qq.com/s/31cXvvpes4U4-qsAu7ZsgA" target="_blank" rel="noopener">睡前故事：从子数组到连续子数组，求极差之和变容易了吗？</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -250,7 +256,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#问题背景"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">问题背景</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#暴力搜索"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">暴力搜索</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#直觉的改进"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">直觉的改进</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#排序-缩小搜索范围"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">排序+缩小搜索范围</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#总结"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">总结</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#问题背景"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">问题背景</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#暴力搜索"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">暴力搜索</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#直觉的改进"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">直觉的改进</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#排序-缩小搜索范围"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">排序+缩小搜索范围</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#伪单遍遍历"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">伪单遍遍历*</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#总结"><span class="sidebar-module-list-number">6.</span> <span class="sidebar-module-list-text">总结</span></a></li></ol>
   </div>
 
 
@@ -368,7 +374,23 @@ var _hmt = _hmt || [];
 
 
 
-<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -386,6 +408,5 @@ var _hmt = _hmt || [];
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
 </body>
 </html>
