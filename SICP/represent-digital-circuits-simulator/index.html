@@ -3,18 +3,20 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Category: LeetCode | 笔记仓库</title>
+  <title>数字电路模拟 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正常人的正常笔记站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记仓库">
-<meta property="og:url" content="notebook.xyli.me/categories/LeetCode/page/4/index.html">
+  <meta name="description" content="最近闲暇时在阅读的Structure and Interpretation of Computer Programs一书1，在介绍使用可变数据结构建模时，首先引入了队列（queue）和表（table）两个经典的数据结构实现作为基础，又在3.3.4  A Simulator for Digital Circuits试图用">
+<meta name="keywords" content="函数式编程,数字电路">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字电路模拟">
+<meta property="og:url" content="notebook.xyli.me/SICP/represent-digital-circuits-simulator/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="正常人的正常笔记站">
+<meta property="og:description" content="最近闲暇时在阅读的Structure and Interpretation of Computer Programs一书1，在介绍使用可变数据结构建模时，首先引入了队列（queue）和表（table）两个经典的数据结构实现作为基础，又在3.3.4  A Simulator for Digital Circuits试图用scheme实现一个数字电路的仿真。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-07T16:13:16.981Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记仓库">
-<meta name="twitter:description" content="正常人的正常笔记站">
+<meta name="twitter:title" content="数字电路模拟">
+<meta name="twitter:description" content="最近闲暇时在阅读的Structure and Interpretation of Computer Programs一书1，在介绍使用可变数据结构建模时，首先引入了队列（queue）和表（table）两个经典的数据结构实现作为基础，又在3.3.4  A Simulator for Digital Circuits试图用scheme实现一个数字电路的仿真。">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -105,261 +107,119 @@ var _hmt = _hmt || [];
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-71/" class="archive-article-date"><time datetime="2018-02-11T10:34:39.539Z" itemprop="datePublished">二月 11日</time></a>
-</div>
+          <article id="post-represent-digital-circuits-simulator" class="article article-type-post" itemscope itemprop="blogPost">
 
+  <header class="article-header">
     
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-71/">LeetCode Weekly Contest 71</a>
+    <h1 class="article-title" itemprop="name">
+      数字电路模拟
     </h1>
   
 
 
-    
-
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
   </header>
-</article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
+  <div class="article-meta">
     <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-70/" class="archive-article-date"><time datetime="2018-02-04T13:06:59.544Z" itemprop="datePublished">二月 4日</time></a>
+  <a href="/SICP/represent-digital-circuits-simulator/" class="article-date"><time datetime="2018-09-07T13:57:19.180Z" itemprop="datePublished">2018-09-07</time></a>
 </div>
 
+    <div class="article-author">Xinyi Li</div>
     
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-70/">LeetCode Weekly Contest 70</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-69/" class="archive-article-date"><time datetime="2018-01-28T12:28:32.280Z" itemprop="datePublished">一月 28日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-69/">LeetCode Weekly Contest 69</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-68/" class="archive-article-date"><time datetime="2018-01-22T11:08:35.018Z" itemprop="datePublished">一月 22日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-68/">LeetCode Weekly Contest 68</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-67/" class="archive-article-date"><time datetime="2018-01-14T12:02:47.061Z" itemprop="datePublished">一月 14日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-67/">LeetCode Weekly Contest 67</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-66/" class="archive-article-date"><time datetime="2018-01-07T11:24:46.970Z" itemprop="datePublished">一月 7日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-66/">LeetCode Weekly Contest 66</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-65/" class="archive-article-date"><time datetime="2017-12-31T12:33:12.577Z" itemprop="datePublished">十二月 31日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-65/">LeetCode Weekly Contest 65</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-64/" class="archive-article-date"><time datetime="2017-12-24T07:28:52.846Z" itemprop="datePublished">十二月 24日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-64/">LeetCode Weekly Contest 64</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-63/" class="archive-article-date"><time datetime="2017-12-17T13:47:35.194Z" itemprop="datePublished">十二月 17日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-63/">LeetCode Weekly Contest 63</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-39/" class="archive-article-date"><time datetime="2017-07-06T07:28:00.000Z" itemprop="datePublished">七月 6日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-39/">LeetCode Weekly Contest 39</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-  
-    </div></section>
-  
-
-
-  <div id="page-nav">
-    <nav><ul class="pagination"><li><a class="page-prev" rel="prev" href="/categories/LeetCode/page/3/"><i class="fa fa-chevron-left"></i> Prev</a></li><li><a class="page-number" href="/categories/LeetCode/">1</a></li><li><a class="page-number" href="/categories/LeetCode/page/2/">2</a></li><li><a class="page-number" href="/categories/LeetCode/page/3/">3</a></li><li class="active"><span class="page-number">4</span></li><li><a class="page-number" href="/categories/LeetCode/page/5/">5</a></li><li><a class="page-next" rel="next" href="/categories/LeetCode/page/5/">Next <i class="fa fa-chevron-right"></i></a></li></ul></nav>
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SICP/">SICP</a>
   </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近闲暇时在阅读的<a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html" target="_blank" rel="noopener"><em>Structure and Interpretation of Computer Programs</em></a>一书<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，在介绍使用可变数据结构建模时，首先引入了队列（queue）和表（table）两个经典的数据结构实现作为基础，又在<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_sec_3.3.4" target="_blank" rel="noopener">3.3.4  A Simulator for Digital Circuits</a>试图用scheme实现一个数字电路的仿真。</p>
+<a id="more"></a>
+<p>根据编书结构来看，3.3.4确实算不上什么重要的部分，对于此书的学习路线来说甚至无足轻重到可以直接跳过，只当是前文提到的可变的，复合的数据结构应用在建模中的一次实战；然而就<strong>数字电路模拟</strong>这个应用场景本身来说，也并不能称得上是一个贴切的例子，这里提供的实现与真实世界中硬件电路的做法几乎没有关系；更恼人的是，这个部分的内容很好的根据了抽象屏障（abstract barrier）进行了自顶而下（top-down）的讲解，对于部分像我这样喜欢从底层开始动手实验和理解的读者来说，如此的解释顺序无异于灾难。于是这个部分的内容对我来说，便成为了想读却下手困难且不值得，想放弃又心有不甘觉得可惜的鸡肋。</p>
+<p>但其实这部分读懂了又觉得还是有点意思的，就像<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-16.html#%_sec_2.3.2" target="_blank" rel="noopener">2.3.2  Example: Symbolic Differentiation</a>这个例子，虽然偏离实际但确实能极大提升对于递归的理解。从最底层开始亲自实现一遍数字电路也能很好的帮助我们去理解数据结构（data structure），求值环境（eval environment）和本地状态（local state）等概念。而且无论中英文网络上有关这部分的详解资料都不多，所以我决定自己动手写一篇短文带领所有可能在此遇到问题的人突破讲解材料的限制，拉住我伸出的手登上高处，看一看山下雄伟奇异的景色。理解这个有趣的例子，也同样是提升自信的一个途径，不像现实世界中其他优秀成功的人，我只是一个又丑又穷的底层失败者，所以读懂一个数字电路模拟实现已经是让我兴奋不已急于分享的喜事，当然对在座的优秀的，现实充实的读者们来说这可能只是微小的收获感，可哪怕只要有一个人能从我微小的贡献中受益，我也觉得是非常令我幸福的事了。</p>
+<p>好了，接下来我们开始从最底层往上用scheme实现一个完整的数字电路模拟器。</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">虽然MIT已经提供了html形式的全文开源，但为了获取更好的阅读体验，推荐下载<a href="https://github.com/sarabander/sicp-pdf" target="_blank" rel="noopener">这个排版精美的非官方电子版</a>或<a href="https://xuanji.appspot.com/isicp/index.html" target="_blank" rel="noopener">在线交互版</a></span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/SICP/represent-digital-circuits-simulator/" data-id="cjls3o3n3002wxgw3sqi941h7" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数字电路/">数字电路</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-100/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 100</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Fri Sep 07 2018 21:57:19 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    
+  </div>
+
 
 
   <div class="sidebar-module sidebar-module-inset">
@@ -447,11 +307,13 @@ var _hmt = _hmt || [];
 <script>
   var disqus_shortname = 'notebook-xyli-me';
   
+  var disqus_url = 'notebook.xyli.me/SICP/represent-digital-circuits-simulator/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
