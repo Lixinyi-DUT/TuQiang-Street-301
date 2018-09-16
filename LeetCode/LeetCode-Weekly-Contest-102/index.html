@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 102 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-102">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 102">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-102/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-102">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-09-16T15:32:59.402Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 102">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-102">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-102" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 102
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-102/" class="article-date"><time datetime="2018-09-16T14:30:58.475Z" itemprop="datePublished">2018-09-16</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/contest/weekly-contest-102" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-102</a></p>
+<a id="more"></a>
+<h2 id="Sort-Array-By-Parity"><a href="#Sort-Array-By-Parity" class="headerlink" title="Sort Array By Parity"></a>Sort Array By Parity</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-102/problems/sort-array-by-parity/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-102/problems/sort-array-by-parity/</a></p>
+<blockquote>
+<p>Given an array <code>A</code> of non-negative integers, return an array consisting of all the even elements of <code>A</code>, followed by all the odd elements of <code>A</code>.</p>
+<p>You may return any answer array that satisfies this condition.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,1,2,4]</span><br><span class="line">Output: [2,4,3,1]</span><br><span class="line">The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 5000</code></li>
+<li><code>0 &lt;= A[i] &lt;= 5000</code></li>
+</ol>
+</blockquote>
+<p>提供一个没动脑子的写法，肯定有比我的方法高效的多的方法，然而懒得写了，因为这题真没什么思考的价值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortArrayByParity</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> [i <span class="keyword">for</span> i <span class="keyword">in</span> A <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>] + [i <span class="keyword">for</span> i <span class="keyword">in</span> A <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="Fruit-Into-Baskets"><a href="#Fruit-Into-Baskets" class="headerlink" title="Fruit Into Baskets"></a>Fruit Into Baskets</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-102/problems/fruit-into-baskets/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-102/problems/fruit-into-baskets/</a></p>
+<blockquote>
+<p>In a row of trees, the <code>i</code>-th tree produces fruit with type <code>tree[i]</code>.</p>
+<p>You <strong>start at any tree of your choice</strong>, then repeatedly perform the following steps:</p>
+<p>Add one piece of fruit from this tree to your baskets.  If you cannot, stop.<br>Move to the next tree to the right of the current tree.  If there is no tree to the right, stop.<br>Note that you do not have any choice after the initial choice of starting tree: you must perform step 1, then step 2, then back to step 1, then step 2, and so on until you stop.</p>
+<p>You have two baskets, and each basket can carry any quantity of fruit, but you want each basket to only carry one type of fruit each.</p>
+<p>What is the total amount of fruit you can collect with this procedure?</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,1]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: We can collect [1,2,1].</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [0,1,2,2]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: We can collect [1,2,2].</span><br><span class="line">If we started at the first tree, we would only collect [0, 1].</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,2,2]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: We can collect [2,3,2,2].</span><br><span class="line">If we started at the first tree, we would only collect [1, 2].</span><br></pre></td></tr></table></figure></p>
+<p>Example 4:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,3,3,1,2,1,1,2,3,3,4]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: We can collect [1,2,1,1,2].</span><br><span class="line">If we started at the first tree or the eighth tree, we would only collect fruits.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= tree.length &lt;= 40000</code></li>
+<li><code>0 &lt;= tree[i] &lt; tree.length</code></li>
+</ol>
+</blockquote>
+<p>题目说的有点绕，简单来说就是给你一个数组<code>tree</code>，让你找至多包含两个不同元素的连续子数组的最大长度。</p>
+<p>当<code>tree</code>的元素不超过两种时，显然返回<code>tree</code>的长度即可。</p>
+<p>当<code>tree</code>的元素数量大于2时，使用一个<code>next</code>向量把向右第一个与<code>tree[i]</code>不同的元素坐标<code>j</code>记录到<code>next[i]=j</code>，遍历时迭代找<code>next[j]</code>下标的元素是否还在两种元素内，如果不在则从<code>j</code>开始继续遍历，之前的长度<code>next[j]-i</code>作为候选的结果。如果在则从<code>j=next[j]</code>开始找到第三种元素出现的地方。当然，当<code>next[j]</code>已经到达数组末尾<code>len(tree)</code>时，也没必要再从<code>j</code>开始遍历了。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">totalFruit</span><span class="params">(self, tree)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type tree: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        next = [<span class="number">0</span>] * len(tree)</span><br><span class="line">        cur = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(set(tree)) &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> len(tree)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(tree)):</span><br><span class="line">            <span class="keyword">if</span> tree[i] != tree[cur]:</span><br><span class="line">                next[cur] = i</span><br><span class="line">                cur = i</span><br><span class="line"></span><br><span class="line">        next[cur] = len(tree)</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        a, b = tree[i], tree[next[i]]</span><br><span class="line">        <span class="keyword">while</span> i &lt; len(tree):</span><br><span class="line">            a, b = tree[i], tree[next[i]]</span><br><span class="line">            j = next[i]</span><br><span class="line">            <span class="keyword">while</span> next[j] &lt; len(tree) <span class="keyword">and</span> tree[next[j]] <span class="keyword">in</span> (a, b):</span><br><span class="line">                j = next[j]</span><br><span class="line">            res = max(res, next[j] - i)</span><br><span class="line">            <span class="keyword">if</span> next[j] == len(tree):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            i = j</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="Sum-of-Subarray-Minimums"><a href="#Sum-of-Subarray-Minimums" class="headerlink" title="Sum of Subarray Minimums"></a>Sum of Subarray Minimums</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-102/problems/sum-of-subarray-minimums/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-102/problems/sum-of-subarray-minimums/</a></p>
+<blockquote>
+<p>Given an array of integers A, find the sum of min(B), where B ranges over every (contiguous) subarray of A.</p>
+<p>Since the answer may be large, return the answer modulo 10^9 + 7.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,1,2,4]</span><br><span class="line">Output: 17</span><br><span class="line">Explanation: Subarrays are [3], [1], [2], [4], [3,1], [1,2], [2,4], [3,1,2], [1,2,4], [3,1,2,4].</span><br><span class="line">Minimums are 3, 1, 2, 4, 1, 1, 2, 1, 1, 1.  Sum is 17.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 30000</code></li>
+<li><code>1 &lt;= A[i] &lt;= 30000</code></li>
+</ol>
+</blockquote>
+<p>这个问题实际上已经在<a href="http://notebook.xyli.me/LeetCode/LC891-alter/#%E5%8D%95%E8%B0%83%E6%A0%88">LC891的变体</a>中讨论过了，而且这里只要求最小值之和，正反两个反向用两次单调栈遍历一下即可。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumSubarrayMins</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n = len(A)</span><br><span class="line">        s_x, e_x = [<span class="number">-1</span>] * n, [n] * n</span><br><span class="line"></span><br><span class="line">        mono_stack = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">while</span> mono_stack <span class="keyword">and</span> A[mono_stack[<span class="number">-1</span>]] &gt;= A[i]:</span><br><span class="line">                e_x[mono_stack.pop()] = i</span><br><span class="line">            mono_stack.append(i)</span><br><span class="line"></span><br><span class="line">        mono_stack = []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">while</span> mono_stack <span class="keyword">and</span> A[mono_stack[<span class="number">-1</span>]] &gt; A[i]:</span><br><span class="line">                s_x[mono_stack.pop()] = i</span><br><span class="line">            mono_stack.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum(A[i] * (e_x[i] - i) * (i - s_x[i]) % (<span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span>) <span class="keyword">for</span> i <span class="keyword">in</span> range(n)) % (<span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Super-Palindromes"><a href="#Super-Palindromes" class="headerlink" title="Super Palindromes"></a>Super Palindromes</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-102/problems/super-palindromes/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-102/problems/super-palindromes/</a></p>
+<blockquote>
+<p>Let’s say a positive integer is a superpalindrome if it is a palindrome, and it is also the square of a palindrome.</p>
+<p>Now, given two positive integers <code>L</code> and <code>R</code> (represented as strings), return the number of superpalindromes in the inclusive range <code>[L, R]</code>.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: L = &quot;4&quot;, R = &quot;1000&quot;</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: 4, 9, 121, and 484 are superpalindromes.</span><br><span class="line">Note that 676 is not a superpalindrome: 26 * 26 = 676, but 26 is not a palindrome.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= len(L) &lt;= 18</code></li>
+<li><code>1 &lt;= len(R) &lt;= 18</code></li>
+<li><code>L</code> and <code>R</code> are strings representing integers in the range <code>[1, 10^18)</code>.</li>
+<li><code>int(L) &lt;= int(R)</code></li>
+</ol>
+</blockquote>
+<p>这题有点<a href="http://notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-92/#Prime-Palindrome">#Prime Palindrome</a>的味道，在如何找比一个大于等于<code>n</code>的最小palindrome上可以直接用<code>palind(n)</code>，然后验证其平方是否也为palindrome，当然这么做肯定会超时。我当时是观察了所有平方数也为palindrome的palindrome，发现除了中间位，它的每一位都不能超过2，当然我也不知道该如何证明这个结论，就直接用了，在<code>palind(n)</code>加上了各位不能超过2的限制。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">superpalindromesInRange</span><span class="params">(self, L, R)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type L: str</span></span><br><span class="line"><span class="string">        :type R: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">palind</span><span class="params">(n)</span>:</span></span><br><span class="line">            x = str(n)</span><br><span class="line">            l = len(x)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(int(l / <span class="number">2</span>) - <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">                <span class="keyword">if</span> int(x[i]) &gt; <span class="number">2</span>:</span><br><span class="line">                    <span class="keyword">return</span> palind(n + <span class="number">10</span>**(l - i) - int(x[i:]))</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(int(l / <span class="number">2</span>)):</span><br><span class="line">                <span class="keyword">if</span> int(x[<span class="number">-1</span> - i]) &gt; int(x[i]):</span><br><span class="line">                    <span class="keyword">return</span> palind(n + (<span class="number">10</span> - int(x[<span class="number">-1</span> - i])) * (<span class="number">10</span>**i))</span><br><span class="line">            x = list(x)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(int(l / <span class="number">2</span>)):</span><br><span class="line">                x[<span class="number">-1</span> - i] = x[i]</span><br><span class="line">            <span class="keyword">return</span> int(<span class="string">''</span>.join(x))</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">is_palind</span><span class="params">(x)</span>:</span></span><br><span class="line">            x = str(x)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(int(len(x) / <span class="number">2</span>)):</span><br><span class="line">                <span class="keyword">if</span> int(x[<span class="number">-1</span> - i]) != int(x[i]):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        i = int(palind(int(math.sqrt(int(L)))))</span><br><span class="line">        <span class="keyword">print</span> i</span><br><span class="line">        <span class="keyword">while</span> i &lt;= int(math.sqrt(int(R))):</span><br><span class="line">            <span class="keyword">if</span> is_palind(i**<span class="number">2</span>):</span><br><span class="line">                res += <span class="number">1</span></span><br><span class="line">            i = palind(i + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-102/" data-id="cjm4ykpbq0000k0w3j1wp5910" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-101/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 101</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sun Sep 16 2018 22:30:58 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Sort-Array-By-Parity"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Sort Array By Parity</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Fruit-Into-Baskets"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Fruit Into Baskets</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Sum-of-Subarray-Minimums"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Sum of Subarray Minimums</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Super-Palindromes"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Super Palindromes</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>另一个博客<a href="http://yangzhou301.xyli.me/" style="text-decoration:none;">扬州计划</a> </p> <p>随着一次次的失败，一无所有的作者我已经别无所求了，只想安静的生活下去，不想再被打扰。谢谢大家的关心和照顾，可惜我已经无力回报，非常对不起。有事请联系<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">43</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 20px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-102/">LeetCode Weekly Contest 102</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-101/">LeetCode Weekly Contest 101</a>
+        </li>
+      
+        <li>
+          <a href="/SICP/represent-digital-circuits-simulator/">数字电路模拟</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-100/">LeetCode Weekly Contest 100</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-99/">LeetCode Weekly Contest 99</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-102/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
