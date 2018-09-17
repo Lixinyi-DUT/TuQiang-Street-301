@@ -5,17 +5,17 @@
   
   <title>LeetCode Weekly Contest 95 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/contest/weekly-contest-95/">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-95/ &amp;lt;!-- more --&amp;gt; Middle of the Linked List 原题地址 https://leetcode.com/contest/weekly-contest-95/proble">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode Weekly Contest 95">
 <meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-95/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-95/">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-95/ &amp;lt;!-- more --&amp;gt; Middle of the Linked List 原题地址 https://leetcode.com/contest/weekly-contest-95/problems/middle-of-the-linked-list/  Given a non-empty">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-07-29T17:16:26.647Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 95">
-<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-95/">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-95/ &amp;lt;!-- more --&amp;gt; Middle of the Linked List 原题地址 https://leetcode.com/contest/weekly-contest-95/problems/middle-of-the-linked-list/  Given a non-empty">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -137,64 +137,122 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/contest/weekly-contest-95/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-95/</a></p>
-<a id="more"></a>
-<h2 id="Middle-of-the-Linked-List"><a href="#Middle-of-the-Linked-List" class="headerlink" title="Middle of the Linked List"></a>Middle of the Linked List</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-95/problems/middle-of-the-linked-list/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-95/problems/middle-of-the-linked-list/</a></p>
+        <p>https://leetcode.com/contest/weekly-contest-95/</p>
+<p>&lt;!-- more --&gt;</p>
+<h2>Middle of the Linked List</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-95/problems/middle-of-the-linked-list/</p>
 <blockquote>
 <p>Given a non-empty, singly linked list with head node <code>head</code>, return a middle node of linked list.</p>
+</blockquote>
+<blockquote>
 <p>If there are two middle nodes, return the second middle node.</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5]</span><br><span class="line">Output: Node 3 from this list (Serialization: [3,4,5])</span><br><span class="line">The returned node has value 3.  (The judge&apos;s serialization of this node is [3,4,5]).</span><br><span class="line">Note that we returned a ListNode object ans, such that:</span><br><span class="line">ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5,6]</span><br><span class="line">Output: Node 4 from this list (Serialization: [4,5,6])</span><br><span class="line">Since the list has two middle nodes with values 3 and 4, we return the second one.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5]</span><br><span class="line">Output: Node 3 from this list (Serialization: [3,4,5])</span><br><span class="line">The returned node has value 3.  (The judge&apos;s serialization of this node is [3,4,5]).</span><br><span class="line">Note that we returned a ListNode object ans, such that:</span><br><span class="line">ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5,6]</span><br><span class="line">Output: Node 4 from this list (Serialization: [4,5,6])</span><br><span class="line">Since the list has two middle nodes with values 3 and 4, we return the second one.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li>The number of nodes in the given list will be between <code>1</code> and <code>100</code>.</li>
 </ol>
-</blockquote>
 <p>用一快一慢两个指针遍历链表，快的走两步慢的走一步，快的完成遍历后慢的就在链表的中间了。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">middleNode</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n=<span class="number">0</span></span><br><span class="line">        fast,slow=head,head</span><br><span class="line">        <span class="keyword">while</span> fast:</span><br><span class="line">            fast=fast.next</span><br><span class="line">            <span class="keyword">if</span> n%<span class="number">2</span>==<span class="number">1</span>: slow=slow.next</span><br><span class="line">            n+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> slow</span><br></pre></td></tr></table></figure>
-<h2 id="Stone-Game"><a href="#Stone-Game" class="headerlink" title="Stone Game"></a>Stone Game</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-95/problems/stone-game/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-95/problems/stone-game/</a></p>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">middleNode</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type head: ListNode</span></span><br><span class="line"><span class="string">        :rtype: ListNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n=<span class="number">0</span></span><br><span class="line">        fast,slow=head,head</span><br><span class="line">        <span class="keyword">while</span> fast:</span><br><span class="line">            fast=fast.next</span><br><span class="line">            <span class="keyword">if</span> n%<span class="number">2</span>==<span class="number">1</span>: slow=slow.next</span><br><span class="line">            n+=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> slow</span><br></pre></td></tr></table></figure></p>
+<h2>Stone Game</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-95/problems/stone-game/</p>
 <blockquote>
 <p>Alex and Lee play a game with piles of stones.  There are an even number of piles <strong>arranged in a row</strong>, and each pile has a positive integer number of stones <code>piles[i]</code>.</p>
+</blockquote>
+<blockquote>
 <p>The objective of the game is to end with the most stones.  The total number of stones is odd, so there are no ties.</p>
+</blockquote>
+<blockquote>
 <p>Alex and Lee take turns, with Alex starting first.  Each turn, a player takes the entire pile of stones from either the beginning or the end of the row.  This continues until there are no more piles left, at which point the person with the most stones wins.</p>
+</blockquote>
+<blockquote>
 <p>Assuming Alex and Lee play optimally, return <code>True</code> if and only if Alex wins the game.</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,3,4,5]</span><br><span class="line">Output: true</span><br><span class="line">Explanation:</span><br><span class="line">Alex starts first, and can only take the first 5 or the last 5.</span><br><span class="line">Say he takes the first 5, so that the row becomes [3, 4, 5].</span><br><span class="line">If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.</span><br><span class="line">If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.</span><br><span class="line">This demonstrated that taking the first 5 was a winning move for Alex, so we return true.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,3,4,5]</span><br><span class="line">Output: true</span><br><span class="line">Explanation:</span><br><span class="line">Alex starts first, and can only take the first 5 or the last 5.</span><br><span class="line">Say he takes the first 5, so that the row becomes [3, 4, 5].</span><br><span class="line">If Lee takes 3, then the board is [4, 5], and Alex takes 5 to win with 10 points.</span><br><span class="line">If Lee takes the last 5, then the board is [3, 4], and Alex takes 4 to win with 9 points.</span><br><span class="line">This demonstrated that taking the first 5 was a winning move for Alex, so we return true.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>2 &lt;= piles.length &lt;= 500</code></li>
 <li><code>piles.length</code> is even.</li>
 <li><code>1 &lt;= piles[i] &lt;= 500</code></li>
 <li><code>sum(piles)</code> is odd.</li>
 </ol>
-</blockquote>
 <p>注意这题有pile的长度为偶数的限定，那么Alex可以从头（偶数项）或者尾（奇数项）开始取走所有的奇数项或所有的偶数项，而总数又是奇数，奇数项和与偶数项和存在一个较大值，那么存在一个必胜的策略：Alex只要选择每轮都选择奇数项或者偶数项使得Lee被迫选剩下的，必然可以达到较大的和。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stoneGame</span><span class="params">(self, piles)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type piles: List[int]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
-<h2 id="Nth-Magical-Number"><a href="#Nth-Magical-Number" class="headerlink" title="Nth Magical Number"></a>Nth Magical Number</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-95/problems/nth-magical-number/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-95/problems/nth-magical-number/</a></p>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">stoneGame</span><span class="params">(self, piles)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type piles: List[int]</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure></p>
+<h2>Nth Magical Number</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-95/problems/nth-magical-number/</p>
 <blockquote>
 <p>A positive integer is magical if it is divisible by either A or B.</p>
+</blockquote>
+<blockquote>
 <p>Return the N-th magical number.  Since the answer may be very large, return it <strong>modulo</strong> <code>10^9 + 7</code>.</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: N = 1, A = 2, B = 3</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: N = 4, A = 2, B = 3</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: N = 5, A = 2, B = 4</span><br><span class="line">Output: 10</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: N = 3, A = 6, B = 4</span><br><span class="line">Output: 8</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: N = 1, A = 2, B = 3</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: N = 4, A = 2, B = 3</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 3</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: N = 5, A = 2, B = 4</span><br><span class="line">Output: 10</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 4</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: N = 3, A = 6, B = 4</span><br><span class="line">Output: 8</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>1 &lt;= N &lt;= 10^9</code></li>
 <li><code>2 &lt;= A &lt;= 40000</code></li>
 <li><code>2 &lt;= B &lt;= 40000</code></li>
 </ol>
-</blockquote>
 <p>每增加一个<code>lcm(A,B)</code>就会增加<code>lcm(A,B)/A+lcm(A,B)/B-1</code>个magical number，那么先对<code>N</code>除<code>lcm(A,B)/A+lcm(A,B)/B-1</code>，得到的商乘以<code>lcm(A,B)</code>，再按照余数一个个去找到剩下的余数。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nthMagicalNumber</span><span class="params">(self, N, A, B)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :type A: int</span></span><br><span class="line"><span class="string">        :type B: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        g=fractions.gcd(A,B)</span><br><span class="line">        m=A/g+B/g<span class="number">-1</span></span><br><span class="line">        r=N%m</span><br><span class="line">        res=((N/m)*A*B/g)%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br><span class="line">        m_a,m_b,cur=<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> r&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> (m_a+<span class="number">1</span>)*A&gt;(m_b+<span class="number">1</span>)*B:</span><br><span class="line">                m_b+=<span class="number">1</span></span><br><span class="line">                cur=m_b*B</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                m_a+=<span class="number">1</span></span><br><span class="line">                cur=m_a*A</span><br><span class="line">            r-=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (res+cur)%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="Profitable-Schemes"><a href="#Profitable-Schemes" class="headerlink" title="Profitable Schemes"></a>Profitable Schemes</h2><blockquote>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nthMagicalNumber</span><span class="params">(self, N, A, B)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :type A: int</span></span><br><span class="line"><span class="string">        :type B: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        g=fractions.gcd(A,B)</span><br><span class="line">        m=A/g+B/g<span class="number">-1</span></span><br><span class="line">        r=N%m</span><br><span class="line">        res=((N/m)*A*B/g)%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br><span class="line">        m_a,m_b,cur=<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> r&gt;<span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> (m_a+<span class="number">1</span>)*A&gt;(m_b+<span class="number">1</span>)*B:</span><br><span class="line">                m_b+=<span class="number">1</span></span><br><span class="line">                cur=m_b*B</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                m_a+=<span class="number">1</span></span><br><span class="line">                cur=m_a*A</span><br><span class="line">            r-=<span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (res+cur)%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br></pre></td></tr></table></figure></p>
+<h2>Profitable Schemes</h2>
+<blockquote>
 <p>There are G people in a gang, and a list of various crimes they could commit.</p>
+</blockquote>
+<blockquote>
 <p>The <code>i</code>-th crime generates a <code>profit[i]</code> and requires <code>group[i]</code> gang members to participate.</p>
-<p>If a gang member participates in one crime, that member can’t participate in another crime.</p>
-<p>Let’s call a profitable scheme any subset of these crimes that generates at least <code>P</code> profit, and the total number of gang members participating in that subset of crimes is at most G.</p>
+</blockquote>
+<blockquote>
+<p>If a gang member participates in one crime, that member can't participate in another crime.</p>
+</blockquote>
+<blockquote>
+<p>Let's call a profitable scheme any subset of these crimes that generates at least <code>P</code> profit, and the total number of gang members participating in that subset of crimes is at most G.</p>
+</blockquote>
+<blockquote>
 <p>How many schemes can be chosen?  Since the answer may be very large, <strong>return it modulo</strong> <code>10^9 + 7</code>.</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: G = 5, P = 3, group = [2,2], profit = [2,3]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">To make a profit of at least 3, the gang could either commit crimes 0 and 1, or just crime 1.</span><br><span class="line">In total, there are 2 schemes.</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: G = 10, P = 5, group = [2,3,5], profit = [6,7,8]</span><br><span class="line">Output: 7</span><br><span class="line">Explanation:</span><br><span class="line">To make a profit of at least 5, the gang could commit any crimes, as long as they commit one.</span><br><span class="line">There are 7 possible schemes: (0), (1), (2), (0,1), (0,2), (1,2), and (0,1,2).</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: G = 5, P = 3, group = [2,2], profit = [2,3]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">To make a profit of at least 3, the gang could either commit crimes 0 and 1, or just crime 1.</span><br><span class="line">In total, there are 2 schemes.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: G = 10, P = 5, group = [2,3,5], profit = [6,7,8]</span><br><span class="line">Output: 7</span><br><span class="line">Explanation:</span><br><span class="line">To make a profit of at least 5, the gang could commit any crimes, as long as they commit one.</span><br><span class="line">There are 7 possible schemes: (0), (1), (2), (0,1), (0,2), (1,2), and (0,1,2).</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>1 &lt;= G &lt;= 100</code></li>
 <li><code>0 &lt;= P &lt;= 100</code></li>
@@ -202,14 +260,13 @@ var _hmt = _hmt || [];
 <li><code>0 &lt;= profit[i] &lt;= 100</code></li>
 <li><code>1 &lt;= group.length = profit.length &lt;= 100</code></li>
 </ol>
-</blockquote>
 <p>也是背包问题的变种，这里也用动态规划。<code>dp[i][j]</code>表示利润为<code>i</code>人员数为<code>j</code>的方案总数（除了<code>i=P</code>时表示利润<code>&gt;=P</code>），遍历犯罪列表，对于每次取到的利润为<code>p</code>人员数为<code>g</code>的犯罪，更新整个<code>dp</code>：</p>
 <ol>
 <li>如果<code>i+p&lt;P</code>，则<code>dp[i+p][j+g]+=dp[i][j]</code></li>
 <li>如果<code>i+p&gt;=P</code>，则<code>dp[P][j+g]+=dp[i][j]</code></li>
 </ol>
 <p>当然注意第二维（人员数）不要超过<code>G</code>。这里用的还是类似于<a href="http://notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-93/#Minimum-Number-of-Refueling-Stops">Minimum Number of Refueling Stops</a>用到的自底而上的遍历<code>dp</code>，原理也相同。初始条件为<code>dp[0][0]=1</code>这样保证初次遍历的时候只有<code>dp[min(p,P)][g]</code>可以得到更新为<code>1</code>，之后加入的犯罪也只会以这二者为起点。最后返回<code>i=P</code>的所有<code>dp</code>的和作为结果。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">profitableSchemes</span><span class="params">(self, G, P, group, profit)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type G: int</span></span><br><span class="line"><span class="string">        :type P: int</span></span><br><span class="line"><span class="string">        :type group: List[int]</span></span><br><span class="line"><span class="string">        :type profit: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp=[[<span class="number">0</span>]*(G+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(P+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> g,p <span class="keyword">in</span> zip(group,profit):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(P,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(G-g,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">                    dp[min(i+p,P)][j+g]+=dp[i][j]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum(dp[P])%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">profitableSchemes</span><span class="params">(self, G, P, group, profit)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type G: int</span></span><br><span class="line"><span class="string">        :type P: int</span></span><br><span class="line"><span class="string">        :type group: List[int]</span></span><br><span class="line"><span class="string">        :type profit: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp=[[<span class="number">0</span>]*(G+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(P+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> g,p <span class="keyword">in</span> zip(group,profit):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(P,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(G-g,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">                    dp[min(i+p,P)][j+g]+=dp[i][j]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum(dp[P])%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -220,7 +277,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-95/" data-id="cjm51d7ya002qusw39qttp22o" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-95/" data-id="cjm54ylmu002qfkw3kt6ujme2" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -289,7 +346,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Middle-of-the-Linked-List"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Middle of the Linked List</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Stone-Game"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Stone Game</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Nth-Magical-Number"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Nth Magical Number</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Profitable-Schemes"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Profitable Schemes</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Middle of the Linked List</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Stone Game</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Nth Magical Number</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Profitable Schemes</span></a></li></ol>
   </div>
 
 
