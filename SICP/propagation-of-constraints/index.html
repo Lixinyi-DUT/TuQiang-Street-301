@@ -14,7 +14,7 @@
 <meta property="og:description" content="在之前的文章中我们试着利用可变数据建模完成了数字电路模拟系统，Structure and Interpretation of Computer Programs在紧随其后的小节Propagation of Constraints中用类似的方法实现了一个与之类似的约束系统（constraints system）用于加深对可变数据结构的理解。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gitlab.com/xyli/SICP-learning-notes/raw/master/notes/constraint-system/temperature-convert.png?inline=false">
-<meta property="og:updated_time" content="2018-09-19T17:23:36.221Z">
+<meta property="og:updated_time" content="2018-09-19T17:27:15.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="约束传播">
 <meta name="twitter:description" content="在之前的文章中我们试着利用可变数据建模完成了数字电路模拟系统，Structure and Interpretation of Computer Programs在紧随其后的小节Propagation of Constraints中用类似的方法实现了一个与之类似的约束系统（constraints system）用于加深对可变数据结构的理解。">
@@ -222,7 +222,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>Plus ça change, plus c’est la même chose.<br>—Alphonse Karr</p>
 </blockquote>
-<p>大意为事物变化得越多，他们保留不变得也越多。它们被用在讲述使用mutable data structure进行编程的第三章，是想告诉你即使使用了不那么纯粹的函数式编程的方式去操纵改变数据，我们还是有办法紧紧抓住数据中不变的部分服务于我们的程序。而我在这里引用这两句话，是想说即使我们不断地去尝试和开拓不同的语言在不同的环境中光怪陆离的用法，实现曾经想都没想过的东西，都是从最基础的用法开始一点点编写，每次写不同的东西最终都是加深对同一个体系的理解，一步步找寻住在计算机内的神灵，在追求本质美丽和自由的路上曲折前行。</p>
+<p>大意为事物变化得越多，他们保留不变得也越多。它们被用在讲述使用mutable data structure进行编程的第三章，是想告诉你即使使用了不那么纯粹的函数式编程的方式去操纵改变数据，我们还是有办法紧紧抓住数据中不变的部分服务于我们的程序。而我在这里引用这两句话，是想说即使我们不断地去尝试和开拓不同的语言在不同的环境中光怪陆离的用法，实现曾经想都没想过的东西，都是从最基础的用法开始一点点编写，每次写不同的东西最终都是加深对同一个体系的理解，一步步找寻住在计算机内的神灵，在追求本质美丽和自由的道路上曲折前行。</p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">传入这两个消息直接调用<code>error</code>过程的写法是SICP给出的，但在实际应用中，尝试对常量进行修改操作一般并非出于用户直接的不当操作，而是它参与的其他约束关系传播过来的变值请求，忽略这些请求返回<code>‘ignored</code>即可，没有必要处理成<code>error</code>消息。</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">案例来源于<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%25_thm_3.34" target="_blank" rel="noopener">习题3.34</a>，schemewiki社区对此给出的解释是这个设计的瑕疵在于<code>b</code>获取值后无法传播给<code>a</code>，但事实上如果没有限定<code>a</code>的符号，已知<code>b</code>的值依然无法确定<code>a</code>的值。</span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">Sutherland, Ivan E. &quot;<a href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-574.pdf" target="_blank" rel="noopener">Sketch pad a man-machine graphical communication system.</a>&quot; In <em>Proceedings of the SHARE design automation workshop</em>, pp. 6-329. ACM, 1964.</span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;">Borning, Alan. &quot;<a href="https://www.ijcai.org/Proceedings/77-1/Papers/085.pdf" target="_blank" rel="noopener">ThingLab: an object-oriented system for building simulations using constraints.</a>&quot; In <em>Proceedings of the 5th international joint conference on Artificial intelligence-Volume 1</em>, pp. 497-498. Morgan Kaufmann Publishers Inc., 1977.</span><a href="#fnref:4" rev="footnote"> ↩</a></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">5.</span><span style="display: inline-block; vertical-align: top;">Sussman, Gerald Jay, and Guy Lewis Steele Jr. &quot;<a href="https://dspace.mit.edu/bitstream/handle/1721.1/6312/AIM-502a.pdf?sequence=2" target="_blank" rel="noopener">CONSTRAINTS—A language for expressing almost-hierarchical descriptions.</a>&quot; <em>Artificial intelligence</em> 14, no. 1 (1980): 1-39.</span><a href="#fnref:5" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
@@ -233,7 +233,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/propagation-of-constraints/" data-id="cjm96vtqx002ywow3u3e7ewxj" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/propagation-of-constraints/" data-id="cjmdjirkl003s9sw3swxwpnql" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -258,6 +258,13 @@ var _hmt = _hmt || [];
     </a>
   </li>
   
+  
+  <li role="presentation">
+    <a href="/SICP/SICP-with-DrRacket/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">SICP从DrRacket钻出来了</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
   
 </ul>
 
@@ -311,7 +318,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">43</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">3</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">43</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">4</span></li></ul>
   </div>
 
 
@@ -319,7 +326,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module sidebar-tags">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DrRacket/">DrRacket</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
   </div>
 
 
@@ -328,7 +335,7 @@ var _hmt = _hmt || [];
   <div class="sidebar-module">
     <h4>Tag Cloud</h4>
     <p class="tagcloud">
-      <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
+      <a href="/tags/DrRacket/" style="font-size: 10px;">DrRacket</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
     </p>
   </div>
 
@@ -336,7 +343,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -345,6 +352,10 @@ var _hmt = _hmt || [];
   <div class="sidebar-module sidebar-recents">
     <h4>Recents</h4>
     <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/SICP/SICP-with-DrRacket/">SICP从DrRacket钻出来了</a>
+        </li>
       
         <li>
           <a href="/SICP/propagation-of-constraints/">约束传播</a>
@@ -360,10 +371,6 @@ var _hmt = _hmt || [];
       
         <li>
           <a href="/SICP/represent-digital-circuits-simulator/">数字电路模拟</a>
-        </li>
-      
-        <li>
-          <a href="/LeetCode/LeetCode-Weekly-Contest-100/">LeetCode Weekly Contest 100</a>
         </li>
       
     </ul>
