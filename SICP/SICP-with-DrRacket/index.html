@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="标题致敬沙丁鱼从地里钻了出来（イワシがつちからはえてくるんだ）  在条件允许的情况下，一般建议阅读Structure and Interpretation of Computer Programs 和实验时用GNU/MIT Scheme比较合适，不过我之前习惯写了Racket语言懒得转过去，所以还是用DrRacket环境了。我在这里碎碎念一些遇到的问题和解决的方法，其中也不少借助了前人的资料和其">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-24T13:38:30.016Z">
+<meta property="og:updated_time" content="2018-09-26T15:27:37.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SICP从DrRacket钻了出来">
 <meta name="twitter:description" content="标题致敬沙丁鱼从地里钻了出来（イワシがつちからはえてくるんだ）  在条件允许的情况下，一般建议阅读Structure and Interpretation of Computer Programs 和实验时用GNU/MIT Scheme比较合适，不过我之前习惯写了Racket语言懒得转过去，所以还是用DrRacket环境了。我在这里碎碎念一些遇到的问题和解决的方法，其中也不少借助了前人的资料和其">
@@ -162,7 +162,7 @@ var _hmt = _hmt || [];
 <p>这个环境中的<code>(transform-painter origin corner1 corner2)</code>的返回结果为<code>(painter? -&gt; painter?)</code>的函数，而原书的<code>transform-painter</code>原型则是<code>(transform-painter painter origin corner1 corner2)</code>，需要包括被变形的<code>painter</code>在内的四个参数，直接返回变形结果，而非我们的package中定义的返回一个变形函数。需要稍微注意一下，以免编写时出现传参错误。</p>
 <h2 id="Case-Sensitive"><a href="#Case-Sensitive" class="headerlink" title="Case Sensitive"></a>Case Sensitive</h2><p>Racekt语言区分符号和其他identifier的大小写<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，而MIT Scheme并不区分。但SICP包并没有在这一点沿用模仿Scheme的特性<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(<span class="name"><span class="builtin-name">eq?</span></span> <span class="symbol">'A</span> <span class="symbol">'a</span>) <span class="comment">;#f</span></span><br></pre></td></tr></table></figure></p>
 <p><a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-16.html#%_thm_2.70" target="_blank" rel="noopener">Exercise 2.70</a>所使用的Huffman树alphabet全为大写，需要编码的message部分却是含有部分小写。会导致无法找到目标字符在树中的位置。可以使用<code>#ci</code>前缀令所有字符都case-fold到小写<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> tree (<span class="name">generate-huffman-tree</span> #ci'((WAH <span class="number">1</span>)</span><br><span class="line">                                         (BOOM <span class="number">1</span>)</span><br><span class="line">                                         (A <span class="number">2</span>)</span><br><span class="line">                                         (GET <span class="number">2</span>)</span><br><span class="line">                                         (JOB <span class="number">2</span>)</span><br><span class="line">                                         (SHA <span class="number">3</span>)</span><br><span class="line">                                         (YIP <span class="number">9</span>)</span><br><span class="line">                                         (NA <span class="number">16</span>))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> message #ci'(Get a job</span><br><span class="line">                     Sha na na na na na na na na</span><br><span class="line">                     Get a job</span><br><span class="line">                     Sha na na na na na na na na</span><br><span class="line">                     Wah yip yip yip yip yip yip yip yip yip</span><br><span class="line">                     Sha boom))</span><br></pre></td></tr></table></figure></p>
-<h2 id="Get-Put"><a href="#Get-Put" class="headerlink" title="Get/Put"></a>Get/Put</h2><p><a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-17.html#%_sec_2.4.3" target="_blank" rel="noopener">2.4.3 Data-Directed Programming and Additivity</a>已经开始使用<code>put</code>和<code>get</code>两个过程了，实际上MIT Scheme也没有内置它们的实现，但书中假设我们已经实现了，Chapter 2都在直接使用它们。实质上，<code>put</code>是对一个二维表进行增操作，<code>get</code>是对同一个二维表进行查操作，这些在Chapter 3，具体来说是<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_sec_3.3.3" target="_blank" rel="noopener">3.3.3  Representing Tables</a>部分给出了两个函数的定义。为了提前使用可以照抄Chapter 3二维表部分的所有定义内容，也可以通过Racket的内置hash table实现：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(#%require (<span class="name">only</span> racket/base make-hash hash-ref hash-set!))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> *op-table* (<span class="name">make-hash</span>))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">put</span> op type proc)</span><br><span class="line">  (<span class="name">hash-set!</span> *op-table* (<span class="name"><span class="builtin-name">list</span></span> op type) proc))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">get</span> op type)</span><br><span class="line">  (<span class="name">hash-ref</span> *op-table* (<span class="name"><span class="builtin-name">list</span></span> op type) '()))</span><br></pre></td></tr></table></figure></p>
+<h2 id="Get-Put"><a href="#Get-Put" class="headerlink" title="Get/Put"></a>Get/Put</h2><p><a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-17.html#%_sec_2.4.3" target="_blank" rel="noopener">2.4.3 Data-Directed Programming and Additivity</a>已经开始使用<code>put</code>和<code>get</code>两个过程了，实际上MIT Scheme也没有内置它们的实现，但书中假设我们已经实现了，Chapter 2都在直接使用它们。实质上，<code>put</code>是对一个二维表进行增操作，<code>get</code>是对同一个二维表进行查操作，这些在Chapter 3，具体来说是<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_sec_3.3.3" target="_blank" rel="noopener">3.3.3  Representing Tables</a>部分给出了两个函数的定义。为了提前使用可以照抄Chapter 3二维表部分的所有定义内容，也可以通过Racket的内置hash table实现：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(#%require (<span class="name">only</span> racket/base make-hash hash-ref hash-set!))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> *op-table* (<span class="name">make-hash</span>))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">put</span> op type proc)</span><br><span class="line">  (<span class="name">hash-set!</span> *op-table* (<span class="name"><span class="builtin-name">list</span></span> op type) proc))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">get</span> op type)</span><br><span class="line">  (<span class="name">hash-ref</span> *op-table* (<span class="name"><span class="builtin-name">list</span></span> op type) <span class="literal">#f</span>)</span><br></pre></td></tr></table></figure></p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="https://docs.racket-lang.org/guide/symbols.html" target="_blank" rel="noopener">https://docs.racket-lang.org/guide/symbols.html</a></span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
@@ -173,7 +173,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjmg987h3002ukkw3m6w27y2z" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjmjb0jvd002qtcw3uvo3iw5q" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -362,39 +362,7 @@ var _hmt = _hmt || [];
 
 
 
-<script src="/js/script.js"></script>
+<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
 </body>
 </html>
