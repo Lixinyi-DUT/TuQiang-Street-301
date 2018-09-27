@@ -13,10 +13,12 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="标题致敬沙丁鱼从地里钻了出来（イワシがつちからはえてくるんだ）  在条件允许的情况下，一般建议阅读Structure and Interpretation of Computer Programs 和实验时用GNU/MIT Scheme比较合适，不过我之前习惯写了Racket语言懒得转过去，所以还是用DrRacket环境了。我在这里碎碎念一些遇到的问题和解决的方法，其中也不少借助了前人的资料和其">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-26T15:27:37.012Z">
+<meta property="og:image" content="https://gitlab.com/xyli/SICP-learning-notes/raw/master/notes/sicp-with-drraket/cyclic-list.png?inline=false">
+<meta property="og:updated_time" content="2018-09-27T15:03:52.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SICP从DrRacket钻了出来">
 <meta name="twitter:description" content="标题致敬沙丁鱼从地里钻了出来（イワシがつちからはえてくるんだ）  在条件允许的情况下，一般建议阅读Structure and Interpretation of Computer Programs 和实验时用GNU/MIT Scheme比较合适，不过我之前习惯写了Racket语言懒得转过去，所以还是用DrRacket环境了。我在这里碎碎念一些遇到的问题和解决的方法，其中也不少借助了前人的资料和其">
+<meta name="twitter:image" content="https://gitlab.com/xyli/SICP-learning-notes/raw/master/notes/sicp-with-drraket/cyclic-list.png?inline=false">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -163,7 +165,16 @@ var _hmt = _hmt || [];
 <h2 id="Case-Sensitive"><a href="#Case-Sensitive" class="headerlink" title="Case Sensitive"></a>Case Sensitive</h2><p>Racekt语言区分符号和其他identifier的大小写<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，而MIT Scheme并不区分。但SICP包并没有在这一点沿用模仿Scheme的特性<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(<span class="name"><span class="builtin-name">eq?</span></span> <span class="symbol">'A</span> <span class="symbol">'a</span>) <span class="comment">;#f</span></span><br></pre></td></tr></table></figure></p>
 <p><a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-16.html#%_thm_2.70" target="_blank" rel="noopener">Exercise 2.70</a>所使用的Huffman树alphabet全为大写，需要编码的message部分却是含有部分小写。会导致无法找到目标字符在树中的位置。可以使用<code>#ci</code>前缀令所有字符都case-fold到小写<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> tree (<span class="name">generate-huffman-tree</span> #ci'((WAH <span class="number">1</span>)</span><br><span class="line">                                         (BOOM <span class="number">1</span>)</span><br><span class="line">                                         (A <span class="number">2</span>)</span><br><span class="line">                                         (GET <span class="number">2</span>)</span><br><span class="line">                                         (JOB <span class="number">2</span>)</span><br><span class="line">                                         (SHA <span class="number">3</span>)</span><br><span class="line">                                         (YIP <span class="number">9</span>)</span><br><span class="line">                                         (NA <span class="number">16</span>))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> message #ci'(Get a job</span><br><span class="line">                     Sha na na na na na na na na</span><br><span class="line">                     Get a job</span><br><span class="line">                     Sha na na na na na na na na</span><br><span class="line">                     Wah yip yip yip yip yip yip yip yip yip</span><br><span class="line">                     Sha boom))</span><br></pre></td></tr></table></figure></p>
 <h2 id="Get-Put"><a href="#Get-Put" class="headerlink" title="Get/Put"></a>Get/Put</h2><p><a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-17.html#%_sec_2.4.3" target="_blank" rel="noopener">2.4.3 Data-Directed Programming and Additivity</a>已经开始使用<code>put</code>和<code>get</code>两个过程了，实际上MIT Scheme也没有内置它们的实现，但书中假设我们已经实现了，Chapter 2都在直接使用它们。实质上，<code>put</code>是对一个二维表进行增操作，<code>get</code>是对同一个二维表进行查操作，这些在Chapter 3，具体来说是<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_sec_3.3.3" target="_blank" rel="noopener">3.3.3  Representing Tables</a>部分给出了两个函数的定义。为了提前使用可以照抄Chapter 3二维表部分的所有定义内容，也可以通过Racket的内置hash table实现：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(#%require (<span class="name">only</span> racket/base make-hash hash-ref hash-set!))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> *op-table* (<span class="name">make-hash</span>))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">put</span> op type proc)</span><br><span class="line">  (<span class="name">hash-set!</span> *op-table* (<span class="name"><span class="builtin-name">list</span></span> op type) proc))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">get</span> op type)</span><br><span class="line">  (<span class="name">hash-ref</span> *op-table* (<span class="name"><span class="builtin-name">list</span></span> op type) <span class="literal">#f</span>)</span><br></pre></td></tr></table></figure></p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="https://docs.racket-lang.org/guide/symbols.html" target="_blank" rel="noopener">https://docs.racket-lang.org/guide/symbols.html</a></span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<h2 id="Cyclic-List"><a href="#Cyclic-List" class="headerlink" title="Cyclic List"></a>Cyclic List</h2><p><a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-22.html#%_thm_3.16" target="_blank" rel="noopener">Exercise 3.16</a> 开始出现带有回路的list结构，比如这里一个“长度为无穷大”的list<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> n3 (<span class="name"><span class="builtin-name">list</span></span> <span class="symbol">'c</span>))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> n2 (<span class="name"><span class="builtin-name">cons</span></span> <span class="symbol">'b</span> n3))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> w (<span class="name"><span class="builtin-name">cons</span></span> <span class="symbol">'a</span> n2))</span><br><span class="line">(<span class="name"><span class="builtin-name">set-cdr!</span></span> n3 w)</span><br></pre></td></tr></table></figure></p>
+<p>在DrRacket的REPL下调用<code>display</code>可以看到这个pair结构是这样表示的<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">display</span></span> w)</span><br><span class="line"><span class="comment">;#0=(a b c . #0#)</span></span><br></pre></td></tr></table></figure></p>
+<p>借助于<a href="https://scheme-legacy.apps.cs61a.org/editor.html" target="_blank" rel="noopener">Scheme Editor</a>绘制当前环境的box-pointer以及frame图<br><img src="https://gitlab.com/xyli/SICP-learning-notes/raw/master/notes/sicp-with-drraket/cyclic-list.png?inline=false" alt=""><br>当然我<strong>不推荐</strong>你在Scheme环境下试图直接返回<code>w</code>或者调用<code>(display w)</code>打印这个循环的pair结构，Scheme是个老实人，遇到这些list/pair时不会检查它是否含有回路结构，从而陷入一个找不到出口的递归（死循环），这点在原书上也有相关警告：</p>
+<blockquote>
+<p>Be careful not to make the interpreter try to print a structure that contains cycles.</p>
+</blockquote>
+<p>然而这种情况在DrRacket<strong>没什么可担心</strong>的。Racket在表示循环结构时会引入<code>#n=</code>这样的符号，用来递归定义被表示的对象<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>。<code>#n</code>可以看作某个反身代词，<code>n</code>的取值为从0开始的整数，用于代表需要被表示的某个单元结构。在上面的表达式<code>#0=(a b c . #0#)</code>中，<code>#0</code>用于指代<code>w</code>,<code>#0=</code>后面的表达式表示<code>#0</code>实际上是什么，是<code>(a b c . #0#)</code>这样一个pair，用我们熟悉的写法可以写为<code>(cons &#39;a (cons &#39;b (cons &#39;c #0)))</code>，从<code>w</code>开始用3个<code>cdr</code>可以把这个pair剥茧抽丝到<code>#0</code>，也就是<code>w</code>本身。</p>
+<p>当然，<code>#n</code>的写法也可以用来表达非循环对象<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>，比如<code>(list 100 100 100)</code>可以表示为<code>(#1=100 #1# #1#)</code>。</p>
+<p>所以在DrRacket调试带有回路的list时，就算debug工具的中间量也可以直接显示这种表示，就没必要像原书指导的那样如履薄冰了，放心大胆的去尝试探索吧。</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="https://docs.racket-lang.org/guide/symbols.html" target="_blank" rel="noopener">https://docs.racket-lang.org/guide/symbols.html</a></span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">见 <a href="https://docs.racket-lang.org/reference/pairs.html" target="_blank" rel="noopener">https://docs.racket-lang.org/reference/pairs.html</a> 4.9.8 Immutable Cyclic Data 部分，顺便小声说一句这种表示法的争议比较大，以前还可以用于直接定义循环对象<code>(define x ’#0=(1 . #0#))</code>，现在直接废止这种定义法了，只能用于打印显示，详见<a href="http://blog.racket-lang.org/2007/11/getting-rid-of-set-car-and-set-cdr.html" target="_blank" rel="noopener">http://blog.racket-lang.org/2007/11/getting-rid-of-set-car-and-set-cdr.html</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;"><a href="https://docs.racket-lang.org/reference/reader.html" target="_blank" rel="noopener">https://docs.racket-lang.org/reference/reader.html</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -173,7 +184,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjmjb0jvd002qtcw3uvo3iw5q" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjmkmisbk00327ow3drkcbx97" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -244,7 +255,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Picture-Language"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Picture Language</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Case-Sensitive"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Case Sensitive</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Get-Put"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Get/Put</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Picture-Language"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Picture Language</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Case-Sensitive"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Case Sensitive</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Get-Put"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Get/Put</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Cyclic-List"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Cyclic List</span></a></li></ol>
   </div>
 
 
@@ -362,7 +373,39 @@ var _hmt = _hmt || [];
 
 
 
-<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/js/script.js"></script>
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

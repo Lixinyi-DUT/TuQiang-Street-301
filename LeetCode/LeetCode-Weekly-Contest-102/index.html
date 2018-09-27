@@ -232,7 +232,7 @@ x^2 &amp; = 10^{2n - 2}d_{n - 1}^2 + 10^{2n - 3}({d_{n - 1}}d_{n - 2} + d_{n - 2
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-102/" data-id="cjmjb0jjo0006tcw3saajgv67" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-102/" data-id="cjmkmiroi00067ow3biklqpdg" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -419,7 +419,23 @@ x^2 &amp; = 10^{2n - 2}d_{n - 1}^2 + 10^{2n - 3}({d_{n - 1}}d_{n - 2} + d_{n - 2
 
 
 
-<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -437,6 +453,5 @@ x^2 &amp; = 10^{2n - 2}d_{n - 1}^2 + 10^{2n - 3}({d_{n - 1}}d_{n - 2} + d_{n - 2
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
-
 </body>
 </html>
