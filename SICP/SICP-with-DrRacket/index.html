@@ -14,7 +14,7 @@
 <meta property="og:description" content="标题致敬沙丁鱼从地里钻了出来（イワシがつちからはえてくるんだ）  在条件允许的情况下，一般建议阅读Structure and Interpretation of Computer Programs 和实验时用GNU/MIT Scheme比较合适，不过我之前习惯写了Racket语言懒得转过去，所以还是用DrRacket环境了。我在这里碎碎念一些遇到的问题和解决的方法，其中也不少借助了前人的资料和其">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://gitlab.com/xyli/SICP-learning-notes/raw/master/notes/sicp-with-drraket/cyclic-list.png?inline=false">
-<meta property="og:updated_time" content="2018-09-27T15:03:52.118Z">
+<meta property="og:updated_time" content="2018-10-04T15:20:27.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SICP从DrRacket钻了出来">
 <meta name="twitter:description" content="标题致敬沙丁鱼从地里钻了出来（イワシがつちからはえてくるんだ）  在条件允许的情况下，一般建议阅读Structure and Interpretation of Computer Programs 和实验时用GNU/MIT Scheme比较合适，不过我之前习惯写了Racket语言懒得转过去，所以还是用DrRacket环境了。我在这里碎碎念一些遇到的问题和解决的方法，其中也不少借助了前人的资料和其">
@@ -171,7 +171,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>Be careful not to make the interpreter try to print a structure that contains cycles.</p>
 </blockquote>
-<p>然而这种情况在DrRacket<strong>没什么可担心</strong>的。Racket在表示循环结构时会引入<code>#n=</code>这样的符号，用来递归定义被表示的对象<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>。<code>#n</code>可以看作某个反身代词，<code>n</code>的取值为从0开始的整数，用于代表需要被表示的某个单元结构。在上面的表达式<code>#0=(a b c . #0#)</code>中，<code>#0</code>用于指代<code>w</code>,<code>#0=</code>后面的表达式表示<code>#0</code>实际上是什么，是<code>(a b c . #0#)</code>这样一个pair，用我们熟悉的写法可以写为<code>(cons &#39;a (cons &#39;b (cons &#39;c #0)))</code>，从<code>w</code>开始用3个<code>cdr</code>可以把这个pair剥茧抽丝到<code>#0</code>，也就是<code>w</code>本身。</p>
+<p>然而这种情况在DrRacket<strong>没什么可担心</strong>的。Racket在表示循环结构时会引入<code>#n=</code>这样的符号，用来递归定义被表示的对象<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>。<code>#n</code>可以看作某个反身代词，<code>n</code>的取值为从0开始的整数，用于代表需要被表示的某个单元结构。在上面的表达式<code>#0=(a b c . #0#)</code>中，<code>#0</code>用于指代<code>w</code>,<code>#0=</code>后面的表达式表示<code>#0</code>实际上是什么，是<code>(a b c . #0#)</code>这样一个pair，用我们熟悉的写法可以写为<code>(cons &#39;a (cons &#39;b (cons &#39;c #0)))</code>，从<code>w</code>开始用3个<code>cdr</code>可以把这个pair剥茧抽丝到<code>#0#</code>（<code>#0</code>的引用），也就是<code>w</code>本身。</p>
 <p>当然，<code>#n</code>的写法也可以用来表达非循环对象<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>，比如<code>(list 100 100 100)</code>可以表示为<code>(#1=100 #1# #1#)</code>。</p>
 <p>所以在DrRacket调试带有回路的list时，就算debug工具的中间量也可以直接显示这种表示，就没必要像原书指导的那样如履薄冰了，放心大胆的去尝试探索吧。</p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;"><a href="https://docs.racket-lang.org/guide/symbols.html" target="_blank" rel="noopener">https://docs.racket-lang.org/guide/symbols.html</a></span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">见 <a href="https://docs.racket-lang.org/reference/pairs.html" target="_blank" rel="noopener">https://docs.racket-lang.org/reference/pairs.html</a> 4.9.8 Immutable Cyclic Data 部分，顺便小声说一句这种表示法的争议比较大，以前还可以用于直接定义循环对象<code>(define x ’#0=(1 . #0#))</code>，现在直接废止这种定义法了，只能用于打印显示，详见<a href="http://blog.racket-lang.org/2007/11/getting-rid-of-set-car-and-set-cdr.html" target="_blank" rel="noopener">http://blog.racket-lang.org/2007/11/getting-rid-of-set-car-and-set-cdr.html</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;"><a href="https://docs.racket-lang.org/reference/reader.html" target="_blank" rel="noopener">https://docs.racket-lang.org/reference/reader.html</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li></ol></div></div>
@@ -184,7 +184,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjmtc85cb002ssww300vt85af" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjmuqabu2002oakw3iay65y4z" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
