@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 105 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="有个不情之请，希望看到这里的，有余力的朋友监督我早睡早起！帮助我战胜失眠！ https://leetcode.com/contest/weekly-contest-105">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 105">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-105/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="有个不情之请，希望看到这里的，有余力的朋友监督我早睡早起！帮助我战胜失眠！ https://leetcode.com/contest/weekly-contest-105">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-07T13:04:18.438Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 105">
+<meta name="twitter:description" content="有个不情之请，希望看到这里的，有余力的朋友监督我早睡早起！帮助我战胜失眠！ https://leetcode.com/contest/weekly-contest-105">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-105" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 105
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-105/" class="article-date"><time datetime="2018-10-07T12:22:31.726Z" itemprop="datePublished">2018-10-07</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>有个不情之请，希望看到这里的，有余力的朋友监督我早睡早起！帮助我战胜失眠！</p>
+<p><a href="https://leetcode.com/contest/weekly-contest-105" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-105</a></p>
+<a id="more"></a>
+<h2 id="Reverse-Only-Letters"><a href="#Reverse-Only-Letters" class="headerlink" title="Reverse Only Letters"></a>Reverse Only Letters</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-105/problems/reverse-only-letters/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-105/problems/reverse-only-letters/</a></p>
+<blockquote>
+<p>Given a string <code>S</code>, return the “reversed” string where all characters that are not a letter stay in the same place, and all letters reverse their positions.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ab-cd&quot;</span><br><span class="line">Output: &quot;dc-ba&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;a-bC-dEf-ghIj&quot;</span><br><span class="line">Output: &quot;j-Ih-gfE-dCba&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;Test1ng-Leet=code-Q!&quot;</span><br><span class="line">Output: &quot;Qedo1ct-eeLg=ntse-T!&quot;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>S.length &lt;= 100</code></li>
+<li><code>33 &lt;= S[i].ASCIIcode &lt;= 122</code></li>
+<li><code>S</code> doesn’t contain <code>\</code> or <code>&quot;</code></li>
+</ol>
+</blockquote>
+<p>从<code>S</code>两端向中间扫描，如果指针<code>s</code>和<code>e</code>都遇到字母则交换，任何一个指针遇到其他字符则忽略它继续前进。<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseOnlyLetters</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        S = list(S)</span><br><span class="line">        s, e = <span class="number">0</span>, len(S) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> s &lt; e:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> S[s].isalpha():</span><br><span class="line">                s += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="keyword">not</span> S[e].isalpha():</span><br><span class="line">                e -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                S[s], S[e] = S[e], S[s]</span><br><span class="line">                s += <span class="number">1</span></span><br><span class="line">                e -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(S)</span><br></pre></td></tr></table></figure></p>
+<h2 id="Maximum-Sum-Circular-Subarray"><a href="#Maximum-Sum-Circular-Subarray" class="headerlink" title="Maximum Sum Circular Subarray"></a>Maximum Sum Circular Subarray</h2><blockquote>
+<p>Given a <strong>circular array</strong> C of integers represented by <code>A</code>, find the maximum possible sum of a non-empty subarray of <strong>C</strong>.</p>
+<p>Here, a circular array means the end of the array connects to the beginning of the array.  (Formally, <code>C[i] = A[i]</code> when <code>0 &lt;= i &lt; A.length</code>, and <code>C[i+A.length] = C[i]</code> when <code>i &gt;= 0</code>.)</p>
+<p>Also, a subarray may only include each element of the fixed buffer A at most once.  (Formally, for a subarray<code>C[i], C[i+1], ..., C[j]</code>, there does not exist <code>i &lt;= k1, k2 &lt;= j</code> with <code>k1 % A.length = k2 % A.length</code>.)</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,-2,3,-2]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Subarray [3] has maximum sum 3</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,-3,5]</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: Subarray [5,5] has maximum sum 5 + 5 = 10</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,-1,2,-1]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: Subarray [2,-1,3] has maximum sum 2 + (-1) + 3 = 4</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [3,-2,2,-3]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Subarray [3] and [3,-2,2] both have maximum sum 3</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 5</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [-2,-3,-1]</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: Subarray [-1] has maximum sum -1</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>-30000 &lt;= A[i] &lt;= 30000</code></li>
+<li><code>1 &lt;= A.length &lt;= 30000</code></li>
+</ol>
+</blockquote>
+<p>最后得到的子数组可能在<code>A</code>的中间，也可能分布在<code>A</code>的两端，那么有两种情况</p>
+<ol>
+<li>找到<code>A</code>的最大和子数组并直接返回这个和</li>
+<li>找到<code>A</code>的最小和子数组，剩下的元素就是<code>C</code>的最大和子数组，返回<code>sum(A)</code>与最小和的差值</li>
+</ol>
+<p>而寻找最大（小）和子数组可以用常见的$o(n)$复杂度的<a href="https://en.wikipedia.org/wiki/Maximum_subarray_problem#Kadane&#39;s_algorithm" target="_blank" rel="noopener">Kadane算法</a>，返回上面两种结果中的较大值。</p>
+<p>需要注意子数组至少需要一个元素，当所有元素都小于等于0时，最小和就是<code>sum(A)</code>，第二种情况计算得到的最大和子数组不包含任何元素，这是不符合题意需要另外处理的。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubarraySumCircular</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> max(A) &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> max(A)</span><br><span class="line">        max_ending_here = max_so_far = A[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> A[<span class="number">1</span>:]:</span><br><span class="line">            max_ending_here = max(max_ending_here + i, i)</span><br><span class="line">            max_so_far = max(max_so_far, max_ending_here)</span><br><span class="line"></span><br><span class="line">        min_ending_here = min_so_far = A[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> A[<span class="number">1</span>:]:</span><br><span class="line">            min_ending_here = min(min_ending_here + i, i)</span><br><span class="line">            min_so_far = min(min_so_far, min_ending_here)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max(max_so_far, sum(A) - min_so_far)</span><br></pre></td></tr></table></figure>
+<h2 id="Complete-Binary-Tree-Inserter"><a href="#Complete-Binary-Tree-Inserter" class="headerlink" title="Complete Binary Tree Inserter"></a>Complete Binary Tree Inserter</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-105/problems/complete-binary-tree-inserter/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-105/problems/complete-binary-tree-inserter/</a></p>
+<blockquote>
+<p>A <em>complete</em> binary tree is a binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.</p>
+<p>Write a data structure <code>CBTInserter</code> that is initialized with a complete binary tree and supports the following operations:</p>
+<ul>
+<li><code>CBTInserter(TreeNode root)</code> initializes the data structure on a given tree with head node <code>root</code>;</li>
+<li><code>CBTInserter.insert(int v)</code> will insert a <code>TreeNode</code> into the tree with value <code>node.val = v</code> so that the tree remains complete, <strong>and returns the value of the parent of the inserted <code>TreeNode</code></strong>;</li>
+<li><code>CBTInserter.get_root()</code> will return the head node of the tree.</li>
+</ul>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: inputs = [&quot;CBTInserter&quot;,&quot;insert&quot;,&quot;get_root&quot;], inputs = [[[1]],[2],[]]</span><br><span class="line">Output: [null,1,[1,2]]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: inputs = [&quot;CBTInserter&quot;,&quot;insert&quot;,&quot;insert&quot;,&quot;get_root&quot;], inputs = [[[1,2,3,4,5,6]],[7],[8],[]]</span><br><span class="line">Output: [null,3,4,[1,2,3,4,5,6,7,8]]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li>The initial given tree is complete and contains between <code>1</code> and <code>1000</code> nodes.</li>
+<li><code>CBTInserter.insert</code> is called at most <code>10000</code> times per test case.</li>
+<li>Every value of a given or inserted node is between <code>0</code> and <code>5000</code>.</li>
+</ol>
+</blockquote>
+<p>普通的数据结构题，没有什么需要特别思考的算法部分。在初始化时先对完全二叉树做一次BFS，把子结点未满的结点放到一个队列<code>insert_queue</code>中，当需要调用<code>insert</code>方法时，被插入结点的父结点即为队首的结点，如果它已经有了左结点则插入到右结点并弹出队列，如果没有则插到左结点，再将新插入的结点放入<code>insert_queue</code>的队尾。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode(object):</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CBTInserter</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.r = root</span><br><span class="line">        self.insert_queue = []</span><br><span class="line">        q = [root]</span><br><span class="line">        <span class="keyword">for</span> node <span class="keyword">in</span> q:</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                q.append(node.left)</span><br><span class="line">                <span class="keyword">if</span> node.right:</span><br><span class="line">                    q.append(node.right)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    self.insert_queue.append(node)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.insert_queue.append(node)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, v)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type v: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        node = self.insert_queue[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> node.left:</span><br><span class="line">            node.right = TreeNode(v)</span><br><span class="line">            self.insert_queue.pop(<span class="number">0</span>)</span><br><span class="line">            self.insert_queue.append(node.right)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            node.left = TreeNode(v)</span><br><span class="line">            self.insert_queue.append(node.left)</span><br><span class="line">        <span class="keyword">return</span> node.val</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_root</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: TreeNode</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.r</span><br><span class="line"></span><br><span class="line"><span class="comment"># Your CBTInserter object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = CBTInserter(root)</span></span><br><span class="line"><span class="comment"># param_1 = obj.insert(v)</span></span><br><span class="line"><span class="comment"># param_2 = obj.get_root()</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-105/" data-id="cjmyvsm2i00003sw3tkytwqtf" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/SICP/stream-count-and-generating-function/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">流，计数与生成函数</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sun Oct 07 2018 20:22:31 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Reverse-Only-Letters"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Reverse Only Letters</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Maximum-Sum-Circular-Subarray"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Maximum Sum Circular Subarray</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Complete-Binary-Tree-Inserter"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Complete Binary Tree Inserter</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>失败作者的另一个博客<a href="http://yangzhou301.xyli.me/" style="text-decoration:none;">扬州计划</a> </p><p>谢谢各位长久以来的关怀。</p><p>微信公众号</p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/qrcode.png"  style="width:215px;height:215px;" align="middle"><p>联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">46</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">5</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DrRacket/">DrRacket</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/组合数学/">组合数学</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/DrRacket/" style="font-size: 10px;">DrRacket</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-105/">LeetCode Weekly Contest 105</a>
+        </li>
+      
+        <li>
+          <a href="/SICP/stream-count-and-generating-function/">流，计数与生成函数</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-104/">LeetCode Weekly Contest 104</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-103/">LeetCode Weekly Contest 103</a>
+        </li>
+      
+        <li>
+          <a href="/SICP/SICP-with-DrRacket/">SICP从DrRacket钻了出来</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-105/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
