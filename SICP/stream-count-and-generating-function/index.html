@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="在很久以前阅读旧版 Mathematics for Computer Science 时我就感叹过生成函数（generating function）是全书最精彩的部分之一，这个漂亮的结构有很多非常有趣的用法。近日在看Structure and Interpretation of Computer Programs 时也被迫复习了Racket/Scheme语言所定义的流（stream）结构，偶然想到">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-08T13:33:46.624Z">
+<meta property="og:updated_time" content="2018-10-09T15:25:41.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="流，计数与生成函数">
 <meta name="twitter:description" content="在很久以前阅读旧版 Mathematics for Computer Science 时我就感叹过生成函数（generating function）是全书最精彩的部分之一，这个漂亮的结构有很多非常有趣的用法。近日在看Structure and Interpretation of Computer Programs 时也被迫复习了Racket/Scheme语言所定义的流（stream）结构，偶然想到">
@@ -158,6 +158,22 @@ var _hmt = _hmt || [];
 <p>应用<code>stream-map</code>可以定义两个流对应位置的元素相加产生新的流的过程<code>add-streams</code>，这个操作也等同于把两个生成函数直接相加。<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">add-streams</span> s1 s2) (<span class="name">stream-map</span> + s1 s2))</span><br></pre></td></tr></table></figure></p>
 <p>把<code>stream</code>的每个元素乘以一个常数<code>factor</code>的放缩操作<code>scale-stream</code><br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">scale-stream</span> stream factor)</span><br><span class="line">  (<span class="name">stream-map</span> (<span class="name"><span class="builtin-name">lambda</span></span> (x) (<span class="name"><span class="builtin-name">*</span></span> x factor)) stream))</span><br></pre></td></tr></table></figure></p>
 <p>最后，可能需要用以显示前<code>n</code>个元素的打印过程<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">display-stream</span> s n)</span><br><span class="line">  (<span class="name"><span class="builtin-name">display</span></span> (<span class="name">stream-car</span> s))</span><br><span class="line">  (<span class="name"><span class="builtin-name">newline</span></span>)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> n <span class="number">0</span>)</span><br><span class="line">      <span class="symbol">'done</span></span><br><span class="line">      (<span class="name">display-stream</span> (<span class="name">stream-cdr</span> s) (<span class="name"><span class="builtin-name">-</span></span> n <span class="number">1</span>))))</span><br></pre></td></tr></table></figure></p>
+<h2 id="用生成函数表示计数问题"><a href="#用生成函数表示计数问题" class="headerlink" title="用生成函数表示计数问题"></a>用生成函数表示计数问题</h2><blockquote>
+<p>德川和我修院来到一家高级雪食餐厅，喝完迎宾酒后主菜还没有做完，于是侍者主动提出可以先上$n$块曲奇，但只有巧克力味和原味两种口味，我修院认为原味非常新鲜非常美味，而德川更喜欢巧克力口味，于是开始为了这$n$块曲奇应该如何点而争执起来，请一共有多少种可能的点法？</p>
+</blockquote>
+<p>这个计数问题很熟悉，如果$n=1$只有两种可能性，$n=2$时有三种可能，$n$块曲奇中巧克力味的数量为$[0,n]$，剩下的都是原味，所以共有$n+1$种取法。</p>
+<p>现在可以构造一个生成函数$Cookie(x)$来表示这样的计数问题，$x^n$项前的系数为两种口味从取出$n$块曲奇的取法总数。$$Cookie(x) = 1+2x+3x^2+\cdots + (n+1)x^n+\cdots$$</p>
+<blockquote>
+<p>塘埔冰室的烧仙草可以加入不同类别不同数量的配料，但不同的配料在数量上有一些限制：珍珠只能加3的整数倍颗，葡萄干只能加奇数粒……</p>
+</blockquote>
+<p>如果以一个生成函数$f(x)$表示$n$颗珍珠怎么取，实际上只有0和1两种系数，当$n$为3的倍数时$x^n$的系数为1，否则为0$$f(x)=1+x^3+x^6+\cdots+x^{3n}+\cdots$$同理，葡萄干的生成函数为$$g(x)=x+x^3+x^5+\cdots+x^{2n+1}+\cdots$$</p>
+<blockquote>
+<p>现在有一位蜘蛛侠来到了冰室点了一杯烧仙草，并准备加入数量为$n$的配料，请问他一共有多少种方案？</p>
+</blockquote>
+<p>这个问题先放一下，虽然我猜很多人看到这已经算出答案了或者知道做法了，但为了更完整的解法，还是需要再引入一些工具。</p>
+<h2 id="Maclaurin级数"><a href="#Maclaurin级数" class="headerlink" title="Maclaurin级数"></a>Maclaurin级数</h2><p>为了把更多关于$x$的函数转换成与生成函数形式相似的，关于$x$的多项式函数，需要借助Taylor级数在$x=0$处的展开，即Maclaurin级数：$$f(x) = f(0) + \frac{f’(0)}{1!}x + \frac{f’’(0)}{2!}{x^2} +  \cdots  + \frac{f^{(n)}(0)}{n!}{x^n} +  \cdots$$等式右边这样多项式的写法对于求导或积分非常有利，以积分为例，如果有一个形如这样的生成函数或Maclaurin级数$$<br>f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx} = C + {a_0}x + \frac{1}{2}{a_1}{x^2} + \frac{1}{3}{a_2}{x^3} +  \cdots  + \frac{1}{n + 1}{a_n}{x^{n + 1}} +  \cdots$$常数$C$需要根据具体情况确定。现在试着计算出从$x$项开始的系数序列，假设$f(x)$的各项系数按顺序用<code>stream</code>表示，那么<code>integrate-series</code>函数返回这个生成函数的积分除了常数项以外的所有部分<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">mul-streams</span> s1 s2) (<span class="name">stream-map</span> * s1 s2))</span><br><span class="line"><span class="comment">;inner product of sequence s1 and s2</span></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">integrate-series</span> stream)</span><br><span class="line">  (<span class="name">mul-streams</span> (<span class="name">stream-map</span> (<span class="name"><span class="builtin-name">lambda</span></span> (n) (<span class="name"><span class="builtin-name">/</span></span> <span class="number">1</span> n))</span><br><span class="line">                           integers)</span><br><span class="line">               stream))</span><br></pre></td></tr></table></figure></p>
+<p>接下来我们可以隐式的定义和计算出更多函数的Maclaurin级数，比如众所周知有$$<br>\begin{align}<br>\sin x &amp; = C_1 + \int {\cos x dx} \\<br>\cos x &amp; = C_2 -\int {\sin x dx}<br>\end{align}$$当$x=0$时，$C_1=\sin x=0$而$C_2=\cos x=1$，这两个函数的第一项可以确定了，那么剩下的只需要再这样隐式的定义即可<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> sine-series</span><br><span class="line">  (<span class="name">cons-stream</span> <span class="number">0</span></span><br><span class="line">               (<span class="name">integrate-series</span> cosine-series)))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> cosine-series</span><br><span class="line">  (<span class="name">cons-stream</span> <span class="number">1</span></span><br><span class="line">               (<span class="name">scale-stream</span></span><br><span class="line">                (<span class="name">integrate-series</span> sine-series)</span><br><span class="line">                <span class="number">-1</span>)))</span><br><span class="line"></span><br><span class="line">(<span class="name">display-stream</span> sine-series <span class="number">10</span>)</span><br><span class="line"><span class="comment">;0 1 0 -1/6 0 1/120 0 -1/5040 0 1/362880 0</span></span><br><span class="line"></span><br><span class="line">(<span class="name">display-stream</span> cosine-series <span class="number">10</span>)</span><br><span class="line"><span class="comment">;1 0 -1/2 0 1/24 0 -1/720 0 1/40320 0 -1/3628800</span></span><br></pre></td></tr></table></figure></p>
+<p>上面是一个很典型的互递归（mutual recursion）定义，<code>sine-series</code>和<code>cons-stream</code>的定义中都带有另一个。虽然函数（过程）的定义中这样互递归的场景很多，但对于非过程的变量这样做需要十分谨慎，因为变量的求值一般是遵循及时求值（eager evaluation）的，好在这里的<code>cons-stream</code>保证了对第二个参数的延迟求值。</p>
 
       
     </div>
@@ -168,7 +184,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/stream-count-and-generating-function/" data-id="cjn0b5m3a003ohww3338knkhu" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/stream-count-and-generating-function/" data-id="cjn1mvo4a0049dkw3d738ldpm" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -239,7 +255,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#生成函数的定义"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">生成函数的定义</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#流的表示"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">流的表示</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#习语"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">习语</span></a></li></ol></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#生成函数的定义"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">生成函数的定义</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#流的表示"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">流的表示</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#习语"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">习语</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#用生成函数表示计数问题"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">用生成函数表示计数问题</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Maclaurin级数"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Maclaurin级数</span></a></li></ol>
   </div>
 
 
@@ -357,23 +373,7 @@ var _hmt = _hmt || [];
 
 
 
-<script src="/js/script.js"></script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -391,5 +391,6 @@ var _hmt = _hmt || [];
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
 </body>
 </html>
