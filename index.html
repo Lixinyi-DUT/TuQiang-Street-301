@@ -151,7 +151,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-105/" data-id="cjn1w0m6s000kb8w3v8vlcaz6" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-105/" data-id="cjn4heflb000bvcw3uuuybyhy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -199,186 +199,18 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>在很久以前阅读<a href="http://www.boazbarak.org/cs121/LehmanLeighton.pdf" target="_blank" rel="noopener">旧版 <em>Mathematics for Computer Science</em></a> 时我就感叹过生成函数（generating function）是全书最精彩的部分之一，这个漂亮的结构有很多非常有趣的用法。近日在看<a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html" target="_blank" rel="noopener"><em>Structure and Interpretation of Computer Programs</em></a> 时也被迫复习了Racket/Scheme语言所定义的流（stream）结构，偶然想到二者之间似乎存在着十分微妙的联系。所以我在此随手写一篇抄书性质的小结，不作严谨的定义和推导，仅浅谈我对它们的新理解和应用。</p>
-<p>&lt;!-- more --&gt;</p>
-<h2>生成函数的定义</h2>
-<p>生成函数是离散数学中最神奇且实用的工具之一，它把关于序列（sequence）的问题转换成了关于代数的问题。</p>
-<p>简单来说，我们可以构造这样一个关于变量$x$的函数
-$$F\left( x \right) = {f_0} + {f_1}x + {f_2}{x^2} +  \cdots $$ 来表示一个无穷级数（infinite series）,每个$x^n$前的系数$f_n$按顺序作为序列的每一项，即用生成函数（generating function）$F\left( x \right) $来表示/定义的序列是$${f_0},{f_1},{f_2},\ldots,f_n,\ldots$$这种表示法可以在很多问题的解决上给出启发，比如一个由1组成的序列$1,1,...$可以写成这样的生成函数
-$$G\left( x \right)=1+x+x^2+\cdots+x^n+\cdots$$用常见的perturbation method来消去等式右边关于$x$的项&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;$$
-\begin{alignat}{2}
-G\left( x \right) &amp;=1&amp;+x+x^2+\cdots+x^n+\cdots \\
--xG\left( x \right) &amp;=&amp;-x-x^2-\cdots-x^n-\cdots \\
-G\left( x \right) -xG\left( x \right) &amp;=1 \
-\end{alignat}$$就可以得到一个关于级数的重要结论，也是几何级数的计算公式$$\sum\limits_{n = 0}^\infty{x^n} = G\left( x \right) = \frac{1}{1 - x}$$当然，这只是生成函数应用的冰山一角，接下来会随着编程工具的引入发掘更多，包括很多脱离辅助变量$x$的例子。</p>
-<h2>流的表示</h2>
-<p>Scheme的函数即lambda表达式的语法糖，封装一个无参函数，把需要求值的部分写在函数体中可以实现延迟求值（delayed evaluation）。流结构正是利用了该特性，用于表示一个特殊的pair或者说list，只有第一个元素的值是已经求值完成的，后面的元素只有<strong>当取用时</strong>才会安排求值过程。构造一个stream所用的特殊过程<code>cons-stream</code>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">cons-stream</span> &lt;a&gt; &lt;b&gt;)</span><br></pre></td></tr></table></figure></p>
-<p>可以被理解为等同于这样的一个过程（当然<code>cons-stream</code>的特殊性在于它不会在传入参数前就对第二个参数进行求值）
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">cons</span></span> &lt;a&gt; (<span class="name"><span class="builtin-name">delay</span></span> &lt;b&gt;))</span><br></pre></td></tr></table></figure></p>
-<p>一个stream通常由第一个已经求值完成的元素<code>&lt;a&gt;</code>和剩下还没有进行求值而被放置的另一个stream也就是上面的形参<code>&lt;b&gt;</code>组成，看上去像是一个天然的递归结构。可以和一般的pair一样定义一些选择器（selector）：
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">stream-car</span> stream) (<span class="name"><span class="builtin-name">car</span></span> stream))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">stream-cdr</span> stream) (<span class="name"><span class="builtin-name">force</span></span> (<span class="name"><span class="builtin-name">cdr</span></span> stream)))</span><br></pre></td></tr></table></figure></p>
-<p><code>delay</code>表示推迟对对象的求值，而<code>force</code>表示强制立刻对该对象进行求值，它们实际上的实现也是那么回事，<code>(delay &lt;exp&gt;)</code>给<code>&lt;exp&gt;</code>套上一层lambda表达式<code>(lambda () &lt;exp&gt;)</code>，<code>force</code>则调用这个lambda表达式得到<code>&lt;exp&gt;</code>的求值结果。
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name"><span class="builtin-name">force</span></span> delayed-object)</span><br><span class="line">  (<span class="name">delayed-object</span>))</span><br></pre></td></tr></table></figure></p>
-<p>当然，除此之外对于<code>delay</code>还有一个重要的<strong>优化</strong>，因为这些表达式可能会被调用多次进行多次求值，所以很有必要在被调用前检查它是否在之前的调用中已经被计算过了，如果是，可以直接返回之前的计算结果而不用再次计算。所以实际上会用<code>memo-proc</code>封装一个过程<code>proc</code>，调用<code>proc</code>返回它的结果，并把结果放入本地cache，以备不时之需。
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">memo-proc</span> proc)</span><br><span class="line">  (<span class="name"><span class="builtin-name">let</span></span> ((<span class="name">already-run?</span> false) (<span class="name">result</span> false))</span><br><span class="line">    (<span class="name"><span class="builtin-name">lambda</span></span> ()</span><br><span class="line">      (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">not</span></span> already-run?)</span><br><span class="line">          (<span class="name"><span class="builtin-name">begin</span></span> (<span class="name"><span class="builtin-name">set!</span></span> result (<span class="name">proc</span>))</span><br><span class="line">                 (<span class="name"><span class="builtin-name">set!</span></span> already-run? true)</span><br><span class="line">                 result)</span><br><span class="line">          result))))</span><br></pre></td></tr></table></figure></p>
-<p>那么<code>(delay &lt;exp&gt;)</code>实际上是
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">memo-proc</span> (<span class="name"><span class="builtin-name">lambda</span></span> () &lt;exp&gt;))</span><br></pre></td></tr></table></figure></p>
-<p>的语法糖。</p>
-<p>接下来我们用上面流工具来隐式定义（implicitly define）上面那个全为1的序列
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> ones (<span class="name">cons-stream</span> <span class="number">1</span> ones))</span><br></pre></td></tr></table></figure></p>
-<p>这个长度无限的流<code>ones</code>也可以用来表示前文提到的生成函数$G(x)$</p>
-<p>同样可以做一些显式的定义，如正整数序列可以定义为
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">integers-starting-from</span> n)</span><br><span class="line">  (<span class="name">cons-stream</span> n (<span class="name">integers-starting-from</span> (<span class="name"><span class="builtin-name">+</span></span> n <span class="number">1</span>))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> integers (<span class="name">integers-starting-from</span> <span class="number">1</span>))</span><br></pre></td></tr></table></figure></p>
-<h3>习语</h3>
-<p>为了方便使用和构造更多的流，我们需要仿照着针对普通list的几个常用函数，给我们的stream定义一些习语（idiom）。</p>
-<p><code>stream-map</code>对流<code>s</code>的每个元素应用一次<code>proc</code>并将结果组成新的流返回
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">stream-map</span> proc s)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name">stream-null?</span> s)</span><br><span class="line">      the-empty-stream</span><br><span class="line">      (<span class="name">cons-stream</span> (<span class="name">proc</span> (<span class="name">stream-car</span> s))</span><br><span class="line">                   (<span class="name">stream-map</span> proc (<span class="name">stream-cdr</span> s)))))</span><br></pre></td></tr></table></figure></p>
-<p>Scheme的内置习语<code>map</code>是一个更复杂的过程，可以使用多个长度相同的list作为参数，参数<code>proc</code>取每个<code>list</code> <strong>相同位置</strong> 的元素作为<code>proc</code>的所有参数进行计算，计算结果放入返回list的对应位置。对于流操作，这样的过程仿写为
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">stream-map</span> proc . argstreams)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name">stream-null?</span> (<span class="name"><span class="builtin-name">car</span></span> argstreams))</span><br><span class="line">      the-empty-stream</span><br><span class="line">      (<span class="name">cons-stream</span></span><br><span class="line">       (<span class="name"><span class="builtin-name">apply</span></span> proc (<span class="name"><span class="builtin-name">map</span></span> car argstreams))</span><br><span class="line">       (<span class="name"><span class="builtin-name">apply</span></span> stream-map</span><br><span class="line">              (<span class="name"><span class="builtin-name">cons</span></span> proc (<span class="name"><span class="builtin-name">map</span></span> stream-cdr argstreams))))))</span><br></pre></td></tr></table></figure></p>
-<p>应用<code>stream-map</code>可以定义两个流对应位置的元素相加产生新的流的过程<code>add-streams</code>，这个操作也等同于把两个生成函数直接相加。
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">add-streams</span> s1 s2) (<span class="name">stream-map</span> + s1 s2))</span><br></pre></td></tr></table></figure></p>
-<p>把<code>stream</code>的每个元素乘以一个常数<code>factor</code>的放缩操作<code>scale-stream</code>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">scale-stream</span> stream factor)</span><br><span class="line">  (<span class="name">stream-map</span> (<span class="name"><span class="builtin-name">lambda</span></span> (x) (<span class="name"><span class="builtin-name">*</span></span> x factor)) stream))</span><br></pre></td></tr></table></figure></p>
-<p>最后，可能需要用以显示前<code>n</code>个元素的打印过程
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">display-stream</span> s n)</span><br><span class="line">  (<span class="name"><span class="builtin-name">display</span></span> (<span class="name">stream-car</span> s))</span><br><span class="line">  (<span class="name"><span class="builtin-name">newline</span></span>)</span><br><span class="line">  (<span class="name"><span class="builtin-name">if</span></span> (<span class="name"><span class="builtin-name">=</span></span> n <span class="number">0</span>)</span><br><span class="line">      <span class="symbol">'done</span></span><br><span class="line">      (<span class="name">display-stream</span> (<span class="name">stream-cdr</span> s) (<span class="name"><span class="builtin-name">-</span></span> n <span class="number">1</span>))))</span><br></pre></td></tr></table></figure></p>
-<h2>用生成函数表示计数问题</h2>
-<blockquote>
-<p>德川和我修院来到一家高级雪食餐厅，喝完迎宾酒后主菜还没有做完，于是侍者主动提出可以先上$n$块曲奇，但只有巧克力味和原味两种口味，我修院认为原味非常新鲜非常美味，而德川更喜欢巧克力口味，于是开始为了这$n$块曲奇应该如何点而争执起来，请一共有多少种可能的点法？</p>
-</blockquote>
-<p>这个计数问题很熟悉，如果$n=1$只有两种可能性，$n=2$时有三种可能，$n$块曲奇中巧克力味的数量为$[0,n]$，剩下的都是原味，所以共有$n+1$种取法。</p>
-<p>现在可以构造一个生成函数$Cookie(x)$来表示这样的计数问题，$x^n$项前的系数为两种口味从取出$n$块曲奇的取法总数。$$Cookie(x) = 1+2x+3x^2+\cdots + (n+1)x^n+\cdots$$</p>
-<blockquote>
-<p>塘埔冰室的烧仙草可以加入不同类别不同数量的配料，但不同的配料在数量上有一些限制：珍珠只能加3的整数倍颗，葡萄干只能加奇数粒……</p>
-</blockquote>
-<p>如果以一个生成函数$f(x)$表示$n$颗珍珠怎么取，实际上只有0和1两种系数，当$n$为3的倍数时$x^n$的系数为1，否则为0$$f(x)=1+x^3+x^6+\cdots+x^{3n}+\cdots$$同理，葡萄干的生成函数为$$g(x)=x+x^3+x^5+\cdots+x^{2n+1}+\cdots$$</p>
-<blockquote>
-<p>现在有一位蜘蛛侠来到了冰室点了一杯烧仙草，并准备加入数量为$n$的配料，请问他一共有多少种方案？</p>
-</blockquote>
-<p>这个问题先放一下，虽然我猜很多人看到这已经算出答案了或者知道做法了，但为了更完整的解法，还是需要再引入一些工具。</p>
-<h2>Maclaurin级数</h2>
-<p>为了把更多关于$x$的函数转换成与生成函数形式相似的，关于$x$的多项式函数，需要借助Taylor级数在$x=0$处的展开，即Maclaurin级数：$$f(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}{x^2} +  \cdots  + \frac{f^{(n)}(0)}{n!}{x^n} +  \cdots$$等式右边这样多项式的写法对于求导或积分非常有利，以积分为例，如果有一个形如这样的生成函数或Maclaurin级数$$
-f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx} = C + {a_0}x + \frac{1}{2}{a_1}{x^2} + \frac{1}{3}{a_2}{x^3} +  \cdots  + \frac{1}{n + 1}{a_n}{x^{n + 1}} +  \cdots$$常数$C$需要根据具体情况确定。现在试着计算出从$x$项开始的系数序列，假设$f(x)$的各项系数按顺序用<code>stream</code>表示，那么<code>integrate-series</code>函数返回这个生成函数的积分除了常数项以外的所有部分
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">mul-streams</span> s1 s2) (<span class="name">stream-map</span> * s1 s2))</span><br><span class="line"><span class="comment">;inner product of sequence s1 and s2</span></span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">integrate-series</span> stream)</span><br><span class="line">  (<span class="name">mul-streams</span> (<span class="name">stream-map</span> (<span class="name"><span class="builtin-name">lambda</span></span> (n) (<span class="name"><span class="builtin-name">/</span></span> <span class="number">1</span> n))</span><br><span class="line">                           integers)</span><br><span class="line">               stream))</span><br></pre></td></tr></table></figure></p>
-<p>接下来我们可以隐式的定义和计算出更多函数的Maclaurin级数，比如众所周知有$$
-\begin{align}
-\sin x &amp; = C_1 + \int {\cos x dx} \\
-\cos x &amp; = C_2 -\int {\sin x dx}
-\end{align}$$当$x=0$时，$C_1=\sin x=0$而$C_2=\cos x=1$，这两个函数的第一项可以确定了，那么剩下的只需要再这样隐式的定义即可
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> sine-series</span><br><span class="line">  (<span class="name">cons-stream</span> <span class="number">0</span></span><br><span class="line">               (<span class="name">integrate-series</span> cosine-series)))</span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> cosine-series</span><br><span class="line">  (<span class="name">cons-stream</span> <span class="number">1</span></span><br><span class="line">               (<span class="name">scale-stream</span></span><br><span class="line">                (<span class="name">integrate-series</span> sine-series)</span><br><span class="line">                <span class="number">-1</span>)))</span><br><span class="line"></span><br><span class="line">(<span class="name">display-stream</span> sine-series <span class="number">10</span>)</span><br><span class="line"><span class="comment">;0 1 0 -1/6 0 1/120 0 -1/5040 0 1/362880 0</span></span><br><span class="line"></span><br><span class="line">(<span class="name">display-stream</span> cosine-series <span class="number">10</span>)</span><br><span class="line"><span class="comment">;1 0 -1/2 0 1/24 0 -1/720 0 1/40320 0 -1/3628800</span></span><br></pre></td></tr></table></figure></p>
-<p>上面是一个很典型的互递归（mutual recursion）定义，<code>sine-series</code>和<code>cons-stream</code>的定义中都带有另一个。虽然函数（过程）的定义中这样互递归的场景很多，但对于非过程的变量这样做需要十分谨慎，因为变量的求值一般是遵循及时求值（eager evaluation）的，好在这里的<code>cons-stream</code>保证了对第二个参数的延迟求值。</p>
-<h2>卷积与逆运算</h2>
-<blockquote>
-<p>铃木，木村和三浦三位同学在空手部社团活动结束后来到一家新开的拉面店为社团$n$位同学预定$n$份拉面，已知每种拉面的选择都遵循相应的生成函数……</p>
-</blockquote>
-<p>假设a拉面的点对应的生成函数为$$A(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$也就是说点$n$份时共有$a_n$种取法，同时b拉面生成函数$$B(x)=b_0+b_1x+b_2x^2+\cdots+b_nx^n+\cdots$$相应的，$n$份b拉面有$b_n$种取法。</p>
-<p>现在需要从a和b两种拉面中选出$n$份，那么可以是0份a+$n$份b，1份a+$n-1$份b，2份a+$n-2$份b，……，$n-1$份a+1份b，$n$份a+0份b，所以取法共有$$\sum\limits_{i = 0}^n {a_i b_{n - i}}  = {a_0}{b_n} + {a_1}{b_{n - 1}} +  \cdots  + {a_{n - 1}}{b_1} + {a_n}{b_0}$$这个数就是生成函数$f(x) = A(x) \cdot B(x)$的$x^n$项前系数。$f(x)$的各项系数组成的序列也被称为序列$(a_0,a_1,a_2,\cdots)$和$(b_0,b_1,b_2,\cdots)$的卷积（convolution）序列，在信号处理和控制论中可以看到卷积序列的很多应用，这里就不展开详谈了。卷积序列的计算可以直接用上面那个求和公式计算每一项，也可以为了编写程序方便而把它看成</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center">$1$</th>
-<th style="text-align:center">$x$</th>
-<th style="text-align:center">$x^2$</th>
-<th style="text-align:center">$x^3$</th>
-<th style="text-align:center">$\cdots$</th>
-<th style="text-align:center">$x^n$</th>
-<th style="text-align:center">$\cdots$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">$a_0 B(x)$</td>
-<td style="text-align:center">$a_0 b_0$</td>
-<td style="text-align:center">$a_0 b_1$</td>
-<td style="text-align:center">$a_0 b_2$</td>
-<td style="text-align:center">$a_0 b_3$</td>
-<td style="text-align:center">$\cdots$</td>
-<td style="text-align:center">$a_0 b_n$</td>
-<td style="text-align:center">$\cdots$</td>
-</tr>
-<tr>
-<td style="text-align:center">$a_1 x B(x)$</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">$a_1 b_0$</td>
-<td style="text-align:center">$a_1 b_1$</td>
-<td style="text-align:center">$a_1 b_2$</td>
-<td style="text-align:center">$\cdots$</td>
-<td style="text-align:center">$a_1 b_{n-1}$</td>
-<td style="text-align:center">$\cdots$</td>
-</tr>
-<tr>
-<td style="text-align:center">$a_2 x^2 B(x)$</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">$a_2 b_0$</td>
-<td style="text-align:center">$a_2 b_1$</td>
-<td style="text-align:center">$\cdots$</td>
-<td style="text-align:center">$a_2 b_{n-2}$</td>
-<td style="text-align:center">$\cdots$</td>
-</tr>
-<tr>
-<td style="text-align:center">$a_3 x^3 B(x)$</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">$a_3 b_0$</td>
-<td style="text-align:center">$\cdots$</td>
-<td style="text-align:center">$a_3 b_{n-3}$</td>
-<td style="text-align:center">$\cdots$</td>
-</tr>
-<tr>
-<td style="text-align:center">$\cdots$</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">$\cdots$</td>
-<td style="text-align:center">$\cdots$</td>
-<td style="text-align:center">$\cdots$</td>
-</tr>
-<tr>
-<td style="text-align:center">$a_n x^n B(x)$</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">$a_n b_0$</td>
-<td style="text-align:center">$\cdots$</td>
-</tr>
-<tr>
-<td style="text-align:center">$\cdots$</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">$\cdots$</td>
-</tr>
-</tbody>
-</table>
-<p>这样只需要将$A(x)$的每项系数乘以$B(x)$并按顺序错位相加就可以得到$A(x) \cdot B(x)$的结果，借助<code>inter-conv-series</code>把每行第一个元素设置为0并与上一行相加，就可以定义计算<code>s1</code>和<code>s2</code>序列的卷积函数<code>convolute-series</code>了
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">inter-conv-series</span> s1 s2) <span class="comment">;helper function, return the result with 0 as first item</span></span><br><span class="line">  (<span class="name">cons-stream</span> <span class="number">0</span></span><br><span class="line">               (<span class="name">add-streams</span></span><br><span class="line">                (<span class="name">scale-stream</span> s2 (<span class="name">stream-car</span> s1))</span><br><span class="line">                (<span class="name">inter-conv-series</span> (<span class="name">stream-cdr</span> s1) s2))))</span><br><span class="line"></span><br><span class="line">(<span class="name"><span class="builtin-name">define</span></span> (<span class="name">convolute-series</span> s1 s2)</span><br><span class="line">  (<span class="name">stream-cdr</span> (<span class="name">inter-conv-series</span> s1 s2)))</span><br></pre></td></tr></table></figure></p>
-<p>计算<code>(convolute-series ones ones)</code>可以发现结果等于<code>integers</code>，这也是符合上面对于计数问题的解释的：从没有数量限制的$A$和$B$中一共取$n$个，取法共有$n+1$种。当然，反过来说，也可以用类似于前文对几何级数所做的错位相减计算出<code>integers</code>所代表的生成函数$$f(x) = \sum\limits_{n = 0}^\infty{(n + 1)x^n}  = \frac{1}{(1 - x)^2}$$这也正好是两个<code>ones</code>所代表的生成函数的乘积。</p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-check-circle&quot;&gt;&lt;/i&gt; 卷积规则（Convolution Rule）</h4>
-<p>令$A(x)$表示从集合$\cal A$中选取项的生成函数，$B(x)$表示从与$\cal A$ <strong>不相交</strong> 的集合$\cal B$中选取项的生成函数，那么从$\cal A \cup \cal B$中选取项的生成函数为$A(x) \cdot B(x)$</p>
-</div></p>
-<p>根据结合律，这个规则也可以推广到多个<strong>两两不相交</strong>的集合。</p>
-<p>假设拉面一共有$k$种口味可选，需要从中点$n$份，一共有多少种选法？这个问题用普通的计数问题视角可以转化成另一个与之双射的问题：长度为$n$的序列中需要插入$k-1$个间隔，第$i$个间隔和第$i+1$个间隔间的全部元素都是第$i$种口味的拉面，也就是说需要在$n+(k-1)$长度的序列中选择$(k-1)$个元素作为间隔，剩下的元素自然的可以标记为确定口味的拉面，那么显然总共可以有$$n+(k-1) \choose k-1$$种选取的方法。</p>
-<p>接下来再试着用生成函数的思路看待这个问题：每种口味的拉面对应的生成函数都可以用<code>ones</code>序列表示，即$1/(1+x)$，那么从$k$种拉面中选取项的生成函数等于它们的乘积即$$f(x)=\frac{1}{(1-x)^k}$$为了找到$x^n$项前系数，需要用<a href="#Maclaurin%E7%BA%A7%E6%95%B0">Maclaurin级数</a>展开，那么首先要计算出$f(x)$的$n$阶导函数，$(1-x)^{-k}$性质很好，可以重复多次求导，一阶导数为$k(1-x)^{-k-1}$，二阶导数为$k(k+1)(1-x)^{-k-2}$，……，$n$阶导数为$$k(k+1)(k+2)\cdots (k+n-1)(1-x)^{-k-n}$$也就是$$f^{(n)}(x)=\frac{(n+k-1)!}{(k-1)!}\cdot \frac{1}{(1-x)^{k+n}}$$根据Maclaurin级数展开式，$x^n$项的系数为$f^{(n)}(0)/n!$，那么取$x=0$计算$f^{(n)}(x)/n!$得到$$\frac{(n+k-1)!}{(k-1)!n!}$$就是我们刚才用普通的计数法算得的结果。
-&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;假设 $x \ne 1$，$x$取值并不重要所以这里和以后涉及这个断点时也不再强调这个不等式约束。&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
-
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/SICP/stream-count-and-generating-function/#more">Read More</a>
+          </p>
+        
       
     </div>
 
     
-      
-
-    
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/stream-count-and-generating-function/" data-id="cjn1w0mw9003nb8w34y1cqtra" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/stream-count-and-generating-function/" data-id="cjn4hefym003pvcw3dbrcgb1c" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -439,7 +271,7 @@ f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-104/" data-id="cjn1w0m6c000gb8w3qp3js4q2" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-104/" data-id="cjn4hefm6000kvcw3rgfm62c5" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -498,7 +330,7 @@ f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-103/" data-id="cjn1w0m5j000eb8w3988jyoq0" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-103/" data-id="cjn4hefli000evcw38vvg2ipq" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -560,7 +392,7 @@ f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjn1w0mql0030b8w32otl47hf" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjn4hefwj0032vcw36p49guu7" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -621,7 +453,7 @@ f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/propagation-of-constraints/" data-id="cjn1w0mug003gb8w3buoe4qsj" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/propagation-of-constraints/" data-id="cjn4hefxz003ivcw39fiedacd" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -682,7 +514,7 @@ f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-102/" data-id="cjn1w0m5a000bb8w36ldkdi3j" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-102/" data-id="cjn4heflw000gvcw35os92q1r" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -741,7 +573,7 @@ f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-101/" data-id="cjn1w0m4z0009b8w3bjl1q59i" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-101/" data-id="cjn4hefl10009vcw3z36xqkgj" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -800,7 +632,7 @@ f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/represent-digital-circuits-simulator/" data-id="cjn1w0mvb003kb8w33jqx8gvy" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/represent-digital-circuits-simulator/" data-id="cjn4hefy9003mvcw3ri0scz12" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -861,7 +693,7 @@ f(x)=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots$$两边对$x$积分得到$$\int{f(x)dx
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-100/" data-id="cjn1w0m4j0007b8w3uugiokw1" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-100/" data-id="cjn4hefks0007vcw3xben6avs" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
