@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="在很久以前阅读旧版 Mathematics for Computer Science 时我就感叹过生成函数（generating function）是全书最精彩的部分之一，这个漂亮的结构有很多非常有趣的用法。近日在看Structure and Interpretation of Computer Programs 时也被迫复习了Racket/Scheme语言所定义的流（stream）结构，偶然想到">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-11T11:01:37.000Z">
+<meta property="og:updated_time" content="2018-10-11T11:47:28.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="流，计数与生成函数">
 <meta name="twitter:description" content="在很久以前阅读旧版 Mathematics for Computer Science 时我就感叹过生成函数（generating function）是全书最精彩的部分之一，这个漂亮的结构有很多非常有趣的用法。近日在看Structure and Interpretation of Computer Programs 时也被迫复习了Racket/Scheme语言所定义的流（stream）结构，偶然想到">
@@ -272,6 +272,18 @@ var _hmt = _hmt || [];
 <p>根据结合律，这个规则也可以推广到多个<strong>两两不相交</strong>的集合。</p>
 <p>假设拉面一共有$k$种口味可选，需要从中点$n$份，一共有多少种选法？这个问题用普通的计数问题视角可以转化成另一个与之双射的问题：长度为$n$的序列中需要插入$k-1$个间隔，第$i$个间隔和第$i+1$个间隔间的全部元素都是第$i$种口味的拉面，也就是说需要在$n+(k-1)$长度的序列中选择$(k-1)$个元素作为间隔，剩下的元素自然的可以标记为确定口味的拉面，那么显然总共可以有$$n+(k-1) \choose k-1$$种选取的方法。</p>
 <p>接下来再试着用生成函数的思路看待这个问题：每种口味的拉面对应的生成函数都可以用<code>ones</code>序列表示，即$1/(1+x)$，那么从$k$种拉面中选取项的生成函数等于它们的乘积即$$f(x)=\frac{1}{(1-x)^k}$$为了找到$x^n$项前系数，需要用<a href="#Maclaurin级数">Maclaurin级数</a>展开，那么首先要计算出$f(x)$的$n$阶导函数，$(1-x)^{-k}$性质很好，可以重复多次求导，一阶导数为$k(1-x)^{-k-1}$，二阶导数为$k(k+1)(1-x)^{-k-2}$，……，$n$阶导数为$$k(k+1)(k+2)\cdots (k+n-1)(1-x)^{-k-n}$$也就是$$f^{(n)}(x)=\frac{(n+k-1)!}{(k-1)!}\cdot \frac{1}{(1-x)^{k+n}}$$根据Maclaurin级数展开式，$x^n$项的系数为$f^{(n)}(0)/n!$，那么取$x=0$计算$f^{(n)}(x)/n!$得到$$\frac{(n+k-1)!}{(k-1)!n!}$$就是我们刚才用普通的计数法算得的结果。</p>
+<h3 id="烧仙草问题"><a href="#烧仙草问题" class="headerlink" title="烧仙草问题"></a>烧仙草问题</h3><p>把之前的问题完整的延伸开来</p>
+<blockquote>
+<p>蜘蛛侠来到塘埔冰室购买一杯烧仙草，冰室老板梁启超允许他加入数量为$n$的配料，已知配料的选择必须遵循以下原则：</p>
+<ul>
+<li>珍珠的数量为3的倍数</li>
+<li>葡萄干的数量必须为奇数</li>
+<li>最多能放2粒花生米</li>
+<li>最多能拿一个和别人不一样的勺子（勺子包含在配料内）</li>
+</ul>
+<p>那么蜘蛛侠可以选择多少种不同的搭配方案？</p>
+</blockquote>
+<p>珍珠的生成函数为$$A(x)=1+x^3+x^6+\cdots+x^{3n}+\cdots=\frac{1}{1-x^3}$$葡萄干的生成函数为$$B(x)=x+x^3+x^5+\cdots+x^{2n+1}+\cdots=\frac{x}{1-x^2}$$花生米的生成函数$$C(x)=1+x+x^2=\frac{1-x^3}{1-x}$$和别人不一样的勺子的生成函数$$D(x)=1+x$$那么计算它们组合出的计数就可以按照卷积规则直接相乘得$$<br>\begin{align}<br>A(x)B(x)C(x)D(x) &amp; =\frac{1}{1-x^3}\cdot \frac{x}{1-x^2} \cdot \frac{1-x^3}{1-x} \cdot (1+x) \\<br>&amp; = \frac{x}{(1-x)^2} \\<br>&amp; = x(1+2x+3x^2+\cdots+(n+1)x^n+\cdots) \\<br>&amp; = x+2x^2+3x^3+\cdots+nx^n+\cdots<br>\end{align}$$ $x^n$前的系数为$n$，也就是说蜘蛛侠一共有$n$种方案去搭配出数量为$n$的配料。</p>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">假设 $x \ne 1$，$x$取值并不重要所以这里和以后涉及这个断点时也不再强调这个不等式约束。</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
@@ -353,7 +365,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#生成函数的定义"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">生成函数的定义</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#流的表示"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">流的表示</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#习语"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">习语</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#用生成函数表示计数问题"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">用生成函数表示计数问题</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Maclaurin级数"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Maclaurin级数</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#卷积与逆运算"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">卷积与逆运算</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#生成函数的定义"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">生成函数的定义</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#流的表示"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">流的表示</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#习语"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">习语</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#用生成函数表示计数问题"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">用生成函数表示计数问题</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Maclaurin级数"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Maclaurin级数</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#卷积与逆运算"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">卷积与逆运算</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#烧仙草问题"><span class="sidebar-module-list-number">5.1.</span> <span class="sidebar-module-list-text">烧仙草问题</span></a></li></ol></li></ol>
   </div>
 
 
