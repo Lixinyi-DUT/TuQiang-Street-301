@@ -3,18 +3,20 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Archives: 1990 | 笔记仓库</title>
+  <title>局部绑定和内部定义 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正常人的正常笔记站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记仓库">
-<meta property="og:url" content="notebook.xyli.me/archives/1990/index.html">
+  <meta name="description" content="在我曾经写的SICP从DrRacket钻了出来一文中我提到过不同的Scheme解释器实现对内部定义（internal definition）的处理不同，所以当需要定义一个中间变量时，需要格外小心地使用块结构（block structure，即在define中嵌套define）以及与之作用类似的let系列表达式。 这篇笔">
+<meta name="keywords" content="函数式编程,DrRacket">
+<meta property="og:type" content="article">
+<meta property="og:title" content="局部绑定和内部定义">
+<meta property="og:url" content="notebook.xyli.me/SICP/local-bindings-and-internal-definitions/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="正常人的正常笔记站">
+<meta property="og:description" content="在我曾经写的SICP从DrRacket钻了出来一文中我提到过不同的Scheme解释器实现对内部定义（internal definition）的处理不同，所以当需要定义一个中间变量时，需要格外小心地使用块结构（block structure，即在define中嵌套define）以及与之作用类似的let系列表达式。 这篇笔记沿用SICP 的背景演示这些结构和语法实际上是如何被解释器理解的。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-26T11:21:16.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记仓库">
-<meta name="twitter:description" content="正常人的正常笔记站">
+<meta name="twitter:title" content="局部绑定和内部定义">
+<meta name="twitter:description" content="在我曾经写的SICP从DrRacket钻了出来一文中我提到过不同的Scheme解释器实现对内部定义（internal definition）的处理不同，所以当需要定义一个中间变量时，需要格外小心地使用块结构（block structure，即在define中嵌套define）以及与之作用类似的let系列表达式。 这篇笔记沿用SICP 的背景演示这些结构和语法实际上是如何被解释器理解的。">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -79,7 +81,7 @@ var _hmt = _hmt || [];
           <li><a class=""
                  href="/index.html">Home</a></li>
         
-          <li><a class="active"
+          <li><a class=""
                  href="/archives/">Archives</a></li>
         
       </ul>
@@ -105,51 +107,116 @@ var _hmt = _hmt || [];
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/1990" class="archive-year">1990</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/Introduction/broken-project-yangzhou/" class="archive-article-date"><time datetime="1990-05-13T16:00:00.000Z" itemprop="datePublished">五月 14日</time></a>
-</div>
+          <article id="post-local-bindings-and-internal-definitions" class="article article-type-post" itemscope itemprop="blogPost">
 
+  <header class="article-header">
     
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/Introduction/broken-project-yangzhou/">扬州计划破产声明</a>
+    <h1 class="article-title" itemprop="name">
+      局部绑定和内部定义
     </h1>
   
 
 
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/失败/">失败</a></li></ul>
-
-
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
   </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/SICP/local-bindings-and-internal-definitions/" class="article-date"><time datetime="2018-10-26T10:48:03.097Z" itemprop="datePublished">2018-10-26</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SICP/">SICP</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在我曾经写的<a href="http://notebook.xyli.me/SICP/SICP-with-DrRacket/#Internal-Definitions">SICP从DrRacket钻了出来</a>一文中我提到过不同的Scheme解释器实现对内部定义（internal definition）的处理不同，所以当需要定义一个中间变量时，需要格外小心地使用块结构（block structure，即在<code>define</code>中嵌套<code>define</code>）以及与之作用类似的<code>let</code>系列表达式。</p>
+<p>这篇笔记沿用<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1" target="_blank" rel="noopener">SICP </a>的背景演示这些结构和语法实际上是如何被解释器理解的。</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/SICP/local-bindings-and-internal-definitions/" data-id="cjnpxmwoc0000tow3e10hw6ce" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrRacket/">DrRacket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-107/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 107</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
 </article>
 
-  
-  
-    </div></section>
-  
 
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Fri Oct 26 2018 18:48:03 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    
+  </div>
+
 
 
   <div class="sidebar-module sidebar-module-inset">
@@ -237,11 +304,13 @@ var _hmt = _hmt || [];
 <script>
   var disqus_shortname = 'notebook-xyli-me';
   
+  var disqus_url = 'notebook.xyli.me/SICP/local-bindings-and-internal-definitions/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
