@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 109 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-109">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 109">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-109/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-109">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/10/12/knight.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/10/30/keypad.png">
+<meta property="og:updated_time" content="2018-11-04T11:56:03.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 109">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-109">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2018/10/12/knight.png">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-109" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 109
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-109/" class="article-date"><time datetime="2018-11-04T11:14:08.268Z" itemprop="datePublished">2018-11-04</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/contest/weekly-contest-109" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-109</a></p>
+<a id="more"></a>
+<h2 id="Number-of-Recent-Calls"><a href="#Number-of-Recent-Calls" class="headerlink" title="Number of Recent Calls"></a>Number of Recent Calls</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-109/problems/number-of-recent-calls/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-109/problems/number-of-recent-calls/</a></p>
+<blockquote>
+<p>Write a class <code>RecentCounter</code> to count recent requests.</p>
+<p>It has only one method: <code>ping(int t)</code>, where t represents some time in milliseconds.</p>
+<p>Return the number of <code>ping</code>s that have been made from 3000 milliseconds ago until now.</p>
+<p>Any ping with time in <code>[t - 3000, t]</code> will count, including the current ping.</p>
+<p>It is guaranteed that every call to <code>ping</code> uses a strictly larger value of t than before.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: inputs = [&quot;RecentCounter&quot;,&quot;ping&quot;,&quot;ping&quot;,&quot;ping&quot;,&quot;ping&quot;], inputs = [[],[1],[100],[3001],[3002]]</span><br><span class="line">Output: [null,1,2,3,3]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li>Each test case will have at most <code>10000</code> calls to <code>ping</code>.</li>
+<li>Each test case will call <code>ping</code> with strictly increasing values of <code>t</code>.</li>
+<li>Each call to ping will have <code>1 &lt;= t &lt;= 10^9</code>.</li>
+</ol>
+</blockquote>
+<p>维护一个栈，每当有新的<code>ping</code>请求时把请求时间压入，当栈顶元素表示的时间在3000ms前时弹出，返回栈的大小。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RecentCounter</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.pings = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">ping</span><span class="params">(self, t)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type t: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.pings.append(t)</span><br><span class="line">        <span class="keyword">while</span> self.pings[<span class="number">0</span>] &lt; t - <span class="number">3000</span>:</span><br><span class="line">            self.pings.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> len(self.pings)</span><br><span class="line">        </span><br><span class="line"><span class="comment"># Your RecentCounter object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"># obj = RecentCounter()</span></span><br><span class="line"><span class="comment"># param_1 = obj.ping(t)</span></span><br></pre></td></tr></table></figure>
+<h2 id="Knight-Dialer"><a href="#Knight-Dialer" class="headerlink" title="Knight Dialer"></a>Knight Dialer</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-109/problems/knight-dialer/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-109/problems/knight-dialer/</a></p>
+<blockquote>
+<p>A chess knight can move as indicated in the chess diagram below:<br><img src="https://assets.leetcode.com/uploads/2018/10/12/knight.png" alt=""><br><img src="https://assets.leetcode.com/uploads/2018/10/30/keypad.png" alt=""><br>This time, we place our chess knight on any numbered key of a phone pad (indicated above), and the knight makes <code>N-1</code> hops.  Each hop must be from one key to another numbered key.</p>
+<p>Each time it lands on a key (including the initial placement of the knight), it presses the number of that key, pressing <code>N</code> digits total.</p>
+<p>How many distinct numbers can you dial in this manner?</p>
+<p>Since the answer may be large, <strong>output the answer modulo <code>10^9 + 7</code></strong>.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1</span><br><span class="line">Output: 10</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 2</span><br><span class="line">Output: 20</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: 46</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= N &lt;= 5000</code></li>
+</ol>
+</blockquote>
+<p>我不懂这个chess的规则，感觉knight的走法规则有点像象棋的马，可以到正负[1,2]或[2,1]距离内的位置。对于到keypad就是位置1可以跳到位置6或8，反之也可以1也可以从6或8跳过来，因此第<code>N</code>跳时落在1的数字，第<code>N-1</code>跳时一定在6或8，因此可以写成比较典型的动态规划<code>dp[N][1]=dp[N-1][6]+dp[N-1][8]</code>，以此类推……比较麻烦的是对于每个位置还需要看图依次找可以从哪里跳过来，手写情况很烦。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">knightDialer</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        pre = [<span class="number">1</span>] * <span class="number">10</span></span><br><span class="line">        cur = [<span class="number">0</span>] * <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, N):</span><br><span class="line">            cur[<span class="number">0</span>] = pre[<span class="number">4</span>] + pre[<span class="number">6</span>]</span><br><span class="line">            cur[<span class="number">1</span>] = pre[<span class="number">6</span>] + pre[<span class="number">8</span>]</span><br><span class="line">            cur[<span class="number">2</span>] = pre[<span class="number">7</span>] + pre[<span class="number">9</span>]</span><br><span class="line">            cur[<span class="number">3</span>] = pre[<span class="number">4</span>] + pre[<span class="number">8</span>]</span><br><span class="line">            cur[<span class="number">4</span>] = pre[<span class="number">0</span>] + pre[<span class="number">3</span>] + pre[<span class="number">9</span>]</span><br><span class="line">            cur[<span class="number">5</span>] = <span class="number">0</span></span><br><span class="line">            cur[<span class="number">6</span>] = pre[<span class="number">0</span>] + pre[<span class="number">1</span>] + pre[<span class="number">7</span>]</span><br><span class="line">            cur[<span class="number">7</span>] = pre[<span class="number">2</span>] + pre[<span class="number">6</span>]</span><br><span class="line">            cur[<span class="number">8</span>] = pre[<span class="number">1</span>] + pre[<span class="number">3</span>]</span><br><span class="line">            cur[<span class="number">9</span>] = pre[<span class="number">2</span>] + pre[<span class="number">4</span>]</span><br><span class="line">            pre = list(cur)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> sum(pre) % (<span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<p>也可以写成矩阵形式计算乘积，用快速幂运算等方法提高效率。</p>
+<h2 id="Shortest-Bridge"><a href="#Shortest-Bridge" class="headerlink" title="Shortest Bridge"></a>Shortest Bridge</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-109/problems/shortest-bridge/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-109/problems/shortest-bridge/</a></p>
+<blockquote>
+<p>n a given 2D binary array <code>A</code>, there are two islands.  (An island is a 4-directionally connected group of <code>1</code>s not connected to any other 1s.)</p>
+<p>Now, we may change <code>0</code>s to <code>1</code>s so as to connect the two islands together to form 1 island.</p>
+<p>Return the smallest number of <code>0</code>s that must be flipped.  (It is guaranteed that the answer is at least 1.)</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[0,1],[1,0]]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[0,1,0],[0,0,0],[0,0,1]]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1,1,1,1],[1,0,0,0,1],[1,0,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= A.length = A[0].length &lt;= 100</code></li>
+<li><code>A[i][j] == 0</code> or <code>A[i][j] == 1</code></li>
+</ol>
+</blockquote>
+<p>如果两个岛之间造桥，端点一定分别在两个岛的边缘。寻找边缘首先用BFS进行union find，邻接点里面有<code>0</code>的结点（本身为<code>1</code>）是该岛的边缘点，再计算不同岛边缘位置之间最短的Manhattan距离，减去1即为需要改变的0的数量。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestBridge</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        margin = [set(), set()]</span><br><span class="line">        n = len(A)</span><br><span class="line">        color = <span class="number">0</span></span><br><span class="line">        seen = set()</span><br><span class="line">        res = <span class="number">2</span> * n - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(x, y, color)</span>:</span></span><br><span class="line">            <span class="keyword">for</span> dx, dy <span class="keyword">in</span> [(<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">-1</span>), (<span class="number">0</span>, <span class="number">1</span>)]:</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= x + dx &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= y + dy &lt; n:</span><br><span class="line">                    <span class="keyword">if</span> A[x + dx][y + dy] == <span class="number">0</span>:</span><br><span class="line">                        seen.add((x + dx, y + dy))</span><br><span class="line">                        margin[color].add((x, y))</span><br><span class="line">                    <span class="keyword">elif</span> (x + dx, y + dy) <span class="keyword">not</span> <span class="keyword">in</span> seen:</span><br><span class="line">                        seen.add((x + dx, y + dy))</span><br><span class="line">                        bfs(x + dx, y + dy, color)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> (i, j) <span class="keyword">not</span> <span class="keyword">in</span> seen <span class="keyword">and</span> A[i][j] == <span class="number">1</span>:</span><br><span class="line">                    bfs(i, j, color)</span><br><span class="line">                    color += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> x1, y1 <span class="keyword">in</span> margin[<span class="number">0</span>]:</span><br><span class="line">            <span class="keyword">for</span> x2, y2 <span class="keyword">in</span> margin[<span class="number">1</span>]:</span><br><span class="line">                res = min(res, abs(x1 - x2) + abs(y1 - y2) - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="Stamping-The-Sequence"><a href="#Stamping-The-Sequence" class="headerlink" title="Stamping The Sequence"></a>Stamping The Sequence</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-109/problems/stamping-the-sequence/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-109/problems/stamping-the-sequence/</a></p>
+<blockquote>
+<p>You want to form a <code>target</code> string of <strong>lowercase letters</strong>.</p>
+<p>At the beginning, your sequence is <code>target.length</code> <code>&#39;?&#39;</code> marks.  You also have a <code>stamp</code> of lowercase letters.</p>
+<p>On each turn, you may place the stamp over the sequence, and replace every letter in the sequence with the corresponding letter from the stamp.  You can make up to <code>10 * target.length</code> turns.</p>
+<p>For example, if the initial sequence is “?????”, and your stamp is <code>&quot;abc&quot;</code>,  then you may make “abc??”, “?abc?”, “??abc” in the first turn.  (Note that the stamp must be fully contained in the boundaries of the sequence in order to stamp.)</p>
+<p>If the sequence is possible to stamp, then return an array of the index of the left-most letter being stamped at each turn.  If the sequence is not possible to stamp, return an empty array.</p>
+<p>For example, if the sequence is “ababc”, and the stamp is <code>&quot;abc&quot;</code>, then we could return the answer <code>[0, 2]</code>, corresponding to the moves “?????” -&gt; “abc??” -&gt; “ababc”.</p>
+<p>Also, if the sequence is possible to stamp, it is guaranteed it is possible to stamp within <code>10 * target.length</code> moves.  Any answers specifying more than this number of moves will not be accepted.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: stamp = &quot;abc&quot;, target = &quot;ababc&quot;</span><br><span class="line">Output: [0,2]</span><br><span class="line">([1,0,2] would also be accepted as an answer, as well as some other answers.)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: stamp = <span class="string">"abca"</span>, target = <span class="string">"aabcaca"</span></span><br><span class="line">Output: [<span class="number">3</span>,<span class="number">0</span>,<span class="number">1</span>]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= stamp.length &lt;= target.length &lt;= 1000</code></li>
+<li><code>stamp</code> and <code>target</code> only contain lowercase letters.</li>
+</ol>
+</blockquote>
+<p>不妨反向考虑：越晚的覆盖保留在target上的越优先，最后一次覆盖必然包含全部<code>stamp</code>的内容，至于那些位置覆盖前是什么就不重要了，可以用<code>*</code>代表，再之前一次的覆盖，除了<code>*</code>的内容以外其他外置又必须与<code>stamp</code>完全匹配……</p>
+<p>比如Example2的<code>aabcaca</code>，最后一次匹配是从第1位开始的<code>abca</code>，把它用<code>*</code>代替为<code>a****ca</code>，接下来<code>*</code>可以与任何字符匹配，那么从第0位开始<code>abca</code>与<code>a***</code>匹配，再往前操作，现在目标串为<code>*****ca</code>，从第3位开始又可以匹配一个<code>abca</code>，最终成为<code>*******</code>。</p>
+<p>那么需要做的就是当目标串不为全<code>*</code>时，对与<code>stamp</code>长度不全为<code>*</code>的子串用<code>stamp</code>试图匹配，其中<code>*</code>可以匹配任意字符，其他情况则必须字符依次相同。当匹配成功时，把当前子串置为全<code>*</code>，无法找到匹配子串则返回空集。当目标串成为全<code>*</code>时，倒序输出所有成功匹配子串开始的坐标。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">movesToStamp</span><span class="params">(self, stamp, target)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type stamp: str</span></span><br><span class="line"><span class="string">        :type target: str</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(pos, t)</span>:</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(pos, pos + len(stamp)):</span><br><span class="line">                <span class="keyword">if</span> stamp[i - pos] != t[i] <span class="keyword">and</span> t[i] != <span class="string">'*'</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">            t = t[:pos] + <span class="string">'*'</span> * len(stamp) + t[pos + len(stamp):]</span><br><span class="line">            <span class="keyword">return</span> t</span><br><span class="line"></span><br><span class="line">        completed = <span class="string">'*'</span> * len(target)</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> target != completed:</span><br><span class="line">            flag = <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(target) - len(stamp) + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> target[i:i + len(stamp)] != <span class="string">'*'</span> * len(stamp):</span><br><span class="line">                    temp = remove(i, target)</span><br><span class="line">                    <span class="keyword">if</span> temp:</span><br><span class="line">                        res.append(i)</span><br><span class="line">                        target = temp</span><br><span class="line">                        flag = <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">if</span> flag:</span><br><span class="line">                <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-109/" data-id="cjo2to970000bugw3zsk2ji9q" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-108/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 108</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sun Nov 04 2018 19:14:08 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Number-of-Recent-Calls"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Number of Recent Calls</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Knight-Dialer"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Knight Dialer</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Shortest-Bridge"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Shortest Bridge</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Stamping-The-Sequence"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Stamping The Sequence</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>失败作者的另一个博客<a href="http://yangzhou301.xyli.me/" style="text-decoration:none;">扬州计划</a> </p><p>谢谢各位长久以来的关怀。</p><p>微信公众号</p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/qrcode.png"  style="width:215px;height:215px;" align="middle"><p>联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">6</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DrRacket/">DrRacket</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/组合数学/">组合数学</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/DrRacket/" style="font-size: 15px;">DrRacket</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-109/">LeetCode Weekly Contest 109</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-108/">LeetCode Weekly Contest 108</a>
+        </li>
+      
+        <li>
+          <a href="/SICP/local-bindings-and-internal-definitions/">局部绑定和内部定义</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-107/">LeetCode Weekly Contest 107</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-106/">LeetCode Weekly Contest 106</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-109/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
