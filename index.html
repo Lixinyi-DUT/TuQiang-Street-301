@@ -107,6 +107,67 @@ var _hmt = _hmt || [];
         <div class="col-sm-8 blog-main">
           
   
+    <article id="post-continuations-for-nondeterministic-evaluator" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/SICP/continuations-for-nondeterministic-evaluator/">用continuation实现非确定计算</a>
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/SICP/continuations-for-nondeterministic-evaluator/" class="article-date"><time datetime="2018-11-05T11:03:34.150Z" itemprop="datePublished">2018-11-05</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SICP/">SICP</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>刚拿到<a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html" target="_blank" rel="noopener"><em>Structure and Interpretation of Computer Programs</em></a> 的时候我扫了一眼没看见全书有提到过<code>call/cc</code>，所以天真的以为continuation相关的内容不会出现，就暂时放心的把书扔在了一边等以后有空慢慢看，毕竟continuation真是让我头疼不已的内容。现在发现在<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3.3" target="_blank" rel="noopener">4.3.3  Implementing the Amb Evaluator</a> 实现非确定求值器（nondeterministic evaluator）时，continuation作为参数过程，成功时可以推进进一步求值，失败时可以回滚到上一个选择分支。所以到这个时候了continuation还是绕不开的话题，没办法也只能硬着头皮强行理解了，再加上整个<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3" target="_blank" rel="noopener">4.3  Variations on a Scheme – Nondeterministic Computing</a> 的内容编排顺序也很容易让人（其实只有我）困惑，所以写这篇笔记按照自己的理解写一下如何实现Scheme的非确定求值系统。</p>
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/SICP/continuations-for-nondeterministic-evaluator/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/SICP/continuations-for-nondeterministic-evaluator/" data-id="cjo4csfrt003ga4w3tvn14qg3" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!--  -->
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/continuation/">continuation</a></li></ul>
+
+
+    </footer>
+  </div>
+  
+</article>
+
+
+<!--  -->
+
+
+  
     <article id="post-LeetCode-Weekly-Contest-109" class="article article-type-post" itemscope itemprop="blogPost">
 
   <header class="article-header">
@@ -150,7 +211,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-109/" data-id="cjo2to970000bugw3zsk2ji9q" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-109/" data-id="cjo4csfgj000va4w30nyb6rfe" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -209,7 +270,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-108/" data-id="cjo2to9ag001cugw32rzj1ri9" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-108/" data-id="cjo4csfg5000ra4w3ou6bvpjj" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -269,7 +330,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/local-bindings-and-internal-definitions/" data-id="cjo2to9h3003eugw3285bymp1" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/local-bindings-and-internal-definitions/" data-id="cjo4csfsx003sa4w3rs8ukozs" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -330,7 +391,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-107/" data-id="cjo2to9av001iugw33s48ohnj" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-107/" data-id="cjo4csff8000qa4w3hqcyv1ph" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -389,7 +450,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-106/" data-id="cjo2to9am001eugw3fuzchwsq" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-106/" data-id="cjo4csfex000na4w3393r0bo3" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -449,7 +510,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-105/" data-id="cjo2to97m000fugw3kl9vkrbe" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-105/" data-id="cjo4csfei000ka4w3l8as4i54" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -508,7 +569,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/stream-count-and-generating-function/" data-id="cjo2to9ia0042ugw3d4ipodfo" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/stream-count-and-generating-function/" data-id="cjo4csftz0046a4w333rby524" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -569,7 +630,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-104/" data-id="cjo2to96l0007ugw3jxlpbq29" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-104/" data-id="cjo4csfe5000ga4w3ohrexx7h" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -628,75 +689,11 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-103/" data-id="cjo2to96f0006ugw3ksttp75p" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-103/" data-id="cjo4csfdm000ea4w3i0ougyuy" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
       
-
-    </footer>
-  </div>
-  
-</article>
-
-
-<!--  -->
-
-
-  
-    <article id="post-SICP-with-DrRacket" class="article article-type-post" itemscope itemprop="blogPost">
-
-  <header class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/SICP/SICP-with-DrRacket/">SICP从DrRacket钻了出来</a>
-    </h1>
-  
-
-
-    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
-  </header>
-
-  <div class="article-meta">
-    <div class="article-datetime">
-  <a href="/SICP/SICP-with-DrRacket/" class="article-date"><time datetime="2018-09-22T14:22:36.245Z" itemprop="datePublished">2018-09-22</time></a>
-</div>
-
-    <div class="article-author">Xinyi Li</div>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/SICP/">SICP</a>
-  </div>
-
-
-  </div>
-  <div class="article-inner">
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>标题致敬<a href="https://music.163.com/#/song?id=460880169" target="_blank" rel="noopener">沙丁鱼从地里钻了出来（イワシがつちからはえてくるんだ）</a></p>
-</blockquote>
-<p>在条件允许的情况下，一般建议阅读<a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html" target="_blank" rel="noopener"><em>Structure and Interpretation of Computer Programs</em></a> 和实验时用GNU/MIT Scheme比较合适，不过我之前习惯写了Racket语言懒得转过去，所以还是用DrRacket环境了。我在这里碎碎念一些遇到的问题和解决的方法，其中也不少借助了前人的资料和其他友人的指导，希望能帮助后来人避开一些坑。</p>
-        
-          <p class="article-more-link">
-            <a class="btn btn-primary" href="/SICP/SICP-with-DrRacket/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-
-    
-
-    <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/SICP-with-DrRacket/" data-id="cjo2to9gn0036ugw3lty25j1e" class="article-share-link">
-        <i class="fa fa-share"></i> Share
-      </a>
-      <!--  -->
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DrRacket/">DrRacket</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/函数式编程/">函数式编程</a></li></ul>
-
 
     </footer>
   </div>
@@ -730,7 +727,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">6</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">50</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">7</span></li></ul>
   </div>
 
 
@@ -738,7 +735,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module sidebar-tags">
     <h4>Tags</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DrRacket/">DrRacket</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/组合数学/">组合数学</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DrRacket/">DrRacket</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/continuation/">continuation</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/组合数学/">组合数学</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
   </div>
 
 
@@ -747,7 +744,7 @@ var _hmt = _hmt || [];
   <div class="sidebar-module">
     <h4>Tag Cloud</h4>
     <p class="tagcloud">
-      <a href="/tags/DrRacket/" style="font-size: 15px;">DrRacket</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
+      <a href="/tags/DrRacket/" style="font-size: 15px;">DrRacket</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/continuation/" style="font-size: 10px;">continuation</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
     </p>
   </div>
 
@@ -755,7 +752,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -764,6 +761,10 @@ var _hmt = _hmt || [];
   <div class="sidebar-module sidebar-recents">
     <h4>Recents</h4>
     <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/SICP/continuations-for-nondeterministic-evaluator/">用continuation实现非确定计算</a>
+        </li>
       
         <li>
           <a href="/LeetCode/LeetCode-Weekly-Contest-109/">LeetCode Weekly Contest 109</a>
@@ -779,10 +780,6 @@ var _hmt = _hmt || [];
       
         <li>
           <a href="/LeetCode/LeetCode-Weekly-Contest-107/">LeetCode Weekly Contest 107</a>
-        </li>
-      
-        <li>
-          <a href="/LeetCode/LeetCode-Weekly-Contest-106/">LeetCode Weekly Contest 106</a>
         </li>
       
     </ul>
