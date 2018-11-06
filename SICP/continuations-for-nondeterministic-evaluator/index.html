@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="刚拿到Structure and Interpretation of Computer Programs 的时候我扫了一眼没看见全书有提到过call/cc，所以天真的以为continuation相关的内容不会出现，就暂时放心的把书扔在了一边等以后有空慢慢看，毕竟continuation真是让我头疼不已的内容。现在发现在4.3.3  Implementing the Amb Evaluator 实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T13:37:22.336Z">
+<meta property="og:updated_time" content="2018-11-06T09:59:55.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用continuation实现非确定计算">
 <meta name="twitter:description" content="刚拿到Structure and Interpretation of Computer Programs 的时候我扫了一眼没看见全书有提到过call/cc，所以天真的以为continuation相关的内容不会出现，就暂时放心的把书扔在了一边等以后有空慢慢看，毕竟continuation真是让我头疼不已的内容。现在发现在4.3.3  Implementing the Amb Evaluator 实现">
@@ -140,7 +140,9 @@ var _hmt = _hmt || [];
       
         <p>刚拿到<a href="https://mitpress.mit.edu/sites/default/files/sicp/index.html" target="_blank" rel="noopener"><em>Structure and Interpretation of Computer Programs</em></a> 的时候我扫了一眼没看见全书有提到过<code>call/cc</code>，所以天真的以为continuation相关的内容不会出现，就暂时放心的把书扔在了一边等以后有空慢慢看，毕竟continuation真是让我头疼不已的内容。现在发现在<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3.3" target="_blank" rel="noopener">4.3.3  Implementing the Amb Evaluator</a> 实现非确定求值器（nondeterministic evaluator）时，continuation作为参数过程，成功时可以推进进一步求值，失败时可以回滚到上一个选择分支。所以到这个时候了continuation还是绕不开的话题，没办法也只能硬着头皮强行理解了，再加上整个<a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3" target="_blank" rel="noopener">4.3  Variations on a Scheme – Nondeterministic Computing</a> 的内容编排顺序也很容易让人（其实只有我）困惑，所以写这篇笔记按照自己的理解写一下如何实现Scheme的非确定求值系统。</p>
 <a id="more"></a>
-<p>有能力的人我建议还是先看原书，虽然个人感觉原书内容排的极其不友好，但硬啃下来还是没有问题的，只是文字材料太多很容易精力分散不知所云，而且代码内容距离比较远，不能通过实例体会到文字叙述的重点，所以如果看书最好先从代码密集的地方开始看实现，看不懂的地方再看上下文的文字解释，差不多感觉有点意思了再去看长篇的文字描述。另外，这小节的内容与<a href="http://notebook.xyli.me/SICP/represent-digital-circuits-simulator/">数字电路模拟</a>那篇相反，一开始太专注于底层实现，会让人产生为什么底层要怎么写的疑问，实际上都是为了top-level的特性有意写成这些奇怪的形式的，先去了解Evaluating <code>amb</code> expressions和top-level的Driver loop部分会好很多。如果还是觉得看书很辛苦，可以试试来读我这篇消化后的笔记，或许可以有所帮助。</p>
+<p>有能力的人我建议还是先看原书，虽然个人感觉原书内容排的极其不友好，但硬啃下来还是没有问题的，只是文字材料太多很容易精力分散不知所云，而且代码内容距离比较远，不能通过实例体会到文字叙述的重点，所以如果看书最好先从代码密集的地方开始看实现，看不懂的地方再看上下文的文字解释，差不多感觉有点意思了再去看长篇的文字描述。另外，这小节的内容与<a href="http://notebook.xyli.me/SICP/represent-digital-circuits-simulator/">数字电路模拟</a>那篇相反，一开始太专注于描绘底层实现，会让人产生为什么底层要怎么写的疑问，实际上都是为了top-level的特性有意写成这些奇怪的形式的，先去了解Evaluating <code>amb</code> expressions和top-level的Driver loop部分会好很多。如果还是觉得看书很辛苦，可以试试来读我这篇消化后的笔记，或许可以有所帮助。</p>
+<h2 id="amb函数和非确定返回值"><a href="#amb函数和非确定返回值" class="headerlink" title="amb函数和非确定返回值"></a><code>amb</code>函数和非确定返回值</h2><p>在确定计算（deterministic computing）中，当输入一定时，输出的结果也是确定的。在纯函数式语言（不允许变量的变值操作）中体现为用相同的参数调用同一个函数，一定会返回相同的结果。这个返回结果不一定是标量的（scalar）值，可以是一个tuple，可以是一个list，可以是规模很大的矩阵，甚至可以是长度无限的流……当然也可以是这些复杂数据结构之间的多层复合，但我们仍然视之为单个的确定值。与此相反，如果每次返回的结果即使是并不复杂的小规模的数据，但相同的调用返回不同的结果，就是非确定的计算。</p>
+<p>非确定的计算可以用于得到满足一组约束的任一可行结果， </p>
 
       
     </div>
@@ -151,7 +153,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/continuations-for-nondeterministic-evaluator/" data-id="cjo4csfrt003ga4w3tvn14qg3" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/continuations-for-nondeterministic-evaluator/" data-id="cjo5kdnw6004gd8w3ty7z63pv" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -215,7 +217,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#amb函数和非确定返回值"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">amb函数和非确定返回值</span></a></li></ol>
   </div>
 
 
