@@ -3,18 +3,22 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Archives: 2018/1 | 笔记仓库</title>
+  <title>LeetCode Weekly Contest 115 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正常人的正常笔记站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记仓库">
-<meta property="og:url" content="notebook.xyli.me/archives/2018/01/index.html">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-115">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 115">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-115/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="正常人的正常笔记站">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-115">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-1.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-2.png">
+<meta property="og:updated_time" content="2018-12-16T12:31:59.926Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记仓库">
-<meta name="twitter:description" content="正常人的正常笔记站">
+<meta name="twitter:title" content="LeetCode Weekly Contest 115">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-115">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-1.png">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -79,7 +83,7 @@ var _hmt = _hmt || [];
           <li><a class=""
                  href="/index.html">Home</a></li>
         
-          <li><a class="active"
+          <li><a class=""
                  href="/archives/">Archives</a></li>
         
       </ul>
@@ -105,115 +109,127 @@ var _hmt = _hmt || [];
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-  
+          <article id="post-LeetCode-Weekly-Contest-115" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
     
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 115
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-115/" class="article-date"><time datetime="2018-12-16T12:25:03.526Z" itemprop="datePublished">2018-12-16</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/contest/weekly-contest-115" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-115</a></p>
+<a id="more"></a>
+<h2 id="Check-Completeness-of-a-Binary-Tree"><a href="#Check-Completeness-of-a-Binary-Tree" class="headerlink" title="Check Completeness of a Binary Tree"></a>Check Completeness of a Binary Tree</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-115/problems/check-completeness-of-a-binary-tree/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-115/problems/check-completeness-of-a-binary-tree/</a></p>
+<blockquote>
+<p>Given a binary tree, determine if it is a <em>complete binary tree</em>.</p>
+<p><strong>Definition of a complete binary tree from <a href="https://en.wikipedia.org/wiki/Binary_tree#Types_of_binary_trees" target="_blank" rel="noopener">Wikipedia</a></strong>:<br>In a complete binary tree every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible. It can have between $1$ and $2^h$ nodes inclusive at the last level h.</p>
+<p><strong>Example 1</strong>:<br><img src="https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-1.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5,6]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Every level before the last is full (ie. levels with node-values &#123;1&#125; and &#123;2, 3&#125;), and all nodes in the last level (&#123;4, 5, 6&#125;) are as far left as possible.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><img src="https://assets.leetcode.com/uploads/2018/12/15/complete-binary-tree-2.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,5,null,7]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: The node with value 7 isn&apos;t as far left as possible.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li>The tree will have between 1 and 100 nodes.</li>
+</ol>
+</blockquote>
+<p>BFS把二叉树写成数组形式（就是input的那种形式），检查中间是否含有<code>null</code>即可:</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isCompleteTree</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type root: TreeNode</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        q = [root]</span><br><span class="line">        complete = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> q:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> i:</span><br><span class="line">                complete = <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> complete:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                q.append(i.left)</span><br><span class="line">                q.append(i.right)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
     
       
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-115/" data-id="cjpqvfmcf00004ww3dtaf6m5b" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-69/" class="archive-article-date"><time datetime="2018-01-28T12:28:32.280Z" itemprop="datePublished">一月 28日</time></a>
-</div>
 
-    
+    </footer>
+  </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-69/">LeetCode Weekly Contest 69</a>
-    </h1>
-  
-
-
     
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/SICP/garbage-collection/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">垃圾回收</span>
+    </a>
+  </li>
+  
+  
+</ul>
 
-  </header>
+
+  
 </article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-68/" class="archive-article-date"><time datetime="2018-01-22T11:08:35.018Z" itemprop="datePublished">一月 22日</time></a>
-</div>
 
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-68/">LeetCode Weekly Contest 68</a>
-    </h1>
-  
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
 
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-67/" class="archive-article-date"><time datetime="2018-01-14T12:02:47.061Z" itemprop="datePublished">一月 14日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-67/">LeetCode Weekly Contest 67</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-66/" class="archive-article-date"><time datetime="2018-01-07T11:24:46.970Z" itemprop="datePublished">一月 7日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-66/">LeetCode Weekly Contest 66</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-  
-    </div></section>
-  
-
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sun Dec 16 2018 20:25:03 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Check-Completeness-of-a-Binary-Tree"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Check Completeness of a Binary Tree</span></a></li></ol>
+  </div>
+
 
 
   <div class="sidebar-module sidebar-module-inset">
@@ -301,11 +317,13 @@ var _hmt = _hmt || [];
 <script>
   var disqus_shortname = 'notebook-xyli-me';
   
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-115/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
