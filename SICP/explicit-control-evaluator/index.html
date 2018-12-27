@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="本文主要内容5.4  The Explicit-Control Evaluator在寄存机器模型实现的基础上，用更底层的视角去实现The Metacircular Evaluator所实现的用Scheme去解释Scheme的元循环求值器，也就是用底层的寄存机器语言去解释Scheme程序。这部分内容没有太大的难点和痛点，在理解eval-apply循环，寄存机器操作的前提下，除了尾递归优化以外，这些内">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-27T15:49:24.441Z">
+<meta property="og:updated_time" content="2018-12-27T16:40:38.629Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="显式控制求值器">
 <meta name="twitter:description" content="本文主要内容5.4  The Explicit-Control Evaluator在寄存机器模型实现的基础上，用更底层的视角去实现The Metacircular Evaluator所实现的用Scheme去解释Scheme的元循环求值器，也就是用底层的寄存机器语言去解释Scheme程序。这部分内容没有太大的难点和痛点，在理解eval-apply循环，寄存机器操作的前提下，除了尾递归优化以外，这些内">
@@ -151,9 +151,17 @@ var _hmt = _hmt || [];
 <li><code>unev</code> 存放还没有被求值（uneval）的子表达式</li>
 </ul>
 <p><code>proc</code>，<code>argl</code>, 和<code>unev</code>都只在对组合求值时使用。</p>
-<h3 id="主循环"><a href="#主循环" class="headerlink" title="主循环"></a>主循环</h3><p>机器语言程序中用于读取求值的输入和显示输出也是用这样一个driver loop</p>
+<h3 id="主循环"><a href="#主循环" class="headerlink" title="主循环"></a>主循环</h3><p>机器语言程序中在顶层用于读取求值的输入和显示输出也是用这样一个driver loop</p>
 <figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">read-eval-print-loop</span><br><span class="line">  (<span class="name">perform</span> (<span class="name">op</span> initialize-stack))</span><br><span class="line">  (<span class="name">perform</span></span><br><span class="line">   (<span class="name">op</span> prompt-for-input) (<span class="name">const</span> <span class="string">";;; EC-Eval input:"</span>))</span><br><span class="line">  (<span class="name">assign</span> exp (<span class="name">op</span> read))</span><br><span class="line">  (<span class="name">assign</span> env (<span class="name">op</span> get-global-environment))</span><br><span class="line">  (<span class="name">assign</span> continue (<span class="name">label</span> print-result))</span><br><span class="line">  (<span class="name">goto</span> (<span class="name">label</span> eval-dispatch))</span><br><span class="line">print-result</span><br><span class="line">  (<span class="name">perform</span></span><br><span class="line">   (<span class="name">op</span> announce-output) (<span class="name">const</span> <span class="string">";;; EC-Eval value:"</span>))</span><br><span class="line">  (<span class="name">perform</span> (<span class="name">op</span> user-print) (<span class="name">reg</span> val))</span><br><span class="line">  (<span class="name">goto</span> (<span class="name">label</span> read-eval-print-loop))</span><br></pre></td></tr></table></figure>
 <p>这里假设所有IO操作都是原始操作，而<code>eval-dispatch</code>对应的位置开始就是按照类型开始分配对应求值操作的地方，后面会详谈。</p>
+<p>另外对于一些异常的处理为</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">unknown-expression-type</span><br><span class="line">  (<span class="name">assign</span> val (<span class="name">const</span> unknown-expression-type-error))</span><br><span class="line">  (<span class="name">goto</span> (<span class="name">label</span> signal-error))</span><br><span class="line">unknown-procedure-type</span><br><span class="line">  (<span class="name">restore</span> continue)    <span class="comment">; clean up stack (from apply-dispatch)</span></span><br><span class="line">  (<span class="name">assign</span> val (<span class="name">const</span> unknown-procedure-type-error))</span><br><span class="line">  (<span class="name">goto</span> (<span class="name">label</span> signal-error))</span><br><span class="line">signal-error</span><br><span class="line">  (<span class="name">perform</span> (<span class="name">op</span> user-print) (<span class="name">reg</span> val))</span><br><span class="line">  (<span class="name">goto</span> (<span class="name">label</span> read-eval-print-loop))</span><br></pre></td></tr></table></figure>
+<p>因为每次主循环都会先对栈初始化，所以<code>unknown-procedure-type</code>清理当前栈内的<code>continue</code>也显得有点多余。</p>
+<h3 id="寄存机器构造"><a href="#寄存机器构造" class="headerlink" title="寄存机器构造"></a>寄存机器构造</h3><p>运行这个求值器的寄存机器模拟器这样构造</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> eceval</span><br><span class="line">  (<span class="name">make-machine</span></span><br><span class="line">   '(exp env val proc argl continue unev)</span><br><span class="line">   eceval-operations</span><br><span class="line">  '(</span><br><span class="line">    read-eval-print-loop</span><br><span class="line">      &lt;entire machine controller as given above&gt;</span><br><span class="line">   )))</span><br></pre></td></tr></table></figure>
+<p><code>controller</code>部分即<code>make-machine</code>的第三个参数为上文和下文中所有寄存机器语言代码内容。操作表，即第二个参数<code>eceval-operations</code>定义为</p>
+<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name"><span class="builtin-name">define</span></span> eceval-operations</span><br><span class="line">  (<span class="name"><span class="builtin-name">list</span></span> (<span class="name"><span class="builtin-name">list</span></span> <span class="symbol">'self-evaluating?</span> self-evaluating)</span><br><span class="line">        &lt;complete list of operations for eceval machine&gt;))</span><br></pre></td></tr></table></figure>
+<p>这些原始判断过程用于判断表达式的类型。</p>
 
       
     </div>
@@ -164,7 +172,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/SICP/explicit-control-evaluator/" data-id="cjq6lhz5t003vusw30vflbfkq" class="article-share-link">
+      <a data-url="notebook.xyli.me/SICP/explicit-control-evaluator/" data-id="cjq6trahv003gu8w3srfexv3q" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -226,7 +234,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#求值器框架"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">求值器框架</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#寄存器"><span class="sidebar-module-list-number">1.1.</span> <span class="sidebar-module-list-text">寄存器</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#主循环"><span class="sidebar-module-list-number">1.2.</span> <span class="sidebar-module-list-text">主循环</span></a></li></ol></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#求值器框架"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">求值器框架</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#寄存器"><span class="sidebar-module-list-number">1.1.</span> <span class="sidebar-module-list-text">寄存器</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#主循环"><span class="sidebar-module-list-number">1.2.</span> <span class="sidebar-module-list-text">主循环</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#寄存机器构造"><span class="sidebar-module-list-number">1.3.</span> <span class="sidebar-module-list-text">寄存机器构造</span></a></li></ol></li></ol>
   </div>
 
 
