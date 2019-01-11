@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-18T15:05:25.277Z">
+<meta property="og:updated_time" content="2019-01-11T08:19:21.516Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="试着做一下MIT 6.042的期末题">
 <meta name="twitter:description" content="2017年的math for cs期末题，180分钟，原题挂在了 https://courses.csail.mit.edu/6.042/spring17/finalS17.pdf 但题解需要MIT注册学生的权限，我暂时也找不到。只能自己尝试着做一份题解，可能（几乎一定）存在错误，先预先感谢一下愿意指出和纠正交流者。">
@@ -142,14 +142,15 @@ var _hmt = _hmt || [];
 <hr>
 <h2 id="Problem-1-Simple-Graphs-amp-Trees"><a href="#Problem-1-Simple-Graphs-amp-Trees" class="headerlink" title="Problem 1 Simple Graphs &amp; Trees"></a>Problem 1 Simple Graphs &amp; Trees</h2><div class="bs-callout bs-callout-default"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p>$${41 \choose 2}$$</p>
 </div>
-<div class="bs-callout bs-callout-default"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p>完全图中每个顶点都必然与其他所有顶点邻接，$K_{41}$只有1种结构</p>
+<div class="bs-callout bs-callout-default"><h4 id="b"><a href="#b" class="headerlink" title=" b"></a><i class="fa fa-bookmark-o"></i> b</h4><p><del>完全图中每个顶点都必然与其他所有顶点邻接，$K_{41}$只有1种结构</del><br><strong>2019/1/11更新</strong>：上面的解答是错误的，题目问的是$K_{41}$到$K_{41}$有多少种同构，即点集$V$到$V$有多少个双射可以保证变换后的图还是原来的$K_{41}$，因为是完全图， 所有双射都是可行的，一共$41!$</p>
 </div>
 <div class="bs-callout bs-callout-default"><h4 id="c"><a href="#c" class="headerlink" title=" c"></a><i class="fa fa-bookmark-o"></i> c</h4><p>$C_{41}$已经是规定了边集顺序的特定的环，而不是一般意义上的顶点数为41的环</p>
 <blockquote>
 <p>isomorphisms from $C_{41}$ to $C_{41}$</p>
 </blockquote>
-<p>这个说法有点奇怪，我暂且理解为问题中的$C_{41}$有多少isomorphisms</p>
-<p>选择从环的一个顶点开始依次放置41个顶点，这里有$41!$种排列的方法，而起始顶点之间又是等效的，因此共有$41!/41=40!$种同构。</p>
+<p><del>这个说法有点奇怪，我暂且理解为问题中的$C_{41}$有多少isomorphisms</del></p>
+<p><del>选择从环的一个顶点开始依次放置41个顶点，这里有$41!$种排列的方法，而起始顶点之间又是等效的，因此共有$41!/41=40!$种同构。</del></p>
+<p><strong>2019/1/11更新</strong>：上面的理解和做法都是错误的，还是刚才的问题，有多少种$V$到$V$的双射可以保证从原来的$C_{41}$变换过来还是$C_{41}$，变换只有两种方向的旋转，因此答案是$2\times 41$种。</p>
 </div>
 <div class="bs-callout bs-callout-default"><h4 id="d"><a href="#d" class="headerlink" title=" d"></a><i class="fa fa-bookmark-o"></i> d</h4><p>众所周知，有$\chi \left( {K_n} \right) = n$，所以$\chi \left( K_{41} \right) = 41$</p>
 </div>
@@ -190,7 +191,7 @@ var _hmt = _hmt || [];
 </div>
 <div class="bs-callout bs-callout-success"><h4 id="f"><a href="#f" class="headerlink" title=" f"></a><i class="fa fa-bookmark-o"></i> f</h4><p>True</p>
 </div>
-<div class="bs-callout bs-callout-success"><h4 id="g"><a href="#g" class="headerlink" title=" g"></a><i class="fa fa-bookmark-o"></i> g</h4><p>Fermat小定理要求(i)+(vii)就够了，但只能选一项就选(viii)</p>
+<div class="bs-callout bs-callout-success"><h4 id="g"><a href="#g" class="headerlink" title=" g"></a><i class="fa fa-bookmark-o"></i> g</h4><p><del>Fermat小定理要求(i)+(vii)就够了，但只能选一项就选(viii)</del><br><strong>2019/1/11更新</strong>：Fermat小定理只需要(vii)就足够了，在(i)条件不成立时$a^b \bmod b=a \bmod b=0$也是满足等式的，所以不用满足(i)</p>
 </div>
 <h2 id="Problem-5-Counting"><a href="#Problem-5-Counting" class="headerlink" title="Problem 5 Counting"></a>Problem 5 Counting</h2><p><del>原题 Problem 15.43</del><br><div class="bs-callout bs-callout-info"><h4 id="a"><a href="#a" class="headerlink" title=" a"></a><i class="fa fa-bookmark-o"></i> a</h4><p><del>原结论见Problem 15.7</del><br>(2)</p>
 </div></p>
@@ -285,7 +286,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/MIT6-042/2017final/" data-id="cjqkrxeyh00020ww3k7giodih" class="article-share-link">
+      <a data-url="notebook.xyli.me/MIT6-042/2017final/" data-id="cjqrrehfg0000i0w34uqcso70" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
