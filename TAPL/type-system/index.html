@@ -3,18 +3,19 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
   
-  <title>Archives: 2018/2 | 笔记仓库</title>
+  <title>零基础开始读类型系统（Cardelli的type systems小结） | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正常人的正常笔记站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="笔记仓库">
-<meta property="og:url" content="notebook.xyli.me/archives/2018/02/index.html">
+  <meta name="description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="零基础开始读类型系统（Cardelli的type systems小结）">
+<meta property="og:url" content="notebook.xyli.me/TAPL/type-system/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="正常人的正常笔记站">
+<meta property="og:description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-26T15:52:30.304Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="笔记仓库">
-<meta name="twitter:description" content="正常人的正常笔记站">
+<meta name="twitter:title" content="零基础开始读类型系统（Cardelli的type systems小结）">
+<meta name="twitter:description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -79,7 +80,7 @@ var _hmt = _hmt || [];
           <li><a class=""
                  href="/index.html">Home</a></li>
         
-          <li><a class="active"
+          <li><a class=""
                  href="/archives/">Archives</a></li>
         
       </ul>
@@ -105,115 +106,127 @@ var _hmt = _hmt || [];
 
     <div class="row">
         <div class="col-sm-8 blog-main">
-          
-  
-  
+          <article id="post-type-system" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
     
+  
+    <h1 class="article-title" itemprop="name">
+      零基础开始读类型系统（Cardelli的type systems小结）
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/TAPL/type-system/" class="article-date"><time datetime="2019-01-26T09:42:47.241Z" itemprop="datePublished">2019-01-26</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/TAPL/">TAPL</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在找<a href="https://www.cis.upenn.edu/~bcpierce/tapl/" target="_blank" rel="noopener">TAPL</a>相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对符号逻辑有基本了解，但对编程语言类型系统没有系统性认知的人来说，原文预计需要大约一个下午的时间读完，请有相关计划的读者做好相应的规划。<br><a id="more"></a></p>
+<p>我在这里粗浅的总结一下从中的收获，以及阅读中可能遇到的理解问题和解决方法。</p>
+<h2 id="结构概述"><a href="#结构概述" class="headerlink" title="结构概述"></a>结构概述</h2><p>全文主要讨论的问题可以直接看Page 2开头部分，把每个部分的主要内容都提前交代了。</p>
+<ol>
+<li><strong>Introduction</strong>: 解释了一些类型系统的基本概念名词，主要在于介绍类型系统设计的目的和几个评价标准，目前几种编程语言又是如何通过不同的实现达到相应的安全和效率目的。总之这部分可以看的稍微快一点，很综述性的东西。</li>
+<li><strong>The language of type systems</strong>: 开始正式定义一种符号语言来描述编程语言中的类型系统，包括类型系统的基本规则，推理运算的表达，试图用这种符号语言讨论类型系统在上面提到的需要解决的问题。</li>
+<li><strong>First-order Type Systems</strong>：用这种规范的语言开始描述第一个类型系统$F_1$，暂不探讨1st-order和2nd-order的差异，从最简单的，函数式的编程语言开始一步步定义了常见的类型，导出规则，作为后面几种类型系统的基础。</li>
+<li><strong>First-order Type Systems for Imperative Languages</strong>：在上面的基础上引入声明和命令这些语法，并给出了它们在类型系统中的相应规则。<del><em>不是很重要的内容。</em></del></li>
+<li><strong>Second-order Type Systems</strong>：在$F_1$的基础上，开始描述一种<strong>将类型作为类型的参数</strong>构造新类型的类型系统$F_2$及新类型的相关导出规则。</li>
+<li><strong>Subtyping</strong>： 引入子类型规则，简单的构造了在前面两种类型系统基础上实现子类关系后的$F_{1&lt;:}$和$F_{2&lt;:}$。</li>
+<li><strong>Equivalence</strong>: 最简的解释了类型之间等价关系是什么，以及几个判断的例子，<del><em>不是很重要的内容。</em></del></li>
+<li><strong>Type inference</strong>：演示了在上面这些类型系统中简单的类型推断规则的使用（是的，只是最简模型的方法，甚至不能算的上是算法），提及一些现有类型推断和重构中存在的难点。</li>
+<li><strong>Summary and Research Issues</strong>：文章常见的结论和展望部分，不多废话了，因为这篇文章比较老所以前景性的东西也没有必要认真看待，不过倒是提及了类型系统和数学的类型论（type theory）方向之间的关系，有兴趣的可以自行去nLab或者别的地方学一下类型论。</li>
+</ol>
+<p>后面的术语定义表和参考文献部分没有特别新奇特别值得注意的内容，但是我<strong>建议</strong>第一次读这篇文章时，初遇其中概念，理解模糊时可以快速查一下Page 37开始的Defining Terms部分，相比正文的解释，它对概念的描述更简洁直观。当然，顺序阅读到这里时，也可以快速读一下检验自己的理解是否准确清晰。</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Cardelli, Luca. <a href="http://lucacardelli.name/papers/typesystems.pdf" target="_blank" rel="noopener">&quot;Type systems.&quot;</a> <em>ACM Computing Surveys</em> 28.1 (1996): 263-264.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+      
+    </div>
+
     
       
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjrddymjt0000xgw3145lmsxy" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-73/" class="archive-article-date"><time datetime="2018-02-25T15:29:39.742Z" itemprop="datePublished">二月 25日</time></a>
-</div>
 
-    
+    </footer>
+  </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-73/">LeetCode Weekly Contest 73</a>
-    </h1>
-  
-
-
     
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-120/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 120</span>
+    </a>
+  </li>
+  
+  
+</ul>
 
-  </header>
+
+  
 </article>
 
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-72/" class="archive-article-date"><time datetime="2018-02-18T13:01:08.646Z" itemprop="datePublished">二月 18日</time></a>
-</div>
 
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-72/">LeetCode Weekly Contest 72</a>
-    </h1>
-  
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
 
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-71/" class="archive-article-date"><time datetime="2018-02-11T10:34:39.539Z" itemprop="datePublished">二月 11日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-71/">LeetCode Weekly Contest 71</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <header class="archive-article-header">
-    <div class="article-datetime">
-  <a href="/LeetCode/LeetCode-Weekly-Contest-70/" class="archive-article-date"><time datetime="2018-02-04T13:06:59.544Z" itemprop="datePublished">二月 4日</time></a>
-</div>
-
-    
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/LeetCode/LeetCode-Weekly-Contest-70/">LeetCode Weekly Contest 70</a>
-    </h1>
-  
-
-
-    
-
-  </header>
-</article>
-
-  
-  
-    </div></section>
-  
-
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sat Jan 26 2019 17:42:47 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
 
 
 
         </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#结构概述"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">结构概述</span></a></li></ol>
+  </div>
+
 
 
   <div class="sidebar-module sidebar-module-inset">
@@ -301,11 +314,13 @@ var _hmt = _hmt || [];
 <script>
   var disqus_shortname = 'notebook-xyli-me';
   
+  var disqus_url = 'notebook.xyli.me/TAPL/type-system/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
