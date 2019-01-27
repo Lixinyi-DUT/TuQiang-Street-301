@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-26T15:52:30.304Z">
+<meta property="og:updated_time" content="2019-01-27T03:18:13.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零基础开始读类型系统（Cardelli的type systems小结）">
 <meta name="twitter:description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对">
@@ -144,15 +144,21 @@ var _hmt = _hmt || [];
 <li><strong>Introduction</strong>: 解释了一些类型系统的基本概念名词，主要在于介绍类型系统设计的目的和几个评价标准，目前几种编程语言又是如何通过不同的实现达到相应的安全和效率目的。总之这部分可以看的稍微快一点，很综述性的东西。</li>
 <li><strong>The language of type systems</strong>: 开始正式定义一种符号语言来描述编程语言中的类型系统，包括类型系统的基本规则，推理运算的表达，试图用这种符号语言讨论类型系统在上面提到的需要解决的问题。</li>
 <li><strong>First-order Type Systems</strong>：用这种规范的语言开始描述第一个类型系统$F_1$，暂不探讨1st-order和2nd-order的差异，从最简单的，函数式的编程语言开始一步步定义了常见的类型，导出规则，作为后面几种类型系统的基础。</li>
-<li><strong>First-order Type Systems for Imperative Languages</strong>：在上面的基础上引入声明和命令这些语法，并给出了它们在类型系统中的相应规则。<del><em>不是很重要的内容。</em></del></li>
+<li><strong>First-order Type Systems for Imperative Languages</strong>：在上面的基础上引入声明和命令这些语法，并给出了它们在类型系统中的相应规则。<del><em>在文章中不是很重要的内容。</em></del></li>
 <li><strong>Second-order Type Systems</strong>：在$F_1$的基础上，开始描述一种<strong>将类型作为类型的参数</strong>构造新类型的类型系统$F_2$及新类型的相关导出规则。</li>
 <li><strong>Subtyping</strong>： 引入子类型规则，简单的构造了在前面两种类型系统基础上实现子类关系后的$F_{1&lt;:}$和$F_{2&lt;:}$。</li>
-<li><strong>Equivalence</strong>: 最简的解释了类型之间等价关系是什么，以及几个判断的例子，<del><em>不是很重要的内容。</em></del></li>
+<li><strong>Equivalence</strong>: 最简的解释了类型之间等价关系是什么，以及几个判断的例子，<del><em>在文章中不是很重要的内容。</em></del></li>
 <li><strong>Type inference</strong>：演示了在上面这些类型系统中简单的类型推断规则的使用（是的，只是最简模型的方法，甚至不能算的上是算法），提及一些现有类型推断和重构中存在的难点。</li>
 <li><strong>Summary and Research Issues</strong>：文章常见的结论和展望部分，不多废话了，因为这篇文章比较老所以前景性的东西也没有必要认真看待，不过倒是提及了类型系统和数学的类型论（type theory）方向之间的关系，有兴趣的可以自行去nLab或者别的地方学一下类型论。</li>
 </ol>
 <p>后面的术语定义表和参考文献部分没有特别新奇特别值得注意的内容，但是我<strong>建议</strong>第一次读这篇文章时，初遇其中概念，理解模糊时可以快速查一下Page 37开始的Defining Terms部分，相比正文的解释，它对概念的描述更简洁直观。当然，顺序阅读到这里时，也可以快速读一下检验自己的理解是否准确清晰。</p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Cardelli, Luca. <a href="http://lucacardelli.name/papers/typesystems.pdf" target="_blank" rel="noopener">&quot;Type systems.&quot;</a> <em>ACM Computing Surveys</em> 28.1 (1996): 263-264.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<h2 id="概念-amp-推算的理解"><a href="#概念-amp-推算的理解" class="headerlink" title="概念&amp;推算的理解"></a>概念&amp;推算的理解</h2><p>阅读中可能会遇到一些理解上的困难，比如Page 21-22所做的Encoding of Divergence and Recursion via Recursive Types和Encoding the Untyped $\lambda$-calculus via Recursive Types部分我也真没怎么明白，和下文也没有什么关系，就直接跳过去了。</p>
+<p>造成这种困扰很可能是因为全文的符号公式系统都是为了简洁而作出这样的呈现，与主流的符号系统存在一些细小的差异，而篇幅所限又不可能作出过于详细的解释和说明。</p>
+<p>所以遇到不理解的地方，可以先查文章结尾部分的Defining Terms，如果还是得不到解答，去找TAPL相关内容（符号使用上更加直观）或检索相应关键词找相关的讲义和课件。这些尝试都失败以后，不妨放心的跳过去，反正很多内容和下文的关系也没有想象的那么大。</p>
+<p>我在这里给出一些我阅读时纠结过的东西，以及最后对它们的结论，都是比较细节的东西，不保证完全的正确性，只希望思考过程能对以后看到的这里的人有所帮助。</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>类型系统相应的背景概念，对应Page 1-9，怎样的类型系统是安全的，编程语言的类型系统怎么分类，这些用文字阐述的东西，有相应编程经验应该不难出现理解问题。这部分如果有困难，直接按照名词去Defining Terms读最简的定义强行记忆。</p>
+<p>值得一说的是，全文规避了一些如强弱类型这样无论在文章还是现实中都不怎么重要的概念之争，就是不希望你还浪费时间在考据这样无聊的定义上。能理解就理解，不能理解就假装自己知道了，编程经验上来了以后看这些东西都不算事。</p>
+<h3 id="Union-Types"><a href="#Union-Types" class="headerlink" title="Union Types"></a>Union Types</h3><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Cardelli, Luca. <a href="http://lucacardelli.name/papers/typesystems.pdf" target="_blank" rel="noopener">&quot;Type systems.&quot;</a> <em>ACM Computing Surveys</em> 28.1 (1996): 263-264.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -162,7 +168,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjrddymjt0000xgw3145lmsxy" class="article-share-link">
+      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjrepg41x0058uow3ptwixqjz" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -185,6 +191,13 @@ var _hmt = _hmt || [];
     </a>
   </li>
   
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-121/" id="article-nav-newer" class="article-nav-link-wrap">
+      <span class="article-nav-link-title">LeetCode Weekly Contest 121</span>
+      <i class="fa fa-chevron-right pull-right"></i>
+    </a>
+  </li>
   
 </ul>
 
@@ -224,7 +237,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#结构概述"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">结构概述</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#结构概述"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">结构概述</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#概念-amp-推算的理解"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">概念&推算的理解</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#背景"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">背景</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Union-Types"><span class="sidebar-module-list-number">2.2.</span> <span class="sidebar-module-list-text">Union Types</span></a></li></ol></li></ol>
   </div>
 
 
@@ -238,7 +251,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Categories</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">61</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/TAPL/">TAPL</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">62</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/TAPL/">TAPL</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -263,7 +276,7 @@ var _hmt = _hmt || [];
   
   <div class="sidebar-module">
     <h4>Archives</h4>
-    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
   </div>
 
 
@@ -272,6 +285,10 @@ var _hmt = _hmt || [];
   <div class="sidebar-module sidebar-recents">
     <h4>Recents</h4>
     <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-121/">LeetCode Weekly Contest 121</a>
+        </li>
       
         <li>
           <a href="/TAPL/type-system/">零基础开始读类型系统（Cardelli的type systems小结）</a>
@@ -287,10 +304,6 @@ var _hmt = _hmt || [];
       
         <li>
           <a href="/LeetCode/LeetCode-Weekly-Contest-119/">LeetCode Weekly Contest 119</a>
-        </li>
-      
-        <li>
-          <a href="/LeetCode/LeetCode-Weekly-Contest-118/">LeetCode Weekly Contest 118</a>
         </li>
       
     </ul>
