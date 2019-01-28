@@ -19,7 +19,8 @@
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolinterface.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolmodule.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/open.png">
-<meta property="og:updated_time" content="2019-01-28T12:40:29.894Z">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/expose.png">
+<meta property="og:updated_time" content="2019-01-28T16:37:56.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零基础开始读类型系统（Cardelli的type systems小结）">
 <meta name="twitter:description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对">
@@ -190,6 +191,23 @@ var _hmt = _hmt || [];
 <p>这个思想类似于抽象接口，隐藏了类型的具体实现，来看它的例子，假设我们需要实现一个BoolInterface，这个接口实际上是一个record type，需要规定<code>true</code>,<code>false</code>和<code>cond</code>这些域的类型信息，但它们的类型仍然是抽象的，需要“传入”一个具体的Bool类型来实例化它们的类型，从而确定整个record的类型<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolinterface.png" alt=""><br>这里选择把Bool类型实例化成unit+unit并给出一种实现方法，注意with后面的语句就是上文的$M$，还是以Bool为类型变量参数在构造一个record实例，当然具体的构造方法并不重要，没有细究的必要，打包结果BoolModule就是BoolInterface类的一个被实现的实例。<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolmodule.png" alt=""><br>回到前面的Val Open假设：如果$M$是一个已经完成打包的$\exists X.A$类型的表达式，$N$是一个使用了参数：类型变量$X$和用$X$定义的$A$类型的一个实例$x$的表达式，并且$N$的最终类型为$B$（注意这个$B$和前文<code>pack</code>使用的$B$没有任何联系，如果这里困惑可以把$B$换成别的符号），<code>open</code>操作把$M$封装时用到的那个特定的$X$（也就是前文<code>pack</code>的$B$）和$x:A$的真正实现（前文<code>pack</code>的$[B/X]M:[B/X]A$）作为“实参”直接传入$N$，当然，全程你依然对这个特定的$X$一无所知，却可以使用它来计算$N$生成一个$B$类型的结果，这也是接口和模块要求的对于实现细节的遮蔽。</p>
 <p>对于BoolModule来说，<code>open</code>的具体实例为<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/open.png" alt=""><br>在<code>boolOp.cond(Nat)(boolOp.true)(1)(0)</code>中，<code>boolOp</code>被约束到了前文<code>with</code>后面的那个record type的值，这个语句里面虽然没有显式的出现<code>Bool</code>类型，但如果出现<code>Bool</code>也是被约束到unit+unit来进行整个语句的求值。这个语句最后的返回结果是自然数1。</p>
 <p>这里想明白以后后面关于existential type的意义描述也就不难理解了，不再展开多谈。关于它的定义，性质，用法可以见TAPL Chapter 24的详细叙述，以及type theory也有数学上定义的existential type，老实说，这些延伸材料关于existential type的部分我都没细看，给不出特别有效的指导建议，只是感觉和在原文里的讨论形式上差别很大。</p>
+<h3 id="Subtyping-amp-Type-inference"><a href="#Subtyping-amp-Type-inference" class="headerlink" title="Subtyping &amp; Type inference"></a>Subtyping &amp; Type inference</h3><p>我没有任何说这两个东西不重要的意思，相反它们非常重要。只是相比前面基础概念的定义，并没有多少构造性的东西，只要前面的理解没有问题，直接往后读这两块还是非常顺利的，没有提及太深刻的东西，trivial的问题也没展开说明直接跳过了，重点在于规则的应用。</p>
+<p>subtype关系的规则大部分是符合直觉的，比如record的长度规则，可以联想OOP的继承关系，子类比父类有更多的域；再比如variant的长度规则相反，子类所拥有的“可能性”越少，长度越低。</p>
+<p>讨论函数类型之间的子类关系时，需要考虑它们的参数类型和返回结果类型。这里就用到了covariant和contravariant的说法，文章中倒是给出了这两个名词的解释：与整个函数类型的子类关系变化方向一致的是covariant，返回类型上就是遵循这个规则；而与函数类型的子类关系变化方向相反的就是contravariant，参数则遵循这个规定。我也曾经随手写过一个<a href="https://www.zhihu.com/pin/1065382072121683968" target="_blank" rel="noopener">知乎想法评论</a>给出过我的理解：</p>
+<blockquote>
+<p>反正一句话的事<br>function subtyping is contravariant in arguments and covariant in results.<br>一个提供更多信息的函数应该输入更少信息并返回更多信息。</p>
+</blockquote>
+<p>文中也给出了一个总结，总是出现在第奇数个箭头左边的类型是函数类型的contravariant，文章给出的例子是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X-&gt;Unit</span><br><span class="line">(Unit-&gt;X)-&gt;Unit</span><br></pre></td></tr></table></figure></p>
+<p>的$X$都是整个类型的contravariant，而两次contravariant又等同于covariant所以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Unit-&gt;X</span><br><span class="line">(X-&gt;Unit)-&gt;X</span><br></pre></td></tr></table></figure></p>
+<p>的$X$又是covariant</p>
+<p>这个结论用起来可能需要注意的地方是$\to$本来就是右结合的，上面两个例子用括号规避了麻烦的讨论让例子更简单，直接从左往右数$\to$是第几个就行了，但没有括号提升优先级的时候，你就得从右往左数了。</p>
+<p>Type inference部分也没有特别不好理解的地方，给出的所谓的几个算法虽然很抽象的概括了它需要完成的工作，但并没有涉及非常实际具体的做法，所以也没什么难点可谈，真实的type inference可能遇到的问题（比如不收敛）读原文的文字材料的叙述就能了解个大概了。</p>
+<p>细节上可能有纠结的是$F_{2&lt;:}$的算法Table 37没说清楚<code>Expose</code>操作的意义</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/expose.png" alt=""><br>这里<code>Expose</code>是寻找类型$X$在类型系统中最高的一个supertype，下面使用<code>Expose</code>的场景也是在函数调用$M N$和高阶类型实例化$M A$时寻找$M$的类型在系统中的最大supertype，即$M$的参数的最小subtype-&gt;返回结果的最大supertype，这样就要求实参$N$的类型只能是这个最小的类型$A$才能进行推导，这样的强制<code>Expose</code>保证了函数调用的安全性（其他地方的<code>Type</code>没有这样的强制所以不保证给出符合推断的最小类型），在符合这样的调用后才会得到与返回类型一致的结果，但这里的$B$不是那个结果，只是最模糊的一个supertype，毕竟$F_{2&lt;:}$严格来说并不是一个完善的算法，只能小心翼翼保证产生的推断结果“没有错误”而并不完全准确。</p>
+<h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>我写的东西大部分是细节理解上的讨论，只是为了防止有同样困惑的人纠结于此浪费时间，并不能取代文章本身的阅读。类型系统是计算机科学最优雅美丽的东西之一，精彩的论述还需要认真通读全文。</p>
+<blockquote>
+<p>祝你早日找到住在计算机内的神灵。</p>
+</blockquote>
 <div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Cardelli, Luca. <a href="http://lucacardelli.name/papers/typesystems.pdf" target="_blank" rel="noopener">&quot;Type systems.&quot;</a> <em>ACM Computing Surveys</em> 28.1 (1996): 263-264.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;"><a href="https://www.cs.cornell.edu/courses/cs4110/2012fa/lectures/lecture27.pdf" target="_blank" rel="noopener">https://www.cs.cornell.edu/courses/cs4110/2012fa/lectures/lecture27.pdf</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
@@ -200,7 +218,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjrgbqsw20058lkw3v5za8brp" class="article-share-link">
+      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjrggcve7005910w369ne8twa" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -269,7 +287,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#结构概述"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">结构概述</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#概念-amp-推算的理解"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">概念&推算的理解</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#背景"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">背景</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Union-Types"><span class="sidebar-module-list-number">2.2.</span> <span class="sidebar-module-list-text">Union Types</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Recursive-Types"><span class="sidebar-module-list-number">2.3.</span> <span class="sidebar-module-list-text">Recursive Types</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Existential-Types"><span class="sidebar-module-list-number">2.4.</span> <span class="sidebar-module-list-text">Existential Types</span></a></li></ol></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#结构概述"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">结构概述</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#概念-amp-推算的理解"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">概念&推算的理解</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#背景"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">背景</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Union-Types"><span class="sidebar-module-list-number">2.2.</span> <span class="sidebar-module-list-text">Union Types</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Recursive-Types"><span class="sidebar-module-list-number">2.3.</span> <span class="sidebar-module-list-text">Recursive Types</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Existential-Types"><span class="sidebar-module-list-number">2.4.</span> <span class="sidebar-module-list-text">Existential Types</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Subtyping-amp-Type-inference"><span class="sidebar-module-list-number">2.5.</span> <span class="sidebar-module-list-text">Subtyping & Type inference</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#尾声"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">尾声</span></a></li></ol>
   </div>
 
 
