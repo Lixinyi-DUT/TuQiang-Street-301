@@ -12,10 +12,18 @@
 <meta property="og:site_name" content="笔记仓库">
 <meta property="og:description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-27T03:18:13.946Z">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/fold-unfold.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/list.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/NatList.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/existential_type.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolinterface.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolmodule.png">
+<meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/open.png">
+<meta property="og:updated_time" content="2019-01-28T12:40:29.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零基础开始读类型系统（Cardelli的type systems小结）">
 <meta name="twitter:description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对">
+<meta name="twitter:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/fold-unfold.png">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -158,7 +166,31 @@ var _hmt = _hmt || [];
 <p>我在这里给出一些我阅读时纠结过的东西，以及最后对它们的结论，都是比较细节的东西，不保证完全的正确性，只希望思考过程能对以后看到的这里的人有所帮助。</p>
 <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>类型系统相应的背景概念，对应Page 1-9，怎样的类型系统是安全的，编程语言的类型系统怎么分类，这些用文字阐述的东西，有相应编程经验应该不难出现理解问题。这部分如果有困难，直接按照名词去Defining Terms读最简的定义强行记忆。</p>
 <p>值得一说的是，全文规避了一些如强弱类型这样无论在文章还是现实中都不怎么重要的概念之争，就是不希望你还浪费时间在考据这样无聊的定义上。能理解就理解，不能理解就假装自己知道了，编程经验上来了以后看这些东西都不算事。</p>
-<h3 id="Union-Types"><a href="#Union-Types" class="headerlink" title="Union Types"></a>Union Types</h3><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Cardelli, Luca. <a href="http://lucacardelli.name/papers/typesystems.pdf" target="_blank" rel="noopener">&quot;Type systems.&quot;</a> <em>ACM Computing Surveys</em> 28.1 (1996): 263-264.</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<h3 id="Union-Types"><a href="#Union-Types" class="headerlink" title="Union Types"></a>Union Types</h3><p>$F_1$的大部分基础类型没什么特别需要注意的，可能到union type开始会感觉有点陌生，前面的product type可以对应到常见的序对(pair)结构来理解，而union type如果没有相应的使用经验可能一下子想不起来。容易联想到C/C++的union structure，虽然二者有相似的地方（共有同一空间）但概念上并不是等价的东西，请忘掉它。使用过Standard ML或者Haskell就会容易理解公式系统中$A_1+A_2$这样的“加法”操作实际上等同<code>|</code>，用伪代码表示为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def type A = A1 | A2</span><br></pre></td></tr></table></figure></p>
+<p>新的类型$A$实例化后的变量可以是一个$A_1$，或者是一个$A_2$类型的变量，都可以赋值给$A$类型的变量，两种类型都是$A$的“可能性”。使用时可以通过<code>case</code>关键字来确定具体的类型进行不同的操作，这一点上有点类似于我们通常说的多态（事实上Standard ML也确实是把它作为多态来实现的）。</p>
+<p>如果不去考虑$A$是通过类型来定义的，也可以类比为C/C++的enum structure，不同的是union type所“枚举”的是类型，而enum枚举的是变量值，但在使用时一个变量只会有一种类型或值，只是它是来自定义中枚举的所有可能性之一。</p>
+<p>union type很基础，后面也常用到，所以能理解尽量还是理解一下。它也通常和product type相对出现，几乎所有类型规则也都能找到对应关系，同理它们的推广record type和variant type，包括后面子类关系规则，建议把它们对照着看方便理解。当然<code>inLeft</code>和<code>inRight</code>这些构造方法定义的很模糊，不太友好，后面的用法也和这里不太一致，所以这里细节不要太深究了。</p>
+<h3 id="Recursive-Types"><a href="#Recursive-Types" class="headerlink" title="Recursive Types"></a>Recursive Types</h3><p>虽然递归定义类型我们经常用（比如链表，二叉树）但抽象出符号语言还是一时难以习惯，毕竟之前可能没接触过$\mu$算子。</p>
+<p>这里我个人建议可以稍微去读一下TAPL Chapter 20，或者其他材料<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>的文字解说和符号描述。</p>
+<p>$\mu$算子与$\lambda$算子有相似之处。假设需要通过一个类型$X$递归构造出新的类型，可以使用函数$\lambda X.T$，$T$中出现过$X$，但$T$ <strong>在形式上</strong> 不完全等同于$X$，如果有某个$X^*$可以使得$X^*=[\lambda X.T]X^*$这个等式（右边也可以更正式的写为$[X^*/X]T$，表示将$T$中所有出现的$X$都替换为$X^*$，相似的表达还有TAPL的$[X \mapsto X^*]T$）成立，那么这个$X^*$就是该函数的一个不动点，表示为$X^*:=\mu X.T$，当然以上只是我个人给出的<strong>不严谨</strong>的解释，一般来说直接用$\mu X.T$来表示这个recursive type来表示就可以了。</p>
+<p>文章提到的作用于recursive type的两个操作<code>fold</code>和<code>unfold</code>的定义可能有点费解，其实这也涉及上面那个不严谨的表达$X$到底和$T$是不是等价类型？如果是，能否把$T$中出现的$X$都用这个等式的（特）解$\mu X.T$替换掉？</p>
+<p>讨论recursive type类型是否相等那一般就是说isorecursive和equi-recursive了，而那两个操作还是在讨论isorecursive,不展开更抽象的概念描述了，直接去看它们做了什么。</p>
+<p>对于一个$\mu X.T$的<code>unfold</code>操作定义为把$\mu X.T$类型展开成$[\mu X.T/X]T$，即直接把不动点代入$T$展开一层，它的逆过程<code>fold</code>相应的把$[\mu X.T/X]T$折叠到$\mu X.T$</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/fold-unfold.png" alt="TAPL的替换标记稍有不同"></p>
+<p>如果还是不理解这个操作可以想想一般的Y combinator，或者直接不用这套语言体系，说一下<code>fold</code>和<code>unfold</code>更广泛的使用场景：有一个函数$f$在$x$点取到$x=f(x)$即我们通常说的$x$是不动点，<code>unfold</code>就是把这个特定的不动点放到函数中再展开为$f(x)$，<code>fold</code>就是把$f(x)$折叠回$x$，上面的recursive type也是这个规则的特例。</p>
+<p>用recursive type来描述类型的例子可以看我上面给的材料里面给出的二叉树，自然数列表，甚至自然数类型本身。回到文章中后面给出的一个用于检验理解的实例，构造list<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/list.png" alt=""><br>推算检验的难点在于各类操作符的省略很严重（比如<code>inLeft</code>，<code>inRight</code>，<code>fold</code>，<code>unfold</code>的下标都没有标明，实际上前两者视情况构造，后两个是$List_A$，也就是第一行那个$\mu$表达式），相比文章前半部分事无巨细的导出演绎，这里开始省略了很多作者认为不重要的内容，连文字说明都没有给出，而且对我这么笨的人来说直接算<code>fold</code>是很困难的，所以只能想象成<code>unfold</code>的逆过程开始看：</p>
+<p>把$nil_A$作为参数<code>unfold</code>出来，$$[nil_A/X](unit+(A\times X))=unit+(A \times nil_A)$$应该是在形式上与$nil_A$“同构”的（我前面说了不讨论isorecursive，所以这里可以简单理解为形式上等价），所以构造时选择用$InLeft\text{ }unit$构造了一个$unit+(A \times nil_A)$类型的值$unit$作为空列表。当然这里的$InLeft$应该被看作按照参数$x:X$构造出任意右半部分的构造器，构造结果可以被当成$x:X+top$，$top$为任意类型。</p>
+<p>当然正向思考也可以说这里有一个$unit:unit+T$可以成为$X=unit+(A\times X)$的解，<code>fold</code>回去可以找到推断出$T$的具体类型，但这个union type其实也不怎么重要，最终结果$unit+T$一定与$List_A$同构，反正它的值也已经确定为$unit$了（这是前文关于系统中空类型的规定，我们只是试图根据规定构造的更自然一些），这个<code>fold</code>的结果就作为$nil_A$了。</p>
+<p>$cons_A$前面那堆curry先不看，没什么影响，直接仿照前面正向推断看<code>fold</code>的参数：$\langle hd,tl \rangle:A \times list_A$被$InRight$构造成了一个$\langle hd,tl \rangle:unit+A \times list_A$，注意可以直接推断出这里union type的另一部分也就是$inRight$的下标就是$unit$按照<code>fold</code>规则，整个变量的类型从$unit+A \times list_A$直接折叠到了$list_A$，得到的就是$\langle hd,tl \rangle:list_A$</p>
+<p>后面的<code>listCase</code>不难理解，不多说了。TAPL 20.2给出了相似的实现自然数链表NatList的例子，相对来说符号描述上更友好一些，也可以参照着它的例子来理解：</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/NatList.png" alt="TAPL Page 278"></p>
+<h3 id="Existential-Types"><a href="#Existential-Types" class="headerlink" title="Existential Types"></a>Existential Types</h3><p>$F_2$引入了“全称量词”（universally quantifier type），关于这个可以由类型来特例化的类型，原文说明的很清楚详细了，通过这样的描述可以很直观的感受到高阶的性质。</p>
+<p>之后新引入的“存在量词”一开始接触可能有点困难，毕竟全文没有正面给出关于它的准确定义，但回过去读一遍它的例子BoolInterface可以理解<code>pack</code>的具体工作：<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/existential_type.png" alt=""></p>
+<p>如果用类型变量$X$定义的$M:A$被用一个类型$B$可以实例化为$[B/X]M:[B/X]A$，那么我们可以存在一个$X=B$可以实现$M:A$这样的抽象，并把这一个特殊的实现用<code>pack</code>打包封装起来作为一个表达式，不用知道具体的实现（$X=B$）只要了解有这样一个$X$类型可以让实例化后的$M$是$A$类型，这里的$M$和$A$都是一种的抽象，我们所有可以从打包后的结果看出来的只有“存在一个具体的$X$，以及一种具体的实现方法，可以实现它”，因此它的类型可以被表达为$\exists X.A$</p>
+<p>这个思想类似于抽象接口，隐藏了类型的具体实现，来看它的例子，假设我们需要实现一个BoolInterface，这个接口实际上是一个record type，需要规定<code>true</code>,<code>false</code>和<code>cond</code>这些域的类型信息，但它们的类型仍然是抽象的，需要“传入”一个具体的Bool类型来实例化它们的类型，从而确定整个record的类型<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolinterface.png" alt=""><br>这里选择把Bool类型实例化成unit+unit并给出一种实现方法，注意with后面的语句就是上文的$M$，还是以Bool为类型变量参数在构造一个record实例，当然具体的构造方法并不重要，没有细究的必要，打包结果BoolModule就是BoolInterface类的一个被实现的实例。<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolmodule.png" alt=""><br>回到前面的Val Open假设：如果$M$是一个已经完成打包的$\exists X.A$类型的表达式，$N$是一个使用了参数：类型变量$X$和用$X$定义的$A$类型的一个实例$x$的表达式，并且$N$的最终类型为$B$（注意这个$B$和前文<code>pack</code>使用的$B$没有任何联系，如果这里困惑可以把$B$换成别的符号），<code>open</code>操作把$M$封装时用到的那个特定的$X$（也就是前文<code>pack</code>的$B$）和$x:A$的真正实现（前文<code>pack</code>的$[B/X]M:[B/X]A$）作为“实参”直接传入$N$，当然，全程你依然对这个特定的$X$一无所知，却可以使用它来计算$N$生成一个$B$类型的结果，这也是接口和模块要求的对于实现细节的遮蔽。</p>
+<p>对于BoolModule来说，<code>open</code>的具体实例为<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/open.png" alt=""><br>在<code>boolOp.cond(Nat)(boolOp.true)(1)(0)</code>中，<code>boolOp</code>被约束到了前文<code>with</code>后面的那个record type的值，这个语句里面虽然没有显式的出现<code>Bool</code>类型，但如果出现<code>Bool</code>也是被约束到unit+unit来进行整个语句的求值。这个语句最后的返回结果是自然数1。</p>
+<p>这里想明白以后后面关于existential type的意义描述也就不难理解了，不再展开多谈。关于它的定义，性质，用法可以见TAPL Chapter 24的详细叙述，以及type theory也有数学上定义的existential type，老实说，这些延伸材料关于existential type的部分我都没细看，给不出特别有效的指导建议，只是感觉和在原文里的讨论形式上差别很大。</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Cardelli, Luca. <a href="http://lucacardelli.name/papers/typesystems.pdf" target="_blank" rel="noopener">&quot;Type systems.&quot;</a> <em>ACM Computing Surveys</em> 28.1 (1996): 263-264.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;"><a href="https://www.cs.cornell.edu/courses/cs4110/2012fa/lectures/lecture27.pdf" target="_blank" rel="noopener">https://www.cs.cornell.edu/courses/cs4110/2012fa/lectures/lecture27.pdf</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -168,7 +200,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjreq4tlz005rpsw35dcp2ovd" class="article-share-link">
+      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjrgbqsw20058lkw3v5za8brp" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -237,7 +269,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#结构概述"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">结构概述</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#概念-amp-推算的理解"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">概念&推算的理解</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#背景"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">背景</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Union-Types"><span class="sidebar-module-list-number">2.2.</span> <span class="sidebar-module-list-text">Union Types</span></a></li></ol></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#结构概述"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">结构概述</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#概念-amp-推算的理解"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">概念&推算的理解</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#背景"><span class="sidebar-module-list-number">2.1.</span> <span class="sidebar-module-list-text">背景</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Union-Types"><span class="sidebar-module-list-number">2.2.</span> <span class="sidebar-module-list-text">Union Types</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Recursive-Types"><span class="sidebar-module-list-number">2.3.</span> <span class="sidebar-module-list-text">Recursive Types</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Existential-Types"><span class="sidebar-module-list-number">2.4.</span> <span class="sidebar-module-list-text">Existential Types</span></a></li></ol></li></ol>
   </div>
 
 
