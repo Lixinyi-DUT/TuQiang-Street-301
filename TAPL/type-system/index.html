@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/boolmodule.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/open.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/expose.png">
-<meta property="og:updated_time" content="2019-01-28T16:37:56.425Z">
+<meta property="og:updated_time" content="2019-01-29T09:04:47.459Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零基础开始读类型系统（Cardelli的type systems小结）">
 <meta name="twitter:description" content="在找TAPL相关材料时，被豆瓣网友推荐先去读一下Luca Cardelli的这篇Type Systems1只有41页的小册子，当时粗略看了一下这个summary感觉很简洁易读，就放在阅读材料调查计划里差不多拖了一年没看，这两天因为一些原因找到不错的机会静下心来断断续续的读完了，观感上来说确实是让人读起来有瘾的东西，没有特别痛苦的内容，基本上是符合直觉的。对于状态良好的，有一定编程语言使用经验的，对">
@@ -203,7 +203,7 @@ var _hmt = _hmt || [];
 <p>这个结论用起来可能需要注意的地方是$\to$本来就是右结合的，上面两个例子用括号规避了麻烦的讨论让例子更简单，直接从左往右数$\to$是第几个就行了，但没有括号提升优先级的时候，你就得从右往左数了。</p>
 <p>Type inference部分也没有特别不好理解的地方，给出的所谓的几个算法虽然很抽象的概括了它需要完成的工作，但并没有涉及非常实际具体的做法，所以也没什么难点可谈，真实的type inference可能遇到的问题（比如不收敛）读原文的文字材料的叙述就能了解个大概了。</p>
 <p>细节上可能有纠结的是$F_{2&lt;:}$的算法Table 37没说清楚<code>Expose</code>操作的意义</p>
-<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/expose.png" alt=""><br>这里<code>Expose</code>是寻找类型$X$在类型系统中最高的一个supertype，下面使用<code>Expose</code>的场景也是在函数调用$M N$和高阶类型实例化$M A$时寻找$M$的类型在系统中的最大supertype，即$M$的参数的最小subtype-&gt;返回结果的最大supertype，这样就要求实参$N$的类型只能是这个最小的类型$A$才能进行推导，这样的强制<code>Expose</code>保证了函数调用的安全性（其他地方的<code>Type</code>没有这样的强制所以不保证给出符合推断的最小类型），在符合这样的调用后才会得到与返回类型一致的结果，但这里的$B$不是那个结果，只是最模糊的一个supertype，毕竟$F_{2&lt;:}$严格来说并不是一个完善的算法，只能小心翼翼保证产生的推断结果“没有错误”而并不完全准确。</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/type-system/expose.png" alt=""><br>这里<code>Expose</code>是寻找类型$X$在类型系统中最高的一个supertype，下面使用<code>Expose</code>的场景也是在函数调用$M N$和高阶类型实例化$M A$时寻找$M$的类型在系统中的最大supertype，即$M$的参数的最小subtype-&gt;返回结果的最大supertype，这样就要求实参$N$的类型只能是这个最小的类型$A$才能进行推导，这样的强制<code>Expose</code>保证了函数调用的安全性（其他地方的<code>Type</code>没有这样的强制所以不保证给出符合推断的最小类型），在符合这样的调用后才会得到与返回类型一致的结果，但这里的$B$不是那个结果，只是最模糊的一个supertype，毕竟$F_{2&lt;:}$严格来说并不是一个完备的算法，只能小心翼翼保证产生的推断结果“没有错误”而并不完全准确。</p>
 <h2 id="尾声"><a href="#尾声" class="headerlink" title="尾声"></a>尾声</h2><p>我写的东西大部分是细节理解上的讨论，只是为了防止有同样困惑的人纠结于此浪费时间，并不能取代文章本身的阅读。类型系统是计算机科学最优雅美丽的东西之一，精彩的论述还需要认真通读全文。</p>
 <blockquote>
 <p>祝你早日找到住在计算机内的神灵。</p>
@@ -218,7 +218,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjrggcve7005910w369ne8twa" class="article-share-link">
+      <a data-url="notebook.xyli.me/TAPL/type-system/" data-id="cjrhji1os005pggw3y1bzu2bw" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -405,23 +405,7 @@ var _hmt = _hmt || [];
 
 
 
-<script src="/js/script.js"></script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script src="/js/script.js"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -439,5 +423,6 @@ var _hmt = _hmt || [];
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
 </body>
 </html>
