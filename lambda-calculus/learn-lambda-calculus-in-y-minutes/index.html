@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  <meta charset="utf-8">
   
-  <title>Y分钟入门lambda演算法 | 笔记仓库</title>
+  <title>Y分钟入门lambda演算 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文为个人对Learn X in Y minutes系列的Lambda Calculus部分内容的中文。非常推荐有能力的读者直接去阅读原文。 可能包含部分译者添加的细节补充  最初由Alonzo Church创造的lambda演算法（λ-演算法）是世界上最小的程序设计语言。虽然没有数（number），字符串（strin">
+  <meta name="description" content="本文为我个人对Learn X in Y minutes系列的Lambda Calculus部分内容的中文翻译。非常推荐有能力的读者直接去阅读原文。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Y分钟入门lambda演算法">
+<meta property="og:title" content="Y分钟入门lambda演算">
 <meta property="og:url" content="notebook.xyli.me/lambda-calculus/learn-lambda-calculus-in-y-minutes/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="本文为个人对Learn X in Y minutes系列的Lambda Calculus部分内容的中文。非常推荐有能力的读者直接去阅读原文。 可能包含部分译者添加的细节补充  最初由Alonzo Church创造的lambda演算法（λ-演算法）是世界上最小的程序设计语言。虽然没有数（number），字符串（string），布尔型（boolean）或其他任何非函数（non-function）的数据">
+<meta property="og:description" content="本文为我个人对Learn X in Y minutes系列的Lambda Calculus部分内容的中文翻译。非常推荐有能力的读者直接去阅读原文。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-28T08:20:44.351Z">
+<meta property="og:updated_time" content="2019-02-28T13:57:27.598Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Y分钟入门lambda演算法">
-<meta name="twitter:description" content="本文为个人对Learn X in Y minutes系列的Lambda Calculus部分内容的中文。非常推荐有能力的读者直接去阅读原文。 可能包含部分译者添加的细节补充  最初由Alonzo Church创造的lambda演算法（λ-演算法）是世界上最小的程序设计语言。虽然没有数（number），字符串（string），布尔型（boolean）或其他任何非函数（non-function）的数据">
+<meta name="twitter:title" content="Y分钟入门lambda演算">
+<meta name="twitter:description" content="本文为我个人对Learn X in Y minutes系列的Lambda Calculus部分内容的中文翻译。非常推荐有能力的读者直接去阅读原文。">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -56,11 +56,11 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(hm, s);
 })();
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</script>
 </head>
 
 <body>
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -112,7 +112,7 @@ var _hmt = _hmt || [];
     
   
     <h1 class="article-title" itemprop="name">
-      Y分钟入门lambda演算法
+      Y分钟入门lambda演算
     </h1>
   
 
@@ -137,11 +137,120 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文为个人对<a href="https://learnxinyminutes.com/" target="_blank" rel="noopener">Learn X in Y minutes</a>系列的<a href="https://learnxinyminutes.com/docs/lambda-calculus/" target="_blank" rel="noopener">Lambda Calculus</a>部分内容的中文。<strong>非常推荐有能力的读者直接去阅读原文。</strong></p>
-<p><em>可能包含部分译者添加的细节补充</em></p>
+        <p>本文为我个人对<a href="https://learnxinyminutes.com/" target="_blank" rel="noopener">Learn X in Y minutes</a>系列的<a href="https://learnxinyminutes.com/docs/lambda-calculus/" target="_blank" rel="noopener">Lambda Calculus</a>部分内容的中文翻译。<strong>非常推荐有能力的读者直接去阅读原文。</strong></p>
+<a id="more"></a>
+<p><em>包含部分译者添加的细节补充</em></p>
 <hr>
-<p>最初由<a href="https://en.wikipedia.org/wiki/Alonzo_Church" target="_blank" rel="noopener">Alonzo Church</a>创造的lambda演算法（λ-演算法）是世界上最小的程序设计语言。虽然没有数（number），字符串（string），<br>布尔型（boolean）或其他任何非函数（non-function）的数据类型，但lambda演算法能用于表示任何图灵机。</p>
-<p>lambda演算法由3个元素组成：<strong>变量</strong>，<strong>函数</strong>，和 <strong>应用</strong><br>| 名称 | 语法| 例子 | 解释|<br>| :– | :–|:– | :–|<br>| 变量 | <code>&lt;name&gt;</code>|<code>x</code>|一个名为<code>x</code>的变量|<br>| 函数 |<code>λ&lt;parameters&gt;.&lt;body&gt;</code>| <code>λx.x</code>|一个形参为<code>x</code>主体为<code>x</code>的函数|<br>| 应用 |<code>&lt;function&gt;&lt;variable or function&gt;</code>|<code>(λx.x)a</code>|以实参<code>a</code>调用函数<code>(λx.x)</code>|</p>
+<p>最初由<a href="https://en.wikipedia.org/wiki/Alonzo_Church" target="_blank" rel="noopener">Alonzo Church</a>创造的lambda演算（λ-演算）是世界上最小的程序设计语言。虽然没有数（number），字符串（string），布尔型（boolean）或其他任何非函数（non-function）的数据类型，但lambda演算能用于表示任何图灵机。</p>
+<p>lambda演算由3个元素组成：<strong>变量</strong>，<strong>函数</strong>，和 <strong>应用</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名称</th>
+<th style="text-align:left">语法</th>
+<th style="text-align:left">例子</th>
+<th style="text-align:left">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">变量</td>
+<td style="text-align:left"><code>&lt;name&gt;</code></td>
+<td style="text-align:left">$x$</td>
+<td style="text-align:left">一个名为$x$的变量</td>
+</tr>
+<tr>
+<td style="text-align:left">函数</td>
+<td style="text-align:left"><code>λ&lt;parameters&gt;.&lt;body&gt;</code></td>
+<td style="text-align:left">$\lambda x.x$</td>
+<td style="text-align:left">一个形参为$x$主体为$x$的函数</td>
+</tr>
+<tr>
+<td style="text-align:left">应用</td>
+<td style="text-align:left"><code>&lt;function&gt;&lt;variable or function&gt;</code></td>
+<td style="text-align:left">$(\lambda x.x)a$</td>
+<td style="text-align:left">以实参$a$调用函数$(λx.x)$</td>
+</tr>
+</tbody>
+</table>
+<p>最基本的函数是恒等函数：$\lambda x.x$，等同于$f(x)=x$，第一个$x$是函数的参数，第二个是函数体。</p>
+<h2 id="自由-vs-约束变量："><a href="#自由-vs-约束变量：" class="headerlink" title="自由 vs. 约束变量："></a>自由 vs. 约束变量：</h2><ul>
+<li>在函数$\lambda x.x$中$x$被称为约束变量，$x$被称为约束变量，因为它既在函数体中又是形参。</li>
+<li>在$\lambda x.y$中$y$被称为自由变量，因为它没有被预先声明。</li>
+</ul>
+<h2 id="求值："><a href="#求值：" class="headerlink" title="求值："></a>求值：</h2><p>求值通过<a href="https://en.wikipedia.org/wiki/Lambda_calculus#Beta_reduction" target="_blank" rel="noopener">β化简（β-Reduction）</a>完成，本质上是词法作用域的替换。</p>
+<p>当对表达式$(\lambda x.x)a$求值时，我们把函数体中所有出现的$x$都替换为$a$。</p>
+<ul>
+<li>$(\lambda x.x)a$求值结果为: $a$</li>
+<li>$(\lambda x.y)a$求值结果为: $y$</li>
+</ul>
+<p>你甚至可以创造高阶函数：</p>
+<ul>
+<li>$(\lambda x.(\lambda y.x))a$求值结果为：$λy.a$</li>
+</ul>
+<p>虽然lambda演算传统上只支持单参数函数，但我们可以用一种被称为<a href="https://en.wikipedia.org/wiki/Currying" target="_blank" rel="noopener">柯里化（currying）</a>的技巧来创造多参数函数。</p>
+<ul>
+<li>$(\lambda x.\lambda y.\lambda z.xyz)$等同于$f(x,y,z) = ((x\, y)\, z)$</li>
+</ul>
+<p>有时$\lambda xy.<body>$也可以与$\lambda x.\lambda y.<body>$在用法上互换。</body></body></p>
+<hr>
+<p>必须意识到传统的<strong>lambda演算没有数，字符，或任何非函数的数据类型！</strong></p>
+<h2 id="布尔逻辑："><a href="#布尔逻辑：" class="headerlink" title="布尔逻辑："></a>布尔逻辑：</h2><p>在lambda演算中没有True或False，甚至没有1或0。</p>
+<p>而是有：</p>
+<p>$T$ 表示为：$\lambda x.\lambda y.x$</p>
+<p>$F$ 表示为：$\lambda x.\lambda y.y$</p>
+<p>首先，我们定义一个if函数 $\lambda btf$，如果 $b$ 为True返回 $t$ ，如果 $b$ 为False返回$f$</p>
+<p>IF等价于 $\lambda b.\lambda t.\lambda f.b \, t \, f$</p>
+<div class="bs-callout bs-callout-success"><h4 id="译者注"><a href="#译者注" class="headerlink" title=" 译者注"></a><i class="fa fa-comment"></i> 译者注</h4><p>在理论上这样的做法在该演算系统没有问题，但实践中的<code>if</code>语句<code>if a then b else c</code>要求<code>b</code>和<code>c</code>有且只有一个被求值，在严格求值的语言（如Scheme）中不可以通过定义普通的函数（lambda表达式）来实现真正的<code>if</code>语句，否则<code>b</code>和<code>c</code>都会被求值，需要通过宏或其他方法来改变求值行为。</p>
+</div>
+<p>使用IF，我们可以定义基本布尔逻辑运算符：</p>
+<p>$a \, \text{AND} \, b$ 等价于 $\lambda ab.IF\, a \,b \,F$</p>
+<p>$a \, \text{OR} \, b$ 等价于 $\lambda ab.IF \,a \,T \,b$</p>
+<p>$a \, \text{NOT} \, b $ 等价于 $\lambda a.IF\, a\, F\, T$</p>
+<p><em>注意：$IF\,  a \, b \, c$ 实质上是在说 $IF((a \,  b) \,  c)$</em></p>
+<div class="bs-callout bs-callout-success"><h4 id="译者注"><a href="#译者注" class="headerlink" title=" 译者注"></a><i class="fa fa-comment"></i> 译者注</h4><p><code>NOT</code>是一元运算符，我怀疑这里原文写错了，应该是<code>NOT a</code>，当然后面lambda演算表达式是正确的。我已向该项目提交<a href="https://github.com/adambard/learnxinyminutes-docs/issues/3487#issue-415597570" target="_blank" rel="noopener">相应的issue</a>等待回应。</p>
+</div>
+<h2 id="数："><a href="#数：" class="headerlink" title="数："></a>数：</h2><p>虽然lambda演算没有数字，但我们可以用<a href="https://en.wikipedia.org/wiki/Church_encoding" target="_blank" rel="noopener">Church数</a>来对数字编码。</p>
+<p>对于任意数n：$n = \lambda f.{f^n}$ 所以有</p>
+<!-- 0 = λf.λx.x -->
+<p>$ 0 = \lambda f.\lambda x.x $</p>
+<!-- 1 = λf.λx.f x -->
+<p>$ 1 = \lambda f.\lambda x.f\,x $</p>
+<!-- 2 = λf.λx.f(f x) -->
+<p>$ 2 = \lambda f.\lambda x.f(f\, x) $</p>
+<!-- 3 = λf.λx.f(f(f x)) -->
+<p>$ 3 = \lambda f.\lambda x.f(f(f\, x)) $</p>
+<p>为了增加一个Church数，我们用后继函数（successor function）$S(n)=n+1$ 即：</p>
+<p>$S = \lambda n.\lambda f.\lambda x.f((n\,f)\,x)$</p>
+<p>使用后继，我们可以定义加法：</p>
+<p>$ADD = \lambda ab.(a \, S)b$</p>
+<p><strong>挑战:</strong> 试着自己定义乘法函数</p>
+<div class="bs-callout bs-callout-success"><h4 id="译者注"><a href="#译者注" class="headerlink" title=" 译者注"></a><i class="fa fa-comment"></i> 译者注</h4><p>写完或者根本想不出来可以参考<a href="http://www.cse.unt.edu/~tarau/teaching/PL/docs/Church%20encoding.pdf" target="_blank" rel="noopener">http://www.cse.unt.edu/~tarau/teaching/PL/docs/Church%20encoding.pdf</a> Section 1.1定义的<code>mult</code>函数，我就不直接写出来干扰思考了。</p>
+</div>
+<h2 id="变得甚至更小：SKI-SK与Iota"><a href="#变得甚至更小：SKI-SK与Iota" class="headerlink" title="变得甚至更小：SKI, SK与Iota"></a>变得甚至更小：SKI, SK与Iota</h2><div class="bs-callout bs-callout-success"><h4 id="译者注"><a href="#译者注" class="headerlink" title=" 译者注"></a><i class="fa fa-comment"></i> 译者注</h4><p>想快速入门lambda演算的看到这里已经足够，可以直接根据<a href="#更多进阶阅读材料见">更多进阶阅读材料</a>的前三条参考链接开始进一步学习。而从这里开始和lambda演算的关系已经不是很大了，只是通过一系列化简计算来把它用“更小”的演算系统表示，假设用$A \to B$表示$A$语言的所有要素都可以用$B$语言来表示，即$A$可以被规约（化简）到$B$，那么接下来繁复的炫技演示了λ演算$\to$SKI演算$\to$SK演算$\to$ι演算的过程，语言的元素数量逐步减少。关于这些演算系统定义和发展的历史以及它们的关系，除了接下来的内容外，也可以见Wiki词条<a href="https://en.wikipedia.org/wiki/Combinatory_logic" target="_blank" rel="noopener">Combinatory logic</a></p>
+</div>
+<h3 id="SKI组合子演算"><a href="#SKI组合子演算" class="headerlink" title="SKI组合子演算"></a>SKI组合子演算</h3><p>令$S$,$K$和$I$为以下函数：</p>
+<p>$I\,x = x$</p>
+<p>$K\,x\,y = x$</p>
+<p>$S\, x\, y\, z = x\, z\, (y\, z)$</p>
+<p>我们可以把lambda演算中的表达式转换为SKI组合子演算中的表达式：</p>
+<ol>
+<li>$\lambda x.x = I$</li>
+<li>$\lambda x.c = Kc$</li>
+<li>$\lambda x.(y\, z) = S\, (λx.y) \,(λx.z)$</li>
+</ol>
+<p>以church数2为例：</p>
+<p>$ 2 = \lambda f.\lambda x.f(f\, x) $</p>
+<p>对于内部的$\lambda x.f(f\, x) $部分：$$\begin{alignat}{2}<br>&amp; \lambda x.f(f\,x) &amp;\\<br>= &amp; S \, (\lambda x.f) \, (\lambda x.(f\,x))  &amp;  \quad      (case\, 3) \\<br>= &amp; S\, (K\,f) \, (S\, (\lambda x.f) \, (\lambda x.x)) &amp;  \quad  (case\, 2, 3) \\<br>= &amp; S\, (K\, f) \, (S \,(K\, f) \,I)   \,    &amp; \quad   (case\, 2, 1)<br>\end{alignat}$$所以$$\begin{align}<br> &amp; 2 \\<br>=&amp; \lambda f.\lambda x.f(f\, x) \\<br>=&amp; \lambda f.(S \,(K\, f) \,(S\, (K\, f)\, I)) \\<br>=&amp; \lambda f.((S\, (K\, f)) \,(S \,(K \,f) \,I)) \\<br>=&amp; S\, (\lambda f.(S \,(K \,f)))\, (\lambda f.(S\, (K \,f) \,I)) \quad (case 3)<br>\end{align}$$对于第一个参数$\lambda f.(S \, (K\, f))$ $$<br>\begin{alignat}{2}<br>&amp; \lambda f.(S \, (K \, f)) \\\<br>=&amp; S \, (\lambda f.S) \, (\lambda f.(K \, f))   &amp;    \quad (case \, 3) \\<br>=&amp; S \, (K \, S) (S \, (\lambda f.K) \, (\lambda f.f)) &amp;\quad (case  \, 2, 3) \\<br>=&amp; S \, (K \, S) \, (S \, (K \, K) \, I)  \quad  &amp;   (case \, 2, 3)<br>\end{alignat}$$对于第二个参数$\lambda f.(S \,(K  \,f) \, I)$ $$<br>\begin{alignat}{2}<br> &amp;\lambda f.(S\, (K \,f) \,I) &amp;\\<br>=&amp; \lambda f.((S \,(K \,f))\, I) &amp;\\<br>=&amp; S \,(\lambda f.(S \, (K \, f))) (\lambda f.I)       &amp;  \quad    (case \,3) \\<br>=&amp; S \,(S\, (\lambda f.S) (\lambda f.(K \,f))) (K \,I)  &amp;   \quad  (case \,2, 3) \\<br>=&amp; S \,(S \,(K\, S) \,(S\, (\lambda f.K) \,(\lambda f.f))) \,(K\, I) &amp; \quad (case 1, 3) \\<br>=&amp; S \,(S \,(K \,S)\, (S \,(K \,K)\, I))\, (K\, I)    &amp; \quad   (case\, 1, 2)<br>\end{alignat}$$把它们合并起来$$\begin{align}<br>&amp;2 \\<br>=&amp; S \,(\lambda f.(S \,(K\, f))) \,(\lambda f.(S \,(K\, f) \,I)) \\<br>=&amp; S \,(S\, (K\, S)\, (S\, (K \,K) \,I)) \,(S\, (S \,(K \,S) (S\, (K \,K) \,I)) \,(K\, I))<br>\end{align}$$ 展开它，我们最终会再次得到与Church数2相同的表达式。</p>
+<h3 id="SK组合子演算"><a href="#SK组合子演算" class="headerlink" title="SK组合子演算"></a>SK组合子演算</h3><p>SKI组合子演算还能被进一步化简，注意到$I=S\,K\,K$我们可以移除$I$组合子。我们把所有$I$替换为$S\,K\,K$</p>
+<h3 id="Iota组合子"><a href="#Iota组合子" class="headerlink" title="Iota组合子"></a>Iota组合子</h3><p>SK组合子演算依然不是最小的，定义<br>$\iota = \lambda f.((f \, S) \, K)$<br>我们有$$<br>\begin{align}<br>I &amp; = \iota \iota \\<br>K &amp; = \iota (\iota I) = \iota (\iota (\iota \iota)) \\<br>S &amp; = \iota (K) = \iota (\iota (\iota (\iota \iota)))<br>\end{align}$$</p>
+<h2 id="更多进阶阅读材料见"><a href="#更多进阶阅读材料见" class="headerlink" title="更多进阶阅读材料见"></a>更多进阶阅读材料见</h2><ol>
+<li><a href="http://www.inf.fu-berlin.de/lehre/WS03/alpi/lambda.pdf" target="_blank" rel="noopener">A Tutorial Introduction to the Lambda Calculus</a></li>
+<li><a href="http://www.cs.cornell.edu/courses/cs3110/2008fa/recitations/rec26.html" target="_blank" rel="noopener">Cornell CS 312 Recitation 26: The Lambda Calculus</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Lambda_calculus" target="_blank" rel="noopener">Wikipedia - Lambda Calculus</a></li>
+<li><a href="https://en.wikipedia.org/wiki/SKI_combinator_calculus" target="_blank" rel="noopener">Wikipedia - SKI combinator calculus</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Iota_and_Jot" target="_blank" rel="noopener">Wikipedia - Iota and Jot</a></li>
+</ol>
 
       
     </div>
@@ -152,7 +261,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/lambda-calculus/learn-lambda-calculus-in-y-minutes/" data-id="cjsocty8s004u50w3056xaf89" class="article-share-link">
+      <a data-url="notebook.xyli.me/lambda-calculus/learn-lambda-calculus-in-y-minutes/" data-id="cjsorfnp4005gy0w33xn4lz7w" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -214,7 +323,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#自由-vs-约束变量："><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">自由 vs. 约束变量：</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#求值："><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">求值：</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#布尔逻辑："><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">布尔逻辑：</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#数："><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">数：</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#变得甚至更小：SKI-SK与Iota"><span class="sidebar-module-list-number">5.</span> <span class="sidebar-module-list-text">变得甚至更小：SKI, SK与Iota</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#SKI组合子演算"><span class="sidebar-module-list-number">5.1.</span> <span class="sidebar-module-list-text">SKI组合子演算</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#SK组合子演算"><span class="sidebar-module-list-number">5.2.</span> <span class="sidebar-module-list-text">SK组合子演算</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Iota组合子"><span class="sidebar-module-list-number">5.3.</span> <span class="sidebar-module-list-text">Iota组合子</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#更多进阶阅读材料见"><span class="sidebar-module-list-number">6.</span> <span class="sidebar-module-list-text">更多进阶阅读材料见</span></a></li></ol>
   </div>
 
 
@@ -264,7 +373,7 @@ var _hmt = _hmt || [];
     <ul class="sidebar-module-list">
       
         <li>
-          <a href="/lambda-calculus/learn-lambda-calculus-in-y-minutes/">Y分钟入门lambda演算法</a>
+          <a href="/lambda-calculus/learn-lambda-calculus-in-y-minutes/">Y分钟入门lambda演算</a>
         </li>
       
         <li>
@@ -348,23 +457,6 @@ var _hmt = _hmt || [];
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config("");
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="custom_mathjax_source">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
