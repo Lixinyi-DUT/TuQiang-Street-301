@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 126 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-126">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 126">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-126/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-126">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-03T10:50:05.931Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 126">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-126">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-126" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 126
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-126/" class="article-date"><time datetime="2019-03-03T10:14:10.134Z" itemprop="datePublished">2019-03-03</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/contest/weekly-contest-126" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-126</a></p>
+<a id="more"></a>
+<h2 id="Find-Common-Characters"><a href="#Find-Common-Characters" class="headerlink" title="Find Common Characters"></a>Find Common Characters</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-126/problems/find-common-characters/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-126/problems/find-common-characters/</a></p>
+<blockquote>
+<p>Given an array <code>A</code> of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list <strong>(including duplicates)</strong>.  For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.</p>
+<p>You may return the answer in any order.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;bella&quot;,&quot;label&quot;,&quot;roller&quot;]</span><br><span class="line">Output: [&quot;e&quot;,&quot;l&quot;,&quot;l&quot;]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;cool&quot;,&quot;lock&quot;,&quot;cook&quot;]</span><br><span class="line">Output: [&quot;c&quot;,&quot;o&quot;]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 100</code></li>
+<li><code>1 &lt;= A[i].length &lt;= 100</code></li>
+<li><code>A[i][j]</code> is a lowercase letter</li>
+</ol>
+</blockquote>
+<p>我比较懒，直接用<code>collections.Counter</code>的交运算了。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">commonChars</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[str]</span></span><br><span class="line"><span class="string">        :rtype: List[str]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> list(reduce((<span class="keyword">lambda</span> x, y: x &amp; y), [collections.Counter(s) <span class="keyword">for</span> s <span class="keyword">in</span> A]).elements())</span><br></pre></td></tr></table></figure>
+<h2 id="Check-If-Word-Is-Valid-After-Substitutions"><a href="#Check-If-Word-Is-Valid-After-Substitutions" class="headerlink" title="Check If Word Is Valid After Substitutions"></a>Check If Word Is Valid After Substitutions</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-126/problems/check-if-word-is-valid-after-substitutions/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-126/problems/check-if-word-is-valid-after-substitutions/</a></p>
+<blockquote>
+<p>We are given that the string <code>&quot;abc&quot;</code> is valid.</p>
+<p>From any valid string <code>V</code>, we may split <code>V</code> into two pieces <code>X</code> and <code>Y</code> such that <code>X + Y</code> (<code>X</code> concatenated with <code>Y</code>) is equal to <code>V</code>.  (<code>X</code> or <code>Y</code> may be empty.)  Then, <code>X + &quot;abc&quot; + Y</code> is also valid.</p>
+<p>If for example <code>S = &quot;abc&quot;</code>, then examples of valid strings are: <code>&quot;abc&quot;, &quot;aabcbc&quot;, &quot;abcabc&quot;, &quot;abcabcababcc&quot;</code>.  Examples of invalid strings are: <code>&quot;abccba&quot;</code>, <code>&quot;ab&quot;</code>, <code>&quot;cababc&quot;</code>, <code>&quot;bac&quot;</code>.</p>
+<p>Return <code>true</code> if and only if the given string <code>S</code> is valid.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;aabcbc&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation:</span><br><span class="line">We start with the valid string &quot;abc&quot;.</span><br><span class="line">Then we can insert another &quot;abc&quot; between &quot;a&quot; and &quot;bc&quot;, resulting in &quot;a&quot; + &quot;abc&quot; + &quot;bc&quot; which is &quot;aabcbc&quot;.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abcabcababcc&quot;</span><br><span class="line">Output: true</span><br><span class="line">Explanation:</span><br><span class="line">&quot;abcabcabc&quot; is valid after consecutive insertings of &quot;abc&quot;.</span><br><span class="line">Then we can insert &quot;abc&quot; before the last letter, resulting in &quot;abcabcab&quot; + &quot;abc&quot; + &quot;c&quot; which is &quot;abcabcababcc&quot;.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abccba&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;cababc&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= S.length &lt;= 20000</code></li>
+<li><code>S[i]</code> is <code>&#39;a&#39;</code>, <code>&#39;b&#39;</code>, or <code>&#39;c&#39;</code></li>
+</ol>
+</blockquote>
+<p>找到一个完整的子串<code>&quot;abc&quot;</code>然后从<code>S</code>中移除，不断重复操作至无法再找到子串，这时如果<code>S</code>为空则是有效的，有其他字符剩余则无效。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        start = S.find(<span class="string">'abc'</span>)</span><br><span class="line">        <span class="keyword">while</span> start &gt; <span class="number">-1</span>:</span><br><span class="line">            S = S[:start] + S[start + <span class="number">3</span>:]</span><br><span class="line">            start = S.find(<span class="string">'abc'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">not</span> S</span><br></pre></td></tr></table></figure>
+<h2 id="Max-Consecutive-Ones-III"><a href="#Max-Consecutive-Ones-III" class="headerlink" title="Max Consecutive Ones III"></a>Max Consecutive Ones III</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-126/problems/max-consecutive-ones-iii/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-126/problems/max-consecutive-ones-iii/</a></p>
+<blockquote>
+<p>Given an array <code>A</code> of 0s and 1s, we may change up to <code>K</code> values from 0 to 1.</p>
+<p>Return the length of the longest (contiguous) subarray that contains only 1s.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1,1,1,0,0,0,1,1,1,1,0], K = 2</span><br><span class="line">Output: 6</span><br><span class="line">Explanation:</span><br><span class="line">[1,1,1,0,0,1,1,1,1,1,1]</span><br><span class="line">Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], K = 3</span><br><span class="line">Output: 10</span><br><span class="line">Explanation:</span><br><span class="line">[0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]</span><br><span class="line">Bolded numbers were flipped from 0 to 1.  The longest subarray is underlined.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= A.length &lt;= 20000</code></li>
+<li><code>0 &lt;= K &lt;= A.length</code></li>
+<li><code>A[i]</code> is <code>0</code> or <code>1</code></li>
+</ol>
+</blockquote>
+<p>找到包含至多<code>K</code>个<code>0</code>的连续最长子数组。</p>
+<p>这里可能会比较麻烦的是<code>K=0</code>时的情况，为了统一起来可以试着用最长容量为<code>K+1</code>的队列<code>zeros</code>，并把<code>-1</code>初始化到队列中。在遍历结束后，也不要忘记考虑到最后一个元素为止的最长长度。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestOnes</span><span class="params">(self, A, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        zeros = [<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(A)):</span><br><span class="line">            <span class="keyword">if</span> A[i] == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">if</span> len(zeros) &lt;= K:</span><br><span class="line">                    zeros.append(i)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    start = zeros.pop(<span class="number">0</span>)</span><br><span class="line">                    res = max(res, i - start - <span class="number">1</span>)</span><br><span class="line">                    zeros.append(i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> max(res, len(A) - zeros[<span class="number">0</span>] - <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Minimum-Cost-to-Merge-Stones"><a href="#Minimum-Cost-to-Merge-Stones" class="headerlink" title="Minimum Cost to Merge Stones"></a>Minimum Cost to Merge Stones</h2><blockquote>
+<p>here are <code>N</code> piles of stones arranged in a row.  The <code>i</code>-th pile has <code>stones[i]</code> stones.</p>
+<p>A move consists of merging <strong>exactly <code>K</code> consecutive</strong> piles into one pile, and the cost of this move is equal to the total number of stones in these <code>K</code> piles.</p>
+<p>Find the minimum cost to merge all piles of stones into one pile.  If it is impossible, return <code>-1</code>.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: stones = [3,2,4,1], K = 2</span><br><span class="line">Output: 20</span><br><span class="line">Explanation:</span><br><span class="line">We start with [3, 2, 4, 1].</span><br><span class="line">We merge [3, 2] for a cost of 5, and we are left with [5, 4, 1].</span><br><span class="line">We merge [4, 1] for a cost of 5, and we are left with [5, 5].</span><br><span class="line">We merge [5, 5] for a cost of 10, and we are left with [10].</span><br><span class="line">The total cost was 20, and this is the minimum possible.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: stones = [3,2,4,1], K = 3</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: After any merge operation, there are 2 piles left, and we can&apos;t merge anymore.  So the task is impossible.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: stones = [3,5,1,2,6], K = 3</span><br><span class="line">Output: 25</span><br><span class="line">Explanation:</span><br><span class="line">We start with [3, 5, 1, 2, 6].</span><br><span class="line">We merge [5, 1, 2] for a cost of 8, and we are left with [3, 8, 6].</span><br><span class="line">We merge [3, 8, 6] for a cost of 17, and we are left with [17].</span><br><span class="line">The total cost was 25, and this is the minimum possible.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= stones.length &lt;= 30</code></li>
+<li><code>2 &lt;= K &lt;= 30</code></li>
+<li><code>1 &lt;= stones[i] &lt;= 100</code></li>
+</ol>
+</blockquote>
+<p>首先考虑无法被合并到1个堆的情况：每合并<code>K</code>个堆会减少<code>K</code>个堆并增加1个，为了使最后只剩下一个堆，必须满足当<code>K&gt;2</code>时，<code>n%(K-1)=1</code>。</p>
+<p>接下来考虑一般的动规做法：用<code>dp[i][j][k]</code>表示把第<code>i</code>到<code>j</code>个元素（包含<code>i</code>和<code>j</code>）合并成<code>k</code>堆需要的最小代价，初始状态时把它们都初始化为<code>inf</code>，除了本来就是<code>k</code>堆的，即<code>j-i+1=k</code>时代价为0。更新<code>dp</code>时遵循这样的原则</p>
+<ul>
+<li>当<code>k&gt;1</code>时，只需要从任意<code>m</code>开始分隔，<code>i-m</code>为一堆，剩下的<code>m+1-j</code>是<code>k-1</code>堆，不需要发生任何合并操作，即：<code>dp[i][j][k]=min(dp[i][m][1]+dp[m+1][j][k-1])</code></li>
+<li>当<code>k=1</code>时，必须合并<code>K</code>个元素，对于可以分割的点<code>m</code>，<code>i-m</code>为一堆，<code>m+1-j</code>为剩下的<code>K-1</code>堆，这样才可以被合并成一个堆，发生合并时所有元素的值都会被计入成本。</li>
+</ul>
+<p>然后以<code>i-j</code>长度递增的顺序对<code>dp</code>更新</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeStones</span><span class="params">(self, stones, K)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type stones: List[int]</span></span><br><span class="line"><span class="string">        :type K: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n = len(stones)</span><br><span class="line">        <span class="keyword">if</span> n % (K - <span class="number">1</span>) != <span class="number">1</span> <span class="keyword">and</span> K != <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        inf = float(<span class="string">'inf'</span>)</span><br><span class="line">        acc = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            acc[i + <span class="number">1</span>] = acc[i] + stones[i]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">get_sum</span><span class="params">(i, j)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> j &lt; i:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            <span class="keyword">return</span> acc[j + <span class="number">1</span>] - acc[i]</span><br><span class="line"></span><br><span class="line">        dp = [<span class="number">0</span>] * n</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            dp[i] = [<span class="number">0</span>] * n</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                dp[i][j] = [inf] * (K + <span class="number">1</span>)</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, K + <span class="number">1</span>):</span><br><span class="line">                    <span class="keyword">if</span> j - i + <span class="number">1</span> == k:</span><br><span class="line">                        dp[i][j][k] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(n - step + <span class="number">1</span>):</span><br><span class="line">                j = i + step - <span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, K + <span class="number">1</span>):</span><br><span class="line">                    <span class="keyword">for</span> m <span class="keyword">in</span> range(i, j):</span><br><span class="line">                        <span class="keyword">if</span> k != <span class="number">1</span>:</span><br><span class="line">                            dp[i][j][k] = min(</span><br><span class="line">                                dp[i][j][k], dp[i][m][<span class="number">1</span>] + dp[m + <span class="number">1</span>][j][k - <span class="number">1</span>])</span><br><span class="line">                        <span class="keyword">else</span>:</span><br><span class="line">                            dp[i][j][k] = min(</span><br><span class="line">                                dp[i][j][k], dp[i][m][<span class="number">1</span>] + dp[m + <span class="number">1</span>][j][K - <span class="number">1</span>] + get_sum(i, j))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][<span class="number">-1</span>][<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-126/" data-id="cjsssohbp001y7sw3tfg023lj" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/lambda-calculus/learn-lambda-calculus-in-y-minutes/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">Y分钟入门lambda演算</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sun Mar 03 2019 18:14:10 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Find-Common-Characters"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Find Common Characters</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Check-If-Word-Is-Valid-After-Substitutions"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Check If Word Is Valid After Substitutions</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Max-Consecutive-Ones-III"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Max Consecutive Ones III</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Minimum-Cost-to-Merge-Stones"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Minimum Cost to Merge Stones</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>失败作者的另一个博客<a href="http://yangzhou301.xyli.me/" style="text-decoration:none;">扬州计划</a> </p><p>谢谢各位长久以来的关怀。</p><p>微信公众号</p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/qrcode.png"  style="width:215px;height:215px;" align="middle"><p>联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">67</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/TAPL/">TAPL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/lambda-calculus/">lambda calculus</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DrRacket/">DrRacket</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/continuation/">continuation</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/内存分配/">内存分配</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/垃圾回收/">垃圾回收</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/组合数学/">组合数学</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/编译器/">编译器</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/DrRacket/" style="font-size: 15px;">DrRacket</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/continuation/" style="font-size: 10px;">continuation</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/垃圾回收/" style="font-size: 10px;">垃圾回收</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/编译器/" style="font-size: 10px;">编译器</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">二月 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-126/">LeetCode Weekly Contest 126</a>
+        </li>
+      
+        <li>
+          <a href="/lambda-calculus/learn-lambda-calculus-in-y-minutes/">Y分钟入门lambda演算</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-125/">LeetCode Weekly Contest 125</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-124/">LeetCode Weekly Contest 124</a>
+        </li>
+      
+        <li>
+          <a href="/Introduction/no-feminism-on-zhihu/">新年展望：不再在知乎谈任何女性权益问题</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-126/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
