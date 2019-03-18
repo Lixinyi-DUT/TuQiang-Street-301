@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 128 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-128">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 128">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-128/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-128">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-18T18:46:17.455Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 128">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-128">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-128" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 128
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-128/" class="article-date"><time datetime="2019-03-17T15:31:58.438Z" itemprop="datePublished">2019-03-17</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/contest/weekly-contest-128" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-128</a></p>
+<a id="more"></a>
+<h2 id="Complement-of-Base-10-Integer"><a href="#Complement-of-Base-10-Integer" class="headerlink" title="Complement of Base 10 Integer"></a>Complement of Base 10 Integer</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-128/problems/complement-of-base-10-integer/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-128/problems/complement-of-base-10-integer/</a></p>
+<blockquote>
+<p>Every non-negative integer <code>N</code> has a binary representation.  For example, <code>5</code> can be represented as <code>&quot;101&quot;</code> in binary, <code>11</code> as <code>&quot;1011&quot;</code> in binary, and so on.  Note that except for <code>N = 0</code>, there are no leading zeroes in any binary representation.</p>
+<p>The complement of a binary representation is the number in binary you get when changing every <code>1</code> to a <code>0</code> and <code>0</code> to a <code>1</code>.  For example, the complement of <code>&quot;101&quot;</code> in binary is <code>&quot;010&quot;</code> in binary.</p>
+<p>For a given number N in base-10, return the complement of it’s binary representation as a base-10 integer.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 5</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 5 is &quot;101&quot; in binary, with complement &quot;010&quot; in binary, which is 2 in base-10.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 7</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: 7 is &quot;111&quot; in binary, with complement &quot;000&quot; in binary, which is 0 in base-10.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 10</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: 10 is &quot;1010&quot; in binary, with complement &quot;0101&quot; in binary, which is 5 in base-10.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>0 &lt;= N &lt; 10^9</code></li>
+</ol>
+</blockquote>
+<p>虽然题目说的是complement但不是我们一般说的补码（也就是two’s complement），而是反码，不需要像补码那样填充前导0并把每一位翻转然后再加上1,只需要翻转当前所有位就可以了，所有不能直接用<code>~</code>，需要先计算出相应的掩码并做位异运算。</p>
+<p>注意python文档提到过0的<code>bit_length</code>被规定为0，需要另外处理一下。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bitwiseComplement</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> N == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="number">1</span> &lt;&lt; N.bit_length()) - <span class="number">1</span> - N</span><br></pre></td></tr></table></figure>
+<h2 id="Pairs-of-Songs-With-Total-Durations-Divisible-by-60"><a href="#Pairs-of-Songs-With-Total-Durations-Divisible-by-60" class="headerlink" title="Pairs of Songs With Total Durations Divisible by 60"></a>Pairs of Songs With Total Durations Divisible by 60</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-128/problems/pairs-of-songs-with-total-durations-divisible-by-60/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-128/problems/pairs-of-songs-with-total-durations-divisible-by-60/</a></p>
+<blockquote>
+<p>In a list of songs, the i-th song has a duration of <code>time[i]</code> seconds.</p>
+<p>Return the number of pairs of songs for which their total duration in seconds is divisible by <code>60</code>.  Formally, we want the number of indices <code>i &lt; j</code> with <code>(time[i] + time[j]) % 60 == 0</code>.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [30,20,150,100,40]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: Three pairs have a total duration divisible by 60:</span><br><span class="line">(time[0] = 30, time[2] = 150): total duration 180</span><br><span class="line">(time[1] = 20, time[3] = 100): total duration 120</span><br><span class="line">(time[1] = 20, time[4] = 40): total duration 60</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [60,60,60]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: All three pairs have a total duration of 120, which is divisible by 60.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= time.length &lt;= 60000</code></li>
+<li><code>1 &lt;= time[i] &lt;= 500</code></li>
+</ol>
+</blockquote>
+<p>统计模60后的余数在数组中出现的次数，然后找到每个<code>(x,60-x)</code>且<code>x&lt;60-x</code>的组合中每个<code>x</code>和<code>60-x</code>分别出现的次数并相乘，注意当<code>x=0</code>和<code>x=30</code>时，与它配对的数余数与它相等但不能是它自己，所以需要按照从<code>n</code>个元素中选出2个的组合数计算：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numPairsDivisibleBy60</span><span class="params">(self, time)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type time: List[int]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        cnt = collections.Counter([t % <span class="number">60</span> <span class="keyword">for</span> t <span class="keyword">in</span> time])</span><br><span class="line">        res = cnt[<span class="number">0</span>] * (cnt[<span class="number">0</span>] - <span class="number">1</span>) / <span class="number">2</span> + cnt[<span class="number">30</span>] * (cnt[<span class="number">30</span>] - <span class="number">1</span>) / <span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> cnt:</span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt; i &lt; <span class="number">30</span>:</span><br><span class="line">                res += cnt[i] * cnt[<span class="number">60</span> - i]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="Capacity-To-Ship-Packages-Within-D-Days"><a href="#Capacity-To-Ship-Packages-Within-D-Days" class="headerlink" title="Capacity To Ship Packages Within D Days"></a>Capacity To Ship Packages Within D Days</h2><blockquote>
+<p>A conveyor belt has packages that must be shipped from one port to another within <code>D</code> days.</p>
+<p>The <code>i</code>-th package on the conveyor belt has a weight of <code>weights[i]</code>.  Each day, we load the ship with packages on the conveyor belt (in the order given by <code>weights</code>). We may not load more weight than the maximum weight capacity of the ship.</p>
+<p>Return the least weight capacity of the ship that will result in all the packages on the conveyor belt being shipped within <code>D</code> days.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input: weights = [1,2,3,4,5,6,7,8,9,10], D = 5</span><br><span class="line">Output: 15</span><br><span class="line">Explanation:</span><br><span class="line">A ship capacity of 15 is the minimum to ship all the packages in 5 days like this:</span><br><span class="line">1st day: 1, 2, 3, 4, 5</span><br><span class="line">2nd day: 6, 7</span><br><span class="line">3rd day: 8</span><br><span class="line">4th day: 9</span><br><span class="line">5th day: 10</span><br><span class="line"></span><br><span class="line">Note that the cargo must be shipped in the order given, so using a ship of capacity 14 and splitting the packages into parts like (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) is not allowed.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: weights = [3,2,2,4,1,4], D = 3</span><br><span class="line">Output: 6</span><br><span class="line">Explanation:</span><br><span class="line">A ship capacity of 6 is the minimum to ship all the packages in 3 days like this:</span><br><span class="line">1st day: 3, 2</span><br><span class="line">2nd day: 2, 4</span><br><span class="line">3rd day: 1, 4</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: weights = [1,2,3,1,1], D = 4</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">1st day: 1</span><br><span class="line">2nd day: 2</span><br><span class="line">3rd day: 3</span><br><span class="line">4th day: 1, 1</span><br></pre></td></tr></table></figure></p>
+<p>Note:</p>
+<ol>
+<li><code>1 &lt;= D &lt;= weights.length &lt;= 50000</code></li>
+<li><code>1 &lt;= weights[i] &lt;= 500</code></li>
+</ol>
+</blockquote>
+<p>它的母题非常经典，有兴趣可以自己搜一下painter’s partition problem，说的是一个长度为<code>n</code>的数组如何划分出<code>K</code>个连续的非空子数组并使得这些子数组的和的最大值最小，也就是说切割成尽可能均衡的<code>K</code>个分片。</p>
+<p>比较直接的做法是动态规划，用<code>dp[i][k]</code>表示到<code>i</code>位置为止划分出<code>k</code>个分片时每个分片的和的最大值最少可以取到多少。</p>
+<p>基础情况：</p>
+<ul>
+<li><code>dp[i][1]=sum(weights[:i])</code> 把前<code>i</code>个元素分到同一个分片，一共只有一个和，就是目前为止所有元素的和</li>
+</ul>
+<p>递推式：</p>
+<ul>
+<li><code>dp[i][k]=min(max(dp[j][k-1]+sum(weights[j+1:i])) foreach j in [k-1:i-1])</code> 如果到<code>j</code>位置为止可以划分出<code>k-1</code>个分片，那么从<code>j+1</code>到<code>i</code>可以构成一个分片，这些分片的最大值要么在前<code>k-1</code>个分片中已经出现，要么在最后一个新分片中，取最大即可。而<code>j</code>可以<code>&gt;=k-1</code>并<code>&lt;i</code>的任意位置来确定最后一个分片的长度。</li>
+</ul>
+<p>这里为了减少运行时间，我用了<code>acc[i]</code>预先计算了到<code>i</code>为止的数组和，方便直接用减法找到任意分片的和。</p>
+<p><strong>当然，请注意，这个算法的复杂度是O(DN^2)，虽然思路简单粗暴，但肯定会TLE，不要模仿</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shipWithinDays</span><span class="params">(self, weights, D)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type weights: List[int]</span></span><br><span class="line"><span class="string">        :type D: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n = len(weights)</span><br><span class="line">        acc = [weights[<span class="number">0</span>]] + [<span class="number">0</span>] * (n - <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            acc[i] = acc[i - <span class="number">1</span>] + weights[i]</span><br><span class="line"></span><br><span class="line">        dp = list(acc)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(D - <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(n - <span class="number">1</span>, k, <span class="number">-1</span>):</span><br><span class="line">                dp[i] = min([max(dp[j], acc[i] - acc[j]) <span class="keyword">for</span> j <span class="keyword">in</span> range(i)])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<p>接下来用二分查找的方法来降低复杂度。</p>
+<p>如果规定了分片和的最大值为某个<code>x</code>，那么可以按照顺序可以划分出最少<code>k</code>个分片，如果定义<code>k=f(x)</code>，那么<code>f</code>是一种<strong>不严格的</strong>单调递减关系，<code>x</code>越大，限制越宽松，<code>k</code>就可以越小。而且这个<code>f</code>是可以很容易写出实现方法的（见代码中的<code>min_days(max_load)</code>），顺序遍历数组，一旦到目前为止累积的和超过了<code>x</code>就把当前元素之前的累积和重置为当前元素，并在<code>k</code>的计数上增加1个，这就是在不分片和超过<code>x</code>时划分出最少<code>k</code>的算法。</p>
+<p><code>x</code>取值最小为<code>max(weights)</code>，对应<code>k=n</code>，最大为<code>sum(weights)</code>，对应<code>k=1</code>，那么对于<code>1&lt;=D&lt;=n</code>，<code>D</code>对应的某个分片和的最大值<code>k</code>一定在<code>max(weights)</code>和<code>sum(weights)</code>，可以利用二分查找对<code>x</code>的范围逐步缩减，测试每个范围的中点<code>mid</code>所对应的<code>k</code>是否为目标<code>D</code>。</p>
+<p>写到这里，我也很羞耻的分享一件事：我之前阅读过很多实现二分查找的源代码，可以看到大多数情况不会去检查<code>mid</code>是否正好符合需要的目标，而是用不等号合并到<code>&gt;=</code>或者<code>&lt;=</code>的情况，我当时没特别注意，只是觉得写的人太偷懒了，明明找到<code>==</code>的情况就可以直接<code>return</code>了也不愿意多写一个case。直到我遇到这个问题的时候，才发现了这样杜绝early return的意义所在，比如在这题中，我前面强调过单调关系是<strong>不严格的</strong>，也就是有多个<code>x</code>可以对应同一个<code>f(x)=k</code>，用二分查找遇到的第一个能满足<code>f(x)=k</code>并不能保证这个<code>x</code>就是使等式成立的最小的那个<code>x</code>,所以需要合并到<code>&lt;=D</code>的情况，更新下一次查找的上界为当前的<code>x</code>（即<code>mid</code>），直至找到满足要求的最小的<code>x</code>就是需要返回的结果。这也是二分查找在很多情况下的基本需求，不是仅仅让你找元素是否在给定范围中，而是还需要返回一些该元素的其他信息，甚至对这个元素的其他信息还有一些要求，比如常见的返回元素在数组中的位置，Python有一个库<code>bisect</code>就是实现这个功能的，可以去看文档，<code>bisect</code>返回的是最左的位置，而<code>bisect_right</code>返回的是最右的位置，都是需要在处理<code>==</code>时合并到对应的不等式情形的。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shipWithinDays</span><span class="params">(self, weights, D)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type weights: List[int]</span></span><br><span class="line"><span class="string">        :type D: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        n = len(weights)</span><br><span class="line">        acc = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            acc[i + <span class="number">1</span>] = acc[i] + weights[i]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">min_days</span><span class="params">(max_load)</span>:</span></span><br><span class="line">            start = <span class="number">0</span></span><br><span class="line">            d = <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> acc[i + <span class="number">1</span>] - acc[start] &gt; max_load:</span><br><span class="line">                    d += <span class="number">1</span></span><br><span class="line">                    start = i</span><br><span class="line">            <span class="keyword">return</span> d</span><br><span class="line"></span><br><span class="line">        l, r = max(weights), acc[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            mid = l + (r - l) / <span class="number">2</span></span><br><span class="line">            k = min_days(mid)</span><br><span class="line">            <span class="keyword">if</span> k &lt;= D:</span><br><span class="line">                r = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                l = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> l</span><br></pre></td></tr></table></figure>
+<h2 id="Numbers-With-Repeated-Digits"><a href="#Numbers-With-Repeated-Digits" class="headerlink" title="Numbers With Repeated Digits"></a>Numbers With Repeated Digits</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-128/problems/numbers-with-repeated-digits/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-128/problems/numbers-with-repeated-digits/</a></p>
+<blockquote>
+<p>Given a positive integer <code>N</code>, return the number of positive integers less than or equal to <code>N</code> that have at least 1 repeated digit.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 20</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: The only positive number (&lt;= 20) with at least 1 repeated digit is 11.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 100</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: The positive numbers (&lt;= 100) with atleast 1 repeated digit are 11, 22, 33, 44, 55, 66, 77, 88, 99, and 100.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1000</span><br><span class="line">Output: 262</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note</strong>:</p>
+<ol>
+<li><code>1 &lt;= N &lt;= 10^9</code></li>
+</ol>
+</blockquote>
+<p>先找<code>&lt;N+1</code>的所有无重复位的整数。假设<code>N+1</code>一共有<code>n</code>位。<code>A(m,k)</code>表示从<code>m</code>个数中取出<code>k</code>个数的排列数，即<code>m!/(m-k)!</code></p>
+<p><code>1</code>-<code>n-1</code>位数没有大小限制，只需要考虑无重复即可</p>
+<ul>
+<li>如果不包含<code>0</code>，那么<code>i</code>位数可以在<code>1-9</code>中任选排列，共有<code>A(9,i)</code>个数</li>
+<li>如果包含<code>0</code>，那么<code>i</code>位数有<code>i-1</code>位非<code>0</code>，在<code>i-1</code>位无0数中可以选择<code>i-1</code>位后面的位置插入一个<code>0</code>形成包含<code>0</code>的<code>i</code>位数，共有<code>(i-1)*A(9,i-1)</code>个数</li>
+</ul>
+<p><code>n</code>位数考虑逐步扩大前缀长度，从首位开始，如果<code>N+1</code>在这一位上的数字是<code>d1</code>，那么每个小于<code>d1</code>的数字都可以作为前缀，后面<code>n-1</code>位可以取任何与<code>d1</code>不同的值，共有<code>A(9,n-1)*(d1-1)</code>个数，接下来考虑固定首位与<code>d1</code>一致，第二位可以比与<code>N+1</code>的第二位<code>d2</code>小的任意值，当也要求与<code>d1</code>不一致，然后像上面那样考虑剩下的<code>n-2</code>位……</p>
+<p>如果已经固定的前缀中出现了重复的数字，那么后面的位置也不需要再考虑了，所以当需要固定某一位作为前缀的最后一位时，如果前缀中已经出现了，那么就可以直接跳出扩大前缀的循环了。</p>
+<p>最后得到共有<code>res</code>个没有重复数字的<code>&lt;N+1</code>的数，那么就有<code>N-res</code>个带有重复数字的数。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numDupDigitsAtMostN</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        L = [int(i) <span class="keyword">for</span> i <span class="keyword">in</span> str(N + <span class="number">1</span>)]</span><br><span class="line">        n = len(L)</span><br><span class="line">        f = [<span class="number">1</span>] * <span class="number">10</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">9</span>):</span><br><span class="line">            f[i + <span class="number">1</span>] = f[i] * (i + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">A</span><span class="params">(m, k)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> f[m] / f[m - k]</span><br><span class="line"></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):  <span class="comment"># not contain 0</span></span><br><span class="line">            res += A(<span class="number">9</span>, i)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n - <span class="number">1</span>):  <span class="comment"># contain 0</span></span><br><span class="line">            res += A(<span class="number">9</span>, i) * i</span><br><span class="line"></span><br><span class="line">        prefix = set()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, d <span class="keyword">in</span> enumerate(L):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span> <span class="keyword">if</span> i <span class="keyword">else</span> <span class="number">1</span>, d):</span><br><span class="line">                <span class="keyword">if</span> j <span class="keyword">not</span> <span class="keyword">in</span> prefix:</span><br><span class="line">                    res += A(<span class="number">9</span> - i, n - i - <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> d <span class="keyword">in</span> prefix:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            prefix.add(d)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> N - res</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-128/" data-id="cjtd35b9f001rc0w3ruir2m52" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/LeetCode/LeetCode-Weekly-Contest-127/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">LeetCode Weekly Contest 127</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sun Mar 17 2019 23:31:58 GMT+0800',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Complement-of-Base-10-Integer"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Complement of Base 10 Integer</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Pairs-of-Songs-With-Total-Durations-Divisible-by-60"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Pairs of Songs With Total Durations Divisible by 60</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Capacity-To-Ship-Packages-Within-D-Days"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Capacity To Ship Packages Within D Days</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Numbers-With-Repeated-Digits"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Numbers With Repeated Digits</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>失败作者的另一个博客<a href="http://yangzhou301.xyli.me/" style="text-decoration:none;">扬州计划</a> </p><p>谢谢各位长久以来的关怀。</p><p>微信公众号</p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/qrcode.png"  style="width:215px;height:215px;" align="middle"><p>联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">69</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/TAPL/">TAPL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/lambda-calculus/">lambda calculus</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DrRacket/">DrRacket</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/continuation/">continuation</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/内存分配/">内存分配</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/垃圾回收/">垃圾回收</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/组合数学/">组合数学</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/编译器/">编译器</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/DrRacket/" style="font-size: 15px;">DrRacket</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/continuation/" style="font-size: 10px;">continuation</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/垃圾回收/" style="font-size: 10px;">垃圾回收</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/编译器/" style="font-size: 10px;">编译器</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">二月 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-128/">LeetCode Weekly Contest 128</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-127/">LeetCode Weekly Contest 127</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-126/">LeetCode Weekly Contest 126</a>
+        </li>
+      
+        <li>
+          <a href="/lambda-calculus/learn-lambda-calculus-in-y-minutes/">Y分钟入门lambda演算</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-125/">LeetCode Weekly Contest 125</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-128/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
