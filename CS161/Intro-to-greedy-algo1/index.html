@@ -5,13 +5,13 @@
   
   <title>贪心算法小试牛刀 （一） | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。&amp;lt;!--more--&amp;gt;而涉及图">
+  <meta name="description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。">
 <meta name="keywords" content="贪心算法,规划问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="贪心算法小试牛刀 （一）">
 <meta property="og:url" content="notebook.xyli.me/CS161/Intro-to-greedy-algo1/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。&amp;lt;!--more--&amp;gt;而涉及图论部分的贪心算法应用预计在几天后在另一篇笔记中具体给出。  贪心算法（&amp;lt;em&amp;gt;Gre">
+<meta property="og:description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/reduced_schedule.png">
 <meta property="og:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-1.png">
@@ -22,7 +22,7 @@
 <meta property="og:updated_time" content="2016-11-12T13:30:05.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="贪心算法小试牛刀 （一）">
-<meta name="twitter:description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。&amp;lt;!--more--&amp;gt;而涉及图论部分的贪心算法应用预计在几天后在另一篇笔记中具体给出。  贪心算法（&amp;lt;em&amp;gt;Gre">
+<meta name="twitter:description" content="本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（Algorithms: Design and Analysis, Part 2）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。">
 <meta name="twitter:image" content="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/reduced_schedule.png">
 <meta name="twitter:creator" content="@yangzhou301">
   
@@ -145,21 +145,18 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（<a href="https://www.coursera.org/learn/algorithm-design-analysis-2" target="_blank" rel="noopener">Algorithms: Design and Analysis, Part 2</a>）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。&lt;!--more--&gt;而涉及图论部分的贪心算法应用预计在几天后在另一篇笔记中具体给出。</p>
+        <p>本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（<a href="https://www.coursera.org/learn/algorithm-design-analysis-2" target="_blank" rel="noopener">Algorithms: Design and Analysis, Part 2</a>）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。<a id="more"></a>而涉及图论部分的贪心算法应用预计在几天后在另一篇笔记中具体给出。</p>
 <hr>
-<p><div class="bs-callout bs-callout-success"><p>贪心算法（&lt;em&gt;Greedy Algorithm&lt;/em&gt;）是指通过每一步决策的<strong>局部最优</strong>达到整体的<strong>全局最优</strong>的一类算法。我们对这个算法并不陌生，无论知道不知道这个名字，对于此类算法的应用都十分熟悉。比如我们寻找单源最短路径的Dijkstra最短路径算法就是贪心策略的典型应用，接下来也会讲到找到最小生成树两种贪心算法，即Prim算法和Kruskal算法。</p>
-</div></p>
+<div class="bs-callout bs-callout-success"><p>贪心算法（<em>Greedy Algorithm</em>）是指通过每一步决策的<strong>局部最优</strong>达到整体的<strong>全局最优</strong>的一类算法。我们对这个算法并不陌生，无论知道不知道这个名字，对于此类算法的应用都十分熟悉。比如我们寻找单源最短路径的Dijkstra最短路径算法就是贪心策略的典型应用，接下来也会讲到找到最小生成树两种贪心算法，即Prim算法和Kruskal算法。</p>
+</div>
 <p>总的来说，对于很多优化问题，我们很容易想到用贪心算法来解决，这是非常直觉性的选择，对于已经证明正确的贪心算法，分析运行时间也很容易。然而，证明这些已有的贪心算法本来就不是件容易的事，针对于具体的优化问题，依赖于直觉创造出来的贪心算法更是很难保证得到最优解。实际上，大多数贪心算法确实不会给出最优解。</p>
-<p>本篇将介绍一些贪心算法在规划（调度）问题上的应用，并使用一种较为普遍适应的证明方法，也就是交换参数（&lt;em&gt;Exchange Argument&lt;/em&gt;）法证明这些贪心算法的正确性。</p>
+<p>本篇将介绍一些贪心算法在规划（调度）问题上的应用，并使用一种较为普遍适应的证明方法，也就是交换参数（<em>Exchange Argument</em>）法证明这些贪心算法的正确性。</p>
 <hr>
-<h2>最优Caching</h2>
-<h3>问题定义</h3>
-<p>系统调用内容（比如变量）的序列被称为页请求（<em>Page Request</em>）,为了提高计算效率，“常用”的内容会被从大而慢的存储空间（内存）中取出，放入小而快的存储空间（比如Cache），而系统在发出请求时优先到Cache中寻找请求内容是否在其中，如果不在（<em>Cache Miss</em> / <em>Page Fault</em>）则放弃速度去内存中取出该内容，并用它替换Cache中现存的某个内容。</p>
+<h2 id="最优Caching"><a href="#最优Caching" class="headerlink" title="最优Caching"></a>最优Caching</h2><h3 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h3><p>系统调用内容（比如变量）的序列被称为页请求（<em>Page Request</em>）,为了提高计算效率，“常用”的内容会被从大而慢的存储空间（内存）中取出，放入小而快的存储空间（比如Cache），而系统在发出请求时优先到Cache中寻找请求内容是否在其中，如果不在（<em>Cache Miss</em> / <em>Page Fault</em>）则放弃速度去内存中取出该内容，并用它替换Cache中现存的某个内容。</p>
 <p>受限于Cache的容量，有时缺页再所难免，但如果能够在<strong>替换</strong>这一操作时合理选择被替换的页（内容），可以避免接下来多次不必要的缺页发生。</p>
-<h3>Furthest(Farthest) in future算法</h3>
-<p>对于Caching问题来说，我们定义衡量缺页算法的优劣是依据发生缺页的次数，miss发生得越少，代表算法越好。</p>
-<p>解决Caching问题的最优算法是Belady在1960s提出的furthest-in-future算法&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;，正如字面所示，每当缺页发生时，替换掉在调度序列中从当前项开始最晚出现的项。</p>
-<p>当Cache中的初始项和系统请求序列如下所示&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;</p>
+<h3 id="Furthest-Farthest-in-future算法"><a href="#Furthest-Farthest-in-future算法" class="headerlink" title="Furthest(Farthest) in future算法"></a>Furthest(Farthest) in future算法</h3><p>对于Caching问题来说，我们定义衡量缺页算法的优劣是依据发生缺页的次数，miss发生得越少，代表算法越好。</p>
+<p>解决Caching问题的最优算法是Belady在1960s提出的furthest-in-future算法<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>，正如字面所示，每当缺页发生时，替换掉在调度序列中从当前项开始最晚出现的项。</p>
+<p>当Cache中的初始项和系统请求序列如下所示<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup></p>
 <table>
 <thead>
 <tr>
@@ -174,77 +171,60 @@ var _hmt = _hmt || [];
 </tr>
 <tr>
 <td style="text-align:left">请求序列</td>
-<td style="text-align:left"><code>g</code> a b c e d a b b a c d e a <code>f</code> a d e f g h ...</td>
+<td style="text-align:left"><code>g</code> a b c e d a b b a c d e a <code>f</code> a d e f g h …</td>
 </tr>
 </tbody>
 </table>
 <p>处理第一个请求<code>g</code>时发生了缺页，此时选择替换原Cache中的一项，根据furthest-in-future原则，选择<code>g</code>之后在请求序列中最晚出现且在原Cache中的项即<code>f</code>作为被替换的项。</p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt;定理</h4>
-<p>furthest-in-future算法是最优的Caching算法，也就是使缺页（更替）次数最小的算法。</p>
-</div></p>
+<div class="bs-callout bs-callout-info"><h4 id="定理"><a href="#定理" class="headerlink" title="定理"></a><i class="fa fa-bookmark-o"></i>定理</h4><p>furthest-in-future算法是最优的Caching算法，也就是使缺页（更替）次数最小的算法。</p>
+</div>
 <p>这是非常典型的贪心策略，接下来我们将证明该算法的正确性。</p>
-<h3>证明</h3>
-<p>证明这个算法所使用的是对于贪心算法非常常用的交换参数法。</p>
-<p>首先介绍一种较为一般性的Caching算法分类，即简化淘汰调度（<em>Reduced Eviction Schedules</em>）：仅当一项被请求时才把该项插入Cache的调度。
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/reduced_schedule.png" alt="非简化调度与简化调度，左第一列代表左边表示请求序列，接下来三列为Cache内容，标红的项为该步发送替换（淘汰）的项&amp;lt;sup id=&amp;quot;fnref:2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#fn:2&amp;quot; rel=&amp;quot;footnote&amp;quot;&amp;gt;2&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;">
-而所有的非简化调度都可以转化为缺页次数不超过原调度的简化调度。</p>
-<p>对于给定任意一个调度$S$，都可以被转换为调度$S'$，而$S'$发生缺页的次数不多于$S$，证明如下</p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark&quot;&gt;&lt;/i&gt; 证明</h4>
-<p>假设$S$在$t$时刻在Cache中放入$d$，而此时并没有发生$d$的请求（这也是被称为<em>非简化调度</em>的原因），令$c$表示放入$d$前Cache中存在的项（即被替换的项）</p>
+<h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>证明这个算法所使用的是对于贪心算法非常常用的交换参数法。</p>
+<p>首先介绍一种较为一般性的Caching算法分类，即简化淘汰调度（<em>Reduced Eviction Schedules</em>）：仅当一项被请求时才把该项插入Cache的调度。<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/reduced_schedule.png" alt="非简化调度与简化调度，左第一列代表左边表示请求序列，接下来三列为Cache内容，标红的项为该步发送替换（淘汰）的项&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;"><br>而所有的非简化调度都可以转化为缺页次数不超过原调度的简化调度。</p>
+<p>对于给定任意一个调度$S$，都可以被转换为调度$S’$，而$S’$发生缺页的次数不多于$S$，证明如下</p>
+<div class="bs-callout bs-callout-info"><h4 id="证明"><a href="#证明" class="headerlink" title=" 证明"></a><i class="fa fa-bookmark"></i> 证明</h4><p>假设$S$在$t$时刻在Cache中放入$d$，而此时并没有发生$d$的请求（这也是被称为<em>非简化调度</em>的原因），令$c$表示放入$d$前Cache中存在的项（即被替换的项）</p>
 <p>那么存在以下两种情况：</p>
-<p>第一种情况是$d$并没有被保存到$d$的下一次请求，在$t'$时刻收到了$e$的请求，于是放弃了$d$存入了$e$
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-1.png" alt="Case 1:在$t'$时刻（$d$被再次请求前）$d$被$e$替代">
-显然在结果上可以等效于$t'$时刻用$e$替换$c$的调度，$S \to S'$减少了一次替换</p>
-<p>第二种情况则是在$d$被替换之前，又收到了$d$的请求，此时因为$d$在Cache中，没有发生缺页
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-2.png" alt="Case 2:在$t'$时刻$d$被请求前没有发生替换">
-很显然可以等效于在$t'$时刻用$d$替换$c$，$S \to S'$替换发生的次数不变 ■</p>
-<p>值得一提的是，对于简化淘汰调度来说，发生缺页的次数等于发生更替的次数，但对于非简化调度调度，因为不发生缺页也会换页（替代），此时考察缺页次数就没什么意义了，从<a href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89">问题定义</a>中我们就假设了所有调度都是用的简化淘汰的方法避免讨论缺页&amp;换页哪个作为优化目标的问题，最终目标都是要优化替换次数的。</p>
-</div></p>
+<p>第一种情况是$d$并没有被保存到$d$的下一次请求，在$t’$时刻收到了$e$的请求，于是放弃了$d$存入了$e$<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-1.png" alt="Case 1:在$t&#39;$时刻（$d$被再次请求前）$d$被$e$替代"><br>显然在结果上可以等效于$t’$时刻用$e$替换$c$的调度，$S \to S’$减少了一次替换</p>
+<p>第二种情况则是在$d$被替换之前，又收到了$d$的请求，此时因为$d$在Cache中，没有发生缺页<br><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-2.png" alt="Case 2:在$t&#39;$时刻$d$被请求前没有发生替换"><br>很显然可以等效于在$t’$时刻用$d$替换$c$，$S \to S’$替换发生的次数不变 ■</p>
+<p>值得一提的是，对于简化淘汰调度来说，发生缺页的次数等于发生更替的次数，但对于非简化调度调度，因为不发生缺页也会换页（替代），此时考察缺页次数就没什么意义了，从<a href="#问题定义">问题定义</a>中我们就假设了所有调度都是用的简化淘汰的方法避免讨论缺页&amp;换页哪个作为优化目标的问题，最终目标都是要优化替换次数的。</p>
+</div>
 <p>通过以上证明，很容易得出结论，最优Caching调度一定是简化淘汰调度。</p>
 <p>现在要证明一个定理</p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt;定理</h4>
-<p>对于任意$n \ge 0$且不超过请求队列长度的整数$n$，存在一个前$n$项所有换页都与farthest-in-future调度$S_{FF}$相同的最优简化淘汰调度$S$。</p>
-</div></p>
+<div class="bs-callout bs-callout-info"><h4 id="定理"><a href="#定理" class="headerlink" title="定理"></a><i class="fa fa-bookmark-o"></i>定理</h4><p>对于任意$n \ge 0$且不超过请求队列长度的整数$n$，存在一个前$n$项所有换页都与farthest-in-future调度$S_{FF}$相同的最优简化淘汰调度$S$。</p>
+</div>
 <p>这个定理基本上就是直接说了farthest-in-future调度就是最优算法了。</p>
-<p><s>仍然是“这也要证？”的废话</s>证明的方法是归纳法：</p>
-<p>首先当$n=0$时显然这个定理成立<s>这不废话么</s></p>
-<p>接下来我们假设当$n=j$时定理的结论成立，存在一个这样的$S$，需要证明当$n=j+1$时这个定理依然成立，因为是存在性证明，只需要借助于$S$构造一个前$j+1$项换页与$S_{FF}$完全一致的最优简化淘汰调度$S'$，这里假设第$j+1$个请求的内容为$d$，分为以下几种情况讨论：</p>
-<p><div class="bs-callout bs-callout-warning"><h4>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Case 1</h4>
-<p>如果$d$已经在Cache中了，那么没有缺页发生，不存在换页，$S'=S$即可符合要求。</p>
-</div></p>
-<p><div class="bs-callout bs-callout-warning"><h4>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Case 2</h4>
-<p>如果$d$不在Cache中但$S$和$S_{FF}$换掉了同一项内容，依然可以令$S'=S$使命题成立。</p>
-</div></p>
-<p>这两种情况都没有在$S$的基础上增加$S'$的换页次数，$S'$依然是简化最优调度，且与$S_{FF}$在前$j+1$歩完全一致。</p>
+<p><del>仍然是“这也要证？”的废话</del>证明的方法是归纳法：</p>
+<p>首先当$n=0$时显然这个定理成立<del>这不废话么</del></p>
+<p>接下来我们假设当$n=j$时定理的结论成立，存在一个这样的$S$，需要证明当$n=j+1$时这个定理依然成立，因为是存在性证明，只需要借助于$S$构造一个前$j+1$项换页与$S_{FF}$完全一致的最优简化淘汰调度$S’$，这里假设第$j+1$个请求的内容为$d$，分为以下几种情况讨论：</p>
+<div class="bs-callout bs-callout-warning"><h4 id="Case-1"><a href="#Case-1" class="headerlink" title=" Case 1"></a><i class="fa fa-check-square-o"></i> Case 1</h4><p>如果$d$已经在Cache中了，那么没有缺页发生，不存在换页，$S’=S$即可符合要求。</p>
+</div>
+<div class="bs-callout bs-callout-warning"><h4 id="Case-2"><a href="#Case-2" class="headerlink" title=" Case 2"></a><i class="fa fa-check-square-o"></i> Case 2</h4><p>如果$d$不在Cache中但$S$和$S_{FF}$换掉了同一项内容，依然可以令$S’=S$使命题成立。</p>
+</div>
+<p>这两种情况都没有在$S$的基础上增加$S’$的换页次数，$S’$依然是简化最优调度，且与$S_{FF}$在前$j+1$歩完全一致。</p>
 <p>如果$d$不在Cache中，为了把$d$放入Cache，$S_{FF}$换掉了$e$，而$S$换掉了$f$且$f \ne e$，就是我们讨论的第三种情况。</p>
-<p>在Case 3我们要证明的是换掉$e$不比换掉$f$差，这也就是$S_{FF}$的体现，现在构造基于$S$构造一个$S'$，把$S$的Cache中的$e$换成$f$</p>
-<p>容易看出$S'$和$S$目前为止换页次数相同，既然$S$是最优的，$S'$目前（至少前$j+1$步)也可以认为是最优的。</p>
-<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/case-3.png" alt="$S$与$S'$在第$j+1$步换掉了不同的项，除此以外其他部分完全相同&amp;lt;sup id=&amp;quot;fnref:2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#fn:2&amp;quot; rel=&amp;quot;footnote&amp;quot;&amp;gt;2&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;"></p>
-<p>用$j'$表示在$j+1$步后$S$和$S'$第一次发生不同操作的歩数，这个操作也必然与$e$或$f$中至少一个相关，令$g$代表$j'$时刻的请求项</p>
+<p>在Case 3我们要证明的是换掉$e$不比换掉$f$差，这也就是$S_{FF}$的体现，现在构造基于$S$构造一个$S’$，把$S$的Cache中的$e$换成$f$</p>
+<p>容易看出$S’$和$S$目前为止换页次数相同，既然$S$是最优的，$S’$目前（至少前$j+1$步)也可以认为是最优的。</p>
+<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/case-3.png" alt="$S$与$S&#39;$在第$j+1$步换掉了不同的项，除此以外其他部分完全相同&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;"></p>
+<p>用$j’$表示在$j+1$步后$S$和$S’$第一次发生不同操作的歩数，这个操作也必然与$e$或$f$中至少一个相关，令$g$代表$j’$时刻的请求项</p>
 <p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/j-prime-time.png" alt=""></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-times-circle&quot;&gt;&lt;/i&gt; Case 3a: $g=e$</h4>
-<p>这是不可能发生的情况,$S_{FF}$要求替换最晚出现的项，既然在$S_{FF}$ 中已经换掉了$e$，说明$e$是当时Cache中最晚出现的，所以$e$的请求不可能先于$f$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Case 3b: $g=f$</h4>
-<p>$f$不在$S$的Cache中，假设接下来$S$换掉的Cache内容为$e'$</p>
+<div class="bs-callout bs-callout-danger"><h4 id="Case-3a-g-e"><a href="#Case-3a-g-e" class="headerlink" title=" Case 3a: $g=e$"></a><i class="fa fa-times-circle"></i> Case 3a: $g=e$</h4><p>这是不可能发生的情况,$S_{FF}$要求替换最晚出现的项，既然在$S_{FF}$ 中已经换掉了$e$，说明$e$是当时Cache中最晚出现的，所以$e$的请求不可能先于$f$</p>
+</div>
+<div class="bs-callout bs-callout-danger"><h4 id="Case-3b-g-f"><a href="#Case-3b-g-f" class="headerlink" title=" Case 3b: $g=f$"></a><i class="fa fa-check-square-o"></i> Case 3b: $g=f$</h4><p>$f$不在$S$的Cache中，假设接下来$S$换掉的Cache内容为$e’$</p>
 <ul>
-<li>如果$e'=e$，$S'$直接可以从Cache中获得$f$而不发生缺页，现在$S$和$S'$的Cache内容相同，</li>
-<li>如果$e' \ne e$，$S'$把$e'$换成$e$后Cache内容和$S$相同，此事$S'$不是简化最优调度，但可以转化为换页次数不多于其本身的简化最优调度，而且根据Case 3a的讨论，转化后新的$S'$前$j+1$步也与$S_{FF}$一致</li>
+<li>如果$e’=e$，$S’$直接可以从Cache中获得$f$而不发生缺页，现在$S$和$S’$的Cache内容相同，</li>
+<li>如果$e’ \ne e$，$S’$把$e’$换成$e$后Cache内容和$S$相同，此事$S’$不是简化最优调度，但可以转化为换页次数不多于其本身的简化最优调度，而且根据Case 3a的讨论，转化后新的$S’$前$j+1$步也与$S_{FF}$一致</li>
 </ul>
-</div></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Case 3b: $g \ne e$且$g \ne f$</h4>
-<p>此时$S$必然换掉$e$，只需要$S'$换掉$f$，两者的Cache内容就再次相同</p>
+</div>
+<div class="bs-callout bs-callout-danger"><h4 id="Case-3b-g-ne-e-且-g-ne-f"><a href="#Case-3b-g-ne-e-且-g-ne-f" class="headerlink" title=" Case 3b: $g \ne e$且$g \ne f$"></a><i class="fa fa-check-square-o"></i> Case 3b: $g \ne e$且$g \ne f$</h4><p>此时$S$必然换掉$e$，只需要$S’$换掉$f$，两者的Cache内容就再次相同</p>
 <p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/j-prime-time2.png" alt=""></p>
-</div></p>
-<p>至此，我们找到了一个前$j+1$步换页与$S_{FF}$完全一致的简化最优调度$S'$，因此命题成立 ■</p>
+</div>
+<p>至此，我们找到了一个前$j+1$步换页与$S_{FF}$完全一致的简化最优调度$S’$，因此命题成立 ■</p>
 <p>综上所述，当取$n$为调度队列长度时，命题依然成立，因此可以认为farthest-in-future算法是最优的Caching算法</p>
-<h2>后记</h2>
-<p>本文只是简单地介绍和证明了贪心算法的一个微小的应用,更多内容将在以后的笔记中给出。</p>
-<p>笔记中的证明脉络主要参考了&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;，因为我认为这是我看见的材料中最清晰完整的证明，当然也有很多相关的资料可以阅读一下，比如&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;给出的是类似的思路而且更具体（实例化）一些，但符号标记问题可能看着有些麻烦；再如&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;紧扣Argument Exchange大法用词颇为规范当读上去略晦涩。</p>
-<p>当然这个问题本身不是很实际，在实践中，几乎不可能一开始就知道完整的请求队列，更不可能知道将来最晚出现的是Cache中的哪一项，我们讨论的是离线Caching问题，可以在调度前就知道请求队列，而事实上比较受关注的问题是如何在不知道后面会请求什么内容的情况下的在线Caching问题，常用的是LRU算法&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; rel=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>本文只是简单地介绍和证明了贪心算法的一个微小的应用,更多内容将在以后的笔记中给出。</p>
+<p>笔记中的证明脉络主要参考了<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，因为我认为这是我看见的材料中最清晰完整的证明，当然也有很多相关的资料可以阅读一下，比如<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>给出的是类似的思路而且更具体（实例化）一些，但符号标记问题可能看着有些麻烦；再如<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup>紧扣Argument Exchange大法用词颇为规范当读上去略晦涩。</p>
+<p>当然这个问题本身不是很实际，在实践中，几乎不可能一开始就知道完整的请求队列，更不可能知道将来最晚出现的是Cache中的哪一项，我们讨论的是离线Caching问题，可以在调度前就知道请求队列，而事实上比较受关注的问题是如何在不知道后面会请求什么内容的情况下的在线Caching问题，常用的是LRU算法<sup id="fnref:5"><a href="#fn:5" rel="footnote">5</a></sup>。</p>
 <p>至于为什么要费这么大力气去写farthest-in-future的证明，看似是毫无意义的茴香豆，实际上对于此类贪心算法证明的规范训练是件很有意义的事，至少有了这样的思路帮助我们看待其他问题的时候，依靠直接迅速找到一个正确的贪心算法，并知道怎样去证明这个贪心算法为什么是正确的，这是应用贪心算法过程中两个非常困难的问题，但很多时候解决的方法和farthest-in-future并无本质差异。</p>
-<p>&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;Belady, Laszlo A. &quot;&lt;a href=&quot;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.641.9013&amp;rep=rep1&amp;type=pdf&quot;&gt;A study of replacement algorithms for a virtual-storage computer.&lt;/a&gt;&quot; &lt;em&gt;IBM Systems journal&lt;/em&gt; 5.2 (1966): 78-101.&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:2&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;例子来源于 http://www.cs.princeton.edu/courses/archive/spr05/cos423/lectures/04greed.pdf&lt;/span&gt;&lt;a href=&quot;#fnref:2&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:3&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;HENRY POON'S BLOG：&lt;a href=&quot;https://blog.henrypoon.com/blog/2014/02/02/proof-of-the-farthest-in-future-optimal-caching-algorithm/&quot;&gt;Proof of the Farthest-in-Future Optimal Caching Algorithm&lt;/a&gt;&lt;/span&gt;&lt;a href=&quot;#fnref:3&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:4&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;https://www.cs.umd.edu/class/fall2009/cmsc451/lectures/Lec05b-optcache.pdf&lt;/span&gt;&lt;a href=&quot;#fnref:4&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:5&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU&lt;/span&gt;&lt;a href=&quot;#fnref:5&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
-
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">Belady, Laszlo A. &quot;<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.641.9013&amp;rep=rep1&amp;type=pdf" target="_blank" rel="noopener">A study of replacement algorithms for a virtual-storage computer.</a>&quot; <em>IBM Systems journal</em> 5.2 (1966): 78-101.</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">例子来源于 <a href="http://www.cs.princeton.edu/courses/archive/spr05/cos423/lectures/04greed.pdf" target="_blank" rel="noopener">http://www.cs.princeton.edu/courses/archive/spr05/cos423/lectures/04greed.pdf</a></span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">HENRY POON’S BLOG：<a href="https://blog.henrypoon.com/blog/2014/02/02/proof-of-the-farthest-in-future-optimal-caching-algorithm/" target="_blank" rel="noopener">Proof of the Farthest-in-Future Optimal Caching Algorithm</a></span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;"><a href="https://www.cs.umd.edu/class/fall2009/cmsc451/lectures/Lec05b-optcache.pdf" target="_blank" rel="noopener">https://www.cs.umd.edu/class/fall2009/cmsc451/lectures/Lec05b-optcache.pdf</a></span><a href="#fnref:4" rev="footnote"> ↩</a></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">5.</span><span style="display: inline-block; vertical-align: top;"><a href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU</a></span><a href="#fnref:5" rev="footnote"> ↩</a></li></ol></div></div>
       
     </div>
 
@@ -254,7 +234,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="cjuh9jwqq0004fww3utecqvvl" class="article-share-link">
+      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="cjuh9y1bb0005jcw3eow98jud" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -325,7 +305,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">最优Caching</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">1.1.</span> <span class="sidebar-module-list-text">问题定义</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">1.2.</span> <span class="sidebar-module-list-text">Furthest(Farthest) in future算法</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">1.3.</span> <span class="sidebar-module-list-text">证明</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">后记</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#最优Caching"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">最优Caching</span></a><ol class="sidebar-module-list-child"><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#问题定义"><span class="sidebar-module-list-number">1.1.</span> <span class="sidebar-module-list-text">问题定义</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#Furthest-Farthest-in-future算法"><span class="sidebar-module-list-number">1.2.</span> <span class="sidebar-module-list-text">Furthest(Farthest) in future算法</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-3"><a class="sidebar-module-list-link" href="#证明"><span class="sidebar-module-list-number">1.3.</span> <span class="sidebar-module-list-text">证明</span></a></li></ol></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#后记"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">后记</span></a></li></ol>
   </div>
 
 

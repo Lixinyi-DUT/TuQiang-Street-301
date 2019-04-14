@@ -139,93 +139,18 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>我一直梦想着成为一名穷画师，现在梦想已经实现了三分之一了。</p>
-<p>&lt;!-- more --&gt;</p>
-<p>我在<a href="https://www.yangzhou301.com/" target="_blank" rel="noopener">扬州计划</a>和自己的一些笔记中的插图大多是我自己画的，也有一部分是直接从资料里面截取下来的（这部分一般会标注引用），我想分享一些插图绘制的工具和技巧，让大家感受engineering drawing的乐趣。</p>
-<p>这些文章所使用到的插图及其代码都可以见作为图床的仓库<a href="https://github.com/Lixinyi-DUT/Project-Yangzhou" target="_blank" rel="noopener">Project-Yangzhou</a></p>
-<h2>LaTeX/Tikz</h2>
-<h3>Picture</h3>
-<p>首先可以直接用LaTeX的<code>picture</code>环境&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;画一些简单的图，比如一个二元对称离散信道的转换图
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/illustrations/BSC.png" alt="">
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;center&#125;</span></span></span><br><span class="line">    <span class="tag">\<span class="name">begin</span><span class="string">&#123;picture&#125;</span></span>(100,60)(-5,0)</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(0,0)&#123;<span class="tag">\<span class="name">vector</span></span>(2,0)&#123;78&#125;&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(0,0)&#123;<span class="tag">\<span class="name">vector</span></span>(4,3)&#123;78&#125;&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(0,60)&#123;<span class="tag">\<span class="name">vector</span></span>(2,0)&#123;78&#125;&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(0,60)&#123;<span class="tag">\<span class="name">vector</span></span>(4,-3)&#123;78&#125;&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(-5,2)&#123;<span class="formula">$1$</span>&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(-5,58)&#123;<span class="formula">$0$</span>&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(83,2)&#123;<span class="formula">$1$</span>&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(83,58)&#123;<span class="formula">$0$</span>&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(30,3)&#123;<span class="formula">$1-p$</span>&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(30,65)&#123;<span class="formula">$1-p$</span>&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(60,40)&#123;<span class="formula">$p$</span>&#125;</span><br><span class="line">        	<span class="tag">\<span class="name">put</span></span>(60,20)&#123;<span class="formula">$p$</span>&#125;</span><br><span class="line">    <span class="tag">\<span class="name">end</span><span class="string">&#123;picture&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;center&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p><div class="bs-callout bs-callout-default"><p><code>picture</code>环境可以完成基础的作图，但是因为没有坐标计算的插件支持以及原生图形太少的缘故，有些复杂的图形就难以胜任了</p>
-</div></p>
-<h3>Tikz/Pgf</h3>
-<p>这时候可以借助一下<code>tikz</code>包&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;作图，但是一般默认<code>TeX</code>输出的文档为<code>pdf</code>格式的，必须转换为图片格式才能在网络博客中使用，而一般一篇博客会用到很多张插图，为了管理这些大小不一致的图片，会把它们写入同一个文档中，这时可以使用<code>standalone</code>类型的文档，每页会显示一张图片：</p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%!TEX program = xelatex</span></span><br><span class="line"><span class="tag">\<span class="name">documentclass</span><span class="string">[tikz]</span><span class="string">&#123;standalone&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">&#123;ctex&#125;</span></span> <span class="comment">%支持中文标注</span></span><br><span class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">&#123;tikz&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;document&#125;</span></span></span><br><span class="line">  <span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line">    <span class="comment">%图1 代码</span></span><br><span class="line">  <span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line"></span><br><span class="line">  <span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line">    <span class="comment">%图2 代码</span></span><br><span class="line">  <span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;document&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>这样就可以在把一篇博客中用到的多张大小各异的插图写入同一个<code>pdf</code>文件了。我建议每个<code>tikzpicture</code>的内容部分的代码都另写在一个文件如<code>pic1.tikz</code>，然后在代码部分用<code>\input{pic1.tikz}</code>，方便作图的模块化和重用。接下来要解决的是如何将这个<code>pdf</code>文件的每一张图（即每一页）转换成多张博客可以直接使用的（比如<code>png</code>文件）图片：</p>
-<p>首先图片转换永远绕不开的就是<a href="https://www.imagemagick.org/script/index.php" target="_blank" rel="noopener">ImageMagick</a>库，在安装了ImageMagick之后，可以用Python写个小小的脚本<code>convert.py</code>来解放双手：
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> wand.image <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">diag=<span class="string">'xxxx.pdf'</span> <span class="comment">#pdf的文件名</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span>(Image(filename=diag,resolution=<span class="number">200</span>)) <span class="keyword">as</span> source:</span><br><span class="line">    images=source.sequence</span><br><span class="line">    pages=len(images)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(pages):</span><br><span class="line">        Image(images[i]).save(filename=str(i+<span class="number">1</span>)+<span class="string">'.png'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>图片处理的问题解决了，那就可以放心大胆的画图了。</p>
-<h3>插画示例Part 1</h3>
-<hr>
-<p>扬州计划的一篇博文（<a href="https://www.yangzhou301.com/2016/03/14/826442654/" target="_blank" rel="noopener">这么早就说Hessian矩阵是半正定的，会不会给人一种凸函数的感觉？</a>）中用到的插图
-<img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/5.png" alt=""></p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span><span class="string">[decoration=&#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">markings,</span></span></span><br><span class="line"><span class="tag"><span class="string">mark=at position 1 with &#123;\arrow[scale=1.5]</span><span class="string">&#123;angle 60&#125;</span></span>&#125;;</span><br><span class="line">&#125;]</span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span> [-&gt;,postaction=&#123;decorate&#125;](0,0) node[left]&#123;&#125; -- node[pos=0.75,above,sloped]&#123;<span class="formula">$&#123;<span class="tag">\<span class="name">bf</span><span class="string">&#123;x&#125;</span></span>&#125;_1$</span>&#125;(3,3) node[right]&#123;&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span> [-&gt;,postaction=&#123;decorate&#125;](0,0) node[left]&#123;&#125; -- node[pos=0.75,below,sloped]&#123;<span class="formula">$&#123;<span class="tag">\<span class="name">bf</span><span class="string">&#123;x&#125;</span></span>&#125;_2$</span>&#125;(6,0) node[right]&#123;&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span> [-,dashed](3,3) node[left]&#123;&#125; -- node[]&#123;&#125;(6,0) node[right]&#123;&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt&#125;]</span><br><span class="line">(3,3) -- (6,0) node [black,midway,above,sloped,yshift=5pt] &#123;<span class="formula">$<span class="tag">\<span class="name">theta</span></span> &#123;<span class="tag">\<span class="name">bf</span><span class="string">&#123;x&#125;</span></span>&#125;_1 + <span class="tag">\<span class="name">left</span></span>( 1 - <span class="tag">\<span class="name">theta</span></span>  <span class="tag">\<span class="name">right</span></span>)&#123;<span class="tag">\<span class="name">bf</span><span class="string">&#123;x&#125;</span></span>&#125;_2$</span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (4,2) circle (1pt);</span><br><span class="line">    <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (5,1) circle (1pt);</span><br><span class="line">    &#123;<span class="tag">\<span class="name">color</span><span class="string">&#123;red&#125;</span><span class="string">&#123;\draw [-&gt;,postaction=&#123;decorate&#125;</span></span>](0,0) node[left]&#123;&#125; -- node[pos=0.75,above,sloped]&#123;<span class="formula">$<span class="tag">\<span class="name">theta</span> = <span class="number">2</span></span>/3 $</span>&#125;(4,2) node[right]&#123;&#125;;&#125;&#125;</span><br><span class="line">    &#123;<span class="tag">\<span class="name">color</span><span class="string">&#123;blue&#125;</span><span class="string">&#123;\draw [-&gt;,postaction=&#123;decorate&#125;</span></span>](0,0) node[left]&#123;&#125; -- node[pos=0.75,above,sloped]&#123;<span class="formula">$<span class="tag">\<span class="name">theta</span> = <span class="number">1</span></span>/3 $</span>&#125;(5,1) node[right]&#123;&#125;;&#125;&#125;</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>一阶条件直观演示图</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/6.png" alt=""></p>
-<p>可以明显看到我还真用了个二次函数计算了一番</p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span><span class="string">[domain=0:5]</span></span></span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span>   plot (<span class="tag">\<span class="name">x</span></span>,&#123;<span class="tag">\<span class="name">x</span></span>^2/8&#125;)             node[right,xshift=0.2cm] &#123;<span class="formula">$y = f<span class="tag">\<span class="name">left</span></span>( x <span class="tag">\<span class="name">right</span></span>)$</span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span>   plot (<span class="tag">\<span class="name">x</span></span>,&#123;1/2*<span class="tag">\<span class="name">x</span></span>-1/2&#125;)         node[right] &#123;<span class="formula">$l$</span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[red]</span></span> (1/2,-1/4) -- (4,3/2);</span><br><span class="line">    <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (2,1/2) circle (1pt) node[below,xshift=0.3cm] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$p_0\left( &#123;x,f\left( x \right)&#125;</span></span> <span class="tag">\<span class="name">right</span></span>)<span class="formula">$&#125;&#125;;</span></span><br><span class="line"><span class="formula">    <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (1/2,1/32) circle (1pt) node[above,xshift=-0.2cm] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$p_1\left( &#123;&#123;x_1&#125;</span></span>,f<span class="tag">\<span class="name">left</span></span>( &#123;&#123;x_1&#125;&#125; <span class="tag">\<span class="name">right</span></span>)&#125; <span class="tag">\<span class="name">right</span></span>)$</span>&#125;&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (1/2,-1/4) circle (1pt) node[below,yshift=-0.3cm]&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$p_3\left( &#123;&#123;x_1&#125;</span></span>,f<span class="tag">\<span class="name">left</span></span>( x <span class="tag">\<span class="name">right</span></span>) + f'<span class="tag">\<span class="name">left</span></span>( x <span class="tag">\<span class="name">right</span></span>) <span class="tag">\<span class="name">cdot</span></span> <span class="tag">\<span class="name">left</span></span>( &#123;&#123;x_1&#125; - x&#125; <span class="tag">\<span class="name">right</span></span>)&#125; <span class="tag">\<span class="name">right</span></span>)<span class="formula">$&#125;&#125;;</span></span><br><span class="line"><span class="formula">    <span class="tag">\<span class="name">draw</span><span class="string">[dashed,dash pattern=on 1pt off 1pt]</span></span> (1/2,1/32) -- (1/2,-1/4);</span></span><br><span class="line"><span class="formula">    <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (4,2) circle (1pt) node[above] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$p_2\left( &#123;&#123;x_2&#125;</span></span>,f<span class="tag">\<span class="name">left</span></span>( &#123;&#123;x_2&#125;&#125; <span class="tag">\<span class="name">right</span></span>)&#125; <span class="tag">\<span class="name">right</span></span>)$</span>&#125;&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (4,3/2) circle (1pt) node[below,xshift=1.8cm]&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$p_4\left( &#123;&#123;x_2&#125;</span></span>,f<span class="tag">\<span class="name">left</span></span>( x <span class="tag">\<span class="name">right</span></span>) + f'<span class="tag">\<span class="name">left</span></span>( x <span class="tag">\<span class="name">right</span></span>) <span class="tag">\<span class="name">cdot</span></span> <span class="tag">\<span class="name">left</span></span>( &#123;&#123;x_2&#125; - x&#125; <span class="tag">\<span class="name">right</span></span>)&#125; <span class="tag">\<span class="name">right</span></span>)<span class="formula">$&#125;&#125;;</span></span><br><span class="line"><span class="formula">    <span class="tag">\<span class="name">draw</span><span class="string">[dashed,dash pattern=on 1pt off 1pt]</span></span> (4,2) -- (4,3/2);</span></span><br><span class="line"><span class="formula">    <span class="tag">\<span class="name">draw</span><span class="string">[dashed,blue]</span></span> (1/2,1/32) -- (4,2);</span></span><br><span class="line"><span class="formula">    <span class="tag">\<span class="name">filldraw</span><span class="string">[blue]</span></span> (2,7/8) circle (1pt) node[above,xshift=-1.4cm]&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$p'\left( x,\theta f\left( &#123;&#123;x_1&#125;</span></span>&#125; <span class="tag">\<span class="name">right</span></span>) + <span class="tag">\<span class="name">left</span></span>( &#123;1 - <span class="tag">\<span class="name">theta</span></span> &#125; <span class="tag">\<span class="name">right</span></span>)f<span class="tag">\<span class="name">left</span></span>( &#123;&#123;x_2&#125;&#125; <span class="tag">\<span class="name">right</span></span>) <span class="tag">\<span class="name">right</span></span>)$</span>&#125;&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[dashed,,blue]</span></span> (2,1/2) -- (2,7/8);</span><br><span class="line"></span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>还有用来演示二维的支持平面和法向量的图
-<img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/7.png" alt=""></p>
-<p>为了方便找法向量和切线我直接画了个圆来演示凸集
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span><span class="string">[domain=0:5/2]</span></span></span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[fill=gray,fill opacity=.1]</span></span> (0,0) circle (&#123;sqrt(2)&#125;) node[opacity=1]&#123;<span class="formula">$S$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span></span>   plot (<span class="tag">\<span class="name">x</span></span>,2-<span class="tag">\<span class="name">x</span></span>) node[right]&#123;<span class="formula">$h$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">filldraw</span></span>  (1,1) circle (1pt) node[right]&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$&#123;\bf&#123;x&#125;</span></span>&#125;_0<span class="formula">$&#125;&#125;;</span></span><br><span class="line"><span class="formula"> <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;]</span></span> (1,1) -- (2,2) node[above]&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$&#123;\bf&#123;\alpha &#125;</span></span>&#125;$</span>&#125;&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[-]</span></span> (1.1,1.1)--(1.1-0.1,1.1+0.1)--(0.9,1.1);</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>还有一阶条件和Lagrange中值定理的关系示意图
-<img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/826442654/9.png" alt="">
-还是用的刚刚那个二次函数，这种图最头疼的还是计算和标注</p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span><span class="string">[domain=0:11/2]</span></span></span><br><span class="line">        <span class="tag">\<span class="name">draw</span></span>   plot (<span class="tag">\<span class="name">x</span></span>,&#123;<span class="tag">\<span class="name">x</span></span>^2/8&#125;)             node[right,xshift=0.2cm] &#123;<span class="formula">$y = f<span class="tag">\<span class="name">left</span></span>( x <span class="tag">\<span class="name">right</span></span>)$</span>&#125;;</span><br><span class="line">        <span class="tag">\<span class="name">draw</span></span>   plot (<span class="tag">\<span class="name">x</span></span>,&#123;5/8*<span class="tag">\<span class="name">x</span></span>-25/32&#125;)             node[right,xshift=0.2cm] &#123;<span class="formula">$l$</span>&#125;;</span><br><span class="line">        <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (0,0) circle (1pt) node[left] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$\left( &#123;x_0,f\left( x_0 \right)&#125;</span></span> <span class="tag">\<span class="name">right</span></span>)<span class="formula">$&#125;&#125;;</span></span><br><span class="line"><span class="formula">        <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (5,25/8) circle (1pt) node[right,xshift=0.1cm] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$\left( &#123;x,f\left( x \right)&#125;</span></span> <span class="tag">\<span class="name">right</span></span>)$</span>&#125;&#125;;</span><br><span class="line">        <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (5/2,25/32) circle (1pt) node[below,xshift=0.3cm] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$\left( &#123;\xi,f\left( \xi \right)&#125;</span></span> <span class="tag">\<span class="name">right</span></span>)<span class="formula">$&#125;&#125;;</span></span><br><span class="line"><span class="formula">        <span class="tag">\<span class="name">filldraw</span><span class="string">[black]</span></span> (5,0) circle (1pt);</span></span><br><span class="line"><span class="formula">        <span class="tag">\<span class="name">draw</span><span class="string">[dashed,blue]</span></span> (0,0) -- (5,25/8) node[above,midway,sloped] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$k=f'\left( \xi \right)$&#125;</span></span>&#125;;</span></span><br><span class="line"><span class="formula">        <span class="tag">\<span class="name">draw</span><span class="string">[dashed]</span></span> (0,0) -- (5,0) --(5,25/8);</span></span><br><span class="line"><span class="formula">        <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt,mirror&#125;]</span></span><br><span class="line"><span class="formula">(0,0) -- (5,0) node [black,midway,above,sloped,yshift=-20pt] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$x-x_0$&#125;</span></span>&#125;;</span></span><br><span class="line"><span class="formula">        <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt,mirror&#125;]</span></span><br><span class="line"><span class="formula">(5,0) -- (5,25/8) node [black,below,midway,sloped,yshift=-0.4cm] &#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$f'\left( \xi \right)\left(x-x_0 \right)$&#125;</span></span>&#125;;</span></span><br><span class="line"><span class="formula"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>扬州计划的博文（<a href="https://www.yangzhou301.com/2016/04/07/471457613/" target="_blank" rel="noopener">计网课堂测试题解</a>）中可以看到画通信示意图也是很合适的
-<img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/4.png" alt=""></p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span><span class="string">[decoration=&#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">    markings,</span></span></span><br><span class="line"><span class="tag"><span class="string">    mark=at position 1 with &#123;\arrow[scale=1]</span><span class="string">&#123;angle 90&#125;</span></span>&#125;;</span><br><span class="line">  &#125;]</span><br><span class="line">  <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,dashed,line width=2,color=gray]</span></span> (0,-0.5) node[above,color=black]&#123;<span class="tag">\<span class="name">large</span><span class="string">&#123;$A$&#125;</span></span>&#125; -- (0,-10);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,dashed,line width=2,color=gray]</span></span> (8,-0.5) node[above,color=black]&#123;<span class="tag">\<span class="name">large</span><span class="string">&#123;$B$&#125;</span></span>&#125; -- (8,-10);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span>&lt;1-&gt;[-&gt;,line width=1,postaction=&#123;decorate&#125;] (0,-1) --node[above,sloped]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;FIN=1, seq=5001&#125;</span></span>&#125; (8,-3);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span>&lt;2-&gt;[-&gt;,line width=1,postaction=&#123;decorate&#125;] (8,-3.1) --node[above,sloped]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;ACK=1, seq=10001, ack=5002&#125;</span></span>&#125; (0,-5.1);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span>&lt;3-&gt;[-&gt;,line width=1,postaction=&#123;decorate&#125;] (8,-5.2) --node[above,sloped]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;FIN=1, seq=10001&#125;</span></span>&#125; (0,-7.2);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span>&lt;4-&gt;[-&gt;,line width=1,postaction=&#123;decorate&#125;] (0,-7.3) --node[above,sloped]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;ACK=1, seq=5002, ack=10002&#125;</span></span>&#125; (8,-9.3);</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>来自我毕设（<a href="https://github.com/Lixinyi-DUT/graduation-project" target="_blank" rel="noopener">graduation-project</a>）的一张示意图，演示某种机制的隐写方案中消息的结构
-<img src="https://github.com/Lixinyi-DUT/graduation-project/raw/master/codes/plots/ill/structure-1.png" alt="">
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span> (0,0) rectangle node&#123;消息长度<span class="formula">$l$</span>&#125; (5,1);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span>(5,0) rectangle node&#123;起始坐标<span class="formula">$<span class="tag">\<span class="name">left</span></span>(x_0,y_0<span class="tag">\<span class="name">right</span></span>)$</span>&#125;  (10,1);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span><span class="string">[fill=gray,fill opacity=0.3]</span></span>(10,0) rectangle node&#123;<span class="formula">$<span class="tag">\<span class="name">cdots</span></span>$</span>&#125;(13,1);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span><span class="string">[dashed]</span></span> (13,0) rectangle node&#123;秘密消息&#125; (23,1);</span><br><span class="line">  <span class="tag">\<span class="name">draw</span><span class="string">[fill=gray,fill opacity=0.3]</span></span>(23,0) rectangle node&#123;<span class="formula">$<span class="tag">\<span class="name">cdots</span></span>$</span>&#125;(26,1) ;</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt,mirror&#125;]</span><br><span class="line">  (0,0) -- (5,0) node [black,midway,above,sloped,yshift=-40pt]&#123;前<span class="formula">$l_1$</span>位&#125;;</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt,mirror&#125;] (5,0) -- (10,0) node [black,midway,above,sloped,yshift=-40pt]&#123;接下来<span class="formula">$l_2$</span>位&#125;;</span><br><span class="line">  <span class="tag">\<span class="name">filldraw</span></span>(13,0) circle (1pt) node[below]&#123;<span class="formula">$<span class="tag">\<span class="name">left</span></span>(x_0,y_0<span class="tag">\<span class="name">right</span></span>)$</span>&#125;;</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt,mirror&#125;] (13,0) -- (23,0) node [black,midway,above,sloped,yshift=-40pt]&#123;<span class="formula">$l <span class="tag">\<span class="name">times</span></span> 8$</span>位&#125;;</span><br><span class="line">  <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt&#125;,yshift=5pt] (0,1) -- (26,1) node [black,midway,above,sloped,yshift=10pt]&#123;<span class="formula">$m <span class="tag">\<span class="name">times</span></span> n$</span>位二进制数据&#125;;</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>知乎用户<a href="https://www.zhihu.com/people/lfgu_dut" target="_blank" rel="noopener">顾凌峰</a>大哥的回答<a href="https://www.zhihu.com/question/34624915/answer/85854651" target="_blank" rel="noopener">请解释一下什么是选择明文攻击及选择密文攻击？</a>的插图，也是我画的。
-<img src="https://pic3.zhimg.com/3c0f9b579b7ea46002da756afe9e206a_b.png" alt=""></p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;picture&#125;</span></span>(140,200)(5,5)</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(-10,100)&#123;<span class="tag">\<span class="name">framebox</span><span class="string">&#123;Christopher&#125;</span></span>&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(130,100)&#123;<span class="tag">\<span class="name">framebox</span><span class="string">&#123;Sharon&#125;</span></span>&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(20,95)&#123;<span class="tag">\<span class="name">line</span></span>(0,-1)&#123;180&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(150,97)&#123;<span class="tag">\<span class="name">line</span></span>(0,-1)&#123;180&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(20,80)&#123;<span class="tag">\<span class="name">vector</span></span>(4,-1)&#123;130&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(150,40)&#123;<span class="tag">\<span class="name">vector</span></span>(-4,-1)&#123;130&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(150,0)&#123;<span class="tag">\<span class="name">vector</span></span>(-4,-1)&#123;130&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(20,-40)&#123;<span class="tag">\<span class="name">vector</span></span>(4,-1)&#123;130&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(-70,85)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;\bf&#123;Encrypt&#125;</span></span>&#125; <span class="formula">$p_1=$</span>&#123;<span class="tag">\<span class="name">emph</span><span class="string">&#123;A Report from EU&#125;</span></span>&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(30,70)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$c_1=E_k(\mbox&#123;\emph&#123;A Report from EU&#125;</span></span>&#125;)<span class="formula">$&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(160,60)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;&#123;\bf&#123;Decrypt&#125;</span></span>&#125; $</span>p_1=D_k(c_1)<span class="formula">$&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(160,50)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;and get &#123;\emph&#123;A Report from EU&#125;</span></span>&#125;&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(160,40)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;\bf&#123;Encrypt&#125;</span></span>&#125; $</span>p_2=<span class="formula">$&#123;<span class="tag">\<span class="name">emph</span><span class="string">&#123;Roger!&#125;</span></span>&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(-70,10)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;&#123;\bf&#123;Decrypt&#125;</span></span>&#125; $</span>p_2=D_k(c_2)<span class="formula">$&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(40,35)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$c_2=E_k(\mbox&#123;\emph&#123;Roger!&#125;</span></span>&#125;)$</span>&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(160,20)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;Make a big news!&#125;</span></span>&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(160,0)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;\bf&#123;Encrypt&#125;</span></span>&#125; <span class="formula">$p_3=$</span>&#123;<span class="tag">\<span class="name">emph</span><span class="string">&#123;A big news&#125;</span></span>&#125;&#125;</span><br><span class="line">  <span class="tag">\<span class="name">put</span></span>(30,-10)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$c_3=E_k(\mbox&#123;\emph&#123;A big news&#125;</span></span>&#125;)<span class="formula">$&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(-70,-25)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;&#123;\bf&#123;Decrypt&#125;</span></span>&#125; $</span>p_3=D_k(c_3)<span class="formula">$&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(-70,-35)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;Excited!&#125;</span></span>&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(-70,-45)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;\bf&#123;Encrypt&#125;</span></span>&#125; $</span>p_2=<span class="formula">$&#123;<span class="tag">\<span class="name">emph</span><span class="string">&#123;Roger!&#125;</span></span>&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(160,-75)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;&#123;\bf&#123;Decrypt&#125;</span></span>&#125; $</span>p_2=D_k(c_2)<span class="formula">$&#125;&#125;</span></span><br><span class="line"><span class="formula">  <span class="tag">\<span class="name">put</span></span>(40,-65)&#123;<span class="tag">\<span class="name">footnotesize</span><span class="string">&#123;$c_2=E_k(\mbox&#123;\emph&#123;Roger!&#125;</span></span>&#125;)$</span>&#125;&#125;</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;picture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<h3>插画示例Part 2</h3>
-<p>Part 1的插图色调不够丰富，其实我本人是一个色弱患者~~（导致不能报考化学生物等专业以及从事一些工作）~~，也无法凭自己的能力去调色，所以借助一些工具比如<a href="http://latexcolor.com/" target="_blank" rel="noopener">LaTeX Color Definitions</a>画一些色彩比较丰富的插图。</p>
-<p>扬州计划的一篇博文（<a href="https://www.yangzhou301.com/2017/04/01/489526910/" target="_blank" rel="noopener">和你相见不到40分钟，我就认定你是我的妻子了</a>）中就是用了三种颜色象征了男性结点，女性结点，原谅绿边。</p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">definecolor</span><span class="string">&#123;babypink&#125;</span><span class="string">&#123;rgb&#125;</span><span class="string">&#123;0.96, 0.76, 0.76&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">definecolor</span><span class="string">&#123;babyblue&#125;</span><span class="string">&#123;rgb&#125;</span><span class="string">&#123;0.54, 0.81, 0.94&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">definecolor</span><span class="string">&#123;cadmiumgreen&#125;</span><span class="string">&#123;rgb&#125;</span><span class="string">&#123;0.0, 0.42, 0.24&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>这里挑一些主要的插图给出示例代码
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/2.png" alt="">
-老实男人m'的狡猾配偶w'与老实女人w的狡猾配偶m互相发生了绿色的倾慕，这张插图是我全文最喜欢的插图，反映了爱情的脆弱和无常，也是我微博 <a href="http://weibo.com/LxySeptember" target="_blank" rel="noopener"><i class="fa fa-weibo"></i> @我是欣宜我正常吗</a>的头像图。</p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line"> <span class="tag">\<span class="name">node</span><span class="string">[circle,draw,fill=babypink,minimum size=1cm]</span></span> (w1) at (0,0) &#123;<span class="formula">$w$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">node</span><span class="string">[circle,draw,fill=babyblue,minimum size=1cm]</span></span> (m1) at (2,2) &#123;<span class="formula">$m$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">node</span><span class="string">[circle,draw,fill=babypink,minimum size=1cm]</span></span> (w2) at (4,0) &#123;<span class="formula">$w'$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">node</span><span class="string">[circle,draw,fill=babyblue,minimum size=1cm]</span></span> (m2) at (6,2) &#123;<span class="formula">$m'$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span></span> (w1) -- node[sloped,above]&#123;<span class="tag">\<span class="name">small</span></span> matched&#125; (m1) ;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span></span> (w2) -- node[sloped,below]&#123;<span class="tag">\<span class="name">small</span></span> matched&#125; (m2) ;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[dashed,color=cadmiumgreen,-&gt;]</span></span> (m1.10) --node[sloped,above]&#123;<span class="tag">\<span class="name">small</span></span> prefer&#125; (w2.170);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[dashed,color=cadmiumgreen,-&gt;]</span></span> (w2.190) --node[sloped,below]&#123;<span class="tag">\<span class="name">small</span></span> prefer&#125; (m1.350);</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>当然还有一些其他的NTR假设，比如
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/pictures/489526910/6.png" alt="">
-借着<a href="http://fontawesome.io/icons/" target="_blank" rel="noopener">font awesome</a>搞一波事，既然他/她比我高出那么多，忘了我吧。</p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">&#123;fontawesome&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[dashed,opacity=0.7,color=babyblue]</span></span> (-2,2) -- (6,2);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[dashed,opacity=0.7,color=babyblue]</span></span> (-2,4) -- (6,4);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[dashed,opacity=0.7,color=babypink]</span></span> (-2,0) -- (6,0);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[dashed,opacity=0.7,color=babypink]</span></span> (-2,-2) -- (6,-2);</span><br><span class="line"> <span class="tag">\<span class="name">node</span><span class="string">[circle,draw,fill=babyblue,minimum size=1cm]</span></span> (m1) at (0,4) &#123;<span class="formula">$m$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">node</span><span class="string">[circle,draw,fill=babypink,minimum size=1cm]</span></span> (w1) at (5,0) &#123;<span class="formula">$w$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">node</span><span class="string">[circle,draw,fill=babyblue,minimum size=1cm]</span></span> (m2) at (5,2) &#123;<span class="formula">$m'$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">node</span><span class="string">[circle,draw,fill=babypink,minimum size=1cm]</span></span> (w2) at (0,-2) &#123;<span class="formula">$w'$</span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[thick]</span></span> (w2)-- node[above,sloped]&#123;<span class="tag">\<span class="name">footnotesize</span></span> matched in <span class="formula">$S$</span>&#125;(m1);</span><br><span class="line"><span class="tag">\<span class="name">draw</span><span class="string">[thick]</span></span> (w1)-- node[below,sloped,yshift=-0.5cm]&#123;<span class="tag">\<span class="name">footnotesize</span></span> matched in <span class="formula">$S$</span>&#125;(m2);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt,mirror,raise=2pt&#125;]</span><br><span class="line">(5.5,2) -- node[midway,right,xshift=0.4cm]&#123;<span class="tag">\<span class="name">small</span></span> &#123;<span class="tag">\<span class="name">color</span><span class="string">&#123;babypink&#125;</span><span class="string">&#123;$w$&#125;</span></span>&#125; prefers <span class="formula">$&#123;<span class="tag">\<span class="name">color</span><span class="string">&#123;babyblue&#125;</span><span class="string">&#123;m&#125;</span></span>&#125;&gt;&#123;<span class="tag">\<span class="name">color</span><span class="string">&#123;babyblue&#125;</span><span class="string">&#123;m'&#125;</span></span>&#125;$</span>&#125; (5.5,4);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span></span> [decorate,decoration=&#123;brace,amplitude=10pt,raise=2pt&#125;]</span><br><span class="line">(-0.5,-2) -- node[midway,left,xshift=-0.4cm]&#123;<span class="tag">\<span class="name">small</span></span> <span class="formula">$&#123;<span class="tag">\<span class="name">color</span><span class="string">&#123;babyblue&#125;</span><span class="string">&#123;m&#125;</span></span>&#125;$</span> prefers <span class="formula">$&#123;<span class="tag">\<span class="name">color</span><span class="string">&#123;babypink&#125;</span><span class="string">&#123;w&#125;</span></span>&#125;&gt;&#123;<span class="tag">\<span class="name">color</span><span class="string">&#123;babypink&#125;</span><span class="string">&#123;w'&#125;</span></span>&#125;$</span>&#125; (-0.5,0);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[thick,dashed,red]</span></span> (w1) --node[sloped]&#123;<span class="tag">\<span class="name">Large</span></span><span class="tag">\<span class="name">faExclamationTriangle</span></span>&#125; (m1);</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3>插画示例Part 3</h3>
-<p><code>Tikz</code>本身提供的基本图形也很有限，我们可以用第三方的矢量图集拓展它。</p>
-<p>在<a href="https://www.yangzhou301.com/2016/04/07/471457613/" target="_blank" rel="noopener">计网课堂测试题解</a>中，为了画一些计算机网络相关的图形，利用了<a href="http://www.cisco.com/c/en/us/about/brand-center/network-topology-icons.html" target="_blank" rel="noopener"> Cisco Network Topology Icons</a>库中的<code>.eps</code>图像集
-<img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/471457613/8.png" alt="">
-<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">usepackage</span><span class="string">&#123;epstopdf&#125;</span></span></span><br><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[-,thick]</span></span> (-4,0) -- node[below,label=below:LAN1]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.7]</span><span class="string">&#123;icon/webcluster&#125;</span></span>&#125; (8,0) ;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[-,thick]</span></span> (-3,0) -- node[label=left:<span class="tag">\<span class="name">textbf</span></span> &#123;路由器&#125;]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.7]</span><span class="string">&#123;icon/router&#125;</span></span>&#125; (-3,4) node[above,yshift=-5pt,label=above:LAN2: <span class="tag">\<span class="name">textbf</span></span> &#123;91台主机&#125;]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.7]</span><span class="string">&#123;icon/webcluster&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[-,thick]</span></span> (2,0) -- node[label=left:<span class="tag">\<span class="name">textbf</span></span> &#123;路由器&#125;]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.7]</span><span class="string">&#123;icon/router&#125;</span></span>&#125; (2,4) node[above,yshift=-5pt,label=above:LAN3: <span class="tag">\<span class="name">textbf</span></span> &#123;150台主机&#125;]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.7]</span><span class="string">&#123;icon/webcluster&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[-,thick]</span></span> (7,0) -- node[label=left:<span class="tag">\<span class="name">textbf</span></span> &#123;路由器&#125;]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.7]</span><span class="string">&#123;icon/router&#125;</span></span>&#125; (7,4) node[above,yshift=-5pt,label=above:LAN4: <span class="tag">\<span class="name">textbf</span></span> &#123;3台主机&#125;]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.7]</span><span class="string">&#123;icon/webcluster&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[-,thick]</span></span> (7,2) -- (10,2) node[right,xshift=-5pt,label=above:LAN5: <span class="tag">\<span class="name">textbf</span></span> &#123;15台主机&#125;]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.7]</span><span class="string">&#123;icon/webcluster&#125;</span></span>&#125;;</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>2016年计算机网络期末考试的最后一题，其实图也是我画的（奉旨出题而已）
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/codes/471457613/diag3-1.png" alt="">
-其实题中的IP地址全是我从扬州计划的访客IP中按照某个指标聚集拉下来的，至于具体是哪个指标我就不说了，大家自己猜吧。</p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br><span class="line"> <span class="tag">\<span class="name">path</span></span> (0,4) node(A) [label=&#123;[align=center]below:&#123;Host <span class="formula">$A$</span>&#125;<span class="tag">\<span class="name">\</span></span>IP:222.195.65.197<span class="tag">\<span class="name">\</span></span>MAC:74-29-9C-E8-FF-55&#125;] &#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.6]</span><span class="string">&#123;icon/pc&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">path</span></span> (12,4) node(B) [label=&#123;[align=center]below:&#123;Host <span class="formula">$B$</span>&#125;<span class="tag">\<span class="name">\</span></span>IP:210.32.157.79<span class="tag">\<span class="name">\</span></span>MAC:49-BD-D2-C7-56-2A&#125;]  &#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.6]</span><span class="string">&#123;icon/pc&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">path</span></span> (2,4) node(R1) [label=below:<span class="formula">$R_1$</span>] &#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.6]</span><span class="string">&#123;icon/router&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">path</span></span> (6,7) node(R2) [label=above:<span class="formula">$R_2$</span>]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.6]</span><span class="string">&#123;icon/router&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">path</span></span> (10,4) node(R3)[label=below:<span class="formula">$R_3$</span>] &#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.6]</span><span class="string">&#123;icon/router&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">path</span></span> (6,1) node(R4) [label=below:<span class="formula">$R_4$</span>]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.6]</span><span class="string">&#123;icon/router&#125;</span></span>&#125;;</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[-,thick]</span></span> (A) --node[pos=.86,sloped,above]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN1&#125;</span></span>&#125; (R1) --node[pos=.25,sloped,above,align=left]&#123;IP:49.74.228.20<span class="tag">\<span class="name">\</span></span>MAC:64-27-37-60-74-C7&#125; node[pos=.07,sloped,below]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN2&#125;</span></span>&#125; node[pos=.73,sloped,below,align=right]&#123;IP:49.74.228.52<span class="tag">\<span class="name">\</span></span>MAC:E0-06-E6-87-8E-C2&#125; node[pos=.93,sloped,above]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN1&#125;</span></span>&#125;(R2)  --node[pos=.28,sloped,above,align=left]&#123;IP:114.212.81.12<span class="tag">\<span class="name">\</span></span>MAC:58-91-CF-37-49-75&#125; node[pos=.07,sloped,below]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN2&#125;</span></span>&#125; node[pos=.7,sloped,below,align=right]&#123;IP:114.212.81.31<span class="tag">\<span class="name">\</span></span>MAC:88-9F-FA-FA-3C-E3&#125; node[pos=.93,sloped,above]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN2&#125;</span></span>&#125; (R3) --node[pos=.29,sloped,below,align=right]&#123;IP:139.226.16.203<span class="tag">\<span class="name">\</span></span>MAC:00-05-A1-48-06-7B&#125; node[pos=.09,sloped,above]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN3&#125;</span></span>&#125; node[pos=.7,sloped,above,align=left]&#123;IP:139.226.109.46<span class="tag">\<span class="name">\</span></span>MAC:00-0C-29-C4-CD-16&#125;(R4) node[pos=.93,sloped,below]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN2&#125;</span></span>&#125; -- node[pos=.29,sloped,below,align=right]&#123;IP:117.68.196.65<span class="tag">\<span class="name">\</span></span>MAC:00-14-22-43-62-76&#125; node[pos=.07,sloped,above]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN1&#125;</span></span>&#125; node[pos=.7,sloped,above,align=left]&#123;IP:117.68.202.11<span class="tag">\<span class="name">\</span></span>MAC:00-60-16-0A-B5-A3&#125; node[pos=.93,sloped,below]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN3&#125;</span></span>&#125; (R1);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[-,thick]</span></span> (B) -- node[pos=.87,sloped,above]&#123;<span class="tag">\<span class="name">texttt</span><span class="string">&#123;LAN1&#125;</span></span>&#125; (R3);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[&lt;-,font=\tiny]</span></span> (1,6) node[align=center,above]&#123;IP:222.195.65.101<span class="tag">\<span class="name">\</span></span>MAC:00-01-6C-06-A6-29&#125; --  (1.6,4.2);</span><br><span class="line"> <span class="tag">\<span class="name">draw</span><span class="string">[&lt;-,font=\tiny]</span></span> (11,6) node[align=center,above]&#123;IP:210.32.157.6<span class="tag">\<span class="name">\</span></span>MAC:1A-23-F9-CD-D6-9B&#125; -- (10.4,4.2);</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>在毕设中用到的一张示意图</p>
-<p><img src="https://github.com/Lixinyi-DUT/graduation-project/raw/master/codes/plots/ill/structure-2.png" alt=""></p>
-<p>其实这上面的小图像都是临时去网上搜的免费的图标，画图的时候基本上想到什么去google搜关键词+icon就行了</p>
-<p><figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">\<span class="name">begin</span><span class="string">&#123;tikzpicture&#125;</span><span class="string">[decoration=&#123;</span></span></span><br><span class="line"><span class="tag"><span class="string">    	markings,</span></span></span><br><span class="line"><span class="tag"><span class="string">    	mark=at position 1 with &#123;\arrow[scale=2]</span><span class="string">&#123;angle 90&#125;</span></span>&#125;;</span><br><span class="line">    &#125;]</span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>  (0,6) node(M1) [label=below:秘密消息]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.15]</span><span class="string">&#123;icons/email&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>  (0,0) node(C) [label=below:载体] &#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.08]</span><span class="string">&#123;icons/landscape-image&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>  (5,10) node(K1) [label=above:秘钥]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.15]</span><span class="string">&#123;icons/house-door-key&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>  (25,10) node(K2) [label=above:秘钥]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.15]</span><span class="string">&#123;icons/house-door-key&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>  (30,3) node(M2) [label=below:秘密消息]&#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.15]</span><span class="string">&#123;icons/email&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>  (10,3) node(S1) [label=below:伪装图像] &#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.08]</span><span class="string">&#123;icons/landscape-image&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>  (20,3) node(S2) [label=below:伪装图像] &#123;<span class="tag">\<span class="name">includegraphics</span><span class="string">[scale=.08]</span><span class="string">&#123;icons/landscape-image&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[line width=1.1]</span></span> (3.5,2.1) rectangle node(P1)[align=center] &#123;嵌入消息<span class="tag">\<span class="name">\</span></span>（隐写）&#125; (6.5,3.9);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span> (23.5,2.1) rectangle node(P2)[align=center] &#123;提取消息<span class="tag">\<span class="name">\</span></span>（恢复）&#125; (26.5,3.9);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span> (13.4,2.5) rectangle node(CH1) &#123;公共信道&#125;</span><br><span class="line">(16.6,3.5);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span></span> (13.4,9.5) rectangle node(CH2) &#123;安全信道&#125;</span><br><span class="line">    (16.6,10.5);  </span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>(5,13) node(A) &#123;<span class="tag">\<span class="name">bf</span><span class="string">&#123;发送方&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">path</span></span>(25,13) node(B) &#123;<span class="tag">\<span class="name">bf</span><span class="string">&#123;接收方&#125;</span></span>&#125;;</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (C) -- (3.4,2.5);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (M1) -- (3.4,3.5);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (K1) -- (5,4);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (6.6,3) -- (S1);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (S1)--(13.3,3);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (16.7,3)--(S2);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (S2) -- (23.4,3);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (26.6,3) -- (M2);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[&lt;-&gt;,thick]</span></span> (K1)--(13.3,10);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[&lt;-&gt;,thick]</span></span> (16.7,10)--(K2);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[-&gt;,thick]</span></span> (K2)--(25,4);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[line width=2.5,dashed,dash pattern=on 6pt off 4pt,color=gray]</span></span> (-2,-2) rectangle  (12,12);</span><br><span class="line">    <span class="tag">\<span class="name">draw</span><span class="string">[line width=2.5,dashed,dash pattern=on 6pt off 4pt,color=gray]</span></span> (18,-2) rectangle  (32,12);</span><br><span class="line"><span class="tag">\<span class="name">end</span><span class="string">&#123;tikzpicture&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>当然用LaTeX的好处就是插图几乎可以无缝对接到论文或者幻灯片（<code>beamer</code>）中。
-&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;https://en.wikibooks.org/wiki/LaTeX/Picture&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:2&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ&lt;/span&gt;&lt;a href=&quot;#fnref:2&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
-
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/Introduction/illustrations/#more">Read More</a>
+          </p>
+        
       
     </div>
 
     
-      
-
-    
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/illustrations/" data-id="cjuh9jx970055fww35zrmpvyc" class="article-share-link">
+      <a data-url="notebook.xyli.me/Introduction/illustrations/" data-id="cjuh9y1u00052jcw3nvg1sy9t" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -274,116 +199,19 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（<a href="https://www.coursera.org/learn/algorithm-design-analysis-2" target="_blank" rel="noopener">Algorithms: Design and Analysis, Part 2</a>）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。&lt;!--more--&gt;而涉及图论部分的贪心算法应用预计在几天后在另一篇笔记中具体给出。</p>
-<hr>
-<p><div class="bs-callout bs-callout-success"><p>贪心算法（&lt;em&gt;Greedy Algorithm&lt;/em&gt;）是指通过每一步决策的<strong>局部最优</strong>达到整体的<strong>全局最优</strong>的一类算法。我们对这个算法并不陌生，无论知道不知道这个名字，对于此类算法的应用都十分熟悉。比如我们寻找单源最短路径的Dijkstra最短路径算法就是贪心策略的典型应用，接下来也会讲到找到最小生成树两种贪心算法，即Prim算法和Kruskal算法。</p>
-</div></p>
-<p>总的来说，对于很多优化问题，我们很容易想到用贪心算法来解决，这是非常直觉性的选择，对于已经证明正确的贪心算法，分析运行时间也很容易。然而，证明这些已有的贪心算法本来就不是件容易的事，针对于具体的优化问题，依赖于直觉创造出来的贪心算法更是很难保证得到最优解。实际上，大多数贪心算法确实不会给出最优解。</p>
-<p>本篇将介绍一些贪心算法在规划（调度）问题上的应用，并使用一种较为普遍适应的证明方法，也就是交换参数（&lt;em&gt;Exchange Argument&lt;/em&gt;）法证明这些贪心算法的正确性。</p>
-<hr>
-<h2>最优Caching</h2>
-<h3>问题定义</h3>
-<p>系统调用内容（比如变量）的序列被称为页请求（<em>Page Request</em>）,为了提高计算效率，“常用”的内容会被从大而慢的存储空间（内存）中取出，放入小而快的存储空间（比如Cache），而系统在发出请求时优先到Cache中寻找请求内容是否在其中，如果不在（<em>Cache Miss</em> / <em>Page Fault</em>）则放弃速度去内存中取出该内容，并用它替换Cache中现存的某个内容。</p>
-<p>受限于Cache的容量，有时缺页再所难免，但如果能够在<strong>替换</strong>这一操作时合理选择被替换的页（内容），可以避免接下来多次不必要的缺页发生。</p>
-<h3>Furthest(Farthest) in future算法</h3>
-<p>对于Caching问题来说，我们定义衡量缺页算法的优劣是依据发生缺页的次数，miss发生得越少，代表算法越好。</p>
-<p>解决Caching问题的最优算法是Belady在1960s提出的furthest-in-future算法&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;，正如字面所示，每当缺页发生时，替换掉在调度序列中从当前项开始最晚出现的项。</p>
-<p>当Cache中的初始项和系统请求序列如下所示&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left"></th>
-<th style="text-align:left"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Cache</td>
-<td style="text-align:left">a b c d e f</td>
-</tr>
-<tr>
-<td style="text-align:left">请求序列</td>
-<td style="text-align:left"><code>g</code> a b c e d a b b a c d e a <code>f</code> a d e f g h ...</td>
-</tr>
-</tbody>
-</table>
-<p>处理第一个请求<code>g</code>时发生了缺页，此时选择替换原Cache中的一项，根据furthest-in-future原则，选择<code>g</code>之后在请求序列中最晚出现且在原Cache中的项即<code>f</code>作为被替换的项。</p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt;定理</h4>
-<p>furthest-in-future算法是最优的Caching算法，也就是使缺页（更替）次数最小的算法。</p>
-</div></p>
-<p>这是非常典型的贪心策略，接下来我们将证明该算法的正确性。</p>
-<h3>证明</h3>
-<p>证明这个算法所使用的是对于贪心算法非常常用的交换参数法。</p>
-<p>首先介绍一种较为一般性的Caching算法分类，即简化淘汰调度（<em>Reduced Eviction Schedules</em>）：仅当一项被请求时才把该项插入Cache的调度。
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/reduced_schedule.png" alt="非简化调度与简化调度，左第一列代表左边表示请求序列，接下来三列为Cache内容，标红的项为该步发送替换（淘汰）的项&amp;lt;sup id=&amp;quot;fnref:2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#fn:2&amp;quot; rel=&amp;quot;footnote&amp;quot;&amp;gt;2&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;">
-而所有的非简化调度都可以转化为缺页次数不超过原调度的简化调度。</p>
-<p>对于给定任意一个调度$S$，都可以被转换为调度$S'$，而$S'$发生缺页的次数不多于$S$，证明如下</p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark&quot;&gt;&lt;/i&gt; 证明</h4>
-<p>假设$S$在$t$时刻在Cache中放入$d$，而此时并没有发生$d$的请求（这也是被称为<em>非简化调度</em>的原因），令$c$表示放入$d$前Cache中存在的项（即被替换的项）</p>
-<p>那么存在以下两种情况：</p>
-<p>第一种情况是$d$并没有被保存到$d$的下一次请求，在$t'$时刻收到了$e$的请求，于是放弃了$d$存入了$e$
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-1.png" alt="Case 1:在$t'$时刻（$d$被再次请求前）$d$被$e$替代">
-显然在结果上可以等效于$t'$时刻用$e$替换$c$的调度，$S \to S'$减少了一次替换</p>
-<p>第二种情况则是在$d$被替换之前，又收到了$d$的请求，此时因为$d$在Cache中，没有发生缺页
-<img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/trans-case-2.png" alt="Case 2:在$t'$时刻$d$被请求前没有发生替换">
-很显然可以等效于在$t'$时刻用$d$替换$c$，$S \to S'$替换发生的次数不变 ■</p>
-<p>值得一提的是，对于简化淘汰调度来说，发生缺页的次数等于发生更替的次数，但对于非简化调度调度，因为不发生缺页也会换页（替代），此时考察缺页次数就没什么意义了，从<a href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89">问题定义</a>中我们就假设了所有调度都是用的简化淘汰的方法避免讨论缺页&amp;换页哪个作为优化目标的问题，最终目标都是要优化替换次数的。</p>
-</div></p>
-<p>通过以上证明，很容易得出结论，最优Caching调度一定是简化淘汰调度。</p>
-<p>现在要证明一个定理</p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-bookmark-o&quot;&gt;&lt;/i&gt;定理</h4>
-<p>对于任意$n \ge 0$且不超过请求队列长度的整数$n$，存在一个前$n$项所有换页都与farthest-in-future调度$S_{FF}$相同的最优简化淘汰调度$S$。</p>
-</div></p>
-<p>这个定理基本上就是直接说了farthest-in-future调度就是最优算法了。</p>
-<p><s>仍然是“这也要证？”的废话</s>证明的方法是归纳法：</p>
-<p>首先当$n=0$时显然这个定理成立<s>这不废话么</s></p>
-<p>接下来我们假设当$n=j$时定理的结论成立，存在一个这样的$S$，需要证明当$n=j+1$时这个定理依然成立，因为是存在性证明，只需要借助于$S$构造一个前$j+1$项换页与$S_{FF}$完全一致的最优简化淘汰调度$S'$，这里假设第$j+1$个请求的内容为$d$，分为以下几种情况讨论：</p>
-<p><div class="bs-callout bs-callout-warning"><h4>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Case 1</h4>
-<p>如果$d$已经在Cache中了，那么没有缺页发生，不存在换页，$S'=S$即可符合要求。</p>
-</div></p>
-<p><div class="bs-callout bs-callout-warning"><h4>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Case 2</h4>
-<p>如果$d$不在Cache中但$S$和$S_{FF}$换掉了同一项内容，依然可以令$S'=S$使命题成立。</p>
-</div></p>
-<p>这两种情况都没有在$S$的基础上增加$S'$的换页次数，$S'$依然是简化最优调度，且与$S_{FF}$在前$j+1$歩完全一致。</p>
-<p>如果$d$不在Cache中，为了把$d$放入Cache，$S_{FF}$换掉了$e$，而$S$换掉了$f$且$f \ne e$，就是我们讨论的第三种情况。</p>
-<p>在Case 3我们要证明的是换掉$e$不比换掉$f$差，这也就是$S_{FF}$的体现，现在构造基于$S$构造一个$S'$，把$S$的Cache中的$e$换成$f$</p>
-<p>容易看出$S'$和$S$目前为止换页次数相同，既然$S$是最优的，$S'$目前（至少前$j+1$步)也可以认为是最优的。</p>
-<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/case-3.png" alt="$S$与$S'$在第$j+1$步换掉了不同的项，除此以外其他部分完全相同&amp;lt;sup id=&amp;quot;fnref:2&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;#fn:2&amp;quot; rel=&amp;quot;footnote&amp;quot;&amp;gt;2&amp;lt;/a&amp;gt;&amp;lt;/sup&amp;gt;"></p>
-<p>用$j'$表示在$j+1$步后$S$和$S'$第一次发生不同操作的歩数，这个操作也必然与$e$或$f$中至少一个相关，令$g$代表$j'$时刻的请求项</p>
-<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/j-prime-time.png" alt=""></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-times-circle&quot;&gt;&lt;/i&gt; Case 3a: $g=e$</h4>
-<p>这是不可能发生的情况,$S_{FF}$要求替换最晚出现的项，既然在$S_{FF}$ 中已经换掉了$e$，说明$e$是当时Cache中最晚出现的，所以$e$的请求不可能先于$f$</p>
-</div></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Case 3b: $g=f$</h4>
-<p>$f$不在$S$的Cache中，假设接下来$S$换掉的Cache内容为$e'$</p>
-<ul>
-<li>如果$e'=e$，$S'$直接可以从Cache中获得$f$而不发生缺页，现在$S$和$S'$的Cache内容相同，</li>
-<li>如果$e' \ne e$，$S'$把$e'$换成$e$后Cache内容和$S$相同，此事$S'$不是简化最优调度，但可以转化为换页次数不多于其本身的简化最优调度，而且根据Case 3a的讨论，转化后新的$S'$前$j+1$步也与$S_{FF}$一致</li>
-</ul>
-</div></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-check-square-o&quot;&gt;&lt;/i&gt; Case 3b: $g \ne e$且$g \ne f$</h4>
-<p>此时$S$必然换掉$e$，只需要$S'$换掉$f$，两者的Cache内容就再次相同</p>
-<p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/intro-to-greedy-algorithm/j-prime-time2.png" alt=""></p>
-</div></p>
-<p>至此，我们找到了一个前$j+1$步换页与$S_{FF}$完全一致的简化最优调度$S'$，因此命题成立 ■</p>
-<p>综上所述，当取$n$为调度队列长度时，命题依然成立，因此可以认为farthest-in-future算法是最优的Caching算法</p>
-<h2>后记</h2>
-<p>本文只是简单地介绍和证明了贪心算法的一个微小的应用,更多内容将在以后的笔记中给出。</p>
-<p>笔记中的证明脉络主要参考了&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; rel=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;，因为我认为这是我看见的材料中最清晰完整的证明，当然也有很多相关的资料可以阅读一下，比如&lt;sup id=&quot;fnref:3&quot;&gt;&lt;a href=&quot;#fn:3&quot; rel=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;给出的是类似的思路而且更具体（实例化）一些，但符号标记问题可能看着有些麻烦；再如&lt;sup id=&quot;fnref:4&quot;&gt;&lt;a href=&quot;#fn:4&quot; rel=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;紧扣Argument Exchange大法用词颇为规范当读上去略晦涩。</p>
-<p>当然这个问题本身不是很实际，在实践中，几乎不可能一开始就知道完整的请求队列，更不可能知道将来最晚出现的是Cache中的哪一项，我们讨论的是离线Caching问题，可以在调度前就知道请求队列，而事实上比较受关注的问题是如何在不知道后面会请求什么内容的情况下的在线Caching问题，常用的是LRU算法&lt;sup id=&quot;fnref:5&quot;&gt;&lt;a href=&quot;#fn:5&quot; rel=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;。</p>
-<p>至于为什么要费这么大力气去写farthest-in-future的证明，看似是毫无意义的茴香豆，实际上对于此类贪心算法证明的规范训练是件很有意义的事，至少有了这样的思路帮助我们看待其他问题的时候，依靠直接迅速找到一个正确的贪心算法，并知道怎样去证明这个贪心算法为什么是正确的，这是应用贪心算法过程中两个非常困难的问题，但很多时候解决的方法和farthest-in-future并无本质差异。</p>
-<p>&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;Belady, Laszlo A. &quot;&lt;a href=&quot;http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.641.9013&amp;rep=rep1&amp;type=pdf&quot;&gt;A study of replacement algorithms for a virtual-storage computer.&lt;/a&gt;&quot; &lt;em&gt;IBM Systems journal&lt;/em&gt; 5.2 (1966): 78-101.&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:2&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;2.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;例子来源于 http://www.cs.princeton.edu/courses/archive/spr05/cos423/lectures/04greed.pdf&lt;/span&gt;&lt;a href=&quot;#fnref:2&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:3&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;3.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;HENRY POON'S BLOG：&lt;a href=&quot;https://blog.henrypoon.com/blog/2014/02/02/proof-of-the-farthest-in-future-optimal-caching-algorithm/&quot;&gt;Proof of the Farthest-in-Future Optimal Caching Algorithm&lt;/a&gt;&lt;/span&gt;&lt;a href=&quot;#fnref:3&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:4&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;4.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;https://www.cs.umd.edu/class/fall2009/cmsc451/lectures/Lec05b-optcache.pdf&lt;/span&gt;&lt;a href=&quot;#fnref:4&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;li id=&quot;fn:5&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;5.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;https://en.wikipedia.org/wiki/Cache_replacement_policies#LRU&lt;/span&gt;&lt;a href=&quot;#fnref:5&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
-
+        <p>本篇主要介绍贪心算法和其在一些简单规划问题上的应用，对应Stanford算法课（<a href="https://www.coursera.org/learn/algorithm-design-analysis-2" target="_blank" rel="noopener">Algorithms: Design and Analysis, Part 2</a>）第一周内容，在此仅给出一些浅显的综述性的结论和证明，主要针对典型的规划（调度）问题，含有部分相关习题。
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/CS161/Intro-to-greedy-algo1/#more">Read More</a>
+          </p>
+        
       
     </div>
 
     
-      
-
-    
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="cjuh9jwqq0004fww3utecqvvl" class="article-share-link">
+      <a data-url="notebook.xyli.me/CS161/Intro-to-greedy-algo1/" data-id="cjuh9y1bb0005jcw3eow98jud" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -433,187 +261,18 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>这是一个专门为在线课程存放本人的笔记的地方。建站初衷是为了更系统地整理和分享网课的收获，为遇到相同困惑的学习者提供微小的帮助，同时也帮助自己梳理知识脉络。</p>
-<p>&lt;!--more--&gt;</p>
-<h2>背景</h2>
-<h3>参考链接</h3>
-<ol>
-<li>图强街301号Github主页: https://github.com/Lixinyi-DUT/TuQiang-Street-301</li>
-<li>企划：关于我的近期计划——图强街301号：https://zhuanlan.zhihu.com/p/21479217?refer=wogulingfeng</li>
-<li>7月计算机类在线课程推荐：http://www.jianshu.com/p/300d31e1ddc3</li>
-<li>九月在线课程推荐：https://www.yangzhou301.com/2016/08/29/213175162/</li>
-<li>最短的咒：https://zhuanlan.zhihu.com/wogulingfeng</li>
-</ol>
-<h3>建站</h3>
-<p>本站使用<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>生成，作为<a href="https://github.com/Lixinyi-DUT/TuQiang-Street-301" target="_blank" rel="noopener">图强街301号</a>的项目主页使用<code>gh-pages</code>分支托管于<a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages</a>。</p>
-<p>本站使用博客的形式分享本人的网课笔记（包括题解），为了增强笔记阅读的视觉效果，选择了颇具twitter风格的主题<a href="https://github.com/cgmartin/hexo-theme-bootstrap-blog" target="_blank" rel="noopener">bootstrap-blog</a>作为模板并稍微进行了一些修改，使之更适应中文和笔记的书写习惯。</p>
-<p>本站域名<code>notebook.xyli.me</code>的一级域名<code>xyli.me</code>获取自学生福利<a href="https://education.github.com/pack" target="_blank" rel="noopener">Github Student Developer Pack</a>包含的<a href="https://nc.me/" target="_blank" rel="noopener">NameCheap</a>提供的一年免费<code>.me</code>域名。</p>
-<hr>
-<h2>书写特性</h2>
-<blockquote>
-<p>文章仍沿用最基本的<code>Markdown</code>语法书写，但为了笔记的美观和站点的互动性开启了一些新的特性。</p>
-</blockquote>
-<h3>基本特性</h3>
-<p>文章写法在基础部分与其他<code>Markdown</code>文档别无二致</p>
-<h4>表格</h4>
-<p>示例：上海市各区几何中心的地理坐标</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">编号 (Id)</th>
-<th style="text-align:center">纬度 (Lat)</th>
-<th style="text-align:center">经度 (Long)</th>
-<th style="text-align:center">区/县 (Name)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">31.65070</td>
-<td style="text-align:center">121.5232</td>
-<td style="text-align:center">崇明县</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">30.91598</td>
-<td style="text-align:center">121.5498</td>
-<td style="text-align:center">奉贤县</td>
-</tr>
-<tr>
-<td style="text-align:center">3</td>
-<td style="text-align:center">31.35312</td>
-<td style="text-align:center">121.2513</td>
-<td style="text-align:center">嘉定区</td>
-</tr>
-<tr>
-<td style="text-align:center">4</td>
-<td style="text-align:center">30.83337</td>
-<td style="text-align:center">121.2313</td>
-<td style="text-align:center">金山区</td>
-</tr>
-<tr>
-<td style="text-align:center">5</td>
-<td style="text-align:center">31.10343</td>
-<td style="text-align:center">121.4149</td>
-<td style="text-align:center">闵行区</td>
-</tr>
-<tr>
-<td style="text-align:center">6</td>
-<td style="text-align:center">31.02362</td>
-<td style="text-align:center">121.7360</td>
-<td style="text-align:center">南汇县</td>
-</tr>
-<tr>
-<td style="text-align:center">7</td>
-<td style="text-align:center">31.12699</td>
-<td style="text-align:center">121.0832</td>
-<td style="text-align:center">青浦县</td>
-</tr>
-<tr>
-<td style="text-align:center">8</td>
-<td style="text-align:center">31.23097</td>
-<td style="text-align:center">121.6361</td>
-<td style="text-align:center">上海市市辖区</td>
-</tr>
-<tr>
-<td style="text-align:center">9</td>
-<td style="text-align:center">31.01199</td>
-<td style="text-align:center">121.2129</td>
-<td style="text-align:center">松江区</td>
-</tr>
-</tbody>
-</table>
-<h4>图片</h4>
-<p>本站使用<a href="https://github.com/Lixinyi-DUT/Project-Yangzhou" target="_blank" rel="noopener">Project-Yangzhou</a>作为图床，开启<code>fancybox</code></p>
-<p>图片示例如下：</p>
-<p><img src="https://raw.githubusercontent.com/Lixinyi-DUT/Project-Yangzhou/master/pictures/323901700/4.png" alt="示例图片-ggplot2绘制上海行政区划"></p>
-<h3>目录生成</h3>
-<p><code>Hexo</code>默认的文章生成链接为<code>site/year-month-day/title</code>，这对于笔记的归档很不友好，所以这里采用的是<code>site/category/title</code>作为文章的链接。需要在<code>_config.yml</code>设置：
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:category/:title/</span></span><br></pre></td></tr></table></figure></p>
-<p>这里的<code>category</code>即分类，是课程的标示，如<a href="https://www.coursera.org/learn/crypto" target="_blank" rel="noopener">Stanford的Cryptography I</a>的所有笔记分类为该课对应的课程号<code>CS255</code></p>
-<h3>数学公式支持</h3>
-<p>本站使用<a href="https://www.mathjax.org/" target="_blank" rel="noopener">MathJax</a>作为数学公式的支持，并保留了公式的菜单以便读者阅读和保存。</p>
-<blockquote>
-<p>行内公式，在文中添加一对<code>$...$</code>即可：</p>
-</blockquote>
-<p>对于直角三角形直角边$a$,$b$和斜边$c$，存在关系$a^2+b^2=c^2$</p>
-<blockquote>
-<p>行间公式（以Cauchy积分公式为例），添加一对<code>$$...$$</code>：</p>
-</blockquote>
-<p>$$f\left( a \right) = \frac{1}{2\pi i}\mathop \oint \limits_\gamma  \frac{f\left( z \right)}{z - a}dz$$</p>
-<blockquote>
-<p>多行公式（SVM的Lagrange对偶问题优化式为例），添加一对<code>$$...$$</code>：</p>
-</blockquote>
-<p><span>$$\begin{align}
-\mathop {\max }\limits_{\bf{\alpha }} \quad &amp;  \sum\limits_{i = 1}^n {\alpha _i} - \frac{1}{2}\sum\limits_{i = 1}^n \sum\limits_{j = 1}^n \alpha _i \alpha _j y_i y_j {\bf{x}}_i^T {\bf{x}}_j  \\
- s.t.\quad &amp; \sum\limits\_{i = 1}^n{ \alpha _i y_i } = 0\\  
- &amp; \alpha _i \ge 0, \quad i = 1,2, \ldots ,n
-\end{align}$$</span><!-- Has MathJax --></p>
-<p><strong>注意</strong> 由于<code>Markdown</code>的下划线对<code>_</code>会被转义为斜体，可以通过人工添加<code>\</code>取消转义，也可以修改<code>Markdown</code>中的<code>marked.js</code>防止被<code>pandoc</code>解析。尽量避免嵌套多层<code>{}</code>冗余，如<code>^2</code>将导致编译出错。</p>
-<h3>社会化评论</h3>
-<p>使用<a href="https://disqus.com/" target="_blank" rel="noopener">Disqus</a>插件作为社会化评论插件。但近期Disqus在国内被墙了，可能会导致无法显示，需要翻墙才能看见评论区。</p>
-<p>使用ss科学上网者请将<code>disqus.com</code>加入PAC文件以便互动。</p>
-<p>目前在寻找国内稳定可用的社会化评论插件，之前使用过<a href="http://duoshuo.com/" target="_blank" rel="noopener">多说</a>，效果并不是很理想。欢迎推荐。</p>
-<p><div class="bs-callout bs-callout-success"><h4>2017/4/15 重要更新</h4>
-<p>采用了基于github issue的<a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">gitment</a>评论模块，直接使用github账户登录即可评论，支持Github特色的Markdown语法。</p>
-</div></p>
-<h3>Callout</h3>
-<p>Bootstrap使用callout强调一些信息，关于callout style的说明可以见该主题的<a href="https://github.com/cgmartin/hexo-theme-bootstrap-blog/tree/master#callouts" target="_blank" rel="noopener">Readme</a>或<a href="http://cpratt.co/twitter-bootstrap-callout-css-styles/" target="_blank" rel="noopener">Twitter Bootstrap 3.2.0 Callout CSS Styles</a> 该对象的调用方法如下，可配合<a href="http://fontawesome.io/" target="_blank" rel="noopener">Font Awesome</a>使用
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% callout [type:default|primary|success|info|warning|danger] %&#125;</span><br><span class="line">...content...</span><br><span class="line">&#123;% endcallout %&#125;</span><br></pre></td></tr></table></figure></p>
-<p>示例
-<div class="bs-callout bs-callout-default"><h4>&lt;i class=&quot;fa fa-bookmark&quot;&gt;&lt;/i&gt; Default</h4>
-<p>这是一个default类型的callout</p>
-</div></p>
-<p><div class="bs-callout bs-callout-primary"><h4>&lt;i class=&quot;fa fa-cog&quot;&gt;&lt;/i&gt; Primary</h4>
-<p>这是一个primary类型的callout</p>
-</div></p>
-<p><div class="bs-callout bs-callout-success"><h4>&lt;i class=&quot;fa fa-check-circle&quot;&gt;&lt;/i&gt; Success</h4>
-<p>这是一个success类型的callout</p>
-</div></p>
-<p><div class="bs-callout bs-callout-info"><h4>&lt;i class=&quot;fa fa-info-circle&quot;&gt;&lt;/i&gt; Info</h4>
-<p>这是一个info类型的callout</p>
-</div></p>
-<p><div class="bs-callout bs-callout-warning"><h4>&lt;i class=&quot;fa fa-exclamation-circle&quot;&gt;&lt;/i&gt; Warning</h4>
-<p>这是一个warning类型的callout</p>
-</div></p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-exclamation-triangle&quot;&gt;&lt;/i&gt; Danger</h4>
-<p>这是一个danger类型的callout</p>
-</div></p>
-<h2>关于作者</h2>
-<p>本站的笔记主要由本文作者Xinyi Li完成，但欢迎用<code>Markdown</code>文件投稿，方式不限于发送邮件至[wolixinyi@gmail.com](mail to: wolixinyi@gmail.com)。</p>
-<p>更多关于我的更多信息请见<a href="#%E7%A4%BE%E4%BA%A4%E7%BD%91%E7%BB%9C">社交网络</a></p>
-<h3>社交网络</h3>
-<blockquote>
-<p><i class="fa fa-twitter"></i> <a href="https://twitter.com/yangzhou301" target="_blank" rel="noopener">@yangzhou301</a>
-<i class="fa fa-facebook"></i> https://www.facebook.com/yangzhou301
-<i class="fa fa-instagram"></i> <a href="https://www.instagram.com/yangzhou301/" target="_blank" rel="noopener">@yangzhou301</a>
-<i class="fa fa-external-link"></i> http://yangzhou301.xyli.me
-<i class="fa fa-weixin"></i> 公众号：yangzhou-301
-<i class="fa fa-github"></i> https://github.com/Lixinyi-DUT
-<i class="fa fa-linkedin"></i> http://www.linkedin.com/in/xinyi-li
-<i class="fa fa-weibo"></i> <a href="http://weibo.com/LxySeptember" target="_blank" rel="noopener">@我是欣宜我正常吗</a>
-<i class="fa fa-stack-overflow"></i><a href="https://stackoverflow.com/users/4710264/xinyi-li" target="_blank" rel="noopener">Xinyi Li</a></p>
-</blockquote>
-<h3>向我捐助</h3>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-exclamation-triangle&quot;&gt;&lt;/i&gt; 2017/4/15 重要更新</h4>
-<p>关闭捐助渠道，请关注现实生活，不要给素不相识的网友随便打钱，本正常人站主认为在座各位也是正常人，应该能想到生活要靠网络乞讨维持的人根本没这闲心开这破站。有闲钱的小哥哥小姐姐请自己买点小零食和现实中的小伙伴分享，不要投到网络交友来谢谢。上海有句老话：</p>
-<blockquote>
-<p>老鬼不脱手，脱手不老鬼</p>
-</blockquote>
-<p>警惕一切形式牵扯到钱财的网络骗局&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;</p>
-<p>Feel free to read my notebooks!</p>
-</div></p>
-<p>&lt;div id=&quot;footnotes&quot;&gt;&lt;hr&gt;&lt;div id=&quot;footnotelist&quot;&gt;&lt;ol style=&quot;list-style:none; padding-left: 0;&quot;&gt;&lt;li id=&quot;fn:1&quot;&gt;&lt;span style=&quot;display: inline-block; vertical-align: top; padding-right: 10px;&quot;&gt;1.&lt;/span&gt;&lt;span style=&quot;display: inline-block; vertical-align: top;&quot;&gt;参考阅读： &lt;a href=&quot;https://www.zhihu.com/question/3948522&quot;&gt;惊！抠脚大汉在高知社区伪装成复旦女神竟成功诈捐数十万人民币&lt;/a&gt;&lt;/span&gt;&lt;a href=&quot;#fnref:1&quot; rev=&quot;footnote&quot;&gt; ↩&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;&lt;/div&gt;</p>
-
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/Introduction/hello-world/#more">Read More</a>
+          </p>
+        
       
     </div>
 
     
-      
-
-    
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="cjuh9jx8z0051fww35g86q9wx" class="article-share-link">
+      <a data-url="notebook.xyli.me/Introduction/hello-world/" data-id="cjuh9y1tt004zjcw3ls7jwjyi" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
@@ -661,77 +320,18 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>域名<code>yangzhou301.com</code>即将在2017年11月30日过期，因为我没钱续费，该域名将连同扬州计划博客一同废弃。</p>
-<p>&lt;!-- more --&gt;</p>
-<p><div class="bs-callout bs-callout-danger"><h4>&lt;i class=&quot;fa fa-exclamation-triangle&quot;&gt;&lt;/i&gt; Danger</h4>
-<p>虽然闭站直接原因是没钱续费，但这不是根本原因，感谢期待扬州计划继续下去的读者（如果真的有的话），但请不要为了这个原因发起募捐，众筹，打赏等经济活动，以免造成不必要的财产损失。因为即使资金不成问题，我也已经没有再写下去的理由了。</p>
-</div></p>
-<h2>请注意及时备份需要的内容</h2>
-<p>如果对扬州计划的现存内容有需求（如果真的有这样的读者，我先向您致敬），请自行存档。不出意外的话，在废站后，我还会保留这些文章的<code>md</code>格式的原稿，如果你想找某篇文章但还没来得及备份，请邮件联系我，邮箱地址就在右边，我会把原稿发给你。但为了以防万一，还是请你自己在还没关站时尽快备份，我不能保证百分百能得出原稿。</p>
-<p>因为原站特殊格式的文字和文件比较多，不建议直接保存网页或爬内容，会影响阅读体验。我个人推荐网页截屏工具（如<a href="https://chrome.google.com/webstore/detail/take-webpage-screenshots/mcbpblocgmgfnpjjppndjkmgjaogfceg" target="_blank" rel="noopener">FireShot</a>），实在不行也可以直接问我要原稿。</p>
-<h2>那么这个站呢？</h2>
-<p>如果没有突发情况，也会在这个域名到期时（大约2018年4月）废弃，所以这里的文章也请有需要的朋友们及时备份。</p>
-<h2>Q&amp;A</h2>
-<blockquote>
-<p>为什么这篇文章没发在扬州计划上</p>
-</blockquote>
-<p>因为马上就关站了，到时候找不到yangzhou301的问起来我还得重新发这篇，多麻烦</p>
-<blockquote>
-<p>为什么日期显示是1990-05-14，有什么特别含义吗，那个时候作者出生了吗？</p>
-</blockquote>
-<ol>
-<li>没</li>
-<li>没</li>
-</ol>
-<p>随手写的，真实时间是2017-11-28，故意把时间往早写是为了防止这篇没什么营养的文章老挂在主页第一篇晃眼。</p>
-<blockquote>
-<p>为什么域名到期了就关闭这些博客，只是域名到期而已，服务器还是由Github Pages提供的，到时候直接挂在xxx.github.io不使用自定义域名就行了。</p>
-</blockquote>
-<p>第一个原因是我代码写的太烂，因此转移起来有点麻烦，第二个是因为我懒，反正不更新了，也不想瞎挂着浪费资源。但感谢建议的提出者，这是完全可行的，如果有一天我真的还想继续写下去，或者仅仅是不那么厌恶这件事本身，我也会这样做的。</p>
-<blockquote>
-<p>那此站还接受投稿吗？已经预定的投稿和已投但需要更新的还能继续投吗？</p>
-</blockquote>
-<p>闭站前完全没有问题，随便投，但请必须了解到闭站后您的投稿会连同本站一起消失，如果觉得这也没有关系那请尽管发给我。</p>
-<h2>心路历程</h2>
-<p>作为一个关站都要叽叽歪歪水一篇文章的attention whore，俗称戏精，本文的主要目标当然就是解释我为什么要关站。</p>
-<h3>为什么建站</h3>
-<p>虽然在其他（政治正确的）场合我说过这是为了与感兴趣的同行们交流知识，经验和技术，但实际原因是为了出国申请&amp;找工作时填材料用的，假装自己是对技术充满热情的，自我驱动的学习者，另外还可以Github恶意刷绿装成很频繁写代码很厉害的样子。为了好听所说的分享和记录的功能我不敢说完全没有，但后面功利的原因才是最主要的部分。说清楚了这个原因，也等于部分地回答了为什么我要废弃那个博客，无外乎实际上一个水文博客并不能对出国&amp;找工作提供任何有益的帮助，事实上我自己是什么样的水平就放在那，做出来的包装又能有什么质量，明眼人一看就知道怎么回事了，也就两年前的我天真到如此自欺欺人，事实上我这样的人既没有能力找到工作也没能力出国，I deserve it :P</p>
-<h3>扬州计划里的文章都是什么内容？什么质量？</h3>
-<p>作为作者自我评价的话，我觉得基本都是拾人牙慧的东西。我对干货的定义至少是original并且helpful的，大部分文章能沾到helpful的边就不错了，列出来的ref你可以轻易看到都是上个世纪的出版物，不少也是利用部分人无法轻易接触/搜索到墙外的文献材料这种信息不对称，再蹭几个政治敏感or烂梗的热点，写出来看似有趣的东西。我作为作者深知这种刷水文的套路，每次写的时候我都会觉得自己非常讨厌，但还是硬着头皮在写，我一边写一边质问自己为什么这么是这么恶心的人。好在现在决定不再写了，可以从这种感觉中解脱出来。</p>
-<p>所以当我在前面提醒有需要的读者尽快备份的时候，我觉得说出这种话简直是侮辱读者。但毕竟有“被废为宝”“垃圾回收”这种词在，垃圾也能合理利用，辩证，批判地去读它们的话也可以得到收获，择其善者从之就可以了。如果真的想快速学习我在文章中提到的知识和技术，年代比较远的请直接跟着ref找<strong>经典文献</strong>（论文&amp;教材&amp;名校课件&amp;讲义）系统通读，流行技术请找相关<strong>文档和博客</strong>，<strong>最主要的是要自己根据需求上手写</strong>，不要迷信我给出的轻佻的，碎片化的文章，沉迷垃圾害人害己。</p>
-<h3>写作收获</h3>
-<p>没有，全白费了。</p>
-<p>开玩笑的，我通过写作了解到了我自己是对于技术既缺乏热情也没有能力的人。正如爱迪生试验出了不适合做灯丝的材料，也可以笑嘻嘻说这是收获，我作为一个乐观的人，可以说收获挺大的，宣布当我决定放弃的时候，我感到了前所未有的轻松和愉快，这是我从未有过的奇妙的愉悦。</p>
-<h3>写作体验</h3>
-<p>我认为技术博客这种东西，应该是基础扎实，对技术的理解深刻的人自然而然地，由内而外地写出一些感悟和经验分享给同道中人。这种写作本身就应该是愉悦的，流畅的过程，所谓下笔如有神，写出来的文字可以让很多人受益，自然的因此得到了证明自己技术水平的机会，得到了关注，也得到了读者在文章内容上的反馈和讨论，借此在改进自己的技术，产出更有价值的文章。博客本来就应该是作者技术的副产物，而不是目的，通过文章的交流再推动技术的提升，整个过程应该是愉快的良性循环。</p>
-<p>而我在扬州计划上的做法非常扭曲。正如我之前所提到的，我在学术和技术上没什么水准，也没有什么热爱，写这些东西完全是本末倒置地在吸引关注，急功近利地指望它能给我带来机会和名声。不懂技术也不爱技术的人自以为在写技术博客给技术爱好者看，这件事的荒诞程度，不亚于本该由工人阶级领导的国家选了一个资本家作为最高领导人指望他能为广大人民的利益代言。</p>
-<p>如果我只是一个不懂技术但擅长写作的文字工作者，我也可以学习咪蒙轻松写出受人欢迎的文章。但可惜我不是，我即使故作轻松地去写也非常费力，为了不出错就需要几乎逐字去查资料贴引用，代码又全要按照这种刻意流行的文风自己写一遍并保证可以运行，涉及证明部分也要想着怎样找到已有证明以外更简单方便理解的证法，文章插图也几乎全要自己用LaTeX或者Matplotlib画出来。编程debug证明画图这些事对真正的技术工作者来说不是大事，但这些东西给我的压力几乎要将我压垮。仅论文字写作，我也没有好的表达能力和语言组织技巧（GRE AW惨不忍睹），写完的东西放上去也是无人问津，这对成熟的大佬来说没什么事，但我这样的本质attention whore因此感到非常焦虑。所以可以说在扬州计划上的写作是非常痛苦的恶性循环。</p>
-<p>但并不从一开始就是这样，至少一年前当我对未来还抱有虚假的希望时，我还没有意识到自己是这样的人，所以这种原地踏步的循环才能进行下去。换言之，我意识到自己的无能也至少一年了，也早就察觉到我的写作是何等的病态，却还在这么做。原因也很简单，我本来生活也已经一团糟了，这么做只是为了逃避。最终的结果只是让我自己陷得更深。</p>
-<p>用比较常见的社交网络状态去比喻我的行为的话，很像一个长得本来就难看的女生（不用像了我在外貌方面本来就是:P），为了得到认同和关注，用自以为P的好看的照片在ins微博知乎把自己包装成女神，吸引了一小部分人。她实际上不但不漂亮，而且也不善良不爱粉丝，只是虚荣。而这一切并不能给她带来满足，整个过程时时刻刻害怕人设崩塌装的非常辛苦，即使得到了结果也让她觉得焦虑，因为现实中的她对着镜子便立刻回被打回原形。没错，这就是我。</p>
-<h3>MOVE ON</h3>
-<p>是的，这就是我。痛苦的根源是我在理智上可以清楚地认识到我就是这么恶心的人，但我脆弱的自尊心却让我拒绝承认我是这样的人。夜夜在浅色床单上的自我审问把我逼到崩溃边缘，没有人能把我救出来。除了我自己，要么zs要么精神zs。</p>
-<p>所以打破这种恶性循环的方法只能是自救。我深知成年人的生活中没有容易二字，除了我还有万千人在从事自己不喜欢的辛苦的工作甚至连工作都算不上的东西，但像我这样痛苦地辛苦地写垃圾文章害人害己的应该不多吧。</p>
-<p>正如知乎有人在我评论区所说，我只会抖机灵水回答，没法提供有价值的回答，我之所以愤怒拉黑他，他因为他说的一点都没有错，我只能用消极自由“关你P事”来捍卫我没干货的自由。</p>
-<p>这就是我关站的理由，打破“我有知识我有技术”的幻觉，不再追求水技术博客成功学，不再逃避我其实根本什么都不会的事实。正如我退出了对我进行虚假赞美和崇拜的群，因为每多待一分钟我都觉得我如此恶心。</p>
-<p>作为对关注痴迷的人，我经常翻看百度统计和google analyze的访问统计，无论水文本身还是关站，我都对这些访客感到愧疚。特别是访客量较大的浙江大学，中国科学技术大学，南京大学的访问IP，实在承蒙错爱。我认为这些学校的在校生们，只要好好听自己学校的课，绝对比在扬州计划看我扯淡有用多了。</p>
-<p>对于访客们，我就再好为人师一次，比起阅读的文章，更有效的学习方法无外乎</p>
-<ol>
-<li>在校生好好听课，没这条件或者有余力的去刷名校的网课。</li>
-<li>系统性地去读教材和paper</li>
-<li>会fq的用google，不会的用bing，很轻松可以找到好的slide&amp;note</li>
-</ol>
-<p>这些也是我文章内容骨架的大部分来源，能直接尝到鲜桃没必要来啃我写的二手烂杏。</p>
-<p>感谢你们的支持和关注，加油，除了我，你们每个人都有光明的未来。</p>
-
+        
+          <p class="article-more-link">
+            <a class="btn btn-primary" href="/Introduction/broken-project-yangzhou/#more">Read More</a>
+          </p>
+        
       
     </div>
 
     
-      
-
-    
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/Introduction/broken-project-yangzhou/" data-id="cjuh9jx84004mfww3g0xpi4oa" class="article-share-link">
+      <a data-url="notebook.xyli.me/Introduction/broken-project-yangzhou/" data-id="cjuh9y1t5004ojcw3j9rko2uh" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!--  -->
