@@ -5,17 +5,17 @@
   
   <title>LeetCode Weekly Contest 108 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/contest/weekly-contest-108">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-108 &amp;lt;!-- more --&amp;gt; Unique Email Addresses 原题地址 https://leetcode.com/contest/weekly-contest-108/problems">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode Weekly Contest 108">
 <meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-108/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-108">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-108 &amp;lt;!-- more --&amp;gt; Unique Email Addresses 原题地址 https://leetcode.com/contest/weekly-contest-108/problems/unique-email-addresses/  Every email consists o">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-10-28T11:35:36.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 108">
-<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-108">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-108 &amp;lt;!-- more --&amp;gt; Unique Email Addresses 原题地址 https://leetcode.com/contest/weekly-contest-108/problems/unique-email-addresses/  Every email consists o">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -137,74 +137,124 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/contest/weekly-contest-108" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-108</a></p>
-<a id="more"></a>
-<h2 id="Unique-Email-Addresses"><a href="#Unique-Email-Addresses" class="headerlink" title="Unique Email Addresses"></a>Unique Email Addresses</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-108/problems/unique-email-addresses/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-108/problems/unique-email-addresses/</a></p>
+        <p>https://leetcode.com/contest/weekly-contest-108</p>
+<p>&lt;!-- more --&gt;</p>
+<h2>Unique Email Addresses</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-108/problems/unique-email-addresses/</p>
 <blockquote>
 <p>Every email consists of a local name and a domain name, separated by the @ sign.</p>
+</blockquote>
+<blockquote>
 <p>For example, in <code>alice@leetcode.com</code>, <code>alice</code>is the local name, and <code>leetcode.com</code> is the domain name.</p>
-<p>Besides lowercase letters, these emails may contain <code>&#39;.&#39;</code>s or <code>&#39;+&#39;</code>s.</p>
-<p>If you add periods (<code>&#39;.&#39;</code>) between some characters in the <strong>local name</strong> part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, <code>&quot;alice.z@leetcode.com&quot;</code> and <code>&quot;alicez@leetcode.com&quot;</code> forward to the same email address.  (Note that this rule does not apply for domain names.)</p>
-<p>If you add a plus (<code>&#39;+&#39;</code>) in the <strong>local name</strong>, everything after the first plus sign will be <strong>ignored</strong>. This allows certain emails to be filtered, for example <code>m.y+name@email.com</code> will be forwarded to <code>my@email.com</code>.  (Again, this rule does not apply for domain names.)</p>
+</blockquote>
+<blockquote>
+<p>Besides lowercase letters, these emails may contain <code>'.'</code>s or <code>'+'</code>s.</p>
+</blockquote>
+<blockquote>
+<p>If you add periods (<code>'.'</code>) between some characters in the <strong>local name</strong> part of an email address, mail sent there will be forwarded to the same address without dots in the local name.  For example, <code>&quot;alice.z@leetcode.com&quot;</code> and <code>&quot;alicez@leetcode.com&quot;</code> forward to the same email address.  (Note that this rule does not apply for domain names.)</p>
+</blockquote>
+<blockquote>
+<p>If you add a plus (<code>'+'</code>) in the <strong>local name</strong>, everything after the first plus sign will be <strong>ignored</strong>. This allows certain emails to be filtered, for example <code>m.y+name@email.com</code> will be forwarded to <code>my@email.com</code>.  (Again, this rule does not apply for domain names.)</p>
+</blockquote>
+<blockquote>
 <p>It is possible to use both of these rules at the same time.</p>
+</blockquote>
+<blockquote>
 <p>Given a list of <code>emails</code>, we send one email to each address in the list.  How many different addresses actually receive mails?</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;test.email+alex@leetcode.com&quot;,&quot;test.e.mail+bob.cathy@leetcode.com&quot;,&quot;testemail+david@lee.tcode.com&quot;]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: &quot;testemail@leetcode.com&quot; and &quot;testemail@lee.tcode.com&quot; actually receive mails</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>1 &lt;= emails[i].length &lt;= 100</code></li>
 <li><code>1 &lt;= emails.length &lt;= 100</code></li>
-<li>Each <code>emails[i]</code> contains exactly one <code>&#39;@&#39;</code> character.</li>
+<li>Each <code>emails[i]</code> contains exactly one <code>'@'</code> character.</li>
 </ol>
-</blockquote>
-<p>按照规则去掉所有邮箱地址local name的<code>&#39;.&#39;</code>和<code>&#39;+&#39;</code>后面的内容，然后统计有多少不同的地址</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numUniqueEmails</span><span class="params">(self, emails)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type emails: List[str]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        email_list = set()</span><br><span class="line">        <span class="keyword">for</span> email <span class="keyword">in</span> emails:</span><br><span class="line">            line = email.split(<span class="string">'@'</span>)</span><br><span class="line">            local, domain = str(line[<span class="number">0</span>]), line[<span class="number">1</span>]</span><br><span class="line">            local = local.translate(string.maketrans(<span class="string">''</span>, <span class="string">''</span>), <span class="string">'.'</span>)</span><br><span class="line">            local = local.split(<span class="string">'+'</span>)[<span class="number">0</span>]</span><br><span class="line">            email_list.add(local + <span class="string">'@'</span> + domain)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> len(email_list)</span><br></pre></td></tr></table></figure>
-<h2 id="Binary-Subarrays-With-Sum"><a href="#Binary-Subarrays-With-Sum" class="headerlink" title="Binary Subarrays With Sum"></a>Binary Subarrays With Sum</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-108/problems/binary-subarrays-with-sum/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-108/problems/binary-subarrays-with-sum/</a></p>
+<p>按照规则去掉所有邮箱地址local name的<code>'.'</code>和<code>'+'</code>后面的内容，然后统计有多少不同的地址</p>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numUniqueEmails</span><span class="params">(self, emails)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type emails: List[str]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        email_list = set()</span><br><span class="line">        <span class="keyword">for</span> email <span class="keyword">in</span> emails:</span><br><span class="line">            line = email.split(<span class="string">'@'</span>)</span><br><span class="line">            local, domain = str(line[<span class="number">0</span>]), line[<span class="number">1</span>]</span><br><span class="line">            local = local.translate(string.maketrans(<span class="string">''</span>, <span class="string">''</span>), <span class="string">'.'</span>)</span><br><span class="line">            local = local.split(<span class="string">'+'</span>)[<span class="number">0</span>]</span><br><span class="line">            email_list.add(local + <span class="string">'@'</span> + domain)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> len(email_list)</span><br></pre></td></tr></table></figure></p>
+<h2>Binary Subarrays With Sum</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-108/problems/binary-subarrays-with-sum/</p>
 <blockquote>
 <p>In an array <code>A</code> of <code>0</code>s and <code>1</code>s, how many <strong>non-empty</strong> subarrays have sum <code>S</code>?</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1,0,1,0,1], S = 2</span><br><span class="line">Output: 4</span><br><span class="line">Explanation:</span><br><span class="line">The 4 subarrays are bolded below:</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1,0,1,0,1], S = 2</span><br><span class="line">Output: 4</span><br><span class="line">Explanation:</span><br><span class="line">The 4 subarrays are bolded below:</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br><span class="line">[1,0,1,0,1]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>A.length &lt;= 30000</code></li>
 <li><code>0 &lt;= S &lt;= A.length</code></li>
 <li><code>A[i]</code> is either <code>0</code> or <code>1</code>.</li>
 </ol>
-</blockquote>
 <p>这个blog暂时不支持代码块内字符的加粗，所有这里没有体现，example 1的4个子数组分别为<code>[1,0,1],[1,0,1,0],[0,1,0,1],[1,0,1]</code>，都是<strong>连续</strong>的。</p>
 <p>如果某个子数组满足和为<code>S</code>，加上数组左边任意长度的连续0或数组右边任意长度的连续0，和仍然为<code>S</code>。因此可以用<code>ones</code>按顺序统计所有<code>1</code>出现的位置，从<code>ones[i]</code>到<code>ones[i+S-1]</code>位置作为子数组下标时满足和为<code>S</code>，<code>ones[i-1]</code>与<code>ones[i]</code>之间的<code>0</code>可以从右到左放入<code>ones[i]-ones[i-1]</code>种连续子数组，同理<code>ones[i+S-1]</code>与<code>ones[i+S]</code>之间可以放入<code>ones[i+S]-ones[i+S-1]</code>种。</p>
 <p>当<code>S==0</code>时这样的计数不可行，会导致重复计数。此时只需要把所有全为0的连续子数组找到就可以了，假设两个<code>1</code>之间的一共有<code>n</code>个<code>0</code>，那么相当于从<code>0-n</code>这<code>n+1</code>个数中选出两个不同的数作为切片的两端，一共有<code>(n+1)*n/2</code>种选法。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numSubarraysWithSum</span><span class="params">(self, A, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type S: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ones = [<span class="number">-1</span>] + [i <span class="keyword">for</span> (i, b) <span class="keyword">in</span> enumerate(A) <span class="keyword">if</span> b] + [len(A)]</span><br><span class="line">        <span class="keyword">if</span> len(ones) - <span class="number">2</span> &lt; S:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> S == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> sum([(ones[i] - ones[i - <span class="number">1</span>]) * ((ones[i] - ones[i - <span class="number">1</span>]) - <span class="number">1</span>) / <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(ones))])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(ones) - S):</span><br><span class="line">            res += (ones[i] - ones[i - <span class="number">1</span>]) * (ones[i + S] - ones[i + S - <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h2 id="Minimum-Falling-Path-Sum"><a href="#Minimum-Falling-Path-Sum" class="headerlink" title="Minimum Falling Path Sum"></a>Minimum Falling Path Sum</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-108/problems/minimum-falling-path-sum/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-108/problems/minimum-falling-path-sum/</a></p>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numSubarraysWithSum</span><span class="params">(self, A, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[int]</span></span><br><span class="line"><span class="string">        :type S: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        ones = [<span class="number">-1</span>] + [i <span class="keyword">for</span> (i, b) <span class="keyword">in</span> enumerate(A) <span class="keyword">if</span> b] + [len(A)]</span><br><span class="line">        <span class="keyword">if</span> len(ones) - <span class="number">2</span> &lt; S:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> S == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> sum([(ones[i] - ones[i - <span class="number">1</span>]) * ((ones[i] - ones[i - <span class="number">1</span>]) - <span class="number">1</span>) / <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(ones))])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(ones) - S):</span><br><span class="line">            res += (ones[i] - ones[i - <span class="number">1</span>]) * (ones[i + S] - ones[i + S - <span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
+<h2>Minimum Falling Path Sum</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-108/problems/minimum-falling-path-sum/</p>
 <blockquote>
 <p>Given a <strong>square</strong> array of integers <code>A</code>, we want the <strong>minimum</strong> sum of a <em>falling path</em> through <code>A</code>.</p>
-<p>A falling path starts at any element in the first row, and chooses one element from each row.  The next row’s choice must be in a column that is different from the previous row’s column by at most one.</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">Output: 12</span><br><span class="line">Explanation:</span><br><span class="line">The possible falling paths are:</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>A falling path starts at any element in the first row, and chooses one element from each row.  The next row's choice must be in a column that is different from the previous row's column by at most one.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">Output: 12</span><br><span class="line">Explanation:</span><br><span class="line">The possible falling paths are:</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <ul>
 <li><code>[1,4,7], [1,4,8], [1,5,7], [1,5,8], [1,5,9]</code></li>
-<li><code>[2,4,7], [2,4,8], [2,5,7], [2,5,8], [2,5,9], [2,6,8], [2,6,9]</code></li>
-<li><code>[3,5,7], [3,5,8], [3,5,9], [3,6,8], [3,6,9]</code><br>The falling path with the smallest sum is <code>[1,4,7]</code>, so the answer is <code>12</code>.</li>
 </ul>
+</blockquote>
+<ul>
+<li><code>[2,4,7], [2,4,8], [2,5,7], [2,5,8], [2,5,9], [2,6,8], [2,6,9]</code></li>
+<li><code>[3,5,7], [3,5,8], [3,5,9], [3,6,8], [3,6,9]</code>
+The falling path with the smallest sum is <code>[1,4,7]</code>, so the answer is <code>12</code>.</li>
+</ul>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>1 &lt;= A.length == A[0].length &lt;= 100</code></li>
 <li><code>-100 &lt;= A[i][j] &lt;= 100</code></li>
 </ol>
-</blockquote>
 <p>直接用动态规划做就够了。<code>dp[i][j]</code>表示到<code>A[i][j]</code>位置为终点的falling path的最小和，那么显然有<code>dp[i][j]=min(dp[i][j-1],dp[i][j],dp[i][j+1])+A[i][j]</code>，<code>dp</code>首行按照<code>A</code>的首行初始化。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minFallingPathSum</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp = list(A)</span><br><span class="line">        n = len(A)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                dp[i][j] += min(dp[i - <span class="number">1</span>][max(<span class="number">0</span>, j - <span class="number">1</span>):min(n, j + <span class="number">2</span>)])</span><br><span class="line">        <span class="keyword">return</span> min(dp[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure>
-<h2 id="Beautiful-Array"><a href="#Beautiful-Array" class="headerlink" title="Beautiful Array"></a>Beautiful Array</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-108/problems/beautiful-array/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-108/problems/beautiful-array/</a></p>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minFallingPathSum</span><span class="params">(self, A)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type A: List[List[int]]</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        dp = list(A)</span><br><span class="line">        n = len(A)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                dp[i][j] += min(dp[i - <span class="number">1</span>][max(<span class="number">0</span>, j - <span class="number">1</span>):min(n, j + <span class="number">2</span>)])</span><br><span class="line">        <span class="keyword">return</span> min(dp[<span class="number">-1</span>])</span><br></pre></td></tr></table></figure></p>
+<h2>Beautiful Array</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-108/problems/beautiful-array/</p>
 <blockquote>
 <p>For some fixed <code>N</code>, an array <code>A</code> is beautiful if it is a permutation of the integers <code>1, 2, ..., N</code>, such that:</p>
+</blockquote>
+<blockquote>
 <p>For every <code>i &lt; j</code>, there is no k with <code>i &lt; k &lt; j</code> such that <code>A[k] * 2 = A[i] + A[j]</code>.</p>
+</blockquote>
+<blockquote>
 <p>Given N, return any beautiful array A.  (It is guaranteed that one exists.)</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 4</span><br><span class="line">Output: [2,1,4,3]</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 5</span><br><span class="line">Output: [3,1,2,5,4]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 4</span><br><span class="line">Output: [2,1,4,3]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 5</span><br><span class="line">Output: [3,1,2,5,4]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>1 &lt;= N &lt;= 1000</code></li>
 </ol>
-</blockquote>
 <p>如果一个数组满足beautiful array的性质，那么对数组中所有元素作线性的变换（同乘或者同加一个常数）时，依然会满足beautiful array的性质。当<code>A[i]</code>为偶数而<code>A[j]</code>为奇数时，中间不存在元素等于<code>(A[i] + A[j])/2</code>，因此也不用检查奇数与偶数之间的元素是否会破坏性质。那么只需要把两个beautiful array分别变换为全为奇数和全为偶数的数组连接起来就可以得到beautiful array，为了保证新的数组是一个permutation，需要较长的那个数组变换为奇数。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">beautifulArray</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> N == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>]</span><br><span class="line">        evens = self.beautifulArray(N / <span class="number">2</span>)</span><br><span class="line">        odds = self.beautifulArray(N - N / <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> [i * <span class="number">2</span> - <span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> odds] + [i * <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> evens]</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">beautifulArray</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: List[int]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> N == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">1</span>]</span><br><span class="line">        evens = self.beautifulArray(N / <span class="number">2</span>)</span><br><span class="line">        odds = self.beautifulArray(N - N / <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> [i * <span class="number">2</span> - <span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> odds] + [i * <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> evens]</span><br></pre></td></tr></table></figure></p>
 <p>时间复杂度<code>o(nlogn)</code>，也可以通过其他分治的写法降低到<code>o(n)</code></p>
 
       
@@ -216,7 +266,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-108/" data-id="cjuh6jnwp000m0sw3q80fz7bt" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-108/" data-id="cjuh9fx3q000ru0w3pqdhpn6r" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -285,7 +335,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Unique-Email-Addresses"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Unique Email Addresses</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Binary-Subarrays-With-Sum"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Binary Subarrays With Sum</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Minimum-Falling-Path-Sum"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Minimum Falling Path Sum</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Beautiful-Array"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Beautiful Array</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Unique Email Addresses</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Binary Subarrays With Sum</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Minimum Falling Path Sum</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Beautiful Array</span></a></li></ol>
   </div>
 
 

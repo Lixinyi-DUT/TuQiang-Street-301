@@ -5,17 +5,17 @@
   
   <title>LeetCode Weekly Contest 83 | 笔记仓库</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="https://leetcode.com/contest/weekly-contest-83">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-83 &amp;lt;!-- more --&amp;gt; Positions of Large Groups 原题地址 https://leetcode.com/contest/weekly-contest-83/problem">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode Weekly Contest 83">
 <meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-83/index.html">
 <meta property="og:site_name" content="笔记仓库">
-<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-83">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-83 &amp;lt;!-- more --&amp;gt; Positions of Large Groups 原题地址 https://leetcode.com/contest/weekly-contest-83/problems/positions-of-large-groups/  In a string S of l">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-05-09T14:34:19.300Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode Weekly Contest 83">
-<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-83">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-83 &amp;lt;!-- more --&amp;gt; Positions of Large Groups 原题地址 https://leetcode.com/contest/weekly-contest-83/problems/positions-of-large-groups/  In a string S of l">
 <meta name="twitter:creator" content="@yangzhou301">
   
     <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
@@ -137,89 +137,181 @@ var _hmt = _hmt || [];
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://leetcode.com/contest/weekly-contest-83" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-83</a></p>
-<a id="more"></a>
-<h2 id="Positions-of-Large-Groups"><a href="#Positions-of-Large-Groups" class="headerlink" title="Positions of Large Groups"></a>Positions of Large Groups</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-83/problems/positions-of-large-groups/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-83/problems/positions-of-large-groups/</a></p>
+        <p>https://leetcode.com/contest/weekly-contest-83</p>
+<p>&lt;!-- more --&gt;</p>
+<h2>Positions of Large Groups</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-83/problems/positions-of-large-groups/</p>
 <blockquote>
 <p>In a string <code>S</code> of lowercase letters, these letters form consecutive groups of the same character.</p>
+</blockquote>
+<blockquote>
 <p>For example, a string like <code>S = &quot;abbxxxxzyy&quot;</code> has the groups <code>&quot;a&quot;</code>, <code>&quot;bb&quot;</code>, <code>&quot;xxxx&quot;</code>, <code>&quot;z&quot;</code> and <code>&quot;yy&quot;</code>.</p>
+</blockquote>
+<blockquote>
 <p>Call a group large if it has 3 or more characters.  We would like the starting and ending positions of every large group.</p>
+</blockquote>
+<blockquote>
 <p>The final answer should be in lexicographic order.</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abbxxxxzzy&quot;</span><br><span class="line">Output: [[3,6]]</span><br><span class="line">Explanation: &quot;xxxx&quot; is the single large group with starting  3 and ending positions 6.</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abc&quot;</span><br><span class="line">Output: []</span><br><span class="line">Explanation: We have &quot;a&quot;,&quot;b&quot; and &quot;c&quot; but no large group.</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abcdddeeeeaabbbcd&quot;</span><br><span class="line">Output: [[3,5],[6,9],[12,14]]</span><br></pre></td></tr></table></figure></p>
-<p><strong>Note</strong>:  </p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abbxxxxzzy&quot;</span><br><span class="line">Output: [[3,6]]</span><br><span class="line">Explanation: &quot;xxxx&quot; is the single large group with starting  3 and ending positions 6.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abc&quot;</span><br><span class="line">Output: []</span><br><span class="line">Explanation: We have &quot;a&quot;,&quot;b&quot; and &quot;c&quot; but no large group.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 3</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;abcdddeeeeaabbbcd&quot;</span><br><span class="line">Output: [[3,5],[6,9],[12,14]]</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>1 &lt;= S.length &lt;= 1000</code></li>
 </ol>
-</blockquote>
 <p>老题了，这种线性扫描一遍找指定子串的问题不知道写过多少次了。可能唯一值得注意的就是最后一个子串的最后一个字符是不是<code>len(S)-1</code>。然后就随便写写吧。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largeGroupPositions</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        interval=[]</span><br><span class="line">        lo=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            <span class="keyword">if</span> c!=S[lo]:</span><br><span class="line">                <span class="keyword">if</span> i-lo<span class="number">-1</span>&gt;<span class="number">1</span>:</span><br><span class="line">                    interval.append([lo,i<span class="number">-1</span>])</span><br><span class="line">                lo=i</span><br><span class="line">        <span class="keyword">if</span> len(S)<span class="number">-1</span>-lo&gt;<span class="number">1</span>:</span><br><span class="line">            interval.append([lo,len(S)<span class="number">-1</span>])</span><br><span class="line">        <span class="keyword">return</span> interval</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">largeGroupPositions</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: List[List[int]]</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        interval=[]</span><br><span class="line">        lo=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            <span class="keyword">if</span> c!=S[lo]:</span><br><span class="line">                <span class="keyword">if</span> i-lo<span class="number">-1</span>&gt;<span class="number">1</span>:</span><br><span class="line">                    interval.append([lo,i<span class="number">-1</span>])</span><br><span class="line">                lo=i</span><br><span class="line">        <span class="keyword">if</span> len(S)<span class="number">-1</span>-lo&gt;<span class="number">1</span>:</span><br><span class="line">            interval.append([lo,len(S)<span class="number">-1</span>])</span><br><span class="line">        <span class="keyword">return</span> interval</span><br></pre></td></tr></table></figure></p>
 <p>线性扫描的时间和空间复杂度都为$o(n)$</p>
-<h2 id="Masking-Personal-Information"><a href="#Masking-Personal-Information" class="headerlink" title="Masking Personal Information"></a>Masking Personal Information</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-83/problems/masking-personal-information/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-83/problems/masking-personal-information/</a></p>
+<h2>Masking Personal Information</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-83/problems/masking-personal-information/</p>
 <blockquote>
 <p>We are given a personal information string <code>S</code>, which may represent either <strong>an email address</strong> or <strong>a phone number</strong>.</p>
+</blockquote>
+<blockquote>
 <p>We would like to mask this personal information according to the following rules:</p>
+</blockquote>
+<blockquote>
 <p><strong>1. Email address</strong>:</p>
+</blockquote>
+<blockquote>
 <p>We define a <strong>name</strong> to be a string of <code>length ≥ 2</code> consisting of only lowercase letters <code>a-z</code> or uppercase letters <code>A-Z</code>.</p>
-<p>An email address starts with a name, followed by the symbol <code>&#39;@&#39;</code>, followed by a name, followed by the dot <code>&#39;.&#39;</code> and followed by a name.</p>
+</blockquote>
+<blockquote>
+<p>An email address starts with a name, followed by the symbol <code>'@'</code>, followed by a name, followed by the dot <code>'.'</code> and followed by a name.</p>
+</blockquote>
+<blockquote>
 <p>All email addresses are guaranteed to be valid and in the format of <code>&quot;name1@name2.name3&quot;</code>.</p>
-<p>To mask an email, <strong>all names must be converted to lowercase</strong> and <strong>all letters between the first and last letter of the first name</strong> must be replaced by 5 asterisks <code>&#39;*&#39;</code>.</p>
+</blockquote>
+<blockquote>
+<p>To mask an email, <strong>all names must be converted to lowercase</strong> and <strong>all letters between the first and last letter of the first name</strong> must be replaced by 5 asterisks <code>'*'</code>.</p>
+</blockquote>
+<blockquote>
 <p><strong>2. Phone number</strong>:</p>
-<p>A phone number is a string consisting of only the digits <code>0-9</code> or the characters from the set <code>{&#39;+&#39;, &#39;-&#39;, &#39;(&#39;, &#39;)&#39;, &#39; &#39;}</code>. You may assume a phone number contains 10 to 13 digits.</p>
+</blockquote>
+<blockquote>
+<p>A phone number is a string consisting of only the digits <code>0-9</code> or the characters from the set <code>{'+', '-', '(', ')', ' '}</code>. You may assume a phone number contains 10 to 13 digits.</p>
+</blockquote>
+<blockquote>
 <p>The last 10 digits make up the local number, while the digits before those make up the country code. Note that the country code is optional. We want to expose only the last 4 digits and mask all other digits.</p>
+</blockquote>
+<blockquote>
 <p>The local number should be formatted and masked as <code>&quot;***-***-1111&quot;</code>, where 1 represents the exposed digits.</p>
-<p>To mask a phone number with country code like <code>&quot;+111 111 111 1111&quot;</code>, we write it in the form <code>&quot;+***-***-***-1111&quot;</code>.  The <code>&#39;+&#39;</code> sign and the first <code>&#39;-&#39;</code> sign before the local number should only exist if there is a country code.  For example, a 12 digit phone number mask should start with <code>&quot;+**-&quot;</code>.</p>
+</blockquote>
+<blockquote>
+<p>To mask a phone number with country code like <code>&quot;+111 111 111 1111&quot;</code>, we write it in the form <code>&quot;+***-***-***-1111&quot;</code>.  The <code>'+'</code> sign and the first <code>'-'</code> sign before the local number should only exist if there is a country code.  For example, a 12 digit phone number mask should start with <code>&quot;+**-&quot;</code>.</p>
+</blockquote>
+<blockquote>
 <p>Note that extraneous characters like <code>&quot;(&quot;, &quot;)&quot;, &quot; &quot;</code>, as well as extra dashes or plus signs not part of the above formatting scheme should be removed.</p>
-<p>Return the correct “mask” of the information provided.</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;LeetCode@LeetCode.com&quot;</span><br><span class="line">Output: &quot;l*****e@leetcode.com&quot;</span><br><span class="line">Explanation: All names are converted to lowercase, and the letters between the</span><br><span class="line">             first and last letter of the first name is replaced by 5 asterisks.</span><br><span class="line">             Therefore, &quot;leetcode&quot; -&gt; &quot;l*****e&quot;.</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;AB@qq.com&quot;</span><br><span class="line">Output: &quot;a*****b@qq.com&quot;</span><br><span class="line">Explanation: There must be 5 asterisks between the first and last letter</span><br><span class="line">             of the first name &quot;ab&quot;. Therefore, &quot;ab&quot; -&gt; &quot;a*****b&quot;.</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;1(234)567-890&quot;</span><br><span class="line">Output: &quot;***-***-7890&quot;</span><br><span class="line">Explanation: 10 digits in the phone number, which means all digits make up the local number.</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;86-(10)12345678&quot;</span><br><span class="line">Output: &quot;+**-***-***-5678&quot;</span><br><span class="line">Explanation: 12 digits, 2 digits for country code and 10 digits for local number.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>Return the correct &quot;mask&quot; of the information provided.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;LeetCode@LeetCode.com&quot;</span><br><span class="line">Output: &quot;l*****e@leetcode.com&quot;</span><br><span class="line">Explanation: All names are converted to lowercase, and the letters between the</span><br><span class="line">             first and last letter of the first name is replaced by 5 asterisks.</span><br><span class="line">             Therefore, &quot;leetcode&quot; -&gt; &quot;l*****e&quot;.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;AB@qq.com&quot;</span><br><span class="line">Output: &quot;a*****b@qq.com&quot;</span><br><span class="line">Explanation: There must be 5 asterisks between the first and last letter</span><br><span class="line">             of the first name &quot;ab&quot;. Therefore, &quot;ab&quot; -&gt; &quot;a*****b&quot;.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 3</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;1(234)567-890&quot;</span><br><span class="line">Output: &quot;***-***-7890&quot;</span><br><span class="line">Explanation: 10 digits in the phone number, which means all digits make up the local number.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 4</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;86-(10)12345678&quot;</span><br><span class="line">Output: &quot;+**-***-***-5678&quot;</span><br><span class="line">Explanation: 12 digits, 2 digits for country code and 10 digits for local number.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Notes</strong>:</p>
+</blockquote>
 <ol>
 <li><code>S.length &lt;= 40</code>.</li>
 <li>Emails have length at least 8.</li>
 <li>Phone numbers have length at least 10.</li>
 </ol>
-</blockquote>
 <p>不涉及任何算法，只是处理不规范（其实还算非常规范）数据形式的“脏”活。邮箱地址容易就不说了，电话号码注意主体只有10位，多下来的就是区号，至于原数据是怎么划分电话号码怎么用括号怎么用分隔符的关我什么事，把<code>S</code>的所有数字提取出来然后按照位数处理，保留最后四位就完成了。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maskPII</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'@'</span> <span class="keyword">in</span> S:</span><br><span class="line">            parts=S.lower().split(<span class="string">'@'</span>)</span><br><span class="line">            <span class="keyword">return</span> parts[<span class="number">0</span>][<span class="number">0</span>]+<span class="string">'*****'</span>+parts[<span class="number">0</span>][<span class="number">-1</span>]+<span class="string">'@'</span>+parts[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            nums=filter(<span class="keyword">lambda</span> c:c.isdigit(),S)</span><br><span class="line">            <span class="keyword">if</span> len(nums)&gt;<span class="number">10</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">'+'</span>+<span class="string">'*'</span>*(len(nums)<span class="number">-10</span>)+<span class="string">'-***-***-'</span>+nums[<span class="number">-4</span>:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">'***-***-'</span>+nums[<span class="number">-4</span>:]</span><br></pre></td></tr></table></figure>
-<h2 id="Consecutive-Numbers-Sum"><a href="#Consecutive-Numbers-Sum" class="headerlink" title="Consecutive Numbers Sum"></a>Consecutive Numbers Sum</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-83/problems/consecutive-numbers-sum/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-83/problems/consecutive-numbers-sum/</a></p>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maskPII</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: str</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> <span class="string">'@'</span> <span class="keyword">in</span> S:</span><br><span class="line">            parts=S.lower().split(<span class="string">'@'</span>)</span><br><span class="line">            <span class="keyword">return</span> parts[<span class="number">0</span>][<span class="number">0</span>]+<span class="string">'*****'</span>+parts[<span class="number">0</span>][<span class="number">-1</span>]+<span class="string">'@'</span>+parts[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            nums=filter(<span class="keyword">lambda</span> c:c.isdigit(),S)</span><br><span class="line">            <span class="keyword">if</span> len(nums)&gt;<span class="number">10</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">'+'</span>+<span class="string">'*'</span>*(len(nums)<span class="number">-10</span>)+<span class="string">'-***-***-'</span>+nums[<span class="number">-4</span>:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="string">'***-***-'</span>+nums[<span class="number">-4</span>:]</span><br></pre></td></tr></table></figure></p>
+<h2>Consecutive Numbers Sum</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-83/problems/consecutive-numbers-sum/</p>
 <blockquote>
 <p>Given a positive integer <code>N</code>, how many ways can we write it as a sum of consecutive positive integers?</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 5</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 5 = 5 = 2 + 3</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 9</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: 9 = 9 = 4 + 5 = 2 + 3 + 4</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 15</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: 15 = 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 5</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 5 = 5 = 2 + 3</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 9</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: 9 = 9 = 4 + 5 = 2 + 3 + 4</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 3</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 15</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: 15 = 15 = 8 + 7 = 4 + 5 + 6 = 1 + 2 + 3 + 4 + 5</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>1 &lt;= N &lt;= 10 ^ 9</code>.</li>
 </ol>
-</blockquote>
 <p>假设<code>N</code>能写出<code>k</code>个连续正整数的和。那么这些正整数中最小的数为<code>N/k-(k-1)/2</code>，为了保证这个数为正整数，必然有:</p>
 <ol>
 <li><code>N/k-(k-1)/2&gt;0</code>即<code>k*(k-1)/2&lt;N</code></li>
 <li>如果<code>k</code>是奇数，<code>N</code>必须能被<code>k</code>整除</li>
 <li>如果<code>k</code>是偶数，<code>N/k</code>等于某个正整数+<code>1/2</code></li>
 </ol>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">consecutiveNumbersSum</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        k,res=<span class="number">1</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> k*(k<span class="number">-1</span>)/<span class="number">2</span>&lt;N:</span><br><span class="line">            <span class="keyword">if</span> (k%<span class="number">2</span>==<span class="number">0</span> <span class="keyword">and</span> N%k==k/<span class="number">2</span>) <span class="keyword">or</span> (k%<span class="number">2</span>==<span class="number">1</span> <span class="keyword">and</span> N%k==<span class="number">0</span>):</span><br><span class="line">                res+=<span class="number">1</span></span><br><span class="line">            k+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">consecutiveNumbersSum</span><span class="params">(self, N)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type N: int</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        k,res=<span class="number">1</span>,<span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> k*(k<span class="number">-1</span>)/<span class="number">2</span>&lt;N:</span><br><span class="line">            <span class="keyword">if</span> (k%<span class="number">2</span>==<span class="number">0</span> <span class="keyword">and</span> N%k==k/<span class="number">2</span>) <span class="keyword">or</span> (k%<span class="number">2</span>==<span class="number">1</span> <span class="keyword">and</span> N%k==<span class="number">0</span>):</span><br><span class="line">                res+=<span class="number">1</span></span><br><span class="line">            k+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
 <p>时间复杂度为$o(\sqrt{N})$</p>
-<h2 id="Unique-Letter-String"><a href="#Unique-Letter-String" class="headerlink" title="Unique Letter String"></a>Unique Letter String</h2><p>原题地址 <a href="https://leetcode.com/contest/weekly-contest-83/problems/unique-letter-string/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-83/problems/unique-letter-string/</a></p>
+<h2>Unique Letter String</h2>
+<p>原题地址 https://leetcode.com/contest/weekly-contest-83/problems/unique-letter-string/</p>
 <blockquote>
 <p>A character is unique in string <code>S</code> if it occurs exactly once in it.</p>
-<p>For example, in string <code>S = &quot;LETTER&quot;</code>, the only unique characters are “L” and “R”.</p>
-<p>Let’s define <code>UNIQ(S)</code> as the number of unique characters in string S.</p>
-<p>For example, <code>UNIQ(&quot;LETTER&quot;) =  2</code>.</p>
+</blockquote>
+<blockquote>
+<p>For example, in string <code>S = &quot;LETTER&quot;</code>, the only unique characters are &quot;L&quot; and &quot;R&quot;.</p>
+</blockquote>
+<blockquote>
+<p>Let's define <code>UNIQ(S)</code> as the number of unique characters in string S.</p>
+</blockquote>
+<blockquote>
+<p>For example, <code>UNIQ(&quot;LETTER&quot;) = 2</code>.</p>
+</blockquote>
+<blockquote>
 <p>Given a string <code>S</code> with only uppercases, calculate the sum of <code>UNIQ(substring)</code> over all non-empty substrings of <code>S</code>.</p>
+</blockquote>
+<blockquote>
 <p>If there are two or more equal substrings at different positions in <code>S</code>, we consider them different.</p>
+</blockquote>
+<blockquote>
 <p>Since the answer can be very large, retrun the answer modulo <code>10 ^ 9 + 7</code>.</p>
-<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ABC&quot;</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: All possible substrings are: &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;AB&quot;,&quot;BC&quot; and &quot;ABC&quot;.</span><br><span class="line">Evey substring is composed with only unique letters.</span><br><span class="line">Sum of lengths of all substring is 1 + 1 + 1 + 2 + 2 + 3 = 10</span><br></pre></td></tr></table></figure></p>
-<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ABA&quot;</span><br><span class="line">Output: 8</span><br><span class="line">Explanation: The same as example 1, except uni(&quot;ABA&quot;) = 1.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 1</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ABC&quot;</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: All possible substrings are: &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;AB&quot;,&quot;BC&quot; and &quot;ABC&quot;.</span><br><span class="line">Evey substring is composed with only unique letters.</span><br><span class="line">Sum of lengths of all substring is 1 + 1 + 1 + 2 + 2 + 3 = 10</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>:
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: &quot;ABA&quot;</span><br><span class="line">Output: 8</span><br><span class="line">Explanation: The same as example 1, except uni(&quot;ABA&quot;) = 1.</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p><strong>Note</strong>:</p>
+</blockquote>
 <ol>
 <li><code>0 &lt;= S.length &lt;= 10000</code>.</li>
 </ol>
-</blockquote>
 <p>正向去考虑可以分割出多少个子串，每个子串有多少只出现过一次的字符，因为生成子串本身已经是$o(n^2)$级的，再去计算每个子串的<code>UNIQ</code>值则会上升到$o(n^3)$的复杂度。这时不妨反过来考虑，<code>S</code>的每个字符<code>S[i]</code>会在哪些子串中成为unique字符。</p>
 <p>假设某个字符最近出现的三个位置为<code>k&lt;j&lt;i</code>，<code>S[k]==S[j]==S[i]</code>，那么<code>S[j]</code>在符合这些条件的子串中可以成为unique字符：</p>
 <ol>
@@ -228,7 +320,7 @@ var _hmt = _hmt || [];
 </ol>
 <p>所以<code>S[j]</code>在<code>(j-k)*(i-j)</code>个子串中贡献了1个计数。</p>
 <p>为了方便设定初始条件，可以假设每个字符都在<code>-1</code>和<code>len(S)</code>位置出现过，这样对于每个字符的第一次出现和最后一次出现也可以用上面的方法计算在多少个子串中成为了unique字符。</p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniqueLetterString</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        pos=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            k,j=pos.get(c,(<span class="number">-1</span>,<span class="number">-1</span>))</span><br><span class="line">            res+=(j-k)*(i-j)</span><br><span class="line">            pos[c]=(j,i)</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> pos:</span><br><span class="line">            k,j=pos[c]</span><br><span class="line">            res+=(j-k)*(len(S)-j)</span><br><span class="line">        <span class="keyword">return</span> res%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">uniqueLetterString</span><span class="params">(self, S)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type S: str</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        res=<span class="number">0</span></span><br><span class="line">        pos=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i,c <span class="keyword">in</span> enumerate(S):</span><br><span class="line">            k,j=pos.get(c,(<span class="number">-1</span>,<span class="number">-1</span>))</span><br><span class="line">            res+=(j-k)*(i-j)</span><br><span class="line">            pos[c]=(j,i)</span><br><span class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> pos:</span><br><span class="line">            k,j=pos[c]</span><br><span class="line">            res+=(j-k)*(len(S)-j)</span><br><span class="line">        <span class="keyword">return</span> res%(<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br></pre></td></tr></table></figure></p>
 <p>时间复杂度为$o(n)$，空间复杂度为$o(1)$</p>
 
       
@@ -240,7 +332,7 @@ var _hmt = _hmt || [];
     
 
     <footer class="article-footer">
-      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-83/" data-id="cjuh6joaw003s0sw31jcn7tcd" class="article-share-link">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-83/" data-id="cjuh9fxc5003mu0w3j8aa565w" class="article-share-link">
         <i class="fa fa-share"></i> Share
       </a>
       <!-- 
@@ -309,7 +401,7 @@ var _hmt = _hmt || [];
           
   <div class="sidebar-module sidebar-toc">
     <h4>概览</h4>
-    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Positions-of-Large-Groups"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Positions of Large Groups</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Masking-Personal-Information"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Masking Personal Information</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Consecutive-Numbers-Sum"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Consecutive Numbers Sum</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Unique-Letter-String"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Unique Letter String</span></a></li></ol>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">Positions of Large Groups</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Masking Personal Information</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Consecutive Numbers Sum</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#undefined"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Unique Letter String</span></a></li></ol>
   </div>
 
 
