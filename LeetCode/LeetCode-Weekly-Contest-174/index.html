@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+  <title>LeetCode Weekly Contest 174 | 笔记仓库</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="https://leetcode.com/contest/weekly-contest-174/ 一人血书一下个破比赛的时间规划对我们东部时区的人来说实在太不友好了，结束了差不多就可以直接睡觉了（好不容易调整好的作息），真的没心思再详细写题解了，所以以后不要指望我稳定产出了，我也好累啊。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Weekly Contest 174">
+<meta property="og:url" content="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-174/index.html">
+<meta property="og:site_name" content="笔记仓库">
+<meta property="og:description" content="https://leetcode.com/contest/weekly-contest-174/ 一人血书一下个破比赛的时间规划对我们东部时区的人来说实在太不友好了，结束了差不多就可以直接睡觉了（好不容易调整好的作息），真的没心思再详细写题解了，所以以后不要指望我稳定产出了，我也好累啊。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/01/21/sample_1_1699.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/01/21/sample_2_1699.png">
+<meta property="og:image" content="https://assets.leetcode.com/uploads/2020/01/23/meta-chart.jpeg">
+<meta property="og:updated_time" content="2020-02-02T04:29:07.308Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Weekly Contest 174">
+<meta name="twitter:description" content="https://leetcode.com/contest/weekly-contest-174/ 一人血书一下个破比赛的时间规划对我们东部时区的人来说实在太不友好了，结束了差不多就可以直接睡觉了（好不容易调整好的作息），真的没心思再详细写题解了，所以以后不要指望我稳定产出了，我也好累啊。">
+<meta name="twitter:image" content="https://assets.leetcode.com/uploads/2020/01/21/sample_1_1699.png">
+<meta name="twitter:creator" content="@yangzhou301">
+  
+    <link rel="alternate" href="/atom.xml" title="笔记仓库" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-83527033-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2215e0ea4875ead3c44e8c3e379722a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="main-menu-navbar">
+      <ul class="nav navbar-nav">
+        
+          <li><a class=""
+                 href="/index.html">Home</a></li>
+        
+          <li><a class=""
+                 href="/archives/">Archives</a></li>
+        
+      </ul>
+
+      <!--
+      <ul class="nav navbar-nav navbar-right">
+        
+          <li><a href="/atom.xml" title="RSS Feed"><i class="fa fa-rss"></i></a></li>
+        
+      </ul>
+      -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div class="container">
+    <div class="blog-header">
+  <h1 class="blog-title">笔记仓库</h1>
+  
+    <p class="lead blog-description">正常人的正常笔记集</p>
+  
+</div>
+
+    <div class="row">
+        <div class="col-sm-8 blog-main">
+          <article id="post-LeetCode-Weekly-Contest-174" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <header class="article-header">
+    
+  
+    <h1 class="article-title" itemprop="name">
+      LeetCode Weekly Contest 174
+    </h1>
+  
+
+
+    <meta name="ujianVerification" content="542ffd85bb968154b1190d5d92d59cef" />
+  </header>
+
+  <div class="article-meta">
+    <div class="article-datetime">
+  <a href="/LeetCode/LeetCode-Weekly-Contest-174/" class="article-date"><time datetime="2020-02-02T03:44:57.452Z" itemprop="datePublished">2020-02-01</time></a>
+</div>
+
+    <div class="article-author">Xinyi Li</div>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+
+  </div>
+  <div class="article-inner">
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://leetcode.com/contest/weekly-contest-174/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-174/</a></p>
+<p>一人血书一下个破比赛的时间规划对我们东部时区的人来说实在太不友好了，结束了差不多就可以直接睡觉了（好不容易调整好的作息），真的没心思再详细写题解了，所以以后不要指望我稳定产出了，我也好累啊。</p>
+<a id="more"></a>
+<p>weekly contest在每周周六9.30 p.m. biweekly contest在每两周周六9.30 a.m.，我真没那么多时间再来刷这些没什么意思的题了，反正也找不到工作（当然有任何intern机会还请联系我……我真的现在看现在的就业情况好焦虑啊）</p>
+<p>简单写一下题吧。</p>
+<h2 id="The-K-Weakest-Rows-in-a-Matrix"><a href="#The-K-Weakest-Rows-in-a-Matrix" class="headerlink" title="The K Weakest Rows in a Matrix"></a>The K Weakest Rows in a Matrix</h2><p><a href="https://leetcode.com/contest/weekly-contest-174/problems/the-k-weakest-rows-in-a-matrix/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-174/problems/the-k-weakest-rows-in-a-matrix/</a></p>
+<blockquote>
+<p>Given a <code>m * n</code> matrix <code>mat</code> of <em>ones</em> (representing soldiers) and <em>zeros</em> (representing civilians), return the indexes of the <code>k</code> weakest rows in the matrix ordered from the weakest to the strongest.</p>
+<p>A row <strong>i</strong> is weaker than row <strong>j</strong>, if the number of soldiers in row i is less than the number of soldiers in row j, or they have the same number of soldiers but <strong>i</strong> is less than <strong>j</strong>. Soldiers are <strong>always</strong> stand in the frontier of a row, that is, always ones may appear first and then zeros.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Input: mat =</span><br><span class="line">[[1,1,0,0,0],</span><br><span class="line"> [1,1,1,1,0],</span><br><span class="line"> [1,0,0,0,0],</span><br><span class="line"> [1,1,0,0,0],</span><br><span class="line"> [1,1,1,1,1]],</span><br><span class="line">k = 3</span><br><span class="line">Output: [2,0,3]</span><br><span class="line">Explanation:</span><br><span class="line">The number of soldiers for each row is:</span><br><span class="line">row 0 -&gt; 2</span><br><span class="line">row 1 -&gt; 4</span><br><span class="line">row 2 -&gt; 1</span><br><span class="line">row 3 -&gt; 2</span><br><span class="line">row 4 -&gt; 5</span><br><span class="line">Rows ordered from the weakest to the strongest are [2,0,3,1,4]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Input: mat =</span><br><span class="line">[[1,0,0,0],</span><br><span class="line"> [1,1,1,1],</span><br><span class="line"> [1,0,0,0],</span><br><span class="line"> [1,0,0,0]],</span><br><span class="line">k = 2</span><br><span class="line">Output: [0,2]</span><br><span class="line">Explanation:</span><br><span class="line">The number of soldiers for each row is:</span><br><span class="line">row 0 -&gt; 1</span><br><span class="line">row 1 -&gt; 4</span><br><span class="line">row 2 -&gt; 1</span><br><span class="line">row 3 -&gt; 1</span><br><span class="line">Rows ordered from the weakest to the strongest are [0,2,3,1]</span><br></pre></td></tr></table></figure></p>
+<p><strong>Constraints</strong>:</p>
+<ol>
+<li><code>m == mat.length</code></li>
+<li><code>n == mat[i].length</code></li>
+<li><code>2 &lt;= n, m &lt;= 100</code></li>
+<li><code>1 &lt;= k &lt;= m</code></li>
+<li><code>matrix[i][j]</code> is either 0 <strong>or</strong> 1.</li>
+</ol>
+</blockquote>
+<p> 简单排序，直接写：</p>
+ <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">kWeakestRows</span><span class="params">(self, mat: List[List[int]], k: int)</span> -&gt; List[int]:</span></span><br><span class="line">       rank = sorted(list(range(len(mat))), key=<span class="keyword">lambda</span> i: (sum(mat[i]), i))</span><br><span class="line">       <span class="keyword">return</span> rank[:k]</span><br></pre></td></tr></table></figure>
+<h2 id="Reduce-Array-Size-to-The-Half"><a href="#Reduce-Array-Size-to-The-Half" class="headerlink" title="Reduce Array Size to The Half"></a>Reduce Array Size to The Half</h2><p><a href="https://leetcode.com/contest/weekly-contest-174/problems/reduce-array-size-to-the-half/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-174/problems/reduce-array-size-to-the-half/</a></p>
+<blockquote>
+<p>Given an array <code>arr</code>.  You can choose a set of integers and remove all the occurrences of these integers in the array.</p>
+<p>Return <em>the minimum size</em> of the set so that <strong>at least</strong> half of the integers of the array are removed.</p>
+<p><strong>Example 1</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [3,3,3,3,5,5,5,2,2,7]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: Choosing &#123;3,7&#125; will make the new array [5,5,5,2,2] which has size 5 (i.e equal to half of the size of the old array).</span><br><span class="line">Possible sets of size 2 are &#123;3,5&#125;,&#123;3,2&#125;,&#123;5,2&#125;.</span><br><span class="line">Choosing set &#123;2,7&#125; is not possible as it will make the new array [3,3,3,3,5,5,5] which has size greater than half of the size of the old array.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [7,7,7,7,7,7]</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: The only possible set you can choose is &#123;7&#125;. This will make the new array empty.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [1,9]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [1000,1000,3,7]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 5</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [1,2,3,4,5,6,7,8,9,10]</span><br><span class="line">Output: 5</span><br></pre></td></tr></table></figure></p>
+<p><strong>Constraints</strong>:</p>
+<ol>
+<li><code>1 &lt;= arr.length &lt;= 10^5</code></li>
+<li><code>arr.length</code> is even.</li>
+<li><code>1 &lt;= arr[i] &lt;= 10^5</code></li>
+</ol>
+</blockquote>
+<p>找出现频数高的元素依次去除，看去到第几个可以去掉超过半数。xjb写就行</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minSetSize</span><span class="params">(self, arr: List[int])</span> -&gt; int:</span></span><br><span class="line">        cnt = Counter(arr)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        qual = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> _, i <span class="keyword">in</span> cnt.most_common():</span><br><span class="line">            res += <span class="number">1</span></span><br><span class="line">            qual += i</span><br><span class="line">            <span class="keyword">if</span> qual &gt;= len(arr) / <span class="number">2</span>:</span><br><span class="line">                <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="Maximum-Product-of-Splitted-Binary-Tree"><a href="#Maximum-Product-of-Splitted-Binary-Tree" class="headerlink" title="Maximum Product of Splitted Binary Tree"></a>Maximum Product of Splitted Binary Tree</h2><blockquote>
+<p>Given a binary tree <code>root</code>. Split the binary tree into two subtrees by removing 1 edge such that the product of the sums of the subtrees are maximized.</p>
+<p>Since the answer may be too large, return it modulo 10^9 + 7.</p>
+<p><strong>Example 1</strong>:<br><img src="https://assets.leetcode.com/uploads/2020/01/21/sample_1_1699.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3,4,5,6]</span><br><span class="line">Output: 110</span><br><span class="line">Explanation: Remove the red edge and get 2 binary trees with sum 11 and 10. Their product is 110 (11*10)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><img src="https://assets.leetcode.com/uploads/2020/01/21/sample_2_1699.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,null,2,3,4,null,null,5,6]</span><br><span class="line">Output: 90</span><br><span class="line">Explanation:  Remove the red edge and get 2 binary trees with sum 15 and 6.Their product is 90 (15*6)</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [2,3,9,10,7,8,6,5,4,11,1]</span><br><span class="line">Output: 1025</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,1]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p>
+<p><strong>Constraints</strong>:</p>
+<ol>
+<li>Each tree has at most <code>50000</code> nodes and at least <code>2</code> nodes.</li>
+<li>Each node’s value is between <code>[1, 10000]</code>.</li>
+</ol>
+</blockquote>
+<p>首先做一次后序遍历，计算以每个结点作为根结点时该子树的所有结点和，并记录在这个结点。假设整个树的值的和记录在根结点为<code>root_sum</code></p>
+<p>假设去掉一条边生成的子树的根结点上现在的和值为<code>node_sum</code>，那么剩下的部分也就是以原来的根结点的树，和值也就是去掉上面那个子树和值后的值<code>root_sum-node_sum</code>，众所周知根据基本不等式或二次曲线，<code>node_sum*(root_sum-node_sum)</code>在<code>node_sum</code>在越接近<code>root_sum/2</code>时值越大，找到这个结点即可。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"># class TreeNode:</span></span><br><span class="line"><span class="comment">#     def __init__(self, x):</span></span><br><span class="line"><span class="comment">#         self.val = x</span></span><br><span class="line"><span class="comment">#         self.left = None</span></span><br><span class="line"><span class="comment">#         self.right = None</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProduct</span><span class="params">(self, root: TreeNode)</span> -&gt; int:</span></span><br><span class="line">        self.node_sum = []</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">sum_tree</span><span class="params">(root)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">            left_sum = sum_tree(root.left)</span><br><span class="line">            right_sum = sum_tree(root.right)</span><br><span class="line">            root.val += left_sum + right_sum</span><br><span class="line">            self.node_sum.append(root.val)</span><br><span class="line">            <span class="keyword">return</span> root.val</span><br><span class="line">        root_sum = sum_tree(root)</span><br><span class="line">        sub_root = min(self.node_sum, key=<span class="keyword">lambda</span> x: abs(x - root_sum / <span class="number">2</span>))</span><br><span class="line">        <span class="keyword">return</span> (root_sum - sub_root) * sub_root % (<span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Jump-Game-V"><a href="#Jump-Game-V" class="headerlink" title="Jump Game V"></a>Jump Game V</h2><p><a href="https://leetcode.com/contest/weekly-contest-174/problems/jump-game-v/" target="_blank" rel="noopener">https://leetcode.com/contest/weekly-contest-174/problems/jump-game-v/</a></p>
+<blockquote>
+<p>Given an array of integers <code>arr</code> and an integer <code>d</code>. In one step you can jump from index <code>i</code> to index:</p>
+<ul>
+<li><code>i + x</code> where: <code>i + x &lt; arr</code>.length and <code>0 &lt; x &lt;= d</code>.</li>
+<li><code>i - x</code> where: <code>i - x &gt;= 0</code> and <code>0 &lt; x &lt;= d</code>.<br>In addition, you can only jump from index <code>i</code> to index <code>j</code> if <code>arr[i] &gt; arr[j</code>] and <code>arr[i] &gt; arr[k]</code> for all indices <code>k</code> between <code>i</code> and <code>j</code> (More formally <code>min(i, j) &lt; k &lt; max(i, j)</code>).</li>
+</ul>
+<p>You can choose any index of the array and start jumping. Return <em>the maximum number of indices</em> you can visit.</p>
+<p>Notice that you can not jump outside of the array at any time.</p>
+<p><strong>Example 1</strong>:<br><img src="https://assets.leetcode.com/uploads/2020/01/23/meta-chart.jpeg" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [6,4,14,6,8,13,9,7,10,6,12], d = 2</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: You can start at index 10. You can jump 10 --&gt; 8 --&gt; 6 --&gt; 7 as shown.</span><br><span class="line">Note that if you start at index 6 you can only jump to index 7. You cannot jump to index 5 because 13 &gt; 9. You cannot jump to index 4 because index 5 is between index 4 and 6 and 13 &gt; 9.</span><br><span class="line">Similarly You cannot jump from index 3 to index 2 or index 1.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 2</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [3,3,3,3,3], d = 3</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: You can start at any index. You always cannot jump to any index.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 3</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [7,6,5,4,3,2,1], d = 1</span><br><span class="line">Output: 7</span><br><span class="line">Explanation: Start at index 0. You can visit all the indicies.</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 4</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [7,1,7,1,7,1], d = 2</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure></p>
+<p><strong>Example 5</strong>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: arr = [66], d = 1</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure></p>
+<p><strong>Constraints</strong>:</p>
+<ol>
+<li><code>1 &lt;= arr.length &lt;= 1000</code></li>
+<li><code>1 &lt;= arr[i] &lt;= 10^5</code></li>
+<li><code>1 &lt;= d &lt;= arr.length</code></li>
+</ol>
+</blockquote>
+<p>这题没卡时间，我就用最粗暴的办法写了，其实优化空间很大，有兴趣的可以改一下。</p>
+<p>跳转关系是单向的，从<code>i</code>坐标跳到<code>j</code>坐标后无法再跳回，每一步的跳转范围不受上一步限制，<code>i-&gt;j</code>关系可以组成拓扑图。假设以<code>i</code>为起点，找所有能跳转到的<code>j</code>，即在距离<code>d</code>以内，且包括<code>j</code>在内所有的元素都小于（体现在图上是低于）<code>arr[i]</code>，把这些<code>j</code>记录到<code>lower[i]</code>。遍历一次所有坐标得到一个<code>lower</code>。</p>
+<p>如果<code>lower[i]</code>里面没有任何<code>j</code>那么以<code>i</code>为起点不能继续跳转，所有能经过1个坐标。如果<code>lower[i]</code>有多个<code>j</code>可以跳转，那么找到路径最长的<code>j</code>作为下一步就是最长的以<code>i</code>为起点的路径了。这个后序遍历的递归写法你可以按照top-down或者bottom-up的思路去写，反正只要再配合一个辅助数组作为memo，时间限制肯定够用。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxJumps</span><span class="params">(self, arr: List[int], d: int)</span> -&gt; int:</span></span><br><span class="line">        lower = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(arr))]</span><br><span class="line">        self.path = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i, n <span class="keyword">in</span> enumerate(arr):</span><br><span class="line">            <span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">1</span>, d + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= i - step:</span><br><span class="line">                    <span class="keyword">if</span> arr[i - step] &lt; arr[i]:</span><br><span class="line">                        lower[i].append(i - step)</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">1</span>, d + <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> i + step &lt; len(arr):</span><br><span class="line">                    <span class="keyword">if</span> arr[i + step] &lt; arr[i]:</span><br><span class="line">                        lower[i].append(i + step)</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">path_len</span><span class="params">(i)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> i <span class="keyword">in</span> self.path:</span><br><span class="line">                <span class="keyword">return</span> self.path[i]</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> lower[i]:</span><br><span class="line">                self.path[i] = <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> self.path[i]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                paths = [path_len(x) <span class="keyword">for</span> x <span class="keyword">in</span> lower[i]]</span><br><span class="line">                self.path[i] = <span class="number">1</span> + max(paths)</span><br><span class="line">                <span class="keyword">return</span> self.path[i]</span><br><span class="line">        paths = [path_len(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(len(arr))]</span><br><span class="line">        <span class="keyword">return</span> max(paths)</span><br></pre></td></tr></table></figure>
+<p>终于写完了，太晚了我也要去睡了。祝大家新年愉快，近期注意安全卫生少出门，保持身体健康！</p>
+
+      
+    </div>
+
+    
+      
+
+    
+
+    <footer class="article-footer">
+      <a data-url="notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-174/" data-id="ck64j10ld002hr8w36p1e8vkl" class="article-share-link">
+        <i class="fa fa-share"></i> Share
+      </a>
+      <!-- 
+        <a href="#disqus_thread" class="article-comment-link">
+        <i class="fa fa-comment"></i> Comments
+        </a>
+       -->
+      
+
+    </footer>
+  </div>
+  
+    
+<ul id="article-nav" class="nav nav-pills nav-justified">
+  
+  <li role="presentation">
+    <a href="/Introduction/2020/" id="article-nav-older" class="article-nav-link-wrap">
+      <i class="fa fa-chevron-left pull-left"></i>
+      <span class="article-nav-link-title">写在2020年伊始</span>
+    </a>
+  </li>
+  
+  
+</ul>
+
+
+  
+</article>
+
+
+<!-- 
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+ -->
+
+  <div id="comments"></div>
+  <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+  <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+  <script>
+  var gitment = new Gitment({
+    owner: 'Lixinyi-DUT',
+    repo: 'TuQiang-Street-301',
+    oauth: {
+      client_id: '0a613b11d9140b2629e0',
+      client_secret: 'b6ee57129a892f87bbac149167a90cf1a8035a47',
+      id: 'Sat Feb 01 2020 22:44:57 GMT-0500',
+    },
+  })
+  gitment.render('comments')
+  </script>
+
+
+
+        </div>
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          
+  <div class="sidebar-module sidebar-toc">
+    <h4>概览</h4>
+    <ol class="sidebar-module-list"><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#The-K-Weakest-Rows-in-a-Matrix"><span class="sidebar-module-list-number">1.</span> <span class="sidebar-module-list-text">The K Weakest Rows in a Matrix</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Reduce-Array-Size-to-The-Half"><span class="sidebar-module-list-number">2.</span> <span class="sidebar-module-list-text">Reduce Array Size to The Half</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Maximum-Product-of-Splitted-Binary-Tree"><span class="sidebar-module-list-number">3.</span> <span class="sidebar-module-list-text">Maximum Product of Splitted Binary Tree</span></a></li><li class="sidebar-module-list-item sidebar-module-list-level-2"><a class="sidebar-module-list-link" href="#Jump-Game-V"><span class="sidebar-module-list-number">4.</span> <span class="sidebar-module-list-text">Jump Game V</span></a></li></ol>
+  </div>
+
+
+
+  <div class="sidebar-module sidebar-module-inset">
+  <h4>About</h4>
+  <p>微信公众号</p><img src="https://github.com/Lixinyi-DUT/Project-Yangzhou/raw/master/notebook/LeetCode/qrcode.png"  style="width:215px;height:215px;" align="middle"><p>联系作者<em><a href="mailto:wolixinyi@gmail.com" style="text-decoration:none;"><i class="fa fa-envelope-o"></i>wolixinyi@gmail.com</a></em></p>
+</div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Categories</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/CS161/">CS161</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Deutsche101/">Deutsche101</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/Introduction/">Introduction</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/LeetCode/">LeetCode</a><span class="sidebar-module-list-count">78</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/MIT6-042/">MIT6.042</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/SICP/">SICP</a><span class="sidebar-module-list-count">11</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/TAPL/">TAPL</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/categories/lambda-calculus/">lambda calculus</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-tags">
+    <h4>Tags</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/DrRacket/">DrRacket</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/LaTeX/">LaTeX</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/continuation/">continuation</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/书评/">书评</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/内存分配/">内存分配</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/函数式编程/">函数式编程</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/动态规划/">动态规划</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/垃圾回收/">垃圾回收</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/失败/">失败</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/德语/">德语</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数字电路/">数字电路</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/数据可视化/">数据可视化</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/约束编程/">约束编程</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/组合数学/">组合数学</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/编译器/">编译器</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/规划问题/">规划问题</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/语种介绍/">语种介绍</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/tags/贪心算法/">贪心算法</a><span class="sidebar-module-list-count">2</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module">
+    <h4>Tag Cloud</h4>
+    <p class="tagcloud">
+      <a href="/tags/DrRacket/" style="font-size: 15px;">DrRacket</a> <a href="/tags/LaTeX/" style="font-size: 10px;">LaTeX</a> <a href="/tags/continuation/" style="font-size: 10px;">continuation</a> <a href="/tags/书评/" style="font-size: 10px;">书评</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/函数式编程/" style="font-size: 20px;">函数式编程</a> <a href="/tags/动态规划/" style="font-size: 10px;">动态规划</a> <a href="/tags/垃圾回收/" style="font-size: 10px;">垃圾回收</a> <a href="/tags/失败/" style="font-size: 10px;">失败</a> <a href="/tags/德语/" style="font-size: 10px;">德语</a> <a href="/tags/数字电路/" style="font-size: 10px;">数字电路</a> <a href="/tags/数据可视化/" style="font-size: 10px;">数据可视化</a> <a href="/tags/约束编程/" style="font-size: 10px;">约束编程</a> <a href="/tags/组合数学/" style="font-size: 10px;">组合数学</a> <a href="/tags/编译器/" style="font-size: 10px;">编译器</a> <a href="/tags/规划问题/" style="font-size: 10px;">规划问题</a> <a href="/tags/语种介绍/" style="font-size: 10px;">语种介绍</a> <a href="/tags/贪心算法/" style="font-size: 15px;">贪心算法</a>
+    </p>
+  </div>
+
+
+  
+  <div class="sidebar-module">
+    <h4>Archives</h4>
+    <ul class="sidebar-module-list"><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/02/">二月 2020</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2020/01/">一月 2020</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/05/">五月 2019</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/04/">四月 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/03/">三月 2019</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/02/">二月 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2019/01/">一月 2019</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/12/">十二月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/11/">十一月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/10/">十月 2018</a><span class="sidebar-module-list-count">6</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/09/">九月 2018</a><span class="sidebar-module-list-count">8</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/08/">八月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/07/">七月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/06/">六月 2018</a><span class="sidebar-module-list-count">7</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/05/">五月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/04/">四月 2018</a><span class="sidebar-module-list-count">5</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/03/">三月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/02/">二月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2018/01/">一月 2018</a><span class="sidebar-module-list-count">4</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/12/">十二月 2017</a><span class="sidebar-module-list-count">3</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/10/">十月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/08/">八月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/07/">七月 2017</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2017/06/">六月 2017</a><span class="sidebar-module-list-count">2</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/10/">十月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/2016/09/">九月 2016</a><span class="sidebar-module-list-count">1</span></li><li class="sidebar-module-list-item"><a class="sidebar-module-list-link" href="/archives/1990/05/">五月 1990</a><span class="sidebar-module-list-count">1</span></li></ul>
+  </div>
+
+
+
+  
+  <div class="sidebar-module sidebar-recents">
+    <h4>Recents</h4>
+    <ul class="sidebar-module-list">
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-174/">LeetCode Weekly Contest 174</a>
+        </li>
+      
+        <li>
+          <a href="/Introduction/2020/">写在2020年伊始</a>
+        </li>
+      
+        <li>
+          <a href="/Introduction/hk_journalist_module/">hkjournalist：自定义模板的自动报告生成器</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-136/">LeetCode Weekly Contest 136</a>
+        </li>
+      
+        <li>
+          <a href="/LeetCode/LeetCode-Weekly-Contest-135/">LeetCode Weekly Contest 135</a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+
+        </div>
+    </div>
+  </div>
+  <footer class="blog-footer">
+  <div class="container">
+    <div id="footer-info" class="inner">
+      &copy; 2020 Xinyi Li<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+  
+<script>
+  var disqus_shortname = 'notebook-xyli-me';
+  
+  var disqus_url = 'notebook.xyli.me/LeetCode/LeetCode-Weekly-Contest-174/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" integrity="sha384-8gBf6Y4YYq7Jx97PIqmTwLPin4hxIzQw5aDmUg/DDhul9fFpbbLcLh3nTIIDJKhx" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/github.min.css" integrity="sha384-WtUWHyk39lfUpZQVgokNfSKCJaKAeD6adgLduBLrKTMUuPzFhLtL23y1guFy6lZn" crossorigin="anonymous">
+  <script src="/highlight/highlight.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+</body>
+</html>
